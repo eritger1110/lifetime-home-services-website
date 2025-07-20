@@ -3,19 +3,19 @@ import './App.css';
 import { Phone, Mail, MapPin, Star, CheckCircle, Shield, Award, Clock, Users, Wrench, Home, Droplets, Zap, Hammer, Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 
 // Import images
-import lifetimeLogo from './assets/LifetimeHomeServicesLogo.png';
-import heroImage from './assets/lifetime_hero_house_image.jpeg';
-import radonTestingDevice from './assets/radon_testing_device_professional_new.jpg';
-import concreteFloorCoating from './assets/concrete_floor_coating_professional.jpg';
-import hvacProfessional from './assets/hvac_professional_premium.jpg';
-import aerosealLogo from './assets/aeroseal_logo.jpg';
+import lifetimeLogo from './LifetimeHomeServicesLogo.png';
+import heroImage from './lifetime_hero_house_image.jpeg';
+import radonTestingDevice from './radon_testing_device_professional_new.jpg';
+import concreteFloorCoating from './concrete_floor_coating_professional.jpg';
+import hvacProfessional from './hvac_professional_premium.jpg';
+import aerosealLogo from './aeroseal_logo.jpg';
 
 // Flake images
-import flakeDesertSand from './assets/flake_desert_sand.jpg';
-import flakeOceanBlue from './assets/flake_ocean_blue.jpg';
-import flakeTidalWave from './assets/flake_tidal_wave.jpg';
-import flakeStormGray from './assets/flake_storm_gray.jpg';
-import flakeMixedBed from './assets/flake_mixed_bed.jpg';
+import flakeDesertSand from './flake_desert_sand.jpg';
+import flakeOceanBlue from './flake_ocean_blue.jpg';
+import flakeTidalWave from './flake_tidal_wave.jpg';
+import flakeStormGray from './flake_storm_gray.jpg';
+import flakeMixedBed from './flake_mixed_bed.jpg';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
