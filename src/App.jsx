@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Phone, Mail, MapPin, Shield, Layers, Zap, Wrench, ChevronDown, X, Menu, Star, CheckCircle, Award, Home, Users, Clock, ThumbsUp } from 'lucide-react';
+import { Phone, Mail, MapPin, Shield, Layers, Zap, Wrench, ChevronDown, X, Menu, Star, CheckCircle, Award, Home, Users, Clock, ThumbsUp, ExternalLink, Plus, Minus } from 'lucide-react';
 import { WisconsinPage, IllinoisPage, MinnesotaPage, ColoradoPage } from './StatePages.jsx';
 
 function App() {
@@ -19,13 +19,24 @@ function App() {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
+  // Scroll to top function for navigation
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Navigation handler that scrolls to top
+  const handleNavigation = (page) => {
+    setCurrentPage(page);
+    scrollToTop();
+  };
+
   const brands = {
     lifetime: {
       name: 'Lifetime Home Services',
       tagline: 'Trusted Solutions. Lifetime Results.',
       phone: '(262) 955-5701',
-      description: 'Complete home services including radon testing, HVAC, electrical, handyman, and premium floor coatings.',
-      services: ['Radon Testing & Mitigation', 'HVAC & AeroSeal', 'Premium Floor Coatings', 'Licensed Electrical', 'Professional Handyman', 'Air Quality Services']
+      description: 'Complete home services including radon testing, duct cleaning, electrical, handyman, and premium floor coatings.',
+      services: ['Radon Testing & Mitigation', 'Duct Cleaning & AeroSeal', 'Premium Floor Coatings', 'Licensed Electrical', 'Professional Handyman', 'Air Quality Services']
     },
     america: {
       name: 'America In-Home',
@@ -44,6 +55,33 @@ function App() {
   };
 
   const currentBrandData = brands[currentBrand];
+
+  // Service page handlers
+  const handleServiceNavigation = (service) => {
+    switch(service) {
+      case 'radon-testing':
+        setCurrentPage('radon-testing');
+        break;
+      case 'radon-mitigation':
+        setCurrentPage('radon-mitigation');
+        break;
+      case 'duct-cleaning':
+        setCurrentPage('duct-cleaning');
+        break;
+      case 'concrete':
+        setCurrentPage('concrete');
+        break;
+      case 'electrical':
+        setCurrentPage('electrical');
+        break;
+      case 'handyman':
+        setCurrentPage('handyman');
+        break;
+      default:
+        setCurrentPage('home');
+    }
+    scrollToTop();
+  };
 
   // Multi-Brand Header Component
   function MultiBrandHeader({ openContactForm, handlePhoneClick, currentPage, setCurrentPage, isMobileMenuOpen, toggleMobileMenu, closeMobileMenu, currentBrand, setCurrentBrand }) {
@@ -70,7 +108,7 @@ function App() {
                       onClick={() => {
                         setCurrentBrand(key);
                         setBrandSwitcherOpen(false);
-                        setCurrentPage('home');
+                        handleNavigation('home');
                       }}
                     >
                       <div>
@@ -90,7 +128,7 @@ function App() {
 
         {/* Main Header */}
         <div className="header-container">
-          <div className="brand-section" onClick={() => setCurrentPage('home')}>
+          <div className="brand-section" onClick={() => handleNavigation('home')}>
             <img 
               src="/LifetimeHomeServicesLogo.png" 
               alt={currentBrandData.name}
@@ -107,7 +145,7 @@ function App() {
               <a 
                 href="#home" 
                 className={currentPage === 'home' ? 'active' : ''}
-                onClick={(e) => { e.preventDefault(); setCurrentPage('home'); }}
+                onClick={(e) => { e.preventDefault(); handleNavigation('home'); }}
               >
                 Home
               </a>
@@ -124,27 +162,27 @@ function App() {
                   <div className="dropdown-menu">
                     {currentBrand === 'lifetime' && (
                       <>
-                        <a href="#radon-testing" onClick={(e) => { e.preventDefault(); setCurrentPage('radon-testing'); setServicesDropdownOpen(false); }}>
+                        <a href="#radon-testing" onClick={(e) => { e.preventDefault(); handleServiceNavigation('radon-testing'); setServicesDropdownOpen(false); }}>
                           <Shield size={16} />
                           FREE Radon Testing
                         </a>
-                        <a href="#radon-mitigation" onClick={(e) => { e.preventDefault(); setCurrentPage('radon-mitigation'); setServicesDropdownOpen(false); }}>
+                        <a href="#radon-mitigation" onClick={(e) => { e.preventDefault(); handleServiceNavigation('radon-mitigation'); setServicesDropdownOpen(false); }}>
                           <Shield size={16} />
                           Radon Mitigation
                         </a>
-                        <a href="#hvac" onClick={(e) => { e.preventDefault(); setCurrentPage('hvac'); setServicesDropdownOpen(false); }}>
+                        <a href="#duct-cleaning" onClick={(e) => { e.preventDefault(); handleServiceNavigation('duct-cleaning'); setServicesDropdownOpen(false); }}>
                           <Zap size={16} />
-                          HVAC & AeroSeal
+                          Duct Cleaning & AeroSeal
                         </a>
-                        <a href="#concrete" onClick={(e) => { e.preventDefault(); setCurrentPage('concrete'); setServicesDropdownOpen(false); }}>
+                        <a href="#concrete" onClick={(e) => { e.preventDefault(); handleServiceNavigation('concrete'); setServicesDropdownOpen(false); }}>
                           <Layers size={16} />
                           Concrete Coatings
                         </a>
-                        <a href="#electrical" onClick={(e) => { e.preventDefault(); setCurrentPage('electrical'); setServicesDropdownOpen(false); }}>
+                        <a href="#electrical" onClick={(e) => { e.preventDefault(); handleServiceNavigation('electrical'); setServicesDropdownOpen(false); }}>
                           <Zap size={16} />
                           Licensed Electrical
                         </a>
-                        <a href="#handyman" onClick={(e) => { e.preventDefault(); setCurrentPage('handyman'); setServicesDropdownOpen(false); }}>
+                        <a href="#handyman" onClick={(e) => { e.preventDefault(); handleServiceNavigation('handyman'); setServicesDropdownOpen(false); }}>
                           <Wrench size={16} />
                           Professional Handyman
                         </a>
@@ -152,15 +190,15 @@ function App() {
                     )}
                     {currentBrand === 'america' && (
                       <>
-                        <a href="#smart-home" onClick={(e) => { e.preventDefault(); setCurrentPage('smart-home'); setServicesDropdownOpen(false); }}>
+                        <a href="#smart-home" onClick={(e) => { e.preventDefault(); handleServiceNavigation('smart-home'); setServicesDropdownOpen(false); }}>
                           <Home size={16} />
                           Smart Home Automation
                         </a>
-                        <a href="#security" onClick={(e) => { e.preventDefault(); setCurrentPage('security'); setServicesDropdownOpen(false); }}>
+                        <a href="#security" onClick={(e) => { e.preventDefault(); handleServiceNavigation('security'); setServicesDropdownOpen(false); }}>
                           <Shield size={16} />
                           Security Systems
                         </a>
-                        <a href="#control4" onClick={(e) => { e.preventDefault(); setCurrentPage('control4'); setServicesDropdownOpen(false); }}>
+                        <a href="#control4" onClick={(e) => { e.preventDefault(); handleServiceNavigation('control4'); setServicesDropdownOpen(false); }}>
                           <Zap size={16} />
                           Control4 Integration
                         </a>
@@ -168,15 +206,15 @@ function App() {
                     )}
                     {currentBrand === 'closets' && (
                       <>
-                        <a href="#custom-closets" onClick={(e) => { e.preventDefault(); setCurrentPage('custom-closets'); setServicesDropdownOpen(false); }}>
+                        <a href="#custom-closets" onClick={(e) => { e.preventDefault(); handleServiceNavigation('custom-closets'); setServicesDropdownOpen(false); }}>
                           <Home size={16} />
                           Custom Closets
                         </a>
-                        <a href="#pantry" onClick={(e) => { e.preventDefault(); setCurrentPage('pantry'); setServicesDropdownOpen(false); }}>
+                        <a href="#pantry" onClick={(e) => { e.preventDefault(); handleServiceNavigation('pantry'); setServicesDropdownOpen(false); }}>
                           <Layers size={16} />
                           Pantry Organization
                         </a>
-                        <a href="#garage" onClick={(e) => { e.preventDefault(); setCurrentPage('garage'); setServicesDropdownOpen(false); }}>
+                        <a href="#garage" onClick={(e) => { e.preventDefault(); handleServiceNavigation('garage'); setServicesDropdownOpen(false); }}>
                           <Wrench size={16} />
                           Garage Storage
                         </a>
@@ -196,19 +234,19 @@ function App() {
                 </div>
                 {statesDropdownOpen && (
                   <div className="dropdown-menu">
-                    <a href="#wisconsin" onClick={(e) => { e.preventDefault(); setCurrentPage('wisconsin'); setStatesDropdownOpen(false); }}>
+                    <a href="#wisconsin" onClick={(e) => { e.preventDefault(); handleNavigation('wisconsin'); setStatesDropdownOpen(false); }}>
                       <MapPin size={16} />
                       Wisconsin
                     </a>
-                    <a href="#illinois" onClick={(e) => { e.preventDefault(); setCurrentPage('illinois'); setStatesDropdownOpen(false); }}>
+                    <a href="#illinois" onClick={(e) => { e.preventDefault(); handleNavigation('illinois'); setStatesDropdownOpen(false); }}>
                       <MapPin size={16} />
                       Illinois
                     </a>
-                    <a href="#minnesota" onClick={(e) => { e.preventDefault(); setCurrentPage('minnesota'); setStatesDropdownOpen(false); }}>
+                    <a href="#minnesota" onClick={(e) => { e.preventDefault(); handleNavigation('minnesota'); setStatesDropdownOpen(false); }}>
                       <MapPin size={16} />
                       Minnesota
                     </a>
-                    <a href="#colorado" onClick={(e) => { e.preventDefault(); setCurrentPage('colorado'); setStatesDropdownOpen(false); }}>
+                    <a href="#colorado" onClick={(e) => { e.preventDefault(); handleNavigation('colorado'); setStatesDropdownOpen(false); }}>
                       <MapPin size={16} />
                       Colorado
                     </a>
@@ -217,7 +255,7 @@ function App() {
               </div>
 
               <a 
-                href="https://www.synchrony.com/mysynchrony/apply/apply.html?market=14&channel=PLCRD&returnUrl=https%3A%2F%2Fwww.synchrony.com%2Fmysynchrony%2Fapply%2Fapplyresults.html"
+                href="https://www.synchrony.com/mmc/S6229146200?sitecode=acaqri0c1"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -260,7 +298,7 @@ function App() {
               <div className="mobile-nav-links">
                 <div className="mobile-nav-section">
                   <h4>Navigation</h4>
-                  <a href="#home" onClick={(e) => { e.preventDefault(); setCurrentPage('home'); closeMobileMenu(); }}>
+                  <a href="#home" onClick={(e) => { e.preventDefault(); handleNavigation('home'); closeMobileMenu(); }}>
                     <Home size={20} />
                     Home
                   </a>
@@ -278,19 +316,19 @@ function App() {
 
                 <div className="mobile-nav-section">
                   <h4>Service Areas</h4>
-                  <a href="#wisconsin" onClick={(e) => { e.preventDefault(); setCurrentPage('wisconsin'); closeMobileMenu(); }}>
+                  <a href="#wisconsin" onClick={(e) => { e.preventDefault(); handleNavigation('wisconsin'); closeMobileMenu(); }}>
                     <MapPin size={20} />
                     Wisconsin
                   </a>
-                  <a href="#illinois" onClick={(e) => { e.preventDefault(); setCurrentPage('illinois'); closeMobileMenu(); }}>
+                  <a href="#illinois" onClick={(e) => { e.preventDefault(); handleNavigation('illinois'); closeMobileMenu(); }}>
                     <MapPin size={20} />
                     Illinois
                   </a>
-                  <a href="#minnesota" onClick={(e) => { e.preventDefault(); setCurrentPage('minnesota'); closeMobileMenu(); }}>
+                  <a href="#minnesota" onClick={(e) => { e.preventDefault(); handleNavigation('minnesota'); closeMobileMenu(); }}>
                     <MapPin size={20} />
                     Minnesota
                   </a>
-                  <a href="#colorado" onClick={(e) => { e.preventDefault(); setCurrentPage('colorado'); closeMobileMenu(); }}>
+                  <a href="#colorado" onClick={(e) => { e.preventDefault(); handleNavigation('colorado'); closeMobileMenu(); }}>
                     <MapPin size={20} />
                     Colorado
                   </a>
@@ -349,7 +387,7 @@ function App() {
             <div className="footer-section">
               <h3>Our Services</h3>
               {currentBrandData.services.map((service, index) => (
-                <a key={index} href="#" onClick={(e) => e.preventDefault()}>
+                <a key={index} href="#" onClick={(e) => { e.preventDefault(); handleServiceNavigation(service.toLowerCase().replace(/[^a-z0-9]/g, '-')); }}>
                   {service}
                 </a>
               ))}
@@ -357,10 +395,10 @@ function App() {
 
             <div className="footer-section">
               <h3>Service Areas</h3>
-              <a href="#wisconsin" onClick={(e) => { e.preventDefault(); setCurrentPage('wisconsin'); }}>Wisconsin</a>
-              <a href="#illinois" onClick={(e) => { e.preventDefault(); setCurrentPage('illinois'); }}>Illinois</a>
-              <a href="#minnesota" onClick={(e) => { e.preventDefault(); setCurrentPage('minnesota'); }}>Minnesota</a>
-              <a href="#colorado" onClick={(e) => { e.preventDefault(); setCurrentPage('colorado'); }}>Colorado</a>
+              <a href="#wisconsin" onClick={(e) => { e.preventDefault(); handleNavigation('wisconsin'); }}>Wisconsin</a>
+              <a href="#illinois" onClick={(e) => { e.preventDefault(); handleNavigation('illinois'); }}>Illinois</a>
+              <a href="#minnesota" onClick={(e) => { e.preventDefault(); handleNavigation('minnesota'); }}>Minnesota</a>
+              <a href="#colorado" onClick={(e) => { e.preventDefault(); handleNavigation('colorado'); }}>Colorado</a>
             </div>
 
             <div className="footer-section">
@@ -394,6 +432,112 @@ function App() {
     );
   }
 
+  // Google Reviews Component
+  function GoogleReviewsSection() {
+    const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+    
+    const reviews = [
+      {
+        name: "Sarah M.",
+        location: "Madison, WI",
+        rating: 5,
+        text: "Lifetime Home Services provided excellent radon mitigation for our home. Professional, timely, and the results were exactly as promised. Highly recommend!",
+        date: "2 weeks ago"
+      },
+      {
+        name: "Mike R.",
+        location: "Chicago, IL",
+        rating: 5,
+        text: "The AeroSeal duct sealing made a huge difference in our energy bills. The team was professional and explained everything clearly.",
+        date: "1 month ago"
+      },
+      {
+        name: "Jennifer L.",
+        location: "Milwaukee, WI",
+        rating: 5,
+        text: "Outstanding concrete coating work! Our garage floor looks amazing and the lifetime warranty gives us peace of mind.",
+        date: "3 weeks ago"
+      },
+      {
+        name: "David K.",
+        location: "Minneapolis, MN",
+        rating: 5,
+        text: "FREE radon testing was exactly that - no hidden costs. Professional service and quick results. Will definitely use again.",
+        date: "1 week ago"
+      },
+      {
+        name: "Lisa T.",
+        location: "Denver, CO",
+        rating: 5,
+        text: "Excellent electrical work! Licensed electricians who know what they're doing. Fair pricing and quality workmanship.",
+        date: "2 months ago"
+      }
+    ];
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentReviewIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+      }, 5000);
+      return () => clearInterval(interval);
+    }, [reviews.length]);
+
+    const visibleReviews = [
+      reviews[currentReviewIndex],
+      reviews[(currentReviewIndex + 1) % reviews.length],
+      reviews[(currentReviewIndex + 2) % reviews.length]
+    ];
+
+    return (
+      <section className="google-reviews-section-premium">
+        <div className="container">
+          <div className="reviews-header">
+            <h2 className="section-title-premium">What Our Customers Say</h2>
+            <div className="google-reviews-link">
+              <a 
+                href="https://www.google.com/search?q=lifetime+home+services+reviews" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="google-reviews-btn"
+              >
+                <Star size={20} fill="#fbbf24" color="#fbbf24" />
+                View All Google Reviews
+                <ExternalLink size={16} />
+              </a>
+            </div>
+          </div>
+          
+          <div className="reviews-carousel">
+            {visibleReviews.map((review, index) => (
+              <div key={`${currentReviewIndex}-${index}`} className="review-card-premium">
+                <div className="review-stars">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={16} fill="#fbbf24" color="#fbbf24" />
+                  ))}
+                </div>
+                <p className="review-text">"{review.text}"</p>
+                <div className="review-author">
+                  <strong>{review.name}</strong>
+                  <span>{review.location}</span>
+                  <span className="review-date">{review.date}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="reviews-indicators">
+            {reviews.map((_, index) => (
+              <button
+                key={index}
+                className={`indicator ${index === currentReviewIndex ? 'active' : ''}`}
+                onClick={() => setCurrentReviewIndex(index)}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   // Homepage Component
   function Homepage() {
     return (
@@ -410,56 +554,48 @@ function App() {
           setCurrentBrand={setCurrentBrand}
         />
 
-        {/* Premium Hero Section */}
-        <section className={`premium-hero-homepage ${currentBrand}-brand`}>
+        {/* Premium Hero Section - Full Width Background */}
+        <section className={`premium-hero-fullwidth ${currentBrand}-brand`}>
+          <div className="hero-background-image"></div>
           <div className="hero-overlay-premium"></div>
-          <div className="hero-content-homepage">
-            <div className="hero-text-section">
-              <div className="hero-badge-homepage">
-                {currentBrand === 'lifetime' && 'Wisconsin\'s Premier Home Services'}
-                {currentBrand === 'america' && 'Smart Home Technology Leaders'}
-                {currentBrand === 'closets' && 'Custom Storage Specialists'}
-              </div>
-              <h1 className="hero-title-homepage">
-                {currentBrand === 'lifetime' && (
-                  <>Professional Home Services with <span className="hero-accent">Lifetime Results</span></>
-                )}
-                {currentBrand === 'america' && (
-                  <>Smart Home Automation & <span className="hero-accent">Security Solutions</span></>
-                )}
-                {currentBrand === 'closets' && (
-                  <>Custom Storage Solutions for <span className="hero-accent">Organized Living</span></>
-                )}
-              </h1>
-              <p className="hero-subtitle-homepage">
-                {currentBrandData.description}
-              </p>
-              <div className="hero-buttons-homepage">
-                <button onClick={openContactForm} className="btn-primary-homepage">
-                  <CheckCircle size={24} />
-                  Get Free Estimate
-                </button>
-                <button onClick={handlePhoneClick} className="btn-secondary-homepage">
-                  <Phone size={24} />
-                  Call {currentBrandData.phone}
-                </button>
-                <a 
-                  href="https://www.synchrony.com/mysynchrony/apply/apply.html?market=14&channel=PLCRD&returnUrl=https%3A%2F%2Fwww.synchrony.com%2Fmysynchrony%2Fapply%2Fapplyresults.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-financing-homepage"
-                >
-                  <Star size={24} />
-                  Financing Available
-                </a>
-              </div>
+          <div className="hero-content-fullwidth">
+            <div className="hero-badge-homepage">
+              {currentBrand === 'lifetime' && 'Wisconsin\'s Premier Home Services'}
+              {currentBrand === 'america' && 'Smart Home Technology Leaders'}
+              {currentBrand === 'closets' && 'Custom Storage Specialists'}
             </div>
-            <div className="hero-image-section">
-              <img 
-                src="/hero-house.jpg" 
-                alt="Professional Home Services"
-                className="hero-image-large"
-              />
+            <h1 className="hero-title-fullwidth">
+              {currentBrand === 'lifetime' && (
+                <>Professional Home Services with <span className="hero-accent">Lifetime Results</span></>
+              )}
+              {currentBrand === 'america' && (
+                <>Smart Home Automation & <span className="hero-accent">Security Solutions</span></>
+              )}
+              {currentBrand === 'closets' && (
+                <>Custom Storage Solutions for <span className="hero-accent">Organized Living</span></>
+              )}
+            </h1>
+            <p className="hero-subtitle-fullwidth">
+              {currentBrandData.description}
+            </p>
+            <div className="hero-buttons-fullwidth">
+              <button onClick={openContactForm} className="btn-primary-hero">
+                <CheckCircle size={24} />
+                Get Free Estimate
+              </button>
+              <button onClick={handlePhoneClick} className="btn-secondary-hero">
+                <Phone size={24} />
+                Call {currentBrandData.phone}
+              </button>
+              <a 
+                href="https://www.synchrony.com/mmc/S6229146200?sitecode=acaqri0c1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-financing-hero"
+              >
+                <Star size={24} />
+                Financing Available
+              </a>
             </div>
           </div>
         </section>
@@ -482,7 +618,246 @@ function App() {
           </div>
         </section>
 
-        {/* Cross-Brand Services Section */}
+        {/* Premium Services Section with Professional Images */}
+        <section className="services-section-premium-redesigned">
+          <div className="container">
+            <h2 className="section-title-premium">{currentBrandData.name} Services</h2>
+            <p className="section-description">
+              Professional {currentBrand === 'lifetime' ? 'home services' : currentBrand === 'america' ? 'smart home solutions' : 'storage solutions'} with expert installation and comprehensive warranties.
+            </p>
+            
+            <div className="services-grid-premium-redesigned">
+              {currentBrand === 'lifetime' && (
+                <>
+                  <div className="service-card-premium-redesigned" onClick={() => handleServiceNavigation('radon-testing')}>
+                    <div className="service-image-container">
+                      <img 
+                        src="/airthings-corentium-pro.jpg" 
+                        alt="Airthings Corentium Pro Radon Testing Device"
+                        className="service-image-premium"
+                      />
+                      <div className="service-overlay">
+                        <div className="service-icon-large">
+                          <Shield size={60} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="service-content-premium-redesigned">
+                      <h3>FREE Radon Testing</h3>
+                      <p>Professional radon testing with Airthings Corentium Pro devices at no cost. EPA-certified professionals provide accurate results and comprehensive reports.</p>
+                      <ul className="service-features">
+                        <li><CheckCircle size={16} /> 100% FREE testing - no hidden costs</li>
+                        <li><CheckCircle size={16} /> EPA-certified professionals</li>
+                        <li><CheckCircle size={16} /> Fast, accurate results</li>
+                        <li><CheckCircle size={16} /> Professional equipment</li>
+                      </ul>
+                      <button className="service-btn-premium">Learn More</button>
+                    </div>
+                  </div>
+
+                  <div className="service-card-premium-redesigned" onClick={() => handleServiceNavigation('duct-cleaning')}>
+                    <div className="service-image-container">
+                      <img 
+                        src="/professional-duct-cleaning.jpg" 
+                        alt="Professional Duct Cleaning Service"
+                        className="service-image-premium"
+                      />
+                      <div className="service-overlay">
+                        <div className="service-icon-large">
+                          <Zap size={60} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="service-content-premium-redesigned">
+                      <h3>Duct Cleaning & AeroSeal</h3>
+                      <p>Complete duct cleaning services plus revolutionary AeroSeal duct sealing technology for maximum efficiency and air quality.</p>
+                      <ul className="service-features">
+                        <li><CheckCircle size={16} /> Professional duct cleaning</li>
+                        <li><CheckCircle size={16} /> AeroSeal duct sealing</li>
+                        <li><CheckCircle size={16} /> Improved air quality</li>
+                        <li><CheckCircle size={16} /> Energy efficiency upgrades</li>
+                      </ul>
+                      <button className="service-btn-premium">Learn More</button>
+                    </div>
+                  </div>
+
+                  <div className="service-card-premium-redesigned" onClick={() => handleServiceNavigation('concrete')}>
+                    <div className="service-image-container">
+                      <img 
+                        src="/premium-garage-floor.jpg" 
+                        alt="Premium Garage Floor Coating"
+                        className="service-image-premium"
+                      />
+                      <div className="service-overlay">
+                        <div className="service-icon-large">
+                          <Layers size={60} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="service-content-premium-redesigned">
+                      <h3>Premium Floor Coatings</h3>
+                      <p>Professional Torginol concrete coatings with lifetime warranties. Transform your garage, basement, or commercial space with premium finishes.</p>
+                      <ul className="service-features">
+                        <li><CheckCircle size={16} /> Lifetime warranty protection</li>
+                        <li><CheckCircle size={16} /> Professional Torginol products</li>
+                        <li><CheckCircle size={16} /> Custom color options</li>
+                        <li><CheckCircle size={16} /> Expert installation</li>
+                      </ul>
+                      <button className="service-btn-premium">Learn More</button>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {currentBrand === 'america' && (
+                <>
+                  <div className="service-card-premium-redesigned">
+                    <div className="service-image-container">
+                      <div className="service-placeholder-image smart-home">
+                        <Home size={80} />
+                      </div>
+                    </div>
+                    <div className="service-content-premium-redesigned">
+                      <h3>Smart Home Automation</h3>
+                      <p>Complete home automation systems that learn your preferences and adapt to your lifestyle for ultimate convenience.</p>
+                      <ul className="service-features">
+                        <li><CheckCircle size={16} /> Automated lighting control</li>
+                        <li><CheckCircle size={16} /> Climate management</li>
+                        <li><CheckCircle size={16} /> Smart locks and access</li>
+                        <li><CheckCircle size={16} /> Voice control integration</li>
+                      </ul>
+                      <button className="service-btn-premium">Learn More</button>
+                    </div>
+                  </div>
+
+                  <div className="service-card-premium-redesigned">
+                    <div className="service-image-container">
+                      <div className="service-placeholder-image security">
+                        <Shield size={80} />
+                      </div>
+                    </div>
+                    <div className="service-content-premium-redesigned">
+                      <h3>Security Systems</h3>
+                      <p>Advanced security solutions with 24/7 monitoring, smart cameras, and mobile app control for complete peace of mind.</p>
+                      <ul className="service-features">
+                        <li><CheckCircle size={16} /> 24/7 professional monitoring</li>
+                        <li><CheckCircle size={16} /> Smart camera systems</li>
+                        <li><CheckCircle size={16} /> Mobile app control</li>
+                        <li><CheckCircle size={16} /> Emergency response</li>
+                      </ul>
+                      <button className="service-btn-premium">Learn More</button>
+                    </div>
+                  </div>
+
+                  <div className="service-card-premium-redesigned">
+                    <div className="service-image-container">
+                      <div className="service-placeholder-image control4">
+                        <Zap size={80} />
+                      </div>
+                    </div>
+                    <div className="service-content-premium-redesigned">
+                      <h3>Control4 Integration</h3>
+                      <p>Seamless integration of all your smart home devices through the industry-leading Control4 platform.</p>
+                      <ul className="service-features">
+                        <li><CheckCircle size={16} /> Unified device control</li>
+                        <li><CheckCircle size={16} /> Custom programming</li>
+                        <li><CheckCircle size={16} /> Professional installation</li>
+                        <li><CheckCircle size={16} /> Ongoing support</li>
+                      </ul>
+                      <button className="service-btn-premium">Learn More</button>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {currentBrand === 'closets' && (
+                <>
+                  <div className="service-card-premium-redesigned">
+                    <div className="service-image-container">
+                      <div className="service-placeholder-image closets">
+                        <Home size={80} />
+                      </div>
+                    </div>
+                    <div className="service-content-premium-redesigned">
+                      <h3>Custom Closets</h3>
+                      <p>Personalized closet systems designed to maximize space and organization with premium materials and finishes.</p>
+                      <ul className="service-features">
+                        <li><CheckCircle size={16} /> Custom design consultation</li>
+                        <li><CheckCircle size={16} /> Premium materials</li>
+                        <li><CheckCircle size={16} /> Professional installation</li>
+                        <li><CheckCircle size={16} /> Lifetime warranty</li>
+                      </ul>
+                      <button className="service-btn-premium">Learn More</button>
+                    </div>
+                  </div>
+
+                  <div className="service-card-premium-redesigned">
+                    <div className="service-image-container">
+                      <div className="service-placeholder-image pantry">
+                        <Layers size={80} />
+                      </div>
+                    </div>
+                    <div className="service-content-premium-redesigned">
+                      <h3>Pantry Organization</h3>
+                      <p>Transform your pantry into an organized, efficient space with custom shelving and storage solutions.</p>
+                      <ul className="service-features">
+                        <li><CheckCircle size={16} /> Custom shelving systems</li>
+                        <li><CheckCircle size={16} /> Pull-out drawers</li>
+                        <li><CheckCircle size={16} /> Adjustable components</li>
+                        <li><CheckCircle size={16} /> Easy access design</li>
+                      </ul>
+                      <button className="service-btn-premium">Learn More</button>
+                    </div>
+                  </div>
+
+                  <div className="service-card-premium-redesigned">
+                    <div className="service-image-container">
+                      <div className="service-placeholder-image garage-storage">
+                        <Wrench size={80} />
+                      </div>
+                    </div>
+                    <div className="service-content-premium-redesigned">
+                      <h3>Garage Storage</h3>
+                      <p>Complete garage organization systems that create functional storage while maintaining vehicle space.</p>
+                      <ul className="service-features">
+                        <li><CheckCircle size={16} /> Wall-mounted systems</li>
+                        <li><CheckCircle size={16} /> Overhead storage</li>
+                        <li><CheckCircle size={16} /> Workbench solutions</li>
+                        <li><CheckCircle size={16} /> Tool organization</li>
+                      </ul>
+                      <button className="service-btn-premium">Learn More</button>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* Google Reviews Section */}
+        <GoogleReviewsSection />
+
+        {/* CTA Section */}
+        <section className="cta-section-premium-homepage">
+          <div className="container">
+            <h2>Ready to Get Started?</h2>
+            <p>
+              Contact {currentBrandData.name} today for professional {currentBrand === 'lifetime' ? 'home services' : currentBrand === 'america' ? 'smart home solutions' : 'storage solutions'} with guaranteed results.
+            </p>
+            <div className="cta-buttons-homepage">
+              <button onClick={openContactForm} className="btn-primary-homepage">
+                <CheckCircle size={24} />
+                Get Free Estimate
+              </button>
+              <button onClick={handlePhoneClick} className="btn-secondary-homepage">
+                <Phone size={24} />
+                Call {currentBrandData.phone}
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Cross-Brand Services Section - Moved to Bottom */}
         <section className="cross-brand-services">
           <div className="container">
             <h2>Explore Our Family of Brands</h2>
@@ -497,7 +872,7 @@ function App() {
                 <p>Complete home services with professional expertise and lifetime warranties.</p>
                 <ul className="brand-service-list">
                   <li><CheckCircle size={16} /> FREE Radon Testing</li>
-                  <li><CheckCircle size={16} /> HVAC & AeroSeal</li>
+                  <li><CheckCircle size={16} /> Duct Cleaning & AeroSeal</li>
                   <li><CheckCircle size={16} /> Premium Floor Coatings</li>
                   <li><CheckCircle size={16} /> Licensed Electrical</li>
                   <li><CheckCircle size={16} /> Professional Handyman</li>
@@ -561,261 +936,7 @@ function App() {
           </div>
         </section>
 
-        {/* Services Section */}
-        <section className="services-section-premium">
-          <div className="container">
-            <h2 className="section-title-premium">{currentBrandData.name} Services</h2>
-            <p className="section-description">
-              Professional {currentBrand === 'lifetime' ? 'home services' : currentBrand === 'america' ? 'smart home solutions' : 'storage solutions'} with expert installation and comprehensive warranties.
-            </p>
-            
-            <div className="services-grid-premium">
-              {currentBrand === 'lifetime' && (
-                <>
-                  <div className="service-card-premium" onClick={() => setCurrentPage('radon-testing')}>
-                    <div className="service-icon-large">
-                      <Shield size={80} />
-                    </div>
-                    <div className="service-content-premium">
-                      <h3>FREE Radon Testing</h3>
-                      <p>Professional radon testing at no cost with no obligation. EPA-certified professionals provide accurate results and comprehensive reports.</p>
-                      <ul>
-                        <li>• 100% FREE testing - no hidden costs</li>
-                        <li>• EPA-certified professionals</li>
-                        <li>• Fast, accurate results</li>
-                        <li>• Comprehensive reporting</li>
-                      </ul>
-                      <button className="service-btn">Learn More</button>
-                    </div>
-                  </div>
-
-                  <div className="service-card-premium" onClick={() => setCurrentPage('hvac')}>
-                    <div className="service-icon-large">
-                      <Zap size={80} />
-                    </div>
-                    <div className="service-content-premium">
-                      <h3>HVAC & AeroSeal</h3>
-                      <p>Complete heating and cooling services plus revolutionary AeroSeal duct sealing technology for maximum efficiency.</p>
-                      <ul>
-                        <li>• 24/7 emergency service</li>
-                        <li>• AeroSeal duct sealing</li>
-                        <li>• System installation & repair</li>
-                        <li>• Energy efficiency upgrades</li>
-                      </ul>
-                      <button className="service-btn">Learn More</button>
-                    </div>
-                  </div>
-
-                  <div className="service-card-premium" onClick={() => setCurrentPage('concrete')}>
-                    <div className="service-icon-large">
-                      <Layers size={80} />
-                    </div>
-                    <div className="service-content-premium">
-                      <h3>Premium Floor Coatings</h3>
-                      <p>Professional Torginol concrete coatings with lifetime warranties. Transform your garage, basement, or commercial space.</p>
-                      <ul>
-                        <li>• Lifetime warranty protection</li>
-                        <li>• Professional Torginol products</li>
-                        <li>• Custom color options</li>
-                        <li>• Expert installation</li>
-                      </ul>
-                      <button className="service-btn">Learn More</button>
-                    </div>
-                  </div>
-                </>
-              )}
-
-              {currentBrand === 'america' && (
-                <>
-                  <div className="service-card-premium">
-                    <div className="service-icon-large">
-                      <Home size={80} />
-                    </div>
-                    <div className="service-content-premium">
-                      <h3>Smart Home Automation</h3>
-                      <p>Complete home automation systems that learn your preferences and adapt to your lifestyle for ultimate convenience.</p>
-                      <ul>
-                        <li>• Automated lighting control</li>
-                        <li>• Climate management</li>
-                        <li>• Smart locks and access</li>
-                        <li>• Voice control integration</li>
-                      </ul>
-                      <button className="service-btn">Learn More</button>
-                    </div>
-                  </div>
-
-                  <div className="service-card-premium">
-                    <div className="service-icon-large">
-                      <Shield size={80} />
-                    </div>
-                    <div className="service-content-premium">
-                      <h3>Security Systems</h3>
-                      <p>Advanced security solutions with 24/7 monitoring, smart cameras, and mobile app control for complete peace of mind.</p>
-                      <ul>
-                        <li>• 24/7 professional monitoring</li>
-                        <li>• Smart camera systems</li>
-                        <li>• Mobile app control</li>
-                        <li>• Emergency response</li>
-                      </ul>
-                      <button className="service-btn">Learn More</button>
-                    </div>
-                  </div>
-
-                  <div className="service-card-premium">
-                    <div className="service-icon-large">
-                      <Zap size={80} />
-                    </div>
-                    <div className="service-content-premium">
-                      <h3>Control4 Integration</h3>
-                      <p>Seamless integration of all your smart home devices through the industry-leading Control4 platform.</p>
-                      <ul>
-                        <li>• Unified device control</li>
-                        <li>• Custom programming</li>
-                        <li>• Professional installation</li>
-                        <li>• Ongoing support</li>
-                      </ul>
-                      <button className="service-btn">Learn More</button>
-                    </div>
-                  </div>
-                </>
-              )}
-
-              {currentBrand === 'closets' && (
-                <>
-                  <div className="service-card-premium">
-                    <div className="service-icon-large">
-                      <Home size={80} />
-                    </div>
-                    <div className="service-content-premium">
-                      <h3>Custom Closets</h3>
-                      <p>Personalized closet systems designed to maximize space and organization with premium materials and finishes.</p>
-                      <ul>
-                        <li>• Custom design consultation</li>
-                        <li>• Premium materials</li>
-                        <li>• Professional installation</li>
-                        <li>• Lifetime warranty</li>
-                      </ul>
-                      <button className="service-btn">Learn More</button>
-                    </div>
-                  </div>
-
-                  <div className="service-card-premium">
-                    <div className="service-icon-large">
-                      <Layers size={80} />
-                    </div>
-                    <div className="service-content-premium">
-                      <h3>Pantry Organization</h3>
-                      <p>Transform your pantry into an organized, efficient space with custom shelving and storage solutions.</p>
-                      <ul>
-                        <li>• Custom shelving systems</li>
-                        <li>• Pull-out drawers</li>
-                        <li>• Adjustable components</li>
-                        <li>• Easy access design</li>
-                      </ul>
-                      <button className="service-btn">Learn More</button>
-                    </div>
-                  </div>
-
-                  <div className="service-card-premium">
-                    <div className="service-icon-large">
-                      <Wrench size={80} />
-                    </div>
-                    <div className="service-content-premium">
-                      <h3>Garage Storage</h3>
-                      <p>Complete garage organization systems that create functional storage while maintaining vehicle space.</p>
-                      <ul>
-                        <li>• Wall-mounted systems</li>
-                        <li>• Overhead storage</li>
-                        <li>• Workbench solutions</li>
-                        <li>• Tool organization</li>
-                      </ul>
-                      <button className="service-btn">Learn More</button>
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section className="testimonials-section-premium">
-          <div className="container">
-            <h2 className="section-title-premium">What Our Customers Say</h2>
-            <p className="section-description">
-              Real experiences from satisfied customers across Wisconsin, Illinois, Minnesota, and Colorado.
-            </p>
-            
-            <div className="testimonials-grid-premium">
-              <div className="testimonial-card-premium">
-                <div className="testimonial-stars">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={16} fill="#fbbf24" color="#fbbf24" />
-                  ))}
-                </div>
-                <p className="testimonial-text">
-                  "Lifetime Home Services provided excellent radon mitigation for our home. Professional, timely, and the results were exactly as promised. Highly recommend!"
-                </p>
-                <div className="testimonial-author">
-                  <strong>Sarah M.</strong>
-                  <span>Madison, WI</span>
-                </div>
-              </div>
-
-              <div className="testimonial-card-premium">
-                <div className="testimonial-stars">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={16} fill="#fbbf24" color="#fbbf24" />
-                  ))}
-                </div>
-                <p className="testimonial-text">
-                  "The AeroSeal duct sealing made a huge difference in our energy bills. The team was professional and explained everything clearly."
-                </p>
-                <div className="testimonial-author">
-                  <strong>Mike R.</strong>
-                  <span>Chicago, IL</span>
-                </div>
-              </div>
-
-              <div className="testimonial-card-premium">
-                <div className="testimonial-stars">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={16} fill="#fbbf24" color="#fbbf24" />
-                  ))}
-                </div>
-                <p className="testimonial-text">
-                  "Outstanding concrete coating work! Our garage floor looks amazing and the lifetime warranty gives us peace of mind."
-                </p>
-                <div className="testimonial-author">
-                  <strong>Jennifer L.</strong>
-                  <span>Milwaukee, WI</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="cta-section-premium-homepage">
-          <div className="container">
-            <h2>Ready to Get Started?</h2>
-            <p>
-              Contact {currentBrandData.name} today for professional {currentBrand === 'lifetime' ? 'home services' : currentBrand === 'america' ? 'smart home solutions' : 'storage solutions'} with guaranteed results.
-            </p>
-            <div className="cta-buttons-homepage">
-              <button onClick={openContactForm} className="btn-primary-homepage">
-                <CheckCircle size={24} />
-                Get Free Estimate
-              </button>
-              <button onClick={handlePhoneClick} className="btn-secondary-homepage">
-                <Phone size={24} />
-                Call {currentBrandData.phone}
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <ProfessionalFooter setCurrentPage={setCurrentPage} currentBrand={currentBrand} />
+        <ProfessionalFooter setCurrentPage={handleNavigation} currentBrand={currentBrand} />
       </div>
     );
   }
@@ -915,7 +1036,7 @@ function App() {
     return <WisconsinPage 
       openContactForm={openContactForm} 
       handlePhoneClick={handlePhoneClick} 
-      setCurrentPage={setCurrentPage}
+      setCurrentPage={handleNavigation}
       isMobileMenuOpen={isMobileMenuOpen}
       toggleMobileMenu={toggleMobileMenu}
       closeMobileMenu={closeMobileMenu}
@@ -930,7 +1051,7 @@ function App() {
     return <IllinoisPage 
       openContactForm={openContactForm} 
       handlePhoneClick={handlePhoneClick} 
-      setCurrentPage={setCurrentPage}
+      setCurrentPage={handleNavigation}
       isMobileMenuOpen={isMobileMenuOpen}
       toggleMobileMenu={toggleMobileMenu}
       closeMobileMenu={closeMobileMenu}
@@ -945,7 +1066,7 @@ function App() {
     return <MinnesotaPage 
       openContactForm={openContactForm} 
       handlePhoneClick={handlePhoneClick} 
-      setCurrentPage={setCurrentPage}
+      setCurrentPage={handleNavigation}
       isMobileMenuOpen={isMobileMenuOpen}
       toggleMobileMenu={toggleMobileMenu}
       closeMobileMenu={closeMobileMenu}
@@ -960,7 +1081,7 @@ function App() {
     return <ColoradoPage 
       openContactForm={openContactForm} 
       handlePhoneClick={handlePhoneClick} 
-      setCurrentPage={setCurrentPage}
+      setCurrentPage={handleNavigation}
       isMobileMenuOpen={isMobileMenuOpen}
       toggleMobileMenu={toggleMobileMenu}
       closeMobileMenu={closeMobileMenu}
