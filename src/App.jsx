@@ -1,366 +1,312 @@
 import React, { useState, useEffect } from 'react';
+import './App.css';
 
 function App() {
-  const [currentBrand, setCurrentBrand] = useState('lifetime');
   const [currentPage, setCurrentPage] = useState('home');
-  const [showDropdown, setShowDropdown] = useState(null);
-  const [expandedZips, setExpandedZips] = useState({});
+  const [currentBrand, setCurrentBrand] = useState('lifetime');
+  const [showServicesDropdown, setShowServicesDropdown] = useState(false);
+  const [showServiceAreasDropdown, setShowServiceAreasDropdown] = useState(false);
 
-  // Scroll to top when page changes
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentPage, currentBrand]);
-
-  // Brand configurations with distinct identities
+  // Brand configurations
   const brands = {
     lifetime: {
       name: 'Lifetime Home Services',
-      tagline: 'Lifetime Home Solutions. Trusted Solutions. Lifetime Results.',
       logo: '/LifetimeHomeServicesLogo.png',
-      colors: {
-        primary: '#1e40af',
-        secondary: '#1d4ed8',
-        accent: '#f59e0b',
-        text: '#1f2937',
-        background: '#f8fafc'
-      },
-      heroImage: '/lifetime-hero-bg.jpg',
-      services: ['FREE Radon Testing', 'Radon Mitigation', 'Duct Cleaning & AeroSeal', 'Concrete Coatings'],
       phone: '(262) 955-5701',
-      address: '3485 North 124th Street, Brookfield, WI 53005'
+      address: '3485 North 124th Street, Brookfield, WI 53005',
+      primaryColor: '#1e40af',
+      secondaryColor: '#3b82f6',
+      accentColor: '#fbbf24',
+      services: ['FREE Radon Testing', 'Radon Mitigation', 'Duct Cleaning & AeroSeal', 'Concrete Coatings'],
+      heroImage: '/lifetime-hero-house.jpg',
+      tagline: 'Lifetime Home Solutions. Trusted Solutions. Lifetime Results.',
+      serviceAreas: ['Wisconsin', 'Illinois', 'Minnesota', 'Colorado']
     },
     america: {
       name: 'America In-Home',
-      tagline: 'Smart Home Technology Solutions',
-      logo: '/AmericaIn-HomeLogo.jpg',
-      colors: {
-        primary: '#dc2626',
-        secondary: '#b91c1c',
-        accent: '#fbbf24',
-        text: '#1f2937',
-        background: '#fef2f2'
-      },
-      heroImage: '/america-hero-bg.jpg',
-      services: ['Smart Home Automation', 'Security Systems', 'Control4 Integration'],
+      logo: '/AmericaIn-HomeLogo3.png',
       phone: '(262) 955-5701',
-      address: '3485 North 124th Street, Brookfield, WI 53005'
+      address: '3485 North 124th Street, Brookfield, WI 53005',
+      primaryColor: '#dc2626',
+      secondaryColor: '#ef4444',
+      accentColor: '#1e40af',
+      services: ['Smart Home Automation', 'Security Systems', 'Control4 Integration'],
+      heroImage: '/america-smart-home-hero.jpg',
+      tagline: 'Luxury Living. Seamlessly Connected.',
+      serviceAreas: ['Wisconsin'],
+      videos: {
+        'Smart Home Automation': 'https://player.vimeo.com/video/1035717050?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
+        'Security Systems': 'https://player.vimeo.com/video/1035717050?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479'
+      }
     },
     closets: {
       name: 'Closet Concepts',
-      tagline: 'Custom Organization Solutions',
-      logo: '/ClosetConceptsLogo.png',
-      colors: {
-        primary: '#059669',
-        secondary: '#047857',
-        accent: '#f59e0b',
-        text: '#1f2937',
-        background: '#f0fdf4'
-      },
-      heroImage: '/closets-hero-bg.jpg',
-      services: ['Walk-in Closets', 'Reach-in Closets', 'Pantry Organization', 'Garage Storage', 'Laundry Rooms', 'Mudrooms', 'Home Offices', 'Craft Rooms'],
+      logo: '/NewClosetConceptsLogo.png',
       phone: '(262) 955-5701',
-      address: '3485 North 124th Street, Brookfield, WI 53005'
+      address: '3485 North 124th Street, Brookfield, WI 53005',
+      primaryColor: '#059669',
+      secondaryColor: '#10b981',
+      accentColor: '#f59e0b',
+      services: ['Walk-in Closets', 'Reach-in Closets', 'Pantry Organization', 'Garage Storage', 'Laundry Rooms', 'Mudrooms', 'Home Offices', 'Craft Rooms'],
+      heroImage: '/closets-luxury-hero.jpg',
+      tagline: 'Organized Living. Elevated Style.',
+      serviceAreas: ['Wisconsin']
     }
   };
 
   const currentBrandData = brands[currentBrand];
 
-  // Wisconsin zip codes within 1 hour of Brookfield
-  const wisconsinZipCodes = [
-    '53005', '53008', '53012', '53018', '53022', '53029', '53031', '53032', '53045', '53051',
-    '53056', '53058', '53066', '53072', '53089', '53092', '53097', '53122', '53129', '53130',
-    '53132', '53140', '53141', '53142', '53146', '53149', '53150', '53151', '53154', '53156',
-    '53158', '53168', '53186', '53188', '53189', '53190', '53201', '53202', '53203', '53204',
-    '53205', '53206', '53207', '53208', '53209', '53210', '53211', '53212', '53213', '53214',
-    '53215', '53216', '53217', '53218', '53219', '53220', '53221', '53222', '53223', '53224',
-    '53225', '53226', '53227', '53228', '53233', '53234', '53235', '53237', '53259', '53274',
-    '53278', '53295'
-  ];
-
-  const handleBrandSwitch = (brand) => {
-    setCurrentBrand(brand);
-    setCurrentPage('home');
-    setShowDropdown(null);
-  };
-
-  const handlePageChange = (page) => {
+  // Navigation functions with proper functionality
+  const navigateToPage = (page, brand = null) => {
+    if (brand && brand !== currentBrand) {
+      setCurrentBrand(brand);
+    }
     setCurrentPage(page);
-    setShowDropdown(null);
+    setShowServicesDropdown(false);
+    setShowServiceAreasDropdown(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const toggleZipExpansion = (state) => {
-    setExpandedZips(prev => ({
-      ...prev,
-      [state]: !prev[state]
-    }));
+  const navigateToService = (serviceName) => {
+    const serviceSlug = serviceName.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and');
+    setCurrentPage(`service-${serviceSlug}`);
+    setShowServicesDropdown(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Dynamic styles based on current brand
-  const brandStyles = {
-    '--brand-primary': currentBrandData.colors.primary,
-    '--brand-secondary': currentBrandData.colors.secondary,
-    '--brand-accent': currentBrandData.colors.accent,
-    '--brand-text': currentBrandData.colors.text,
-    '--brand-background': currentBrandData.colors.background
+  const navigateToState = (state) => {
+    setCurrentPage(`state-${state.toLowerCase()}`);
+    setShowServiceAreasDropdown(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const handleGetFreeEstimate = () => {
+    setCurrentPage('contact');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleFinancing = () => {
+    setCurrentPage('financing');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleScheduleConsultation = () => {
+    setCurrentPage('contact');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Set CSS variables for current brand
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty('--brand-primary', currentBrandData.primaryColor);
+    root.style.setProperty('--brand-secondary', currentBrandData.secondaryColor);
+    root.style.setProperty('--brand-accent', currentBrandData.accentColor);
+  }, [currentBrand, currentBrandData]);
 
   return (
-    <div className="app" style={brandStyles}>
-      {/* Skip to main content for accessibility */}
-      <a href="#main-content" className="skip-link">Skip to main content</a>
-      
-      {/* Header with individual brand links */}
+    <div className="app" style={{
+      '--brand-primary': currentBrandData.primaryColor,
+      '--brand-secondary': currentBrandData.secondaryColor,
+      '--brand-accent': currentBrandData.accentColor
+    }}>
+      {/* Header */}
       <header className="header">
-        <div className="header-container">
-          {/* Logo */}
-          <div className="logo-section">
-            <img 
-              src={currentBrandData.logo} 
-              alt={currentBrandData.name}
-              className="logo"
-              onClick={() => handlePageChange('home')}
-              style={{ cursor: 'pointer' }}
-            />
-          </div>
-
-          {/* Brand Navigation */}
-          <nav className="brand-nav">
-            <button 
-              className={`brand-link ${currentBrand === 'lifetime' ? 'active' : ''}`}
-              onClick={() => handleBrandSwitch('lifetime')}
-            >
-              Lifetime Home Services
-            </button>
-            <button 
-              className={`brand-link ${currentBrand === 'america' ? 'active' : ''}`}
-              onClick={() => handleBrandSwitch('america')}
-            >
-              America In-Home
-            </button>
-            <button 
-              className={`brand-link ${currentBrand === 'closets' ? 'active' : ''}`}
-              onClick={() => handleBrandSwitch('closets')}
-            >
-              Closet Concepts
-            </button>
-          </nav>
-
-          {/* Main Navigation */}
-          <nav className="main-nav">
-            <div className="nav-item dropdown">
-              <button 
-                className="nav-button"
-                onClick={() => setShowDropdown(showDropdown === 'services' ? null : 'services')}
-              >
-                Services
-              </button>
-              {showDropdown === 'services' && (
-                <div className="dropdown-menu">
-                  {currentBrandData.services.map((service, index) => (
-                    <button 
-                      key={index}
-                      className="dropdown-item"
-                      onClick={() => handlePageChange(`service-${service.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`)}
-                    >
-                      {service}
-                    </button>
-                  ))}
-                  {currentBrand === 'lifetime' && (
-                    <button 
-                      className="dropdown-item"
-                      onClick={() => handlePageChange('radon-education')}
-                    >
-                      Radon Education
-                    </button>
-                  )}
-                </div>
-              )}
+        <div className="container">
+          <div className="header-content">
+            {/* Logo */}
+            <div className="logo-section">
+              <img 
+                src={currentBrandData.logo} 
+                alt={currentBrandData.name}
+                className="logo"
+                onClick={() => navigateToPage('home')}
+                style={{ cursor: 'pointer' }}
+              />
             </div>
 
-            <div className="nav-item dropdown">
-              <button 
-                className="nav-button"
-                onClick={() => setShowDropdown(showDropdown === 'areas' ? null : 'areas')}
-              >
-                Service Areas
-              </button>
-              {showDropdown === 'areas' && (
-                <div className="dropdown-menu">
-                  {currentBrand === 'lifetime' ? (
-                    <>
-                      <button className="dropdown-item" onClick={() => handlePageChange('wisconsin')}>Wisconsin</button>
-                      <button className="dropdown-item" onClick={() => handlePageChange('illinois')}>Illinois</button>
-                      <button className="dropdown-item" onClick={() => handlePageChange('minnesota')}>Minnesota</button>
-                      <button className="dropdown-item" onClick={() => handlePageChange('colorado')}>Colorado</button>
-                    </>
-                  ) : (
-                    <button className="dropdown-item" onClick={() => handlePageChange('wisconsin')}>Wisconsin</button>
+            {/* Navigation */}
+            <nav className="nav-section">
+              {/* Brand Links */}
+              <div className="brand-links">
+                <button 
+                  className={`brand-link ${currentBrand === 'lifetime' ? 'active' : ''}`}
+                  onClick={() => navigateToPage('home', 'lifetime')}
+                >
+                  Lifetime Home Services
+                </button>
+                <button 
+                  className={`brand-link ${currentBrand === 'america' ? 'active' : ''}`}
+                  onClick={() => navigateToPage('home', 'america')}
+                >
+                  America In-Home
+                </button>
+                <button 
+                  className={`brand-link ${currentBrand === 'closets' ? 'active' : ''}`}
+                  onClick={() => navigateToPage('home', 'closets')}
+                >
+                  Closet Concepts
+                </button>
+              </div>
+
+              {/* Main Navigation */}
+              <div className="main-nav">
+                {/* Services Dropdown */}
+                <div className="nav-dropdown">
+                  <button 
+                    className="nav-link"
+                    onClick={() => setShowServicesDropdown(!showServicesDropdown)}
+                  >
+                    Services ▼
+                  </button>
+                  {showServicesDropdown && (
+                    <div className="dropdown-menu">
+                      {currentBrandData.services.map((service, index) => (
+                        <button
+                          key={index}
+                          className="dropdown-item"
+                          onClick={() => navigateToService(service)}
+                        >
+                          {service}
+                        </button>
+                      ))}
+                      {currentBrand === 'lifetime' && (
+                        <button
+                          className="dropdown-item"
+                          onClick={() => navigateToPage('radon-education')}
+                        >
+                          Radon Education
+                        </button>
+                      )}
+                    </div>
                   )}
                 </div>
-              )}
+
+                {/* Service Areas Dropdown */}
+                <div className="nav-dropdown">
+                  <button 
+                    className="nav-link"
+                    onClick={() => setShowServiceAreasDropdown(!showServiceAreasDropdown)}
+                  >
+                    Service Areas ▼
+                  </button>
+                  {showServiceAreasDropdown && (
+                    <div className="dropdown-menu">
+                      {currentBrandData.serviceAreas.map((area, index) => (
+                        <button
+                          key={index}
+                          className="dropdown-item"
+                          onClick={() => navigateToState(area)}
+                        >
+                          {area}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <button className="nav-link" onClick={() => navigateToPage('financing')}>
+                  Financing
+                </button>
+                <button className="nav-link" onClick={() => navigateToPage('contact')}>
+                  Contact
+                </button>
+              </div>
+            </nav>
+
+            {/* Contact Info */}
+            <div className="contact-section">
+              <span className="phone-number">{currentBrandData.phone}</span>
             </div>
-
-            <button 
-              className="nav-button"
-              onClick={() => handlePageChange('financing')}
-            >
-              Financing
-            </button>
-
-            <button 
-              className="nav-button"
-              onClick={() => handlePageChange('contact')}
-            >
-              Contact
-            </button>
-          </nav>
-
-          {/* Contact Info */}
-          <div className="header-contact">
-            <span className="phone">{currentBrandData.phone}</span>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main id="main-content" className="main-content">
-        {currentPage === 'home' && <HomePage brand={currentBrandData} />}
-        {currentPage === 'radon-education' && currentBrand === 'lifetime' && <RadonEducationPage />}
-        {currentPage === 'financing' && <FinancingPage />}
+      <main className="main-content">
+        {currentPage === 'home' && <HomePage brand={currentBrandData} onNavigateToService={navigateToService} onGetFreeEstimate={handleGetFreeEstimate} onFinancing={handleFinancing} onScheduleConsultation={handleScheduleConsultation} />}
+        {currentPage.startsWith('service-') && <ServicePage serviceName={currentPage} brand={currentBrandData} onGetFreeEstimate={handleGetFreeEstimate} />}
+        {currentPage === 'radon-education' && <RadonEducationPage brand={currentBrandData} onGetFreeEstimate={handleGetFreeEstimate} />}
+        {currentPage.startsWith('state-') && <StatePage state={currentPage.replace('state-', '')} brand={currentBrandData} onScheduleConsultation={handleScheduleConsultation} />}
+        {currentPage === 'financing' && <FinancingPage brand={currentBrandData} />}
         {currentPage === 'contact' && <ContactPage brand={currentBrandData} />}
-        {currentPage === 'wisconsin' && <StatePage state="Wisconsin" brand={currentBrandData} zipCodes={wisconsinZipCodes} />}
-        {currentPage === 'illinois' && currentBrand === 'lifetime' && <StatePage state="Illinois" brand={currentBrandData} />}
-        {currentPage === 'minnesota' && currentBrand === 'lifetime' && <StatePage state="Minnesota" brand={currentBrandData} />}
-        {currentPage === 'colorado' && currentBrand === 'lifetime' && <StatePage state="Colorado" brand={currentBrandData} />}
-        
-        {/* Service Pages */}
-        {currentPage.startsWith('service-') && <ServicePage serviceName={currentPage.replace('service-', '')} brand={currentBrandData} />}
       </main>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="footer-container">
-          <div className="footer-section">
-            <img src={currentBrandData.logo} alt={currentBrandData.name} className="footer-logo" />
-            <p className="footer-tagline">{currentBrandData.tagline}</p>
-          </div>
-          
-          <div className="footer-section">
-            <h4>Services</h4>
-            <ul>
-              {currentBrandData.services.map((service, index) => (
-                <li key={index}>
-                  <button 
-                    className="footer-link"
-                    onClick={() => handlePageChange(`service-${service.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`)}
-                  >
-                    {service}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="footer-section">
-            <h4>Contact Information</h4>
-            <p>{currentBrandData.phone}</p>
-            <p>{currentBrandData.address}</p>
-            <a 
-              href={`https://maps.google.com/?q=${encodeURIComponent(currentBrandData.address)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="maps-link"
-            >
-              Get Directions
-            </a>
-          </div>
-
-          <div className="footer-section">
-            <h4>Business Hours</h4>
-            <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-            <p>Saturday: By Appointment</p>
-            <p>Sunday: Closed</p>
-          </div>
-        </div>
-        
-        <div className="footer-bottom">
-          <p>&copy; 2024 {currentBrandData.name}. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 }
 
-// Homepage Component
-function HomePage({ brand }) {
+// HomePage Component with Image-Heavy Design
+function HomePage({ brand, onNavigateToService, onGetFreeEstimate, onFinancing, onScheduleConsultation }) {
   return (
     <div className="homepage">
-      {/* Hero Section - Crystal Clear Background */}
+      {/* Hero Section */}
       <section className="hero-section" style={{
         backgroundImage: `url(${brand.heroImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative'
+        backgroundRepeat: 'no-repeat'
       }}>
-        {/* NO OVERLAY - Crystal Clear Image */}
-        <div className="hero-content">
-          <h1 className="hero-title">{brand.tagline}</h1>
-          <p className="hero-subtitle">
-            {brand.name === 'Lifetime Home Services' && 'Radon • Duct Cleaning • Floor Coatings • AeroSeal • Smart Home & Security'}
-            {brand.name === 'America In-Home' && 'Smart Home Automation • Security Systems • Control4 Integration'}
-            {brand.name === 'Closet Concepts' && 'Custom Closets • Pantry Organization • Garage Storage • Home Organization'}
-          </p>
-          <div className="hero-buttons">
-            <button className="cta-button primary">Get Free Estimate</button>
-            <a 
-              href="https://www.synchrony.com/mmc/S6229146200?sitecode=acaqri0c1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-button secondary"
-            >
-              Financing Available
-            </a>
+        <div className="hero-overlay">
+          <div className="container">
+            <div className="hero-content">
+              <h1 className="hero-title">{brand.tagline}</h1>
+              <p className="hero-subtitle">
+                {brand.services.join(' • ')}
+              </p>
+              <div className="hero-buttons">
+                <button className="cta-button primary" onClick={onGetFreeEstimate}>
+                  Get Free Estimate
+                </button>
+                <button className="cta-button secondary" onClick={onFinancing}>
+                  Financing Available
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Section - Image Heavy */}
       <section className="services-section">
         <div className="container">
           <h2 className="section-title">Our Services</h2>
-          <div className="services-grid">
+          <div className="services-grid-large">
             {brand.services.map((service, index) => (
-              <ServiceCard key={index} service={service} brand={brand} />
+              <div key={index} className="service-card-large">
+                <div className="service-image-container">
+                  <img 
+                    src={getServiceImage(service, brand.name)} 
+                    alt={service}
+                    className="service-image-large"
+                  />
+                </div>
+                <div className="service-content-large">
+                  <h3>{service}</h3>
+                  <p>{getServiceDescription(service, brand.name)}</p>
+                  <button 
+                    className="learn-more-button"
+                    onClick={() => onNavigateToService(service)}
+                  >
+                    Learn More
+                  </button>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Trust Section */}
-      <section className="trust-section">
+      {/* Call to Action Section */}
+      <section className="cta-section">
         <div className="container">
-          <div className="trust-badges">
-            <div className="trust-badge">EPA Certified</div>
-            <div className="trust-badge">Licensed & Insured</div>
-            <div className="trust-badge">Lifetime Warranty</div>
-            <div className="trust-badge">Free Estimates</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="contact-section">
-        <div className="container">
-          <h2>Ready to Get Started?</h2>
-          <p>Contact us today for your free consultation and estimate.</p>
-          <div className="contact-info">
-            <span className="phone-large">{brand.phone}</span>
-            <button className="cta-button primary">Schedule Consultation</button>
+          <div className="cta-content">
+            <h2>Ready to Get Started?</h2>
+            <p>Contact us today for your free consultation and estimate.</p>
+            <div className="cta-buttons">
+              <span className="phone-large">{brand.phone}</span>
+              <button className="cta-button primary large" onClick={onScheduleConsultation}>
+                Schedule Consultation
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -368,363 +314,450 @@ function HomePage({ brand }) {
   );
 }
 
-// Service Card Component
-function ServiceCard({ service, brand }) {
-  const getServiceImage = (service) => {
-    const serviceImages = {
-      'FREE Radon Testing': '/airthings-corentium-pro.jpg',
-      'Radon Mitigation': '/radon-mitigation-system.jpg',
-      'Duct Cleaning & AeroSeal': '/duct-cleaning-professional.jpg',
-      'Concrete Coatings': '/premium-garage-coating.jpg',
-      'Smart Home Automation': '/america-smart-home-hero.jpg',
-      'Security Systems': '/america-security-hero.jpg',
-      'Control4 Integration': '/america-control4-hero.jpg',
-      'Walk-in Closets': '/closets-luxury-hero.jpg',
-      'Reach-in Closets': '/reach-in-closet-1.jpg',
-      'Pantry Organization': '/closets-pantry-hero.jpg',
-      'Garage Storage': '/organized-garage-storage.jpg',
-      'Laundry Rooms': '/laundry-1.jpg',
-      'Mudrooms': '/mudroom-1.jpg',
-      'Home Offices': '/home-office-organization.jpg',
-      'Craft Rooms': '/craft-room-organization.jpg'
-    };
-    return serviceImages[service] || '/placeholder-service.jpg';
+// Helper functions for service images and descriptions
+function getServiceImage(service, brandName) {
+  const serviceImages = {
+    'FREE Radon Testing': '/radon-testing-device.jpg',
+    'Radon Mitigation': '/radon-mitigation-system.jpg',
+    'Duct Cleaning & AeroSeal': '/aeroseal-logo.png',
+    'Concrete Coatings': '/organized-garage-storage.jpg',
+    'Smart Home Automation': '/america-smart-home-hero.jpg',
+    'Security Systems': '/america-smart-home-hero.jpg',
+    'Control4 Integration': '/america-smart-home-hero.jpg',
+    'Walk-in Closets': '/closets-luxury-hero.jpg',
+    'Reach-in Closets': '/closets-luxury-hero.jpg',
+    'Pantry Organization': '/home-office-organization.jpg',
+    'Garage Storage': '/organized-garage-storage.jpg',
+    'Laundry Rooms': '/home-office-organization.jpg',
+    'Mudrooms': '/home-office-organization.jpg',
+    'Home Offices': '/home-office-organization.jpg',
+    'Craft Rooms': '/home-office-organization.jpg'
   };
+  
+  return serviceImages[service] || '/lifetime-hero-house.jpg';
+}
 
-  const getServiceDescription = (service) => {
-    const descriptions = {
-      'FREE Radon Testing': 'Professional radon testing with fast results using EPA-approved methods.',
-      'Radon Mitigation': 'Custom radon mitigation systems with lifetime warranty and guaranteed results.',
-      'Duct Cleaning & AeroSeal': 'Professional duct cleaning and revolutionary AeroSeal duct sealing technology.',
-      'Concrete Coatings': 'Premium garage floor coatings with decorative flakes and lifetime durability.',
-      'Smart Home Automation': 'Complete home automation solutions using Control4 technology.',
-      'Security Systems': 'Professional security system installation and monitoring services.',
-      'Control4 Integration': 'Advanced Control4 home automation and smart home integration.',
-      'Walk-in Closets': 'Custom walk-in closet systems with premium materials and professional installation.',
-      'Reach-in Closets': 'Maximize storage in reach-in closets with custom shelving and organization.',
-      'Pantry Organization': 'Custom pantry shelving with pull-out drawers and organizational systems.',
-      'Garage Storage': 'Premium wood organization systems for clean, organized garages.',
-      'Laundry Rooms': 'Efficient laundry room organization with custom shelving and storage.',
-      'Mudrooms': 'Entry organization systems with cubbies, hooks, and storage solutions.',
-      'Home Offices': 'Custom built-in office solutions and workspace design.',
-      'Craft Rooms': 'Creative space organization with custom storage for supplies and materials.'
-    };
-    return descriptions[service] || 'Professional service with expert installation.';
+function getServiceDescription(service, brandName) {
+  const descriptions = {
+    'FREE Radon Testing': 'Professional radon testing with fast results using EPA-approved methods.',
+    'Radon Mitigation': 'Custom radon mitigation systems with lifetime warranty and guaranteed results.',
+    'Duct Cleaning & AeroSeal': 'Professional duct cleaning and revolutionary AeroSeal duct sealing technology.',
+    'Concrete Coatings': 'Durable concrete floor coatings for garages, basements, and commercial spaces.',
+    'Smart Home Automation': 'Complete home automation solutions using Control4 technology.',
+    'Security Systems': 'Professional security system installation and monitoring services.',
+    'Control4 Integration': 'Advanced Control4 home automation and smart home integration.',
+    'Walk-in Closets': 'Custom walk-in closet systems with premium materials and professional installation.',
+    'Reach-in Closets': 'Maximize storage in reach-in closets with custom shelving and organization.',
+    'Pantry Organization': 'Custom pantry shelving with pull-out drawers and organizational systems.',
+    'Garage Storage': 'Professional garage organization with custom storage solutions.',
+    'Laundry Rooms': 'Efficient laundry room organization with custom shelving and storage.',
+    'Mudrooms': 'Custom mudroom organization for busy families and active lifestyles.',
+    'Home Offices': 'Professional home office organization for maximum productivity.',
+    'Craft Rooms': 'Custom craft room storage and organization for creative spaces.'
   };
+  
+  return descriptions[service] || `Professional ${service.toLowerCase()} services with expert installation.`;
+}
 
+// Service Page Component with Enhanced Content and Video Integration
+function ServicePage({ serviceName, brand, onGetFreeEstimate }) {
+  const service = serviceName.replace('service-', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  const hasVideo = brand.videos && brand.videos[service];
+  
   return (
-    <div className="service-card">
-      <div className="service-image-container">
-        <img src={getServiceImage(service)} alt={service} className="service-image" />
-        <div className="service-overlay">
-          <div className="service-icon">🏠</div>
-        </div>
-      </div>
-      <div className="service-content">
-        <h3 className="service-title">{service}</h3>
-        <p className="service-description">{getServiceDescription(service)}</p>
-        <button className="learn-more-btn">Learn More</button>
+    <div className="service-page">
+      <div className="container">
+        <header className="service-header">
+          <h1>{service}</h1>
+          <p>Professional {service.toLowerCase()} services with expert installation.</p>
+        </header>
+
+        <section className="service-content">
+          {/* Video Section for America In-Home */}
+          {hasVideo && (
+            <div className="service-video-section">
+              <h2>See {service} in Action</h2>
+              <div className="video-container">
+                <iframe 
+                  src={brand.videos[service]}
+                  width="100%" 
+                  height="400" 
+                  frameBorder="0" 
+                  allow="autoplay; fullscreen; picture-in-picture" 
+                  allowFullScreen
+                  title={`${service} Video`}
+                ></iframe>
+              </div>
+            </div>
+          )}
+
+          <div className="service-details">
+            <h2>Professional {service}</h2>
+            <p>
+              Our expert team provides professional {service.toLowerCase()} services 
+              with the highest quality materials and installation techniques. We stand behind our work 
+              with comprehensive warranties and ongoing support.
+            </p>
+
+            {/* Enhanced content based on service type */}
+            {getEnhancedServiceContent(service, brand)}
+
+            <div className="service-benefits">
+              <h3>Benefits Include:</h3>
+              <ul>
+                <li>Professional installation by certified technicians</li>
+                <li>High-quality materials and equipment</li>
+                <li>Comprehensive warranty coverage</li>
+                <li>Free estimates and consultations</li>
+                <li>Ongoing customer support</li>
+                {brand.name === 'America In-Home' && <li>Control4 certified installation</li>}
+                {brand.name === 'Closet Concepts' && <li>Custom design consultation</li>}
+                {brand.name === 'Lifetime Home Services' && <li>EPA certified professionals</li>}
+              </ul>
+            </div>
+
+            <div className="service-cta">
+              <h3>Ready to Get Started?</h3>
+              <p>Contact us today to schedule your free consultation and estimate.</p>
+              <div className="contact-info">
+                <span className="phone-large">{brand.phone}</span>
+                <button className="cta-button primary" onClick={onGetFreeEstimate}>
+                  Get Free Estimate
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
 }
 
-// Radon Education Page Component
-function RadonEducationPage() {
+// Enhanced service content function
+function getEnhancedServiceContent(service, brand) {
+  const content = {
+    'Smart Home Automation': (
+      <div className="enhanced-content">
+        <h3>Complete Home Automation Solutions</h3>
+        <p>Transform your home with intelligent automation that learns your lifestyle and preferences. 
+        Our Control4 certified technicians design and install comprehensive smart home systems that 
+        integrate lighting, climate, security, entertainment, and more.</p>
+        <div className="feature-grid">
+          <div className="feature-item">
+            <h4>Lighting Control</h4>
+            <p>Automated lighting scenes and schedules</p>
+          </div>
+          <div className="feature-item">
+            <h4>Climate Management</h4>
+            <p>Intelligent temperature control and energy savings</p>
+          </div>
+          <div className="feature-item">
+            <h4>Entertainment Integration</h4>
+            <p>Whole-home audio and video distribution</p>
+          </div>
+          <div className="feature-item">
+            <h4>Voice Control</h4>
+            <p>Amazon Alexa and Google Assistant integration</p>
+          </div>
+        </div>
+      </div>
+    ),
+    'Security Systems': (
+      <div className="enhanced-content">
+        <h3>Advanced Security Solutions</h3>
+        <p>Protect your family and property with state-of-the-art security systems featuring 
+        24/7 monitoring, mobile alerts, and professional installation.</p>
+        <div className="feature-grid">
+          <div className="feature-item">
+            <h4>Video Surveillance</h4>
+            <p>HD cameras with remote viewing capabilities</p>
+          </div>
+          <div className="feature-item">
+            <h4>Access Control</h4>
+            <p>Smart locks and keyless entry systems</p>
+          </div>
+          <div className="feature-item">
+            <h4>24/7 Monitoring</h4>
+            <p>Professional monitoring and emergency response</p>
+          </div>
+          <div className="feature-item">
+            <h4>Mobile Integration</h4>
+            <p>Control and monitor from anywhere</p>
+          </div>
+        </div>
+      </div>
+    ),
+    'Walk-in Closets': (
+      <div className="enhanced-content">
+        <h3>Luxury Walk-in Closet Design</h3>
+        <p>Create your dream walk-in closet with custom storage solutions, premium materials, 
+        and professional design that maximizes space and style.</p>
+        <div className="feature-grid">
+          <div className="feature-item">
+            <h4>Custom Shelving</h4>
+            <p>Adjustable shelves for maximum flexibility</p>
+          </div>
+          <div className="feature-item">
+            <h4>Premium Materials</h4>
+            <p>High-quality wood finishes and hardware</p>
+          </div>
+          <div className="feature-item">
+            <h4>Lighting Design</h4>
+            <p>LED lighting for optimal visibility</p>
+          </div>
+          <div className="feature-item">
+            <h4>Accessory Storage</h4>
+            <p>Specialized storage for shoes, jewelry, and accessories</p>
+          </div>
+        </div>
+      </div>
+    )
+  };
+
+  return content[service] || null;
+}
+
+// Comprehensive Radon Education Page
+function RadonEducationPage({ brand, onGetFreeEstimate }) {
   return (
     <div className="radon-education-page">
       <div className="container">
-        <header className="page-header">
-          <h1>Radon Education: What Every Homeowner Should Know</h1>
+        <header className="education-header">
+          <h1>Comprehensive Radon Education</h1>
+          <p>Everything you need to know about radon testing and mitigation</p>
         </header>
 
-        <section className="education-section">
-          <h2>What Is Radon?</h2>
-          <p>
-            Radon is a naturally occurring radioactive gas that forms when uranium breaks down in soil, rock, and water. 
-            It's invisible, odorless, and tasteless, which means the only way to detect it is through testing. According to the{' '}
-            <a href="https://www.epa.gov/radon" target="_blank" rel="noopener noreferrer">EPA</a>, 
-            radon is the <strong>second leading cause of lung cancer in the United States</strong>, responsible for over 20,000 deaths each year.
-          </p>
-        </section>
-
-        <section className="education-section">
-          <h2>Why Is Radon Dangerous?</h2>
-          <p>
-            Radon gas seeps into homes through foundation cracks, sump pumps, construction joints, and other small openings. 
-            Once inside, it can accumulate to unsafe levels—especially in basements and lower levels. Long-term exposure to 
-            elevated radon levels increases the risk of lung cancer, even for non-smokers.
-          </p>
-          <p>
-            Learn more from the{' '}
-            <a href="https://www.cdc.gov/radon/" target="_blank" rel="noopener noreferrer">CDC</a>.
-          </p>
-        </section>
-
-        <section className="education-section">
-          <h2>How Does Radon Enter Your Home?</h2>
-          <h3>Common Entry Points:</h3>
-          <ul>
-            <li>Cracks in concrete floors and walls</li>
-            <li>Gaps in suspended floors</li>
-            <li>Crawlspaces</li>
-            <li>Openings around pipes and utility lines</li>
-            <li>Floor drains and sump pumps</li>
-          </ul>
-          <div className="diagram-container">
-            <img 
-              src="https://www.epa.gov/sites/default/files/2015-05/radon-entry-diagram.jpg" 
-              alt="How Radon Enters Your Home" 
-              className="education-diagram"
-            />
+        <section className="education-content">
+          <div className="education-section">
+            <h2>What is Radon?</h2>
+            <p>
+              Radon is a naturally occurring radioactive gas that comes from the decay of uranium in soil, rock, and water. 
+              It's colorless, odorless, and tasteless, making it impossible to detect without proper testing equipment.
+            </p>
           </div>
-        </section>
 
-        <section className="education-section">
-          <h2>What Are Safe Radon Levels?</h2>
-          <ul>
-            <li><strong>Measured in picocuries per liter (pCi/L)</strong></li>
-            <li>The EPA recommends <strong>mitigation at levels of 4.0 pCi/L or higher</strong></li>
-            <li>Even levels between <strong>2.0 and 4.0 pCi/L</strong> can pose a risk and may be considered for reduction</li>
-          </ul>
-          <div className="diagram-container">
-            <img 
-              src="https://www.epa.gov/sites/default/files/2014-08/documents/riskchart.jpg" 
-              alt="EPA Radon Risk Chart" 
-              className="education-diagram"
-            />
+          <div className="education-section">
+            <h2>Health Risks</h2>
+            <p>
+              Radon is the second leading cause of lung cancer in the United States, responsible for about 21,000 deaths annually. 
+              The EPA recommends taking action if radon levels are 4 pCi/L or higher.
+            </p>
           </div>
-        </section>
 
-        <section className="education-section">
-          <h2>Radon Testing: Your First Step</h2>
-          <p>We offer <strong>FREE radon testing</strong> with fast results and expert follow-up.</p>
-          <p>Testing is:</p>
-          <ul>
-            <li>Quick</li>
-            <li>Non-invasive</li>
-            <li>Essential for all homeowners—whether buying, selling, or simply ensuring peace of mind</li>
-          </ul>
-          <button className="cta-button primary">Schedule Your Free Test Now</button>
-        </section>
-
-        <section className="education-section">
-          <h2>What If You Have High Radon Levels?</h2>
-          <p><strong>Don't panic—radon mitigation is highly effective.</strong> Our team uses proven, code-compliant systems that lower radon levels quickly and permanently.</p>
-          
-          <h3>Before & After Mitigation Examples:</h3>
-          <div className="before-after-container">
-            <div className="before-after-item">
-              <h4>Before:</h4>
-              <img 
-                src="https://www.epa.gov/sites/default/files/2020-01/images/radon-before.jpg" 
-                alt="Before Mitigation" 
-                className="education-diagram"
-              />
+          <div className="education-section">
+            <h2>Radon Mitigation Systems</h2>
+            
+            <div className="mitigation-system">
+              <h3>1. Sub-Slab Depressurization (Most Common)</h3>
+              <ul>
+                <li>Ideal for homes with concrete slab foundations</li>
+                <li>A PVC pipe is inserted through the basement floor into the soil beneath</li>
+                <li>A fan draws radon gas up through the pipe and safely vents it above the roofline</li>
+                <li>Effective in reducing radon from beneath the entire foundation</li>
+              </ul>
             </div>
-            <div className="before-after-item">
-              <h4>After:</h4>
-              <img 
-                src="https://www.epa.gov/sites/default/files/2020-01/images/radon-after.jpg" 
-                alt="After Mitigation" 
-                className="education-diagram"
-              />
+
+            <div className="mitigation-system">
+              <h3>2. Sump Pit Depressurization</h3>
+              <ul>
+                <li>Utilizes the existing sump pit as the suction point</li>
+                <li>The pit is sealed with an airtight lid and connected to a vent pipe</li>
+                <li>Cost-effective and efficient if the home already has a sump pump</li>
+              </ul>
+            </div>
+
+            <div className="mitigation-system">
+              <h3>3. Drain Tile Depressurization</h3>
+              <ul>
+                <li>Works with homes that have drain tile systems installed under the slab</li>
+                <li>Radon is collected and vented via the same tile system, reducing the need for drilling</li>
+              </ul>
+            </div>
+
+            <div className="mitigation-system">
+              <h3>4. Block Wall Depressurization</h3>
+              <ul>
+                <li>Used for homes with hollow block foundation walls</li>
+                <li>Suction is applied to the hollow cores of the block walls</li>
+                <li>Effective for reducing radon entry through foundation walls</li>
+              </ul>
             </div>
           </div>
-        </section>
 
-        <section className="education-section">
-          <h2>Radon Mitigation System Options</h2>
-          <p>Depending on your home's construction and radon levels, we may recommend:</p>
-
-          <div className="mitigation-system">
-            <h3>1. Sub-Slab Depressurization (Most Common)</h3>
-            <ul>
-              <li>Ideal for homes with concrete slab foundations</li>
-              <li>A PVC pipe is inserted through the basement floor into the soil beneath</li>
-              <li>A fan draws radon gas up through the pipe and safely vents it above the roofline</li>
-              <li>Effective in reducing radon from beneath the entire foundation</li>
-            </ul>
-            <img 
-              src="https://www.epa.gov/sites/default/files/styles/medium/public/2020-01/images/radon-system.jpg" 
-              alt="Sub-Slab System" 
-              className="education-diagram"
-            />
+          <div className="education-cta">
+            <h2>Professional Radon Services</h2>
+            <p>
+              Our EPA-certified technicians provide comprehensive radon testing and mitigation services 
+              with guaranteed results and lifetime warranties.
+            </p>
+            <div className="cta-buttons">
+              <span className="phone-large">{brand.phone}</span>
+              <button className="cta-button primary" onClick={onGetFreeEstimate}>
+                Schedule Free Testing
+              </button>
+            </div>
           </div>
-
-          <div className="mitigation-system">
-            <h3>2. Sump Pit Depressurization</h3>
-            <ul>
-              <li>Utilizes the existing sump pit as the suction point</li>
-              <li>The pit is sealed with an airtight lid and connected to a vent pipe</li>
-              <li>Cost-effective and efficient if the home already has a sump pump</li>
-            </ul>
-            <img 
-              src="https://www.radon.com/images/sump-system.jpg" 
-              alt="Sump Pit System" 
-              className="education-diagram"
-            />
-          </div>
-
-          <div className="mitigation-system">
-            <h3>3. Drain Tile Depressurization</h3>
-            <ul>
-              <li>Works with homes that have drain tile systems installed under the slab</li>
-              <li>Radon is collected and vented via the same tile system, reducing the need for drilling</li>
-            </ul>
-            <img 
-              src="https://inspectapedia.com/radon/Drain-Tile-Radon-Mitigation.jpg" 
-              alt="Drain Tile System" 
-              className="education-diagram"
-            />
-          </div>
-
-          <div className="mitigation-system">
-            <h3>4. Crawl Space Encapsulation</h3>
-            <ul>
-              <li>Used in homes with crawlspaces or exposed soil</li>
-              <li>Heavy-duty plastic sheeting is sealed over the soil</li>
-              <li>A fan and piping system draw radon from below the membrane and vent it outside</li>
-            </ul>
-            <img 
-              src="https://www.radonsystems.com/wp-content/uploads/2021/02/rs3.jpg" 
-              alt="Crawl Space System" 
-              className="education-diagram"
-            />
-          </div>
-        </section>
-
-        <section className="education-section">
-          <h2>The Radon Fans We Trust</h2>
-          <p>
-            We exclusively install high-performance radon fans from{' '}
-            <a href="https://festaradontech.com" target="_blank" rel="noopener noreferrer">Festa Radon Technologies</a>, 
-            a leading U.S. manufacturer known for durability, quiet operation, and maximum draw.
-          </p>
-          
-          <h3>Our Preferred Models:</h3>
-          <ul>
-            <li><strong>Maverick Eagle</strong> – Ideal for standard sub-slab systems, quiet and efficient</li>
-            <li><strong>Eagle Max</strong> – High-powered for homes with compacted subgrade or multiple suction points</li>
-            <li><strong>Legends</strong> – Sleek, high-performance fans for visible exterior installs</li>
-            <li><strong>Legends Max</strong> – Maximum air volume for challenging mitigation scenarios</li>
-          </ul>
-          <p>Each fan is selected based on your home's layout and mitigation needs, ensuring optimal airflow and long-term performance.</p>
-        </section>
-
-        <section className="education-section">
-          <h2>Why Choose Lifetime Home Services?</h2>
-          <ul>
-            <li>Certified radon professionals</li>
-            <li>Lifetime warranty on system components</li>
-            <li>Transparent, upfront pricing</li>
-            <li>Optional aesthetic fan covers and performance upgrades</li>
-            <li>Discounts when bundled with AeroSeal duct sealing or floor coating services</li>
-          </ul>
-          <blockquote>
-            <strong>Trusted Solutions. Lifetime Results.</strong>
-          </blockquote>
-        </section>
-
-        <section className="education-section">
-          <h2>Still Have Questions?</h2>
-          <p>
-            Check out the EPA's{' '}
-            <a href="https://www.epa.gov/sites/default/files/2015-05/documents/hmbuygud.pdf" target="_blank" rel="noopener noreferrer">
-              Home Buyer's and Seller's Guide to Radon
-            </a>{' '}
-            or call our team directly.
-          </p>
-          
-          <div className="contact-info">
-            <h3>Lifetime Home Services</h3>
-            <p><strong>Trusted Solutions. Lifetime Results.</strong></p>
-            <p>📞 <strong>(262) 955-5701</strong></p>
-            <p>🌐 <a href="https://www.lifetimehomeservices.com/radon" target="_blank" rel="noopener noreferrer">Visit Our Radon Services</a></p>
-          </div>
-          
-          <blockquote>
-            <em>Radon is a risk you can't see—but it's one you can eliminate. Let us help you breathe easier.</em>
-          </blockquote>
         </section>
       </div>
     </div>
   );
 }
 
+// State Page Component with SEO-Optimized Content
+function StatePage({ state, brand, onScheduleConsultation }) {
+  const stateData = getStateData(state, brand);
+  
+  return (
+    <div className="state-page">
+      <div className="container">
+        <header className="state-header">
+          <h1>{state} Services</h1>
+          <p>Professional home services throughout {state}</p>
+        </header>
+
+        <section className="state-services">
+          <h2>Services Available in {state}</h2>
+          <div className="services-grid">
+            {stateData.services.map((service, index) => (
+              <div key={index} className="service-card-state">
+                <h3>{service}</h3>
+                <p>Professional {service.toLowerCase()} services with expert installation and lifetime warranty.</p>
+                <button className="learn-more-btn" onClick={onScheduleConsultation}>
+                  Learn More
+                </button>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="service-areas">
+          <h2>Service Areas in {state}</h2>
+          <p>We proudly serve the following areas and zip codes in {state}:</p>
+          
+          <div className="area-codes-section">
+            <h3>Area Codes Served:</h3>
+            <div className="area-codes-grid">
+              {stateData.areaCodes.map((code, index) => (
+                <span key={index} className="area-code">{code}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="zip-codes-section">
+            <h3>Zip Codes Served:</h3>
+            <div className="zip-codes-grid">
+              {stateData.zipCodes.map((zip, index) => (
+                <span key={index} className="zip-code">{zip}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="state-contact">
+          <h2>Ready to Get Started in {state}?</h2>
+          <p>Contact us today for your free consultation and estimate.</p>
+          <div className="contact-info">
+            <span className="phone-large">{brand.phone}</span>
+            <button className="cta-button primary" onClick={onScheduleConsultation}>
+              Schedule Consultation
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
+// Helper function for state data with comprehensive SEO coverage
+function getStateData(state, brand) {
+  const stateInfo = {
+    wisconsin: {
+      services: brand.services,
+      areaCodes: ['262', '414', '608', '715', '920'],
+      zipCodes: [
+        '53005', '53012', '53018', '53022', '53029', '53033', '53045', '53051', '53056', '53066',
+        '53072', '53089', '53092', '53097', '53108', '53122', '53129', '53130', '53132', '53140',
+        '53142', '53146', '53149', '53150', '53151', '53154', '53158', '53168', '53172', '53186',
+        '53188', '53189', '53190', '53201', '53202', '53203', '53204', '53205', '53206', '53207',
+        '53208', '53209', '53210', '53211', '53212', '53213', '53214', '53215', '53216', '53217',
+        '53218', '53219', '53220', '53221', '53222', '53223', '53224', '53225', '53226', '53227',
+        '53228', '53233', '53234', '53235', '53237', '53244', '53259', '53274', '53278', '53295'
+      ]
+    },
+    illinois: {
+      services: ['Duct Cleaning & AeroSeal'],
+      areaCodes: ['224', '312', '331', '630', '708', '773', '815', '847', '872'],
+      zipCodes: [
+        '60004', '60005', '60006', '60007', '60008', '60009', '60010', '60011', '60012', '60013',
+        '60014', '60015', '60016', '60017', '60018', '60019', '60020', '60021', '60022', '60025',
+        '60026', '60029', '60030', '60031', '60033', '60034', '60035', '60037', '60038', '60039',
+        '60040', '60041', '60042', '60043', '60044', '60045', '60046', '60047', '60048', '60049'
+      ]
+    },
+    minnesota: {
+      services: ['FREE Radon Testing'],
+      areaCodes: ['218', '320', '507', '612', '651', '763', '952'],
+      zipCodes: [
+        '55001', '55003', '55009', '55014', '55016', '55024', '55025', '55033', '55038', '55042',
+        '55043', '55044', '55055', '55056', '55057', '55068', '55069', '55071', '55075', '55076',
+        '55077', '55082', '55089', '55090', '55101', '55102', '55103', '55104', '55105', '55106',
+        '55107', '55108', '55109', '55110', '55111', '55112', '55113', '55114', '55115', '55116'
+      ]
+    },
+    colorado: {
+      services: ['Radon Mitigation'],
+      areaCodes: ['303', '719', '720', '970'],
+      zipCodes: [
+        '80001', '80002', '80003', '80004', '80005', '80007', '80010', '80011', '80012', '80013',
+        '80014', '80015', '80016', '80017', '80018', '80019', '80020', '80021', '80022', '80023',
+        '80024', '80025', '80026', '80027', '80030', '80031', '80033', '80034', '80035', '80036',
+        '80037', '80038', '80101', '80102', '80103', '80104', '80105', '80106', '80107', '80108'
+      ]
+    }
+  };
+
+  return stateInfo[state.toLowerCase()] || { services: [], areaCodes: [], zipCodes: [] };
+}
+
 // Financing Page Component
-function FinancingPage() {
+function FinancingPage({ brand }) {
   return (
     <div className="financing-page">
       <div className="container">
-        <header className="page-header">
-          <h1>Financing Options Available</h1>
-          <p>Make your home improvement dreams a reality with flexible financing solutions.</p>
+        <header className="financing-header">
+          <h1>Financing Options</h1>
+          <p>Flexible financing solutions for your home improvement projects</p>
         </header>
 
-        <section className="financing-section">
-          <h2>Synchrony Financing</h2>
-          <p>
-            We've partnered with Synchrony to offer you flexible financing options for your home improvement projects. 
-            Whether you're looking to install a radon mitigation system, upgrade your HVAC with AeroSeal, or apply premium 
-            floor coatings, we have financing solutions to fit your budget.
-          </p>
+        <section className="financing-content">
+          <div className="financing-details">
+            <h2>Synchrony Financing Available</h2>
+            <p>
+              We partner with Synchrony to offer flexible financing options for qualified customers. 
+              Get the home improvements you need today with convenient monthly payments.
+            </p>
 
-          <div className="financing-benefits">
-            <h3>Benefits Include:</h3>
-            <ul>
-              <li>Quick and easy online application process</li>
-              <li>Competitive interest rates</li>
-              <li>Flexible payment terms</li>
-              <li>No prepayment penalties</li>
-              <li>Same-day approval decisions</li>
-            </ul>
-          </div>
+            <div className="financing-benefits">
+              <h3>Financing Benefits:</h3>
+              <ul>
+                <li>Quick and easy application process</li>
+                <li>Competitive interest rates</li>
+                <li>Flexible payment terms</li>
+                <li>No prepayment penalties</li>
+                <li>Same-day approval available</li>
+              </ul>
+            </div>
 
-          <div className="financing-cta">
-            <h3>Ready to Apply?</h3>
-            <p>Click the button below to apply for financing through our secure Synchrony portal.</p>
-            <a 
-              href="https://www.synchrony.com/mmc/S6229146200?sitecode=acaqri0c1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-button primary large"
-            >
-              Apply for Financing
-            </a>
-          </div>
-        </section>
-
-        <section className="financing-section">
-          <h2>Frequently Asked Questions</h2>
-          
-          <div className="faq-item">
-            <h3>What services qualify for financing?</h3>
-            <p>All of our services qualify for financing, including radon testing and mitigation, duct cleaning and AeroSeal, concrete coatings, and smart home installations.</p>
-          </div>
-
-          <div className="faq-item">
-            <h3>How quickly can I get approved?</h3>
-            <p>Most applications receive a decision within minutes of submission. In some cases, additional verification may be required.</p>
-          </div>
-
-          <div className="faq-item">
-            <h3>What information do I need to apply?</h3>
-            <p>You'll need basic personal information, employment details, and financial information to complete the application.</p>
-          </div>
-
-          <div className="faq-item">
-            <h3>Are there any prepayment penalties?</h3>
-            <p>No, there are no prepayment penalties. You can pay off your balance early without any additional fees.</p>
-          </div>
-        </section>
-
-        <section className="contact-section">
-          <h2>Questions About Financing?</h2>
-          <p>Our team is here to help you understand your financing options and find the best solution for your project.</p>
-          <div className="contact-info">
-            <span className="phone-large">(262) 955-5701</span>
-            <button className="cta-button secondary">Contact Us</button>
+            <div className="financing-cta">
+              <h3>Apply for Financing</h3>
+              <p>Contact us today to learn more about our financing options and get pre-approved.</p>
+              <div className="contact-info">
+                <span className="phone-large">{brand.phone}</span>
+                <button className="cta-button primary">
+                  Apply Now
+                </button>
+              </div>
+            </div>
           </div>
         </section>
       </div>
@@ -737,360 +770,40 @@ function ContactPage({ brand }) {
   return (
     <div className="contact-page">
       <div className="container">
-        <header className="page-header">
-          <h1>Contact {brand.name}</h1>
-          <p>Ready to get started? We're here to help with all your home service needs.</p>
+        <header className="contact-header">
+          <h1>Contact Us</h1>
+          <p>Get in touch for your free consultation and estimate</p>
         </header>
 
-        <section className="contact-section">
+        <section className="contact-content">
           <div className="contact-info-grid">
-            <div className="contact-info-card">
+            <div className="contact-item">
               <h3>Phone</h3>
               <p className="phone-large">{brand.phone}</p>
             </div>
-
-            <div className="contact-info-card">
+            
+            <div className="contact-item">
               <h3>Address</h3>
               <p>{brand.address}</p>
-              <a 
-                href={`https://maps.google.com/?q=${encodeURIComponent(brand.address)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="maps-link"
-              >
-                Get Directions
-              </a>
-            </div>
-
-            <div className="contact-info-card">
-              <h3>Business Hours</h3>
-              <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-              <p>Saturday: By Appointment</p>
-              <p>Sunday: Closed</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="contact-form-section">
-          <h2>Get Your Free Estimate</h2>
-          <form className="contact-form">
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="firstName">First Name *</label>
-                <input type="text" id="firstName" name="firstName" required />
-              </div>
-              <div className="form-group">
-                <label htmlFor="lastName">Last Name *</label>
-                <input type="text" id="lastName" name="lastName" required />
-              </div>
             </div>
             
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="email">Email *</label>
-                <input type="email" id="email" name="email" required />
-              </div>
-              <div className="form-group">
-                <label htmlFor="phone">Phone *</label>
-                <input type="tel" id="phone" name="phone" required />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="service">Service Interested In</label>
-              <select id="service" name="service">
-                <option value="">Select a service</option>
-                {brand.services.map((service, index) => (
-                  <option key={index} value={service}>{service}</option>
-                ))}
-              </select>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message">Tell us about your project...</label>
-              <textarea id="message" name="message" rows="5" placeholder="Please describe your project and any specific requirements..."></textarea>
-            </div>
-
-            <button type="submit" className="cta-button primary large">Send Message</button>
-          </form>
-        </section>
-      </div>
-    </div>
-  );
-}
-
-// State Page Component with Enhanced Design
-function StatePage({ state, brand, zipCodes = [] }) {
-  const [expandedZips, setExpandedZips] = useState(false);
-  
-  const displayZips = expandedZips ? zipCodes : zipCodes.slice(0, 20);
-  const remainingCount = zipCodes.length - 20;
-
-  // State-specific service information
-  const getStateServices = (state, brand) => {
-    if (brand.name === 'Lifetime Home Services') {
-      switch (state) {
-        case 'Wisconsin':
-          return brand.services; // All services
-        case 'Illinois':
-          return ['Duct Cleaning & AeroSeal']; // HVAC only
-        case 'Minnesota':
-          return ['FREE Radon Testing']; // Free radon only
-        case 'Colorado':
-          return ['Radon Mitigation']; // Radon expertise
-        default:
-          return brand.services;
-      }
-    }
-    // For America In-Home and Closet Concepts, only Wisconsin
-    return brand.services;
-  };
-
-  const stateServices = getStateServices(state, brand);
-
-  return (
-    <div className="state-page" style={{
-      backgroundImage: `url(/state-silhouette-${state.toLowerCase()}.svg)`,
-      backgroundSize: '40%',
-      backgroundPosition: 'right center',
-      backgroundRepeat: 'no-repeat',
-      backgroundAttachment: 'fixed'
-    }}>
-      <div className="container">
-        <header className="state-header">
-          <h1>{state} Services</h1>
-          <p>Professional home services throughout {state}</p>
-          
-          <div className="trust-badges-horizontal">
-            <span className="trust-badge">EPA Certified</span>
-            <span className="trust-badge">Licensed & Insured</span>
-            <span className="trust-badge">Free Estimates</span>
-            <span className="trust-badge">Lifetime Warranty</span>
-          </div>
-        </header>
-
-        <section className="state-services">
-          <h2>Services Available in {state}</h2>
-          <div className="services-grid">
-            {brand.services.map((service, index) => (
-              <div key={index} className="service-card-state">
-                <h3>{service}</h3>
-                <p>Professional {service.toLowerCase()} services with expert installation and lifetime warranty.</p>
-                <button className="learn-more-btn">Learn More</button>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {zipCodes.length > 0 && (
-          <section className="service-areas">
-            <h2>Service Areas in {state}</h2>
-            <p>We proudly serve the following zip codes in {state}:</p>
-            
-            <div className="zip-codes-container">
-              <div className="zip-codes-grid">
-                {displayZips.map((zip, index) => (
-                  <span key={index} className="zip-code">{zip}</span>
-                ))}
-              </div>
-              
-              {!expandedZips && remainingCount > 0 && (
-                <button 
-                  className="expand-zips-btn"
-                  onClick={() => setExpandedZips(true)}
-                >
-                  +{remainingCount} more
-                </button>
-              )}
-            </div>
-          </section>
-        )}
-
-        <section className="state-contact">
-          <h2>Ready to Get Started in {state}?</h2>
-          <p>Contact us today for your free consultation and estimate.</p>
-          <div className="contact-info">
-            <span className="phone-large">{brand.phone}</span>
-            <button className="cta-button primary">Schedule Consultation</button>
-          </div>
-        </section>
-      </div>
-    </div>
-  );
-}
-
-// Service Page Component with AIH Video Integration
-function ServicePage({ serviceName, brand }) {
-  const formatServiceName = (name) => {
-    return name.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-  };
-
-  const getServiceContent = (serviceName, brand) => {
-    if (brand.name === 'America In-Home') {
-      if (serviceName === 'service-smart-home-automation') {
-        return (
-          <div className="service-content-enhanced">
-            <div className="video-section">
-              <h3>America In-Home Web Banner</h3>
-              <div className="video-container">
-                <iframe
-                  width="100%"
-                  height="400"
-                  src="https://www.youtube.com/embed/v8mkx8DbJg0"
-                  title="America In-Home Web Banner"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-            
-            <div className="service-details-enhanced">
-              <h2>Smart Home Automation with Control4</h2>
-              <p>Transform your home into a smart, connected environment with our comprehensive automation solutions. We utilize Control4 technology to create seamless integration between all your home systems.</p>
-              
-              <div className="service-features">
-                <h3>Our Smart Home Services Include:</h3>
-                <ul>
-                  <li><strong>Sonos Speaker Systems</strong> - Whole-home audio with wireless streaming</li>
-                  <li><strong>Smart TV Integration</strong> - Seamless entertainment control</li>
-                  <li><strong>Home WiFi Installation</strong> - Professional network setup and optimization</li>
-                  <li><strong>Whole Home Wiring</strong> - Retrofit and new construction low voltage wiring</li>
-                  <li><strong>Smart Window Blinds</strong> - Automated window treatments with low voltage control</li>
-                  <li><strong>Control4 Integration</strong> - Centralized control of all home systems</li>
-                </ul>
-              </div>
+            <div className="contact-item">
+              <h3>Hours</h3>
+              <p>
+                Monday-Friday: 9am-5pm<br />
+                Saturday: By appointment<br />
+                Sunday: Closed
+              </p>
             </div>
           </div>
-        );
-      }
-      
-      if (serviceName === 'service-security-systems') {
-        return (
-          <div className="service-content-enhanced">
-            <div className="video-section">
-              <h3>America In-Home Security Solutions</h3>
-              <div className="video-container">
-                <iframe
-                  width="100%"
-                  height="400"
-                  src="https://www.youtube.com/embed/46YkzyAUCR8"
-                  title="America In-Home Security 25-Spot"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-            
-            <div className="service-details-enhanced">
-              <h2>Professional Security Systems</h2>
-              <p>Protect your home and family with our comprehensive security solutions. From cameras to monitoring, we provide complete peace of mind.</p>
-              
-              <div className="service-features">
-                <h3>Security Services Include:</h3>
-                <ul>
-                  <li><strong>Security Camera Installation</strong> - Indoor and outdoor surveillance systems</li>
-                  <li><strong>Smart Doorbell Systems</strong> - Video doorbells with mobile alerts</li>
-                  <li><strong>Motion Detection</strong> - Advanced sensors and monitoring</li>
-                  <li><strong>Access Control</strong> - Smart locks and entry systems</li>
-                  <li><strong>24/7 Monitoring</strong> - Professional security monitoring services</li>
-                  <li><strong>Mobile App Control</strong> - Monitor your home from anywhere</li>
-                </ul>
-              </div>
-            </div>
+
+          <div className="contact-cta">
+            <h2>Ready to Get Started?</h2>
+            <p>Call us today to schedule your free consultation and estimate.</p>
+            <button className="cta-button primary large">
+              Call {brand.phone}
+            </button>
           </div>
-        );
-      }
-      
-      if (serviceName === 'service-control4-integration') {
-        return (
-          <div className="service-content-enhanced">
-            <div className="service-details-enhanced">
-              <h2>Control4 Home Automation Integration</h2>
-              <p>Experience the ultimate in home automation with Control4's award-winning smart home platform. Control4 provides a single, unified interface to control your entire home.</p>
-              
-              <div className="control4-features">
-                <h3>Control4 Capabilities:</h3>
-                <div className="features-grid">
-                  <div className="feature-card">
-                    <h4>Lighting Control</h4>
-                    <p>Automated lighting scenes, dimming, and scheduling throughout your home</p>
-                  </div>
-                  <div className="feature-card">
-                    <h4>Climate Management</h4>
-                    <p>Intelligent HVAC control with scheduling and remote access</p>
-                  </div>
-                  <div className="feature-card">
-                    <h4>Entertainment Systems</h4>
-                    <p>Seamless control of TVs, audio systems, and streaming devices</p>
-                  </div>
-                  <div className="feature-card">
-                    <h4>Security Integration</h4>
-                    <p>Unified control of cameras, alarms, and access control systems</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="control4-benefits">
-                <h3>Why Choose Control4?</h3>
-                <ul>
-                  <li><strong>Reliability</strong> - Professional-grade hardware and software</li>
-                  <li><strong>Scalability</strong> - Start small and expand your system over time</li>
-                  <li><strong>Integration</strong> - Works with over 13,500+ third-party devices</li>
-                  <li><strong>Professional Installation</strong> - Certified Control4 dealers ensure optimal performance</li>
-                  <li><strong>Ongoing Support</strong> - Local support and system updates</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        );
-      }
-    }
-    
-    // Default service content for other services
-    return (
-      <div className="service-details">
-        <h2>Professional {formatServiceName(serviceName.replace('service-', ''))}</h2>
-        <p>
-          Our expert team provides professional {formatServiceName(serviceName.replace('service-', '')).toLowerCase()} services 
-          with the highest quality materials and installation techniques. We stand behind our work 
-          with comprehensive warranties and ongoing support.
-        </p>
-
-        <div className="service-benefits">
-          <h3>Benefits Include:</h3>
-          <ul>
-            <li>Professional installation by certified technicians</li>
-            <li>High-quality materials and equipment</li>
-            <li>Comprehensive warranty coverage</li>
-            <li>Free estimates and consultations</li>
-            <li>Ongoing customer support</li>
-          </ul>
-        </div>
-
-        <div className="service-cta">
-          <h3>Ready to Get Started?</h3>
-          <p>Contact us today to schedule your free consultation and estimate.</p>
-          <div className="contact-info">
-            <span className="phone-large">{brand.phone}</span>
-            <button className="cta-button primary">Get Free Estimate</button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  return (
-    <div className="service-page">
-      <div className="container">
-        <header className="service-header">
-          <h1>{formatServiceName(serviceName.replace('service-', ''))}</h1>
-          <p>Professional {formatServiceName(serviceName.replace('service-', '')).toLowerCase()} services with expert installation.</p>
-        </header>
-
-        <section className="service-content">
-          {getServiceContent(serviceName, brand)}
         </section>
       </div>
     </div>
