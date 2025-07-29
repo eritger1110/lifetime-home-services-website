@@ -437,7 +437,6 @@ function App() {
             
             <textarea name="description" placeholder="Project Description (Optional)" rows="4"></textarea>
             
-            {/* Hidden fields for Salesforce */}
             <input type="hidden" name="lead_source" value="Internet" />
             <input type="hidden" name="company" value="Residential" />
             
@@ -959,4 +958,3 @@ function App() {
 }
 
 export default App;
-
