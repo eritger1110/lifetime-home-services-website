@@ -1696,4 +1696,5 @@ function FinancingPage({ brand, onBack }) {
     </div>
   );
 }
+export default App;
 
