@@ -813,7 +813,7 @@ function App() {
               </div>
               <div className="system-type">
                 <h4>Drain Tile Suction</h4>
-                <p>Utilizes existing perimeter drain system for radon removal</div>
+                <p>Utilizes existing perimeter drain system for radon removal</p>
               </div>
               <div className="system-type">
                 <h4>Crawl Space Systems</h4>
