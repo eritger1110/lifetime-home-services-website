@@ -1,34 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-// Define serviceImages object to fix the ReferenceError
-const serviceImages = {
-  'lifetime-hero-house.jpg': '/lifetime-hero-house.jpg',
-  'america-smart-home-hero.jpg': '/america-smart-home-hero.jpg',
-  'closets-luxury-hero.jpg': '/closets-luxury-hero.jpg',
-  'radon-testing-device.jpg': '/radon-testing-device.jpg',
-  'radon-mitigation-system.jpg': '/radon-mitigation-system.jpg',
-  'aeroseal-logo.png': '/aeroseal-logo.png',
-  'organized-garage-storage.jpg': '/organized-garage-storage.jpg',
-  'home-office-organization.jpg': '/home-office-organization.jpg'
-};
-
 function App() {
   const [currentBrand, setCurrentBrand] = useState('lifetime');
   const [currentPage, setCurrentPage] = useState('home');
   const [showServicesDropdown, setShowServicesDropdown] = useState(false);
   const [showServiceAreasDropdown, setShowServiceAreasDropdown] = useState(false);
-  const [expandedZipSections, setExpandedZipSections] = useState({});
+  const [expandedZipCodes, setExpandedZipCodes] = useState(false);
 
-  // Brand configurations
+  // Scroll to top when page changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
   const brandConfig = {
     lifetime: {
       name: 'Lifetime Home Services',
-      tagline: 'Trusted Solutions. Lifetime Results.',
       logo: '/LifetimeHomeServicesLogo.png',
       heroImage: '/lifetime-hero-house.jpg',
       primaryColor: '#2563eb',
-      secondaryColor: '#1e40af',
       services: [
         'Free Radon Testing',
         'Radon Mitigation', 
@@ -39,11 +29,9 @@ function App() {
     },
     aih: {
       name: 'America In-Home',
-      tagline: 'Luxury Living. Seamlessly Connected.',
       logo: '/AmericaIn-HomeLogo3.png',
       heroImage: '/america-smart-home-hero.jpg',
       primaryColor: '#b91c1c',
-      secondaryColor: '#991b1b',
       services: [
         'Smart Home Automation',
         'Security Systems',
@@ -52,38 +40,54 @@ function App() {
     },
     closets: {
       name: 'Closet Concepts',
-      tagline: 'Organized Living. Elevated Style.',
       logo: '/NewClosetConceptsLogo.pdf',
       heroImage: '/closets-luxury-hero.jpg',
       primaryColor: '#059669',
-      secondaryColor: '#047857',
       services: [
-        'Custom Closets',
-        'Garage Organization',
-        'Home Office Solutions'
+        'Custom Closets'
       ]
     }
   };
 
-  const handleNavigation = (page, brand = null) => {
-    if (brand) {
-      setCurrentBrand(brand);
-    }
+  const handleBrandSwitch = (brand) => {
+    setCurrentBrand(brand);
+    setCurrentPage('home');
+    setShowServicesDropdown(false);
+    setShowServiceAreasDropdown(false);
+  };
+
+  const handlePageChange = (page) => {
     setCurrentPage(page);
     setShowServicesDropdown(false);
     setShowServiceAreasDropdown(false);
+  };
+
+  const handleLogoClick = () => {
+    setCurrentPage('home');
     window.scrollTo(0, 0);
   };
 
-  const toggleZipSection = (state) => {
-    setExpandedZipSections(prev => ({
-      ...prev,
-      [state]: !prev[state]
-    }));
+  const handleServiceClick = (service) => {
+    const servicePages = {
+      'Free Radon Testing': 'radon-testing',
+      'Radon Mitigation': 'radon-mitigation',
+      'HVAC Services': 'hvac-services',
+      'Duct Cleaning & AeroSeal': 'duct-cleaning',
+      'Concrete Coatings': 'concrete-coatings',
+      'Smart Home Automation': 'smart-home',
+      'Security Systems': 'security-systems',
+      'Control4 Integration': 'control4',
+      'Custom Closets': 'custom-closets'
+    };
+    
+    const pageName = servicePages[service];
+    if (pageName) {
+      setCurrentPage(pageName);
+      setShowServicesDropdown(false);
+    }
   };
 
-  // Header Component
-  const Header = () => (
+  const renderHeader = () => (
     <header className="header">
       <div className="header-content">
         <div className="logo-section">
@@ -91,31 +95,22 @@ function App() {
             src={brandConfig[currentBrand].logo} 
             alt={brandConfig[currentBrand].name}
             className="logo"
-            onClick={() => handleNavigation('home')}
+            onClick={handleLogoClick}
             style={{ cursor: 'pointer' }}
           />
         </div>
         
         <nav className="main-nav">
           <div className="brand-links">
-            <button 
-              className={`brand-link ${currentBrand === 'lifetime' ? 'active' : ''}`}
-              onClick={() => handleNavigation('home', 'lifetime')}
-            >
-              Lifetime Home Services
-            </button>
-            <button 
-              className={`brand-link ${currentBrand === 'aih' ? 'active' : ''}`}
-              onClick={() => handleNavigation('home', 'aih')}
-            >
-              America In-Home
-            </button>
-            <button 
-              className={`brand-link ${currentBrand === 'closets' ? 'active' : ''}`}
-              onClick={() => handleNavigation('home', 'closets')}
-            >
-              Closet Concepts
-            </button>
+            {Object.entries(brandConfig).map(([key, config]) => (
+              <button
+                key={key}
+                className={`brand-link ${currentBrand === key ? 'active' : ''}`}
+                onClick={() => handleBrandSwitch(key)}
+              >
+                {config.name}
+              </button>
+            ))}
           </div>
           
           <div className="nav-links">
@@ -128,11 +123,11 @@ function App() {
               </button>
               {showServicesDropdown && (
                 <div className="dropdown-menu">
-                  {brandConfig[currentBrand].services.map((service, index) => (
-                    <button 
-                      key={index}
+                  {brandConfig[currentBrand].services.map((service) => (
+                    <button
+                      key={service}
                       className="dropdown-item"
-                      onClick={() => handleNavigation(service.toLowerCase().replace(/\s+/g, '-'))}
+                      onClick={() => handleServiceClick(service)}
                     >
                       {service}
                     </button>
@@ -150,153 +145,1370 @@ function App() {
               </button>
               {showServiceAreasDropdown && (
                 <div className="dropdown-menu">
-                  <button className="dropdown-item" onClick={() => handleNavigation('wisconsin')}>Wisconsin</button>
-                  <button className="dropdown-item" onClick={() => handleNavigation('illinois')}>Illinois</button>
-                  <button className="dropdown-item" onClick={() => handleNavigation('minnesota')}>Minnesota</button>
-                  <button className="dropdown-item" onClick={() => handleNavigation('colorado')}>Colorado</button>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => handlePageChange('wisconsin')}
+                  >
+                    Wisconsin
+                  </button>
                 </div>
               )}
             </div>
             
-            <button className="nav-button" onClick={() => handleNavigation('financing')}>
+            <button 
+              className="nav-button"
+              onClick={() => handlePageChange('financing')}
+            >
               Financing
             </button>
           </div>
         </nav>
         
         <div className="contact-info">
-          <span className="phone">(262) 226-2729</span>
+          <div className="phone">(262) 226-2729</div>
         </div>
       </div>
     </header>
   );
 
-  // Hero Section Component
-  const HeroSection = () => (
-    <section className="hero-section-fullscreen">
-      <div className="hero-background">
-        <img 
-          src={brandConfig[currentBrand].heroImage} 
-          alt={brandConfig[currentBrand].name}
-          className="hero-image-fullscreen"
-        />
-      </div>
-      <div className="hero-content-overlay">
-        <div className="hero-text-content">
-          <h1 className="hero-title-large">{brandConfig[currentBrand].name}</h1>
-          <p className="hero-subtitle-large">{brandConfig[currentBrand].tagline}</p>
-          <div className="hero-cta-buttons">
+  const renderHomePage = () => (
+    <div className="App" data-brand={currentBrand}>
+      {/* Full-Screen Hero Section */}
+      <section className="hero-section-fullscreen">
+        <div className="hero-background">
+          <img 
+            src={brandConfig[currentBrand].heroImage}
+            alt={`${brandConfig[currentBrand].name} Hero`}
+            className="hero-image-fullscreen"
+          />
+        </div>
+        <div className="hero-content-overlay">
+          <div className="hero-text-content">
+            <h1 className="hero-title-large">
+              {currentBrand === 'lifetime' && 'Lifetime Home Solutions'}
+              {currentBrand === 'aih' && 'Smart Home Technology'}
+              {currentBrand === 'closets' && 'Closet Concepts'}
+            </h1>
+            <p className="hero-subtitle-large">
+              {currentBrand === 'lifetime' && 'Trusted Solutions. Lifetime Results.'}
+              {currentBrand === 'aih' && 'Complete Smart Home Integration'}
+              {currentBrand === 'closets' && 'Organized Living. Elevated Style.'}
+            </p>
+            <div className="hero-cta-buttons">
+              <button 
+                className="cta-button primary large"
+                onClick={() => handlePageChange('contact')}
+              >
+                Get Free Estimate
+              </button>
+              <button 
+                className="cta-button secondary large"
+                onClick={() => handlePageChange('financing')}
+              >
+                View Financing
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="services-section">
+        <div className="container">
+          <h2 className="section-title">Our Services</h2>
+          <div className="services-grid-2x2">
+            {currentBrand === 'lifetime' && (
+              <>
+                <div className="service-card">
+                  <div className="service-image">
+                    <img src="/radon-testing-device.jpg" alt="Free Radon Testing" />
+                  </div>
+                  <div className="service-content">
+                    <h3>Free Radon Testing</h3>
+                    <p>Professional radon testing using EPA-approved equipment to ensure your family's safety.</p>
+                    <button 
+                      className="learn-more-btn"
+                      onClick={() => handlePageChange('radon-testing')}
+                    >
+                      Learn More
+                    </button>
+                  </div>
+                </div>
+
+                <div className="service-card">
+                  <div className="service-image">
+                    <img src="/radon-mitigation-system.jpg" alt="Radon Mitigation" />
+                  </div>
+                  <div className="service-content">
+                    <h3>Radon Mitigation</h3>
+                    <p>Expert radon mitigation systems to reduce dangerous radon levels in your home.</p>
+                    <button 
+                      className="learn-more-btn"
+                      onClick={() => handlePageChange('radon-mitigation')}
+                    >
+                      Learn More
+                    </button>
+                  </div>
+                </div>
+
+                <div className="service-card">
+                  <div className="service-image">
+                    <img src="/hvac-installation-professional.jpg" alt="HVAC Services" />
+                  </div>
+                  <div className="service-content">
+                    <h3>HVAC Services</h3>
+                    <p>Complete heating, ventilation, and air conditioning services for optimal home comfort.</p>
+                    <button 
+                      className="learn-more-btn"
+                      onClick={() => handlePageChange('hvac-services')}
+                    >
+                      Learn More
+                    </button>
+                  </div>
+                </div>
+
+                <div className="service-card">
+                  <div className="service-image">
+                    <img src="/duct-cleaning-professional.jpg" alt="Duct Cleaning & AeroSeal" />
+                  </div>
+                  <div className="service-content">
+                    <h3>Duct Cleaning & AeroSeal</h3>
+                    <p>Professional duct cleaning and sealing services to improve air quality and efficiency.</p>
+                    <button 
+                      className="learn-more-btn"
+                      onClick={() => handlePageChange('duct-cleaning')}
+                    >
+                      Learn More
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {currentBrand === 'aih' && (
+              <>
+                <div className="service-card">
+                  <div className="service-image">
+                    <img src="/america-smart-home-hero.jpg" alt="Smart Home Automation" />
+                  </div>
+                  <div className="service-content">
+                    <h3>Smart Home Automation</h3>
+                    <p>Complete smart home integration for lighting, climate, security, and entertainment.</p>
+                    <button 
+                      className="learn-more-btn"
+                      onClick={() => handlePageChange('smart-home')}
+                    >
+                      Learn More
+                    </button>
+                  </div>
+                </div>
+
+                <div className="service-card">
+                  <div className="service-image">
+                    <img src="/security-system-installation.jpg" alt="Security Systems" />
+                  </div>
+                  <div className="service-content">
+                    <h3>Security Systems</h3>
+                    <p>Advanced home security solutions with 24/7 monitoring and smart integration.</p>
+                    <button 
+                      className="learn-more-btn"
+                      onClick={() => handlePageChange('security-systems')}
+                    >
+                      Learn More
+                    </button>
+                  </div>
+                </div>
+
+                <div className="service-card">
+                  <div className="service-image">
+                    <img src="/home-office-organization.jpg" alt="Control4 Integration" />
+                  </div>
+                  <div className="service-content">
+                    <h3>Control4 Integration</h3>
+                    <p>Professional Control4 system installation and integration for seamless home automation.</p>
+                    <button 
+                      className="learn-more-btn"
+                      onClick={() => handlePageChange('control4')}
+                    >
+                      Learn More
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {currentBrand === 'closets' && (
+              <div className="service-card">
+                <div className="service-image">
+                  <img src="/organized-garage-storage.jpg" alt="Custom Closets" />
+                </div>
+                <div className="service-content">
+                  <h3>Custom Closets</h3>
+                  <p>Custom-designed closet solutions for organized living and elevated style.</p>
+                  <button 
+                    className="learn-more-btn"
+                    onClick={() => handlePageChange('custom-closets')}
+                  >
+                    Learn More
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+
+  const renderRadonTestingPage = () => (
+    <div className="radon-education-page">
+      <div className="container">
+        <div className="education-header">
+          <h1>Free Radon Testing</h1>
+          <p>Professional radon testing using EPA-approved equipment to ensure your family's safety</p>
+        </div>
+
+        <div className="education-content">
+          <div className="education-section">
+            <h2>What Is Radon Testing?</h2>
+            <p>Radon testing is the only way to determine if your home has dangerous levels of radon gas. Our certified professionals use EPA-approved testing equipment to measure radon levels in your home over a specific period.</p>
+            
+            <h3>Our Testing Process</h3>
+            <ul>
+              <li><strong>Free In-Home Assessment:</strong> We place professional-grade testing equipment in the lowest livable level of your home</li>
+              <li><strong>48-72 Hour Testing Period:</strong> Equipment continuously monitors radon levels</li>
+              <li><strong>Detailed Results:</strong> We provide comprehensive results with EPA risk level explanations</li>
+              <li><strong>Expert Recommendations:</strong> If mitigation is needed, we provide detailed solutions</li>
+            </ul>
+
+            <h3>Understanding Radon Levels</h3>
+            <div className="system-types">
+              <div className="system-type">
+                <h4>Below 2.0 pCi/L</h4>
+                <p>Low risk - No action typically needed</p>
+              </div>
+              <div className="system-type">
+                <h4>2.0 - 4.0 pCi/L</h4>
+                <p>Moderate risk - Consider mitigation</p>
+              </div>
+              <div className="system-type">
+                <h4>4.0+ pCi/L</h4>
+                <p>High risk - EPA recommends mitigation</p>
+              </div>
+              <div className="system-type">
+                <h4>10.0+ pCi/L</h4>
+                <p>Very high risk - Immediate mitigation recommended</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Why Test for Radon?</h2>
+            <p>Radon is a naturally occurring radioactive gas that forms when uranium breaks down in soil, rock, and water. It's invisible, odorless, and tasteless, which means the only way to detect it is through testing.</p>
+            
+            <p>According to the <a href="https://www.epa.gov/radon" target="_blank" rel="noopener noreferrer">EPA</a>, radon is the <strong>second leading cause of lung cancer in the United States</strong>, responsible for over 20,000 deaths each year.</p>
+
+            <h3>Common Entry Points</h3>
+            <ul>
+              <li>Cracks in concrete floors and walls</li>
+              <li>Gaps in suspended floors</li>
+              <li>Crawlspaces</li>
+              <li>Openings around pipes and utility lines</li>
+              <li>Floor drains and sump pumps</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>When Should You Test?</h2>
+            <div className="faq-item">
+              <h4>New Home Purchase</h4>
+              <p>Always test before buying a home. Many mortgage companies now require radon testing.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Every 2 Years</h4>
+              <p>EPA recommends testing every 2 years, even if previous tests were low.</p>
+            </div>
+            <div className="faq-item">
+              <h4>After Home Renovations</h4>
+              <p>Major renovations can change airflow patterns and affect radon levels.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Seasonal Changes</h4>
+              <p>Radon levels can vary by season due to changes in soil conditions and home ventilation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="education-cta">
+          <h2>Schedule Your Free Radon Test Today</h2>
+          <p>Don't wait to protect your family. Our certified professionals will test your home and provide expert recommendations.</p>
+          <div className="cta-buttons">
             <button 
               className="cta-button primary large"
-              onClick={() => handleNavigation('contact')}
+              onClick={() => handlePageChange('contact')}
+            >
+              Schedule Free Test
+            </button>
+            <button 
+              className="cta-button secondary large"
+              onClick={() => handlePageChange('radon-mitigation')}
+            >
+              Learn About Mitigation
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderRadonMitigationPage = () => (
+    <div className="radon-education-page">
+      <div className="container">
+        <div className="education-header">
+          <h1>Radon Mitigation Systems</h1>
+          <p>Expert radon mitigation systems to reduce dangerous radon levels in your home</p>
+        </div>
+
+        <div className="education-content">
+          <div className="education-section">
+            <h2>What Is Radon Mitigation?</h2>
+            <p>Radon mitigation is the process of reducing radon gas concentrations in your home to safe levels. Our certified professionals install proven, code-compliant systems that lower radon levels quickly and permanently.</p>
+            
+            <p><strong>Don't panic if you have high radon levels—radon mitigation is highly effective.</strong> Most systems reduce radon levels by 80-99%.</p>
+          </div>
+
+          <div className="education-section">
+            <h2>Mitigation System Types</h2>
+            <p>Depending on your home's construction and radon levels, we may recommend:</p>
+
+            <div className="system-types">
+              <div className="system-type">
+                <h4>Sub-Slab Depressurization</h4>
+                <p>Most common system. PVC pipe inserted through basement floor draws radon from beneath foundation and vents above roofline.</p>
+              </div>
+              <div className="system-type">
+                <h4>Sump Pit Depressurization</h4>
+                <p>Utilizes existing sump pit as suction point. Cost-effective if home already has sump pump.</p>
+              </div>
+              <div className="system-type">
+                <h4>Drain Tile Depressurization</h4>
+                <p>Uses existing drain tile systems under slab. Reduces need for drilling.</p>
+              </div>
+              <div className="system-type">
+                <h4>Crawl Space Encapsulation</h4>
+                <p>Heavy-duty plastic sheeting sealed over soil with fan system drawing radon from below membrane.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>The Radon Fans We Trust</h2>
+            <p>We exclusively install high-performance radon fans from <a href="https://festaradontech.com" target="_blank" rel="noopener noreferrer">Festa Radon Technologies</a>, a leading U.S. manufacturer known for durability, quiet operation, and maximum draw.</p>
+
+            <h3>Our Preferred Models:</h3>
+            <ul>
+              <li><strong>Maverick Eagle</strong> – Ideal for standard sub-slab systems, quiet and efficient</li>
+              <li><strong>Eagle Max</strong> – High-powered for homes with compacted subgrade or multiple suction points</li>
+              <li><strong>Legends</strong> – Sleek, high-performance fans for visible exterior installs</li>
+              <li><strong>Legends Max</strong> – Maximum air volume for challenging mitigation scenarios</li>
+            </ul>
+
+            <p>Each fan is selected based on your home's layout and mitigation needs, ensuring optimal airflow and long-term performance.</p>
+          </div>
+
+          <div className="education-section">
+            <h2>Installation Process</h2>
+            <div className="faq-item">
+              <h4>Day 1: System Design & Installation</h4>
+              <p>Our certified technicians install the complete system, typically in 4-6 hours. Minimal disruption to your home.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Day 2-3: System Operation</h4>
+              <p>System runs continuously to establish proper airflow patterns and begin reducing radon levels.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Day 4-7: Post-Installation Testing</h4>
+              <p>We conduct follow-up testing to verify system effectiveness and ensure radon levels are below EPA action level.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Ongoing: Lifetime Warranty</h4>
+              <p>All system components covered by our lifetime warranty for your peace of mind.</p>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>System Effectiveness</h2>
+            <p>Our mitigation systems are highly effective:</p>
+            <ul>
+              <li><strong>80-99% reduction</strong> in radon levels</li>
+              <li><strong>Immediate results</strong> - levels drop within 24-48 hours</li>
+              <li><strong>Long-term protection</strong> - systems operate 24/7 for continuous protection</li>
+              <li><strong>Energy efficient</strong> - fans use less electricity than a 60-watt light bulb</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="education-cta">
+          <h2>Ready to Protect Your Family?</h2>
+          <p>Our certified radon professionals will design and install the perfect mitigation system for your home.</p>
+          <div className="cta-buttons">
+            <button 
+              className="cta-button primary large"
+              onClick={() => handlePageChange('contact')}
             >
               Get Free Estimate
             </button>
             <button 
               className="cta-button secondary large"
-              onClick={() => handleNavigation('financing')}
+              onClick={() => handlePageChange('radon-testing')}
+            >
+              Schedule Testing First
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderHVACPage = () => (
+    <div className="radon-education-page">
+      <div className="container">
+        <div className="education-header">
+          <h1>HVAC Services</h1>
+          <p>Complete heating, ventilation, and air conditioning services for optimal home comfort</p>
+        </div>
+
+        <div className="education-content">
+          <div className="education-section">
+            <h2>Comprehensive HVAC Solutions</h2>
+            <p>Our certified HVAC technicians provide complete heating, ventilation, and air conditioning services to keep your home comfortable year-round. From installation to maintenance, we ensure optimal performance and energy efficiency.</p>
+
+            <h3>Our HVAC Services Include:</h3>
+            <ul>
+              <li><strong>System Installation:</strong> New HVAC system design and installation</li>
+              <li><strong>System Replacement:</strong> Upgrading old, inefficient systems</li>
+              <li><strong>Preventive Maintenance:</strong> Regular tune-ups to extend system life</li>
+              <li><strong>Emergency Repairs:</strong> 24/7 service for urgent HVAC issues</li>
+              <li><strong>Energy Efficiency Upgrades:</strong> Improving system performance and reducing costs</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>Heating Services</h2>
+            <div className="system-types">
+              <div className="system-type">
+                <h4>Furnace Installation & Repair</h4>
+                <p>High-efficiency gas and electric furnaces for reliable winter heating</p>
+              </div>
+              <div className="system-type">
+                <h4>Heat Pump Systems</h4>
+                <p>Energy-efficient heating and cooling in one system</p>
+              </div>
+              <div className="system-type">
+                <h4>Boiler Services</h4>
+                <p>Installation, repair, and maintenance of boiler heating systems</p>
+              </div>
+              <div className="system-type">
+                <h4>Radiant Heating</h4>
+                <p>In-floor heating systems for ultimate comfort</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Cooling Services</h2>
+            <div className="system-types">
+              <div className="system-type">
+                <h4>Central Air Conditioning</h4>
+                <p>Whole-home cooling systems for consistent comfort</p>
+              </div>
+              <div className="system-type">
+                <h4>Ductless Mini-Splits</h4>
+                <p>Zone-controlled cooling for specific areas</p>
+              </div>
+              <div className="system-type">
+                <h4>Air Conditioning Repair</h4>
+                <p>Fast, reliable AC repair and maintenance</p>
+              </div>
+              <div className="system-type">
+                <h4>System Upgrades</h4>
+                <p>Improving efficiency with modern technology</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Ventilation & Air Quality</h2>
+            <p>Proper ventilation is crucial for healthy indoor air quality and system efficiency.</p>
+            
+            <h3>Our Ventilation Services:</h3>
+            <ul>
+              <li><strong>Whole-House Ventilation:</strong> Balanced air exchange systems</li>
+              <li><strong>Exhaust Fan Installation:</strong> Bathroom and kitchen ventilation</li>
+              <li><strong>Air Purification Systems:</strong> HEPA filtration and UV sterilization</li>
+              <li><strong>Humidity Control:</strong> Humidifiers and dehumidifiers</li>
+              <li><strong>Ductwork Design:</strong> Proper airflow throughout your home</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>Energy Efficiency Benefits</h2>
+            <div className="faq-item">
+              <h4>Lower Energy Bills</h4>
+              <p>Modern HVAC systems can reduce energy costs by 20-40% compared to older systems.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Improved Comfort</h4>
+              <p>Even temperatures throughout your home with proper system sizing and installation.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Better Air Quality</h4>
+              <p>Advanced filtration and ventilation improve indoor air quality for your family's health.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Increased Home Value</h4>
+              <p>New HVAC systems add significant value to your home and appeal to buyers.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="education-cta">
+          <h2>Ready to Upgrade Your Home Comfort?</h2>
+          <p>Our HVAC experts will design the perfect system for your home's unique needs and budget.</p>
+          <div className="cta-buttons">
+            <button 
+              className="cta-button primary large"
+              onClick={() => handlePageChange('contact')}
+            >
+              Get Free Estimate
+            </button>
+            <button 
+              className="cta-button secondary large"
+              onClick={() => handlePageChange('financing')}
+            >
+              View Financing Options
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderDuctCleaningPage = () => (
+    <div className="radon-education-page">
+      <div className="container">
+        <div className="education-header">
+          <h1>Duct Cleaning & AeroSeal</h1>
+          <p>Professional duct cleaning and sealing services to improve air quality and efficiency</p>
+        </div>
+
+        <div className="education-content">
+          <div className="education-section">
+            <h2>Professional Duct Cleaning</h2>
+            <p>Over time, your home's ductwork accumulates dust, debris, allergens, and even mold. Our professional duct cleaning service removes these contaminants, improving your indoor air quality and HVAC system efficiency.</p>
+
+            <h3>Our Duct Cleaning Process:</h3>
+            <ul>
+              <li><strong>Complete System Inspection:</strong> We examine your entire ductwork system</li>
+              <li><strong>Powerful Vacuum Extraction:</strong> Industrial-grade equipment removes all debris</li>
+              <li><strong>Brush and Agitation Cleaning:</strong> Thorough cleaning of all duct surfaces</li>
+              <li><strong>Sanitization Treatment:</strong> Optional antimicrobial treatment for enhanced cleanliness</li>
+              <li><strong>System Testing:</strong> Verification of improved airflow and efficiency</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>AeroSeal Duct Sealing Technology</h2>
+            <p>AeroSeal is revolutionary technology that seals duct leaks from the inside out. This patented process can seal up to 90% of duct leaks, dramatically improving your HVAC system's efficiency.</p>
+
+            <div className="system-types">
+              <div className="system-type">
+                <h4>How AeroSeal Works</h4>
+                <p>Polymer particles are blown through your ducts, automatically sealing leaks as small as a dime and as large as a quarter</p>
+              </div>
+              <div className="system-type">
+                <h4>Real-Time Monitoring</h4>
+                <p>Computer-controlled process shows exactly how much leakage is sealed during treatment</p>
+              </div>
+              <div className="system-type">
+                <h4>Guaranteed Results</h4>
+                <p>10-year warranty on all sealed leaks with measurable before-and-after results</p>
+              </div>
+              <div className="system-type">
+                <h4>Safe & Non-Toxic</h4>
+                <p>UL tested and approved materials that are safe for your family and pets</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Benefits of Duct Cleaning & Sealing</h2>
+            <div className="faq-item">
+              <h4>Improved Air Quality</h4>
+              <p>Removes allergens, dust, and contaminants that circulate through your home's air.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Energy Savings</h4>
+              <p>Sealed ducts can reduce energy costs by 20-30% by eliminating conditioned air loss.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Better HVAC Performance</h4>
+              <p>Clean, sealed ducts allow your system to operate more efficiently and last longer.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Enhanced Comfort</h4>
+              <p>Even temperatures throughout your home with proper airflow distribution.</p>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>When Do You Need Duct Services?</h2>
+            <p>Consider duct cleaning and sealing if you notice:</p>
+            <ul>
+              <li>Excessive dust accumulation in your home</li>
+              <li>Uneven heating or cooling between rooms</li>
+              <li>Higher than normal energy bills</li>
+              <li>Musty or stale odors from vents</li>
+              <li>Visible mold or debris in ductwork</li>
+              <li>Recent home renovation or construction</li>
+              <li>Family members with allergies or respiratory issues</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>AeroSeal Process</h2>
+            <div className="faq-item">
+              <h4>Step 1: Pre-Sealing Measurement</h4>
+              <p>We measure the exact amount of duct leakage in your system using specialized equipment.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Step 2: System Preparation</h4>
+              <p>Vents are temporarily blocked and the AeroSeal equipment is connected to your ductwork.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Step 3: Sealing Process</h4>
+              <p>Polymer particles are injected into the ducts, automatically finding and sealing leaks.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Step 4: Post-Sealing Verification</h4>
+              <p>Final measurement confirms the amount of leakage sealed and system improvement.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="education-cta">
+          <h2>Improve Your Home's Air Quality Today</h2>
+          <p>Our certified technicians will clean and seal your ducts for better air quality and energy efficiency.</p>
+          <div className="cta-buttons">
+            <button 
+              className="cta-button primary large"
+              onClick={() => handlePageChange('contact')}
+            >
+              Schedule Service
+            </button>
+            <button 
+              className="cta-button secondary large"
+              onClick={() => handlePageChange('financing')}
             >
               View Financing
             </button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 
-  // Services Grid Component
-  const ServicesGrid = () => {
-    const getServiceImage = (service) => {
-      const serviceImageMap = {
-        'Free Radon Testing': '/radon-testing-device.jpg',
-        'Radon Mitigation': '/radon-mitigation-system.jpg',
-        'HVAC Services': '/organized-garage-storage.jpg',
-        'Duct Cleaning & AeroSeal': '/aeroseal-logo.png',
-        'Concrete Coatings': '/home-office-organization.jpg',
-        'Smart Home Automation': '/america-smart-home-hero.jpg',
-        'Security Systems': '/organized-garage-storage.jpg',
-        'Control4 Integration': '/home-office-organization.jpg',
-        'Custom Closets': '/closets-luxury-hero.jpg',
-        'Garage Organization': '/organized-garage-storage.jpg',
-        'Home Office Solutions': '/home-office-organization.jpg'
-      };
-      return serviceImageMap[service] || '/lifetime-hero-house.jpg';
-    };
+  const renderConcreteCoatingsPage = () => (
+    <div className="radon-education-page">
+      <div className="container">
+        <div className="education-header">
+          <h1>Concrete Coatings</h1>
+          <p>Durable epoxy coatings and better solutions for garage floors, basements, and more</p>
+        </div>
 
-    const getServiceDescription = (service) => {
-      const descriptions = {
-        'Free Radon Testing': 'Professional radon testing using EPA-approved equipment to ensure your family\'s safety.',
-        'Radon Mitigation': 'Expert radon mitigation systems to reduce dangerous radon levels in your home.',
-        'HVAC Services': 'Complete heating, ventilation, and air conditioning services for optimal home comfort.',
-        'Duct Cleaning & AeroSeal': 'Professional duct cleaning and sealing services to improve air quality and efficiency.',
-        'Concrete Coatings': 'Durable epoxy coatings and better solutions for garage floors, basements, and more.',
-        'Smart Home Automation': 'Complete smart home integration for lighting, climate, security, and entertainment.',
-        'Security Systems': 'Advanced home security solutions with 24/7 monitoring and smart integration.',
-        'Control4 Integration': 'Professional Control4 system installation and integration services.',
-        'Custom Closets': 'Custom-designed closet solutions for maximum organization and style.',
-        'Garage Organization': 'Professional garage organization systems for optimal storage and functionality.',
-        'Home Office Solutions': 'Custom home office organization and storage solutions for productivity.'
-      };
-      return descriptions[service] || 'Professional service tailored to your needs.';
-    };
+        <div className="education-content">
+          <div className="education-section">
+            <h2>Professional Concrete Coating Solutions</h2>
+            <p>Transform your concrete surfaces with our professional-grade coating systems. Our durable epoxy and polyurea coatings provide long-lasting protection and a beautiful finish for garage floors, basements, patios, and commercial spaces.</p>
 
-    return (
-      <section className="services-section">
-        <div className="container">
-          <h2 className="section-title">Our Services</h2>
-          <div className="services-grid-2x2">
-            {brandConfig[currentBrand].services.map((service, index) => (
-              <div key={index} className="service-card">
-                <div className="service-image">
-                  <img src={getServiceImage(service)} alt={service} />
-                </div>
-                <div className="service-content">
-                  <h3>{service}</h3>
-                  <p>{getServiceDescription(service)}</p>
-                  <button 
-                    className="learn-more-btn"
-                    onClick={() => handleNavigation(service.toLowerCase().replace(/\s+/g, '-'))}
-                  >
-                    Learn More
-                  </button>
-                </div>
+            <h3>Our Coating Services Include:</h3>
+            <ul>
+              <li><strong>Garage Floor Coatings:</strong> Slip-resistant, chemical-resistant epoxy systems</li>
+              <li><strong>Basement Floor Coatings:</strong> Moisture-resistant solutions for below-grade spaces</li>
+              <li><strong>Commercial Coatings:</strong> Heavy-duty systems for warehouses and retail spaces</li>
+              <li><strong>Decorative Finishes:</strong> Custom colors and patterns for aesthetic appeal</li>
+              <li><strong>Repair & Restoration:</strong> Fixing damaged concrete before coating application</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>Coating System Types</h2>
+            <div className="system-types">
+              <div className="system-type">
+                <h4>100% Solids Epoxy</h4>
+                <p>Premium coating with maximum durability and chemical resistance for heavy-use areas</p>
               </div>
-            ))}
+              <div className="system-type">
+                <h4>Polyurea Coatings</h4>
+                <p>Fast-curing, flexible coatings that resist UV damage and temperature extremes</p>
+              </div>
+              <div className="system-type">
+                <h4>Metallic Epoxy</h4>
+                <p>Decorative coatings with stunning metallic effects for showroom-quality floors</p>
+              </div>
+              <div className="system-type">
+                <h4>Flake Systems</h4>
+                <p>Broadcast flake coatings for enhanced slip resistance and visual appeal</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Professional Installation Process</h2>
+            <div className="faq-item">
+              <h4>Day 1: Surface Preparation</h4>
+              <p>Diamond grinding and shot blasting to create the perfect surface profile for coating adhesion.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Day 1-2: Crack Repair & Priming</h4>
+              <p>Fill cracks and imperfections, then apply primer coat for optimal adhesion.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Day 2: Base Coat Application</h4>
+              <p>Apply the main coating system using professional spray or roller techniques.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Day 3: Top Coat & Finishing</h4>
+              <p>Apply protective top coat and any decorative elements for the final finish.</p>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Benefits of Professional Coatings</h2>
+            <div className="faq-item">
+              <h4>Durability</h4>
+              <p>Professional coatings last 15-20 years with proper maintenance, far longer than DIY options.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Chemical Resistance</h4>
+              <p>Resistant to oil, gasoline, salt, and other chemicals that can damage bare concrete.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Easy Maintenance</h4>
+              <p>Smooth, non-porous surface is easy to clean and maintain with simple mopping.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Increased Property Value</h4>
+              <p>Professional coatings significantly increase the value and appeal of your property.</p>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Why Choose Professional Installation?</h2>
+            <p>While DIY coating kits are available, professional installation ensures:</p>
+            <ul>
+              <li><strong>Proper Surface Preparation:</strong> Critical for long-lasting adhesion</li>
+              <li><strong>Quality Materials:</strong> Commercial-grade coatings not available to consumers</li>
+              <li><strong>Expert Application:</strong> Proper mixing, timing, and technique</li>
+              <li><strong>Warranty Protection:</strong> Comprehensive warranty on materials and labor</li>
+              <li><strong>Custom Solutions:</strong> Tailored systems for your specific needs</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>Maintenance & Care</h2>
+            <p>Keep your coated floors looking great with simple maintenance:</p>
+            <ul>
+              <li>Regular sweeping or dust mopping</li>
+              <li>Occasional damp mopping with mild detergent</li>
+              <li>Immediate cleanup of spills</li>
+              <li>Use furniture pads to prevent scratching</li>
+              <li>Annual inspection and touch-up if needed</li>
+            </ul>
           </div>
         </div>
-      </section>
-    );
-  };
 
-  // Contact Form Component
-  const ContactForm = () => (
+        <div className="education-cta">
+          <h2>Transform Your Concrete Surfaces</h2>
+          <p>Our coating experts will design the perfect system for your space and usage requirements.</p>
+          <div className="cta-buttons">
+            <button 
+              className="cta-button primary large"
+              onClick={() => handlePageChange('contact')}
+            >
+              Get Free Estimate
+            </button>
+            <button 
+              className="cta-button secondary large"
+              onClick={() => handlePageChange('financing')}
+            >
+              Financing Available
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderSmartHomePage = () => (
+    <div className="radon-education-page">
+      <div className="container">
+        <div className="education-header">
+          <h1>Smart Home Automation</h1>
+          <p>Complete smart home integration for lighting, climate, security, and entertainment</p>
+        </div>
+
+        <div className="education-content">
+          <div className="education-section">
+            <h2>Complete Smart Home Integration</h2>
+            <p>Transform your home into an intelligent, connected environment with our comprehensive smart home automation solutions. From lighting and climate control to security and entertainment, we create seamless integration that enhances your lifestyle.</p>
+
+            <h3>Our Smart Home Services:</h3>
+            <ul>
+              <li><strong>Lighting Control:</strong> Automated lighting scenes and scheduling</li>
+              <li><strong>Climate Management:</strong> Smart thermostats and HVAC integration</li>
+              <li><strong>Security Integration:</strong> Cameras, alarms, and access control</li>
+              <li><strong>Entertainment Systems:</strong> Multi-room audio and video distribution</li>
+              <li><strong>Voice Control:</strong> Amazon Alexa, Google Assistant, and Apple HomeKit</li>
+              <li><strong>Mobile App Control:</strong> Complete home control from anywhere</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>Smart Home Technologies</h2>
+            <div className="system-types">
+              <div className="system-type">
+                <h4>Control4 Systems</h4>
+                <p>Professional-grade automation platform for seamless device integration and control</p>
+              </div>
+              <div className="system-type">
+                <h4>Lutron Lighting</h4>
+                <p>Premium lighting control with dimming, scheduling, and scene management</p>
+              </div>
+              <div className="system-type">
+                <h4>Nest & Ecobee</h4>
+                <p>Smart thermostats with learning capabilities and energy optimization</p>
+              </div>
+              <div className="system-type">
+                <h4>Sonos Audio</h4>
+                <p>Wireless multi-room audio systems for whole-home entertainment</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Smart Home Benefits</h2>
+            <div className="faq-item">
+              <h4>Enhanced Convenience</h4>
+              <p>Control all your home systems from a single app or voice command for ultimate convenience.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Energy Savings</h4>
+              <p>Automated scheduling and optimization can reduce energy costs by 10-25%.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Increased Security</h4>
+              <p>Integrated security systems with remote monitoring and automated responses.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Home Value</h4>
+              <p>Smart home features significantly increase property value and buyer appeal.</p>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Popular Smart Home Features</h2>
+            <p>Most requested smart home automation features:</p>
+            <ul>
+              <li><strong>Automated Lighting:</strong> Lights that adjust based on time, occupancy, and natural light</li>
+              <li><strong>Smart Locks:</strong> Keyless entry with remote access and guest codes</li>
+              <li><strong>Video Doorbells:</strong> See and speak to visitors from anywhere</li>
+              <li><strong>Smart Garage Doors:</strong> Remote control and monitoring of garage access</li>
+              <li><strong>Automated Blinds:</strong> Motorized window treatments with scheduling</li>
+              <li><strong>Whole-Home Audio:</strong> Music throughout your home with zone control</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>Installation Process</h2>
+            <div className="faq-item">
+              <h4>Consultation & Design</h4>
+              <p>We assess your needs and design a custom smart home system for your lifestyle.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Infrastructure Installation</h4>
+              <p>Install necessary wiring, networking, and control equipment throughout your home.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Device Integration</h4>
+              <p>Connect and configure all smart devices for seamless operation and control.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Training & Support</h4>
+              <p>Comprehensive training on system operation plus ongoing support and updates.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="education-cta">
+          <h2>Ready to Automate Your Home?</h2>
+          <p>Our smart home experts will design and install the perfect automation system for your needs.</p>
+          <div className="cta-buttons">
+            <button 
+              className="cta-button primary large"
+              onClick={() => handlePageChange('contact')}
+            >
+              Schedule Consultation
+            </button>
+            <button 
+              className="cta-button secondary large"
+              onClick={() => handlePageChange('financing')}
+            >
+              View Financing
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderSecuritySystemsPage = () => (
+    <div className="radon-education-page">
+      <div className="container">
+        <div className="education-header">
+          <h1>Security Systems</h1>
+          <p>Advanced home security solutions with 24/7 monitoring and smart integration</p>
+        </div>
+
+        <div className="education-content">
+          <div className="education-section">
+            <h2>Comprehensive Home Security</h2>
+            <p>Protect your family and property with our advanced security systems. We design and install complete security solutions that integrate seamlessly with your smart home automation for maximum protection and convenience.</p>
+
+            <h3>Our Security Services:</h3>
+            <ul>
+              <li><strong>Burglar Alarm Systems:</strong> Door/window sensors and motion detectors</li>
+              <li><strong>Video Surveillance:</strong> Indoor/outdoor cameras with remote viewing</li>
+              <li><strong>Access Control:</strong> Smart locks and keypad entry systems</li>
+              <li><strong>24/7 Monitoring:</strong> Professional monitoring services</li>
+              <li><strong>Mobile Alerts:</strong> Instant notifications to your smartphone</li>
+              <li><strong>Smart Integration:</strong> Works with your home automation system</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>Security System Components</h2>
+            <div className="system-types">
+              <div className="system-type">
+                <h4>Control Panels</h4>
+                <p>Central hub with touchscreen interface and wireless communication capabilities</p>
+              </div>
+              <div className="system-type">
+                <h4>Door/Window Sensors</h4>
+                <p>Wireless sensors that detect unauthorized entry through doors and windows</p>
+              </div>
+              <div className="system-type">
+                <h4>Motion Detectors</h4>
+                <p>Advanced PIR sensors with pet immunity and adjustable sensitivity</p>
+              </div>
+              <div className="system-type">
+                <h4>Security Cameras</h4>
+                <p>HD cameras with night vision, motion detection, and cloud storage</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Advanced Security Features</h2>
+            <div className="faq-item">
+              <h4>Smart Home Integration</h4>
+              <p>Security system works with lighting, locks, and automation for comprehensive protection.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Mobile App Control</h4>
+              <p>Arm/disarm system, view cameras, and receive alerts from anywhere in the world.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Professional Monitoring</h4>
+              <p>24/7 monitoring center responds to alarms and contacts emergency services when needed.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Video Verification</h4>
+              <p>Cameras provide visual confirmation of alarms to reduce false dispatches.</p>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Security System Benefits</h2>
+            <p>Professional security systems provide:</p>
+            <ul>
+              <li><strong>Deterrent Effect:</strong> Visible security systems deter potential intruders</li>
+              <li><strong>Rapid Response:</strong> Immediate alerts and emergency service dispatch</li>
+              <li><strong>Insurance Discounts:</strong> Many insurers offer discounts for monitored systems</li>
+              <li><strong>Remote Monitoring:</strong> Check on your home while traveling or at work</li>
+              <li><strong>Evidence Collection:</strong> Video footage for insurance claims or police reports</li>
+              <li><strong>Peace of Mind:</strong> Know your family and property are protected 24/7</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>Installation & Setup</h2>
+            <div className="faq-item">
+              <h4>Security Assessment</h4>
+              <p>We evaluate your property to identify vulnerabilities and design optimal sensor placement.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Professional Installation</h4>
+              <p>Certified technicians install all equipment with minimal disruption to your home.</p>
+            </div>
+            <div className="faq-item">
+              <h4>System Programming</h4>
+              <p>Configure all settings, user codes, and monitoring preferences for your family.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Training & Support</h4>
+              <p>Complete training on system operation plus ongoing technical support.</p>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Monitoring Options</h2>
+            <p>Choose the monitoring level that's right for your needs:</p>
+            <ul>
+              <li><strong>Self-Monitoring:</strong> Receive alerts directly to your smartphone</li>
+              <li><strong>Professional Monitoring:</strong> 24/7 monitoring center with emergency dispatch</li>
+              <li><strong>Hybrid Monitoring:</strong> Combination of self and professional monitoring</li>
+              <li><strong>Video Monitoring:</strong> Live video verification of all alarm events</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="education-cta">
+          <h2>Secure Your Home Today</h2>
+          <p>Our security experts will design a comprehensive protection system tailored to your property.</p>
+          <div className="cta-buttons">
+            <button 
+              className="cta-button primary large"
+              onClick={() => handlePageChange('contact')}
+            >
+              Get Security Assessment
+            </button>
+            <button 
+              className="cta-button secondary large"
+              onClick={() => handlePageChange('financing')}
+            >
+              Financing Available
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderControl4Page = () => (
+    <div className="radon-education-page">
+      <div className="container">
+        <div className="education-header">
+          <h1>Control4 Integration</h1>
+          <p>Professional Control4 system installation and integration for seamless home automation</p>
+        </div>
+
+        <div className="education-content">
+          <div className="education-section">
+            <h2>Professional Control4 Systems</h2>
+            <p>Control4 is the leading professional home automation platform, providing seamless integration of lighting, audio, video, climate, security, and more. As certified Control4 dealers, we design and install systems that transform your house into an intelligent home.</p>
+
+            <h3>Control4 Capabilities:</h3>
+            <ul>
+              <li><strong>Unified Control:</strong> Single app controls all connected devices</li>
+              <li><strong>Custom Programming:</strong> Personalized automation scenes and schedules</li>
+              <li><strong>Voice Control:</strong> Works with Alexa, Google Assistant, and more</li>
+              <li><strong>Remote Access:</strong> Control your home from anywhere in the world</li>
+              <li><strong>Scalable Design:</strong> Start small and expand over time</li>
+              <li><strong>Professional Support:</strong> Ongoing updates and technical support</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>Control4 System Components</h2>
+            <div className="system-types">
+              <div className="system-type">
+                <h4>Control4 Controller</h4>
+                <p>Central processor that manages all connected devices and automation programming</p>
+              </div>
+              <div className="system-type">
+                <h4>Touch Panels</h4>
+                <p>Wall-mounted and portable touchscreens for intuitive system control</p>
+              </div>
+              <div className="system-type">
+                <h4>Keypads & Switches</h4>
+                <p>Custom-engraved lighting and scene control throughout your home</p>
+              </div>
+              <div className="system-type">
+                <h4>Audio/Video Matrix</h4>
+                <p>Distribute music and video to any room with zone-specific control</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Control4 Integration Capabilities</h2>
+            <div className="faq-item">
+              <h4>Lighting Control</h4>
+              <p>Dimming, color changing, and automated lighting scenes throughout your home.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Climate Management</h4>
+              <p>Intelligent HVAC control with scheduling and energy optimization.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Entertainment Systems</h4>
+              <p>Multi-room audio/video with streaming services and local media integration.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Security Integration</h4>
+              <p>Cameras, alarms, and access control integrated into your automation system.</p>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Popular Control4 Scenes</h2>
+            <p>Pre-programmed automation scenes for common activities:</p>
+            <ul>
+              <li><strong>"Good Morning":</strong> Gradually raise lights, start coffee, display weather</li>
+              <li><strong>"Movie Time":</strong> Dim lights, lower screen, start audio system</li>
+              <li><strong>"Dinner Party":</strong> Set dining room lighting, start background music</li>
+              <li><strong>"Good Night":</strong> Turn off all lights, lock doors, arm security system</li>
+              <li><strong>"Away Mode":</strong> Simulate occupancy with random lighting and music</li>
+              <li><strong>"Welcome Home":</strong> Disarm security, turn on entry lights, adjust temperature</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>Control4 vs. DIY Solutions</h2>
+            <div className="faq-item">
+              <h4>Professional Programming</h4>
+              <p>Custom automation logic programmed by certified professionals for reliable operation.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Robust Hardware</h4>
+              <p>Commercial-grade components designed for 24/7 operation and long-term reliability.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Seamless Integration</h4>
+              <p>Works with over 13,500 third-party devices for comprehensive home control.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Ongoing Support</h4>
+              <p>Professional support, updates, and system modifications as your needs change.</p>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Control4 Installation Process</h2>
+            <div className="faq-item">
+              <h4>Design Consultation</h4>
+              <p>We assess your needs and design a custom Control4 system for your lifestyle and budget.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Infrastructure Planning</h4>
+              <p>Plan wiring, networking, and equipment placement for optimal performance.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Professional Installation</h4>
+              <p>Certified technicians install and configure all system components.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Programming & Training</h4>
+              <p>Custom programming of automation scenes plus comprehensive user training.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="education-cta">
+          <h2>Experience Professional Home Automation</h2>
+          <p>Our Control4 experts will design the perfect automation system for your home and lifestyle.</p>
+          <div className="cta-buttons">
+            <button 
+              className="cta-button primary large"
+              onClick={() => handlePageChange('contact')}
+            >
+              Schedule Demo
+            </button>
+            <button 
+              className="cta-button secondary large"
+              onClick={() => handlePageChange('financing')}
+            >
+              View Financing
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderCustomClosetsPage = () => (
+    <div className="radon-education-page">
+      <div className="container">
+        <div className="education-header">
+          <h1>Custom Closets</h1>
+          <p>Custom-designed closet solutions for organized living and elevated style</p>
+        </div>
+
+        <div className="education-content">
+          <div className="education-section">
+            <h2>Custom Closet Design & Installation</h2>
+            <p>Transform your storage spaces with our custom closet solutions. From walk-in master closets to reach-in bedroom closets, we design and install organizational systems that maximize space and enhance your daily routine.</p>
+
+            <h3>Our Closet Services:</h3>
+            <ul>
+              <li><strong>Walk-In Closets:</strong> Luxury master closet designs with islands and seating</li>
+              <li><strong>Reach-In Closets:</strong> Maximize space in standard bedroom closets</li>
+              <li><strong>Pantry Organization:</strong> Custom pantry systems for kitchen storage</li>
+              <li><strong>Mudroom Solutions:</strong> Entry organization with lockers and benches</li>
+              <li><strong>Home Office Storage:</strong> Built-in desks and filing systems</li>
+              <li><strong>Garage Organization:</strong> Wall systems and overhead storage</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>Closet System Features</h2>
+            <div className="system-types">
+              <div className="system-type">
+                <h4>Adjustable Shelving</h4>
+                <p>Flexible shelving systems that adapt to your changing storage needs</p>
+              </div>
+              <div className="system-type">
+                <h4>Custom Drawers</h4>
+                <p>Soft-close drawers with dividers for jewelry, accessories, and small items</p>
+              </div>
+              <div className="system-type">
+                <h4>Hanging Systems</h4>
+                <p>Double-hang rods, pull-down rods, and specialty hangers for all clothing types</p>
+              </div>
+              <div className="system-type">
+                <h4>Specialty Storage</h4>
+                <p>Shoe racks, tie racks, belt hooks, and custom accessories for specific needs</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Design Process</h2>
+            <div className="faq-item">
+              <h4>In-Home Consultation</h4>
+              <p>Our designers visit your home to assess your space and understand your storage needs.</p>
+            </div>
+            <div className="faq-item">
+              <h4>3D Design Rendering</h4>
+              <p>See your custom closet design in detailed 3D renderings before installation.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Material Selection</h4>
+              <p>Choose from premium finishes, hardware, and accessories to match your style.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Professional Installation</h4>
+              <p>Expert installation with minimal disruption to your daily routine.</p>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Benefits of Custom Closets</h2>
+            <div className="faq-item">
+              <h4>Maximized Space</h4>
+              <p>Custom designs utilize every inch of available space for optimal storage capacity.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Improved Organization</h4>
+              <p>Designated spaces for every item make it easy to stay organized and find what you need.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Enhanced Home Value</h4>
+              <p>Custom closets significantly increase home value and appeal to potential buyers.</p>
+            </div>
+            <div className="faq-item">
+              <h4>Personal Style</h4>
+              <p>Choose finishes and accessories that reflect your personal taste and home décor.</p>
+            </div>
+          </div>
+
+          <div className="education-section">
+            <h2>Popular Closet Features</h2>
+            <p>Most requested custom closet features:</p>
+            <ul>
+              <li><strong>Center Islands:</strong> Additional storage and surface space in walk-in closets</li>
+              <li><strong>LED Lighting:</strong> Bright, energy-efficient lighting throughout the closet</li>
+              <li><strong>Full-Length Mirrors:</strong> Built-in mirrors for dressing and outfit planning</li>
+              <li><strong>Seating Areas:</strong> Built-in benches for putting on shoes and accessories</li>
+              <li><strong>Jewelry Drawers:</strong> Felt-lined drawers with compartments for jewelry organization</li>
+              <li><strong>Shoe Storage:</strong> Angled shelves and cubbies for easy shoe access and display</li>
+            </ul>
+          </div>
+
+          <div className="education-section">
+            <h2>Material Options</h2>
+            <p>Choose from premium materials and finishes:</p>
+            <ul>
+              <li><strong>Melamine:</strong> Durable, easy-to-clean surfaces in multiple colors</li>
+              <li><strong>Wood Veneer:</strong> Natural wood grain for a luxury appearance</li>
+              <li><strong>Thermofoil:</strong> Smooth, painted finish that resists moisture and scratches</li>
+              <li><strong>Hardware:</strong> Soft-close hinges, premium handles, and decorative accessories</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="education-cta">
+          <h2>Design Your Dream Closet</h2>
+          <p>Our closet design experts will create the perfect organizational solution for your space and lifestyle.</p>
+          <div className="cta-buttons">
+            <button 
+              className="cta-button primary large"
+              onClick={() => handlePageChange('contact')}
+            >
+              Schedule Design Consultation
+            </button>
+            <button 
+              className="cta-button secondary large"
+              onClick={() => handlePageChange('financing')}
+            >
+              Financing Available
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderContactPage = () => (
     <div className="contact-page">
       <div className="container">
         <div className="contact-header">
           <h1>Contact Us</h1>
-          <p>Ready to get started? Contact us today for your free consultation!</p>
+          <p>Ready to get started? Contact us today for your free estimate.</p>
         </div>
-        
+
         <div className="contact-content">
           <div className="contact-info-section">
+            <h2>Get In Touch</h2>
             <div className="contact-details-line">
-              <span className="contact-item">
+              <div className="contact-item">
                 <strong>Phone:</strong> (262) 226-2729
-              </span>
-              <span className="contact-item">
-                <strong>Hours:</strong> Mon-Fri 8AM-6PM
-              </span>
-              <span className="contact-item">
-                <strong>Address:</strong> 1234 Main St, Brookfield, WI 53045
-              </span>
+              </div>
+              <div className="contact-item">
+                <strong>Hours:</strong> Monday - Friday: 8:00 AM - 6:00 PM
+              </div>
+              <div className="contact-item">
+                <strong>Address:</strong> Brookfield, WI 53045
+              </div>
             </div>
-            
+
             <div className="google-map-container">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.1234567890123!2d-88.1234567!3d43.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDA3JzI0LjQiTiA4OMKwMDcnMjQuNCJX!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.5!2d-88.1065!3d43.0642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDAzJzUxLjEiTiA4OMKwMDYnMjMuNCJX!5e0!3m2!1sen!2sus!4v1234567890"
                 width="100%"
                 height="300"
-                style={{ border: 0, borderRadius: '8px' }}
+                style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -304,11 +1516,12 @@ function App() {
               ></iframe>
             </div>
           </div>
-          
+
           <div className="contact-form-section">
+            <h2>Request Free Estimate</h2>
             <form className="contact-form" netlify="true" name="contact" method="POST">
               <input type="hidden" name="form-name" value="contact" />
-              <input type="hidden" name="lead_source" value="Internet" />
+              <input type="hidden" name="lead_source" value="internet" />
               
               <div className="form-row">
                 <div className="form-group">
@@ -320,22 +1533,22 @@ function App() {
                   <input type="text" id="last_name" name="last_name" required />
                 </div>
               </div>
-              
+
               <div className="form-group">
                 <label htmlFor="email">Email *</label>
                 <input type="email" id="email" name="email" required />
               </div>
-              
+
               <div className="form-group">
                 <label htmlFor="phone">Phone Number *</label>
                 <input type="tel" id="phone" name="phone" required />
               </div>
-              
+
               <div className="form-group">
-                <label htmlFor="address">Address</label>
-                <input type="text" id="address" name="address" />
+                <label htmlFor="address">Address *</label>
+                <input type="text" id="address" name="address" required />
               </div>
-              
+
               <div className="form-group">
                 <label htmlFor="service_interest">Service of Interest *</label>
                 <select id="service_interest" name="service_interest" required>
@@ -343,7 +1556,6 @@ function App() {
                   <option value="Radon Testing">Radon Testing</option>
                   <option value="Radon Mitigation">Radon Mitigation</option>
                   <option value="Custom Closets">Custom Closets</option>
-                  <option value="Window Blinds">Window Blinds</option>
                   <option value="Smart Home Technology (AIH)">Smart Home Technology (AIH)</option>
                   <option value="Floor Coatings (EPOXY)">Floor Coatings (EPOXY)</option>
                   <option value="Home Security">Home Security</option>
@@ -352,12 +1564,7 @@ function App() {
                   <option value="Multiple (Concierge Services)">Multiple (Concierge Services)</option>
                 </select>
               </div>
-              
-              <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea id="message" name="message" rows="4"></textarea>
-              </div>
-              
+
               <button type="submit" className="submit-button">
                 Send Message
               </button>
@@ -368,407 +1575,304 @@ function App() {
     </div>
   );
 
-  // Financing Page Component
-  const FinancingPage = () => (
+  const renderFinancingPage = () => (
     <div className="financing-page">
       <div className="container">
         <div className="financing-header">
           <h1>Financing Options</h1>
           <p>Make your home improvement dreams a reality with our flexible financing solutions.</p>
         </div>
-        
-        <div className="financing-content">
-          <div className="financing-highlight">
-            <h2>As Low as 0% Financing Available</h2>
-            <p>Qualified customers can take advantage of promotional financing rates.</p>
+
+        <div className="financing-highlight">
+          <h2>As Low as 0% Financing Available</h2>
+          <p>Qualified customers can take advantage of promotional financing offers</p>
+        </div>
+
+        <div className="financing-options">
+          <div className="financing-card">
+            <h3>0% Interest for 12 Months</h3>
+            <p>Perfect for smaller projects and quick payoff plans.</p>
+            <ul>
+              <li>No interest if paid in full within 12 months</li>
+              <li>Quick approval process</li>
+              <li>Minimum credit score requirements apply</li>
+            </ul>
+            <a href="https://www.synchronybank.com/mysynchrony/apply" target="_blank" rel="noopener noreferrer" className="financing-link">
+              Apply Now
+            </a>
           </div>
-          
-          <div className="financing-options">
-            <div className="financing-card">
-              <h3>Synchrony Financing</h3>
-              <p>We partner with Synchrony to offer you flexible payment options for your home improvement projects.</p>
-              <ul>
-                <li>Quick and easy application process</li>
-                <li>Competitive interest rates</li>
-                <li>Flexible payment terms</li>
-                <li>No prepayment penalties</li>
-              </ul>
-              <a 
-                href="https://www.synchrony.com/mysynchrony/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="financing-link"
-              >
-                Apply Now with Synchrony
-              </a>
-            </div>
-            
-            <div className="financing-card">
-              <h3>Traditional Financing</h3>
-              <p>Standard financing options available for all qualifying customers.</p>
-              <ul>
-                <li>Fixed monthly payments</li>
-                <li>Various term lengths available</li>
-                <li>Transparent pricing</li>
-                <li>Professional consultation</li>
-              </ul>
-              <button 
-                className="financing-link"
-                onClick={() => handleNavigation('contact')}
-              >
-                Contact Us for Details
-              </button>
-            </div>
+
+          <div className="financing-card">
+            <h3>Extended Payment Plans</h3>
+            <p>Longer terms for larger home improvement projects.</p>
+            <ul>
+              <li>Terms up to 84 months available</li>
+              <li>Competitive interest rates</li>
+              <li>Fixed monthly payments</li>
+            </ul>
+            <a href="https://www.synchronybank.com/mysynchrony/apply" target="_blank" rel="noopener noreferrer" className="financing-link">
+              Learn More
+            </a>
           </div>
-          
-          <div className="financing-cta">
-            <h3>Ready to Get Started?</h3>
-            <p>Contact us today to discuss your financing options and get your project started.</p>
-            <button 
-              className="cta-button primary"
-              onClick={() => handleNavigation('contact')}
-            >
-              Get Free Consultation
-            </button>
-          </div>
+        </div>
+
+        <div className="financing-cta">
+          <h3>Ready to Get Started?</h3>
+          <p>Contact us today to discuss your project and financing options.</p>
+          <button 
+            className="cta-button primary large"
+            onClick={() => handlePageChange('contact')}
+          >
+            Get Free Estimate
+          </button>
         </div>
       </div>
     </div>
   );
 
-  // State Pages Component
-  const StatePage = ({ state, services, areaCodes, zipCodes }) => (
+  const renderWisconsinPage = () => (
     <div className="state-page">
       <div className="state-background">
         <div className="state-silhouette"></div>
       </div>
+      
       <div className="container">
         <div className="state-header">
-          <h1>Service Areas in {state}</h1>
-          <p>Professional home services throughout {state}</p>
+          <h1>Service Areas in Wisconsin</h1>
+          <p>Professional home services throughout Wisconsin</p>
         </div>
-        
+
         <div className="state-content">
           <div className="services-offered">
-            <h2>Services Available in {state}</h2>
+            <h2>Services Available in Wisconsin</h2>
             <div className="service-list">
-              {services.map((service, index) => (
-                <div key={index} className="service-item">
-                  <h3>{service}</h3>
-                  <button 
-                    className="learn-more-btn"
-                    onClick={() => handleNavigation(service.toLowerCase().replace(/\s+/g, '-'))}
-                  >
-                    Learn More
-                  </button>
-                </div>
-              ))}
+              <div className="service-item">
+                <h3>Free Radon Testing</h3>
+                <button 
+                  className="learn-more-btn"
+                  onClick={() => handlePageChange('radon-testing')}
+                >
+                  Learn More
+                </button>
+              </div>
+              <div className="service-item">
+                <h3>Radon Mitigation</h3>
+                <button 
+                  className="learn-more-btn"
+                  onClick={() => handlePageChange('radon-mitigation')}
+                >
+                  Learn More
+                </button>
+              </div>
+              <div className="service-item">
+                <h3>HVAC Services</h3>
+                <button 
+                  className="learn-more-btn"
+                  onClick={() => handlePageChange('hvac-services')}
+                >
+                  Learn More
+                </button>
+              </div>
+              <div className="service-item">
+                <h3>Duct Cleaning & AeroSeal</h3>
+                <button 
+                  className="learn-more-btn"
+                  onClick={() => handlePageChange('duct-cleaning')}
+                >
+                  Learn More
+                </button>
+              </div>
+              <div className="service-item">
+                <h3>Concrete Coatings</h3>
+                <button 
+                  className="learn-more-btn"
+                  onClick={() => handlePageChange('concrete-coatings')}
+                >
+                  Learn More
+                </button>
+              </div>
+              <div className="service-item">
+                <h3>Custom Closets</h3>
+                <button 
+                  className="learn-more-btn"
+                  onClick={() => handlePageChange('custom-closets')}
+                >
+                  Learn More
+                </button>
+              </div>
+              <div className="service-item">
+                <h3>Smart Home Technology</h3>
+                <button 
+                  className="learn-more-btn"
+                  onClick={() => handlePageChange('smart-home')}
+                >
+                  Learn More
+                </button>
+              </div>
+              <div className="service-item">
+                <h3>Security Systems</h3>
+                <button 
+                  className="learn-more-btn"
+                  onClick={() => handlePageChange('security-systems')}
+                >
+                  Learn More
+                </button>
+              </div>
             </div>
           </div>
-          
+
           <div className="coverage-areas">
             <h2>Coverage Areas</h2>
             
             <div className="area-codes-section">
               <h3>Area Codes Served</h3>
               <div className="area-codes">
-                {areaCodes.map((code, index) => (
-                  <span key={index} className="area-code">{code}</span>
-                ))}
+                <span className="area-code">262</span>
+                <span className="area-code">414</span>
+                <span className="area-code">920</span>
               </div>
             </div>
-            
+
             <div className="zip-codes-section">
               <h3>Zip Codes Served</h3>
               <div className="zip-codes-container">
-                <div className="zip-codes-preview">
-                  {zipCodes.slice(0, 10).map((code, index) => (
-                    <span key={index} className="zip-code">{code}</span>
-                  ))}
-                  {zipCodes.length > 10 && (
+                {!expandedZipCodes ? (
+                  <>
+                    <div className="zip-codes-preview">
+                      <span className="zip-code">53005</span>
+                      <span className="zip-code">53018</span>
+                      <span className="zip-code">53045</span>
+                      <span className="zip-code">53051</span>
+                      <span className="zip-code">53072</span>
+                    </div>
                     <button 
                       className="expand-zip-btn"
-                      onClick={() => toggleZipSection(state)}
+                      onClick={() => setExpandedZipCodes(true)}
                     >
-                      +{zipCodes.length - 10} more
+                      +25 more
                     </button>
-                  )}
-                </div>
-                
-                {expandedZipSections[state] && zipCodes.length > 10 && (
+                  </>
+                ) : (
                   <div className="zip-codes-expanded">
-                    {zipCodes.slice(10).map((code, index) => (
-                      <span key={index} className="zip-code">{code}</span>
-                    ))}
+                    <span className="zip-code">53005</span>
+                    <span className="zip-code">53018</span>
+                    <span className="zip-code">53045</span>
+                    <span className="zip-code">53051</span>
+                    <span className="zip-code">53072</span>
+                    <span className="zip-code">53090</span>
+                    <span className="zip-code">53095</span>
+                    <span className="zip-code">53097</span>
+                    <span className="zip-code">53122</span>
+                    <span className="zip-code">53129</span>
+                    <span className="zip-code">53130</span>
+                    <span className="zip-code">53132</span>
+                    <span className="zip-code">53149</span>
+                    <span className="zip-code">53150</span>
+                    <span className="zip-code">53151</span>
+                    <span className="zip-code">53154</span>
+                    <span className="zip-code">53186</span>
+                    <span className="zip-code">53188</span>
+                    <span className="zip-code">53189</span>
+                    <span className="zip-code">53190</span>
+                    <span className="zip-code">53202</span>
+                    <span className="zip-code">53203</span>
+                    <span className="zip-code">53204</span>
+                    <span className="zip-code">53205</span>
+                    <span className="zip-code">53206</span>
+                    <span className="zip-code">53207</span>
+                    <span className="zip-code">53208</span>
+                    <span className="zip-code">53209</span>
+                    <span className="zip-code">53210</span>
+                    <span className="zip-code">53211</span>
                   </div>
                 )}
               </div>
             </div>
           </div>
-          
-          <div className="state-cta">
-            <h2>Ready to Get Started?</h2>
-            <p>Contact us today for your free consultation in {state}!</p>
-            <button 
-              className="cta-button primary"
-              onClick={() => handleNavigation('contact')}
-            >
-              Schedule Free Consultation
-            </button>
-          </div>
+        </div>
+
+        <div className="state-cta">
+          <h2>Ready to Get Started?</h2>
+          <p>Contact us today to schedule your free estimate for any of our Wisconsin services.</p>
+          <button 
+            className="cta-button primary large"
+            onClick={() => handlePageChange('contact')}
+          >
+            Get Free Estimate
+          </button>
         </div>
       </div>
     </div>
   );
 
-  // Wisconsin Page
-  const WisconsinPage = () => {
-    const services = ['Free Radon Testing', 'Radon Mitigation', 'HVAC Services', 'Duct Cleaning & AeroSeal', 'Concrete Coatings', 'Custom Closets', 'Smart Home Technology', 'Security Systems'];
-    const areaCodes = ['262', '414', '608', '715', '920', '534', '274'];
-    const zipCodes = ['53005', '53012', '53018', '53022', '53029', '53033', '53045', '53051', '53056', '53066', '53072', '53089', '53090', '53092', '53095', '53097', '53108', '53122', '53129', '53130', '53132', '53140', '53142', '53146', '53149', '53150', '53151', '53154', '53158', '53168', '53172', '53186', '53188', '53189', '53190', '53201', '53202', '53203', '53204', '53205', '53206', '53207', '53208', '53209', '53210', '53211', '53212', '53213', '53214', '53215', '53216', '53217', '53218', '53219', '53220', '53221', '53222', '53223', '53224', '53225', '53226', '53227', '53228', '53233', '53234', '53235', '53237', '53244', '53259', '53274', '53278', '53295'];
-    
-    return <StatePage state="Wisconsin" services={services} areaCodes={areaCodes} zipCodes={zipCodes} />;
-  };
-
-  // Illinois Page
-  const IllinoisPage = () => {
-    const services = ['HVAC Services', 'Duct Cleaning & AeroSeal'];
-    const areaCodes = ['224', '312', '331', '630', '708', '773', '815', '847', '872', '464', '779'];
-    const zipCodes = ['60004', '60005', '60006', '60007', '60008', '60009', '60010', '60011', '60012', '60013', '60014', '60015', '60016', '60017', '60018', '60019', '60020', '60021', '60022', '60025', '60026', '60029', '60030', '60031', '60033', '60034', '60035', '60037', '60038', '60039', '60040', '60041', '60042', '60043', '60044', '60045', '60046', '60047', '60048', '60050', '60051', '60053', '60055', '60056', '60060', '60061', '60062', '60064', '60065', '60067', '60068', '60069', '60070', '60071', '60072', '60073', '60074', '60075', '60076', '60077', '60078', '60081', '60082', '60083', '60084', '60085', '60087', '60088', '60089', '60090', '60091', '60092', '60093', '60094', '60095', '60096', '60097', '60098', '60099'];
-    
-    return <StatePage state="Illinois" services={services} areaCodes={areaCodes} zipCodes={zipCodes} />;
-  };
-
-  // Minnesota Page
-  const MinnesotaPage = () => {
-    const services = ['Free Radon Testing', 'Radon Mitigation'];
-    const areaCodes = ['218', '320', '507', '612', '651', '763', '952', '924'];
-    const zipCodes = ['55001', '55002', '55003', '55009', '55011', '55014', '55016', '55017', '55018', '55019', '55020', '55021', '55024', '55025', '55027', '55031', '55033', '55038', '55040', '55041', '55042', '55043', '55044', '55045', '55046', '55047', '55055', '55056', '55057', '55065', '55066', '55068', '55069', '55070', '55071', '55075', '55076', '55077', '55079', '55082', '55083', '55090', '55092', '55101', '55102', '55103', '55104', '55105', '55106', '55107', '55108', '55109', '55110', '55111', '55112', '55113', '55114', '55115', '55116', '55117', '55118', '55119', '55120', '55121', '55122', '55123', '55124', '55125', '55126', '55127', '55128', '55129', '55130', '55133', '55144', '55150', '55155', '55161', '55164', '55165', '55166', '55168', '55169', '55170', '55171', '55172', '55175', '55177', '55182', '55187', '55188', '55191'];
-    
-    return <StatePage state="Minnesota" services={services} areaCodes={areaCodes} zipCodes={zipCodes} />;
-  };
-
-  // Colorado Page
-  const ColoradoPage = () => {
-    const services = ['Free Radon Testing', 'Radon Mitigation'];
-    const areaCodes = ['303', '719', '720', '970', '983'];
-    const zipCodes = ['80001', '80002', '80003', '80004', '80005', '80006', '80007', '80010', '80011', '80012', '80013', '80014', '80015', '80016', '80017', '80018', '80019', '80020', '80021', '80022', '80023', '80024', '80025', '80026', '80027', '80030', '80031', '80033', '80034', '80035', '80036', '80037', '80038', '80101', '80102', '80103', '80104', '80105', '80106', '80107', '80108', '80109', '80110', '80111', '80112', '80113', '80116', '80117', '80118', '80120', '80121', '80122', '80123', '80124', '80125', '80126', '80127', '80128', '80129', '80130', '80131', '80132', '80133', '80134', '80135', '80136', '80137', '80138', '80202', '80203', '80204', '80205', '80206', '80207', '80208', '80209', '80210', '80211', '80212', '80214', '80215', '80216', '80218', '80219', '80220', '80221', '80222', '80223', '80224', '80225', '80226', '80227', '80228', '80229', '80230', '80231', '80232', '80233', '80234', '80235', '80236', '80237', '80238', '80239', '80246', '80247', '80249', '80260', '80264', '80290', '80293', '80294'];
-    
-    return <StatePage state="Colorado" services={services} areaCodes={areaCodes} zipCodes={zipCodes} />;
-  };
-
-  // Radon Education Page Component
-  const RadonEducationPage = () => (
-    <div className="radon-education-page">
-      <div className="container">
-        <div className="education-header">
-          <h1>Radon Education Center</h1>
-          <p>Everything you need to know about radon gas and protecting your family</p>
-        </div>
-        
-        <div className="education-content">
-          <section className="education-section">
-            <h2>What is Radon?</h2>
-            <p>Radon is a naturally occurring radioactive gas that comes from the decay of uranium in soil, rock, and water. It's colorless, odorless, and tasteless, making it impossible to detect without proper testing equipment.</p>
-            
-            <p>According to the <a href="https://www.epa.gov/radon" target="_blank" rel="noopener noreferrer">EPA (Environmental Protection Agency)</a>, radon is the leading cause of lung cancer among non-smokers and the second leading cause overall, responsible for approximately 21,000 deaths annually in the United States.</p>
-          </section>
-
-          <section className="education-section">
-            <h2>How Radon Enters Your Home</h2>
-            <p>Radon gas moves up through the ground and enters buildings through:</p>
-            <ul>
-              <li>Cracks in solid floors and walls</li>
-              <li>Construction joints</li>
-              <li>Gaps in suspended floors</li>
-              <li>Gaps around service pipes</li>
-              <li>Cavities inside walls</li>
-              <li>The water supply (less common)</li>
-            </ul>
-          </section>
-
-          <section className="education-section">
-            <h2>Health Risks</h2>
-            <p>Long-term exposure to elevated radon levels significantly increases the risk of lung cancer. The risk is even higher for smokers. The <a href="https://www.who.int/news-room/fact-sheets/detail/radon-and-health" target="_blank" rel="noopener noreferrer">World Health Organization (WHO)</a> estimates that radon causes between 3% to 14% of all lung cancers, depending on the average radon level in the country.</p>
-            
-            <p>Children are particularly vulnerable due to their higher breathing rate and developing lung tissue.</p>
-          </section>
-
-          <section className="education-section">
-            <h2>Testing Your Home</h2>
-            <p>The EPA recommends testing all homes below the third floor for radon. Testing is the only way to know if your home has elevated radon levels.</p>
-            
-            <h3>Testing Methods</h3>
-            <ul>
-              <li><strong>Short-term tests (2-7 days):</strong> Quick screening using charcoal canisters or electronic monitors</li>
-              <li><strong>Long-term tests (90+ days):</strong> More accurate representation of year-round radon levels</li>
-              <li><strong>Professional testing:</strong> Conducted by certified professionals using calibrated equipment</li>
-            </ul>
-            
-            <p>We use professional-grade equipment including the Airthings Corentium Pro for accurate, reliable results.</p>
-          </section>
-
-          <section className="education-section">
-            <h2>Understanding Test Results</h2>
-            <p>Radon is measured in picocuries per liter (pCi/L). Here's what your results mean:</p>
-            <ul>
-              <li><strong>Below 2 pCi/L:</strong> Low risk, no action needed</li>
-              <li><strong>2-4 pCi/L:</strong> Consider mitigation, especially for long-term exposure</li>
-              <li><strong>4 pCi/L and above:</strong> EPA recommends mitigation</li>
-              <li><strong>Above 10 pCi/L:</strong> Urgent - mitigate as soon as possible</li>
-            </ul>
-            
-            <p>If your home tests at 4 pCi/L or higher, the EPA recommends installing a radon mitigation system.</p>
-            
-            <h3>System Types</h3>
-            <div className="system-types">
-              <div className="system-type">
-                <h4>Sub-slab Depressurization</h4>
-                <p>Most common and effective method for homes with basements or slab-on-grade foundations</p>
-              </div>
-              <div className="system-type">
-                <h4>Sump Pit Suction</h4>
-                <p>Uses existing sump pump pit to draw radon from beneath the foundation</p>
-              </div>
-              <div className="system-type">
-                <h4>Drain Tile Suction</h4>
-                <p>Utilizes existing perimeter drain system for radon removal</p>
-              </div>
-              <div className="system-type">
-                <h4>Crawl Space Systems</h4>
-                <p>Specialized ventilation for homes with crawl space foundations</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="education-section">
-            <h2>Professional Equipment</h2>
-            <p>We use only the highest quality, EPA-approved equipment:</p>
-            
-            <h3>Testing Equipment</h3>
-            <ul>
-              <li><strong>Airthings Corentium Pro:</strong> Professional-grade continuous radon monitor</li>
-              <li><strong>Alpha Track Detectors:</strong> Long-term passive testing devices</li>
-              <li><strong>Charcoal Canisters:</strong> Short-term passive testing devices</li>
-            </ul>
-            
-            <h3>Mitigation Equipment</h3>
-            <ul>
-              <li><strong>Fantech Radon Fans:</strong> Industry-leading fans with 5-year warranties</li>
-              <li><strong>RadonAway Fans:</strong> Premium radon-specific ventilation fans</li>
-              <li><strong>Professional PVC Piping:</strong> Schedule 40 PVC for durability</li>
-              <li><strong>Manometers:</strong> System monitoring devices</li>
-            </ul>
-          </section>
-
-          <section className="education-section">
-            <h2>Frequently Asked Questions</h2>
-            
-            <div className="faq-item">
-              <h4>How long does radon testing take?</h4>
-              <p>Short-term tests take 2-7 days, while long-term tests run for 90 days to one year for the most accurate results.</p>
-            </div>
-            
-            <div className="faq-item">
-              <h4>What radon level requires mitigation?</h4>
-              <p>The EPA recommends mitigation for homes with radon levels of 4 pCi/L or higher. Consider mitigation for levels between 2-4 pCi/L.</p>
-            </div>
-            
-            <div className="faq-item">
-              <h4>How effective are radon mitigation systems?</h4>
-              <p>Properly installed systems can reduce radon levels by up to 99%, with most systems achieving 80-90% reduction.</p>
-            </div>
-            
-            <div className="faq-item">
-              <h4>Do radon systems require maintenance?</h4>
-              <p>Minimal maintenance is required. We recommend annual system checks and fan replacement every 10-15 years.</p>
-            </div>
-          </section>
-
-          <section className="education-cta">
-            <h2>Ready to Test Your Home?</h2>
-            <p>Get your FREE professional radon test today and ensure your family's safety.</p>
-            <div className="cta-buttons">
-              <button className="cta-button primary" onClick={() => handleNavigation('contact')}>
-                Schedule Free Test
-              </button>
-              <button className="cta-button secondary" onClick={() => handleNavigation('radon-mitigation')}>
-                Learn About Mitigation
-              </button>
-            </div>
-          </section>
-        </div>
-      </div>
-    </div>
-  );
-
-  // Main render logic
-  const renderPage = () => {
+  const renderCurrentPage = () => {
     switch (currentPage) {
       case 'home':
-        return (
-          <>
-            <HeroSection />
-            <ServicesGrid />
-            <ContactForm />
-          </>
-        );
+        return renderHomePage();
+      case 'radon-testing':
+        return renderRadonTestingPage();
+      case 'radon-mitigation':
+        return renderRadonMitigationPage();
+      case 'hvac-services':
+        return renderHVACPage();
+      case 'duct-cleaning':
+        return renderDuctCleaningPage();
+      case 'concrete-coatings':
+        return renderConcreteCoatingsPage();
+      case 'smart-home':
+        return renderSmartHomePage();
+      case 'security-systems':
+        return renderSecuritySystemsPage();
+      case 'control4':
+        return renderControl4Page();
+      case 'custom-closets':
+        return renderCustomClosetsPage();
       case 'contact':
-        return <ContactForm />;
+        return renderContactPage();
       case 'financing':
-        return <FinancingPage />;
+        return renderFinancingPage();
       case 'wisconsin':
-        return <WisconsinPage />;
-      case 'illinois':
-        return <IllinoisPage />;
-      case 'minnesota':
-        return <MinnesotaPage />;
-      case 'colorado':
-        return <ColoradoPage />;
-      case 'radon-education':
-        return <RadonEducationPage />;
+        return renderWisconsinPage();
       default:
-        return (
-          <>
-            <HeroSection />
-            <ServicesGrid />
-            <ContactForm />
-          </>
-        );
+        return renderHomePage();
     }
   };
 
   return (
     <div className="App" data-brand={currentBrand}>
-      <Header />
-      <main className="main-content">
-        {renderPage()}
-      </main>
+      {renderHeader()}
+      {renderCurrentPage()}
+      
+      {/* Footer */}
       <footer className="footer">
         <div className="container">
           <div className="footer-content">
             <div className="footer-section">
               <h3>{brandConfig[currentBrand].name}</h3>
-              <p>{brandConfig[currentBrand].tagline}</p>
+              <p>Trusted Solutions. Lifetime Results.</p>
+              <button 
+                className="footer-contact-btn"
+                onClick={() => handlePageChange('contact')}
+              >
+                Contact Us Today
+              </button>
             </div>
+            
+            <div className="footer-section">
+              <h4>Services</h4>
+              {brandConfig[currentBrand].services.map((service) => (
+                <p key={service}>{service}</p>
+              ))}
+            </div>
+            
             <div className="footer-section">
               <h4>Contact Info</h4>
               <p>Phone: (262) 226-2729</p>
-              <p>Email: info@lifetimehomeservices.com</p>
-            </div>
-            <div className="footer-section">
-              <h4>Service Areas</h4>
-              <p>Wisconsin • Illinois • Minnesota • Colorado</p>
-            </div>
-            <div className="footer-section">
-              <button 
-                className="footer-contact-btn"
-                onClick={() => handleNavigation('contact')}
-              >
-                Contact Us
-              </button>
+              <p>Brookfield, WI 53045</p>
+              <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
             </div>
           </div>
+          
           <div className="footer-bottom">
             <p>&copy; 2024 {brandConfig[currentBrand].name}. All rights reserved.</p>
           </div>
