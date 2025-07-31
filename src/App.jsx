@@ -538,9 +538,9 @@ function App() {
         <div className="footer-section">
           <h4>Business Hours</h4>
           <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
-          <p>Saturday: 9:00 AM - 3:00 PM</p>
+          <p>Saturday: By Appointment Only</p>
           <p>Sunday: Closed</p>
-          <p className="emergency-note">Emergency services available 24/7</p>
+        </div>
         </div>
       </div>
       
@@ -563,6 +563,22 @@ function App() {
           {renderServicesSection()}
           {currentBrand === 'lifetime' && renderRadonLevelsSection()}
           {renderGoogleReviews()}
+          
+          {/* Contact Us Section at Bottom of Home Page */}
+          <section className="home-contact-section">
+            <div className="container">
+              <div className="home-contact-content">
+                <h2>Ready to Get Started?</h2>
+                <p>Contact us today for a free consultation and estimate</p>
+                <button 
+                  className="cta-button primary large" 
+                  onClick={() => navigateToPage('contact')}
+                >
+                  Contact Us Today
+                </button>
+              </div>
+            </div>
+          </section>
         </div>
       );
     }
@@ -703,11 +719,12 @@ function App() {
                   <div className="info-box">
                     <h4>Trusted Resources</h4>
                     <ul>
-                      <li><a href="https://www.epa.gov/radon/citizens-guide-radon" target="_blank" rel="noopener noreferrer">EPA Citizen's Guide to Radon</a></li>
-                      <li><a href="https://www.epa.gov/radon/health-risk-radon" target="_blank" rel="noopener noreferrer">EPA Radon Health Risks</a></li>
-                      <li><a href="https://www.airthings.com/resources/what-is-radon" target="_blank" rel="noopener noreferrer">Airthings - What is Radon?</a></li>
-                      <li><a href="https://www.dhs.wisconsin.gov/radon/index.htm" target="_blank" rel="noopener noreferrer">Wisconsin DHS Radon Program</a></li>
-                      <li><a href="https://www.cdc.gov/radon/index.html" target="_blank" rel="noopener noreferrer">CDC Radon Information</a></li>
+                      <li><a href="https://www.epa.gov/radon/citizens-guide-radon" target="_blank" rel="noopener noreferrer">EPA - A Citizen's Guide to Radon</a></li>
+                      <li><a href="https://www.epa.gov/radon/health-risk-radon" target="_blank" rel="noopener noreferrer">EPA - Radon: Health Risks</a></li>
+                      <li><a href="https://www.airthings.com/resources/what-is-radon" target="_blank" rel="noopener noreferrer">Airthings Blog - What is Radon?</a></li>
+                      <li><a href="https://www.dhs.wisconsin.gov/radon/index.htm" target="_blank" rel="noopener noreferrer">Wisconsin DHS - Radon Program</a></li>
+                      <li><a href="https://www.radonaway.com/what-is-radon.php" target="_blank" rel="noopener noreferrer">RadonAway - What is Radon?</a></li>
+                      <li><a href="https://www.cdc.gov/radon/index.html" target="_blank" rel="noopener noreferrer">CDC - Radon Information Page</a></li>
                     </ul>
                   </div>
                   
@@ -746,7 +763,7 @@ function App() {
                     <h3>How Radon Mitigation Works</h3>
                     <div className="video-container">
                       <iframe
-                        src="https://www.youtube.com/embed/oSLf6kJW_CM?rel=0&modestbranding=1"
+                        src="https://www.youtube.com/embed/l4X1nNbKqNU?rel=0&modestbranding=1"
                         title="Radon Mitigation System Animation"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -884,8 +901,12 @@ function App() {
                   <div className="info-box">
                     <h4>Trusted Resources</h4>
                     <ul>
+                      <li><a href="https://www.epa.gov/radon/citizens-guide-radon" target="_blank" rel="noopener noreferrer">EPA - A Citizen's Guide to Radon</a></li>
+                      <li><a href="https://www.epa.gov/radon/health-risk-radon" target="_blank" rel="noopener noreferrer">EPA - Radon: Health Risks</a></li>
                       <li><a href="https://www.radonaway.com/what-is-radon.php" target="_blank" rel="noopener noreferrer">RadonAway - What is Radon?</a></li>
                       <li><a href="https://festaradontech.com" target="_blank" rel="noopener noreferrer">Festa Radon Technologies</a></li>
+                      <li><a href="https://www.dhs.wisconsin.gov/radon/index.htm" target="_blank" rel="noopener noreferrer">Wisconsin DHS - Radon Program</a></li>
+                      <li><a href="https://www.cdc.gov/radon/index.html" target="_blank" rel="noopener noreferrer">CDC - Radon Information Page</a></li>
                     </ul>
                   </div>
                 </div>
@@ -1062,6 +1083,20 @@ function App() {
                   <h3>AeroSeal Duct Sealing</h3>
                   <p>AeroSeal is a revolutionary duct sealing technology that seals leaks from the inside out. This patented process can seal up to 90% of duct leaks, dramatically improving your home's energy efficiency and comfort.</p>
                   
+                  <div className="aeroseal-video-section">
+                    <h4>See AeroSeal in Action</h4>
+                    <div className="video-container">
+                      <iframe
+                        src="https://www.youtube.com/embed/K3JAR0dCNhc?rel=0&modestbranding=1"
+                        title="AeroSeal Duct Sealing Process"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                    <p>Watch how AeroSeal technology seals your ductwork from the inside out for maximum efficiency.</p>
+                  </div>
+                  
                   <div className="aeroseal-process">
                     <h4>How AeroSeal Works:</h4>
                     <div className="process-steps">
@@ -1134,6 +1169,14 @@ function App() {
                     <h4>AeroSeal Technology</h4>
                     <img src="aeroseal-logo.png" alt="AeroSeal technology" className="sidebar-image" />
                     <p>AeroSeal is the industry-leading duct sealing technology, proven to seal up to 90% of duct leaks.</p>
+                    <a 
+                      href="https://aeroseal.com/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="aeroseal-link"
+                    >
+                      Learn More at AeroSeal.com →
+                    </a>
                   </div>
                 </div>
               </div>
@@ -1213,7 +1256,38 @@ function App() {
                   <p>Choose from a wide variety of color flakes and solid colors to create the perfect look for your space. Our design team will help you select the ideal combination to complement your home or business.</p>
                   
                   <div className="color-gallery">
-                    <img src="concrete-coatings-professional.jpg" alt="Professional concrete coating installation" className="gallery-image" />
+                    <h3>View Our Work</h3>
+                    <div className="gallery-grid">
+                      <div className="gallery-item">
+                        <img src="Before1.jpg" alt="Garage floor before coating" />
+                        <div className="gallery-overlay">
+                          <span>Before Coating</span>
+                        </div>
+                      </div>
+                      <div className="gallery-item">
+                        <img src="after1.jpg" alt="Garage floor after coating" />
+                        <div className="gallery-overlay">
+                          <span>After Coating</span>
+                        </div>
+                      </div>
+                      <div className="gallery-item">
+                        <img src="Working.jpg" alt="Professional installation process" />
+                        <div className="gallery-overlay">
+                          <span>Professional Installation</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="gallery-cta">
+                      <p>See more of our concrete coating installations</p>
+                      <a 
+                        href="https://lifetimehomeservices.my.salesforce-sites.com/coatings-gallery" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="gallery-link"
+                      >
+                        View Complete Gallery →
+                      </a>
+                    </div>
                   </div>
                   
                   <h3>Applications</h3>
@@ -1274,8 +1348,8 @@ function App() {
         <div className="service-page">
           <div className="page-header">
             <div className="container">
-              <h1>Control4 Integration</h1>
-              <p>Advanced Control4 integration for seamless home automation</p>
+              <h1>Control4 Smart Home Automation</h1>
+              <p>Authorized Platinum Dealer - Professional Control4 integration for seamless whole home control</p>
             </div>
           </div>
           
@@ -1283,36 +1357,114 @@ function App() {
             <div className="container">
               <div className="content-grid">
                 <div className="content-main">
-                  <h2>Professional Control4 Systems</h2>
-                  <p>Control4 is the leading home automation platform, providing seamless integration of all your home's systems. From lighting and climate to entertainment and security, Control4 brings everything together in one easy-to-use interface.</p>
+                  <h2>Discover the Control4 Difference</h2>
+                  <p>Control4 connects a vast catalog of smart devices, bringing them all into one platform that delivers incredible experiences. Our certified integrators will personalize your system, automations, and scenes. Replace the many applications you use every day with one interface you can control from your smartphone, touchscreen, on-wall keypads, and more.</p>
                   
-                  <h3>What Makes Control4 Special?</h3>
-                  <ul>
-                    <li>Single interface for all home systems</li>
-                    <li>Professional installation and programming</li>
-                    <li>Scalable system that grows with your needs</li>
-                    <li>Works with thousands of devices</li>
-                    <li>Reliable and secure platform</li>
-                  </ul>
+                  <div className="control4-features-grid">
+                    <div className="feature-card">
+                      <h3>Whole Home Control</h3>
+                      <p>Control lighting, entertainment, security, climate, and more from one unified platform. Manage thousands of devices with a simple tap or voice command.</p>
+                    </div>
+                    <div className="feature-card">
+                      <h3>Customizable Systems</h3>
+                      <p>Your custom smart system is designed around your current needs while remaining flexible to scale for future growth. Create scenes, set up automations, and manage schedules based on your preferences.</p>
+                    </div>
+                    <div className="feature-card">
+                      <h3>Professional Integration</h3>
+                      <p>Our certified integration professionals ensure your project is correctly installed, reliable, scalable, and personalized to your life for a seamless, smart experience.</p>
+                    </div>
+                    <div className="feature-card">
+                      <h3>Total Control App</h3>
+                      <p>Keep your smart system at your fingertips with the Control4 app. Get push notifications, remote access, at-a-glance info, and control for all your devices.</p>
+                    </div>
+                  </div>
+                  
+                  <h3>Control4 Capabilities</h3>
+                  <div className="capabilities-section">
+                    <div className="capability-item">
+                      <h4>Lighting Control</h4>
+                      <p>Intelligent lighting control with automated scenes, dimming, and scheduling. Create the perfect ambiance for any occasion with one touch.</p>
+                    </div>
+                    <div className="capability-item">
+                      <h4>Entertainment Systems</h4>
+                      <p>Seamlessly integrate audio and video throughout your home. Control multiple zones, streaming services, and media devices from one interface.</p>
+                    </div>
+                    <div className="capability-item">
+                      <h4>Climate Control</h4>
+                      <p>Smart thermostat integration with automated temperature control based on occupancy, time of day, and personal preferences.</p>
+                    </div>
+                    <div className="capability-item">
+                      <h4>Security Integration</h4>
+                      <p>Complete security system integration with cameras, door locks, sensors, and monitoring. Real-time alerts and remote management keep your home safe.</p>
+                    </div>
+                    <div className="capability-item">
+                      <h4>Window Treatments</h4>
+                      <p>Automated shades and blinds that respond to time of day, weather conditions, and privacy needs. Integrate with lighting for optimal comfort.</p>
+                    </div>
+                    <div className="capability-item">
+                      <h4>Voice Control</h4>
+                      <p>Natural voice commands through Amazon Alexa, Google Assistant, or Control4's own voice recognition for hands-free home control.</p>
+                    </div>
+                  </div>
+                  
+                  <h3>Why Choose Control4?</h3>
+                  <div className="benefits-grid">
+                    <div className="benefit-item">
+                      <h4>Enhanced Convenience</h4>
+                      <p>Simplify your daily routines with automated scenes and one-touch control of multiple systems.</p>
+                    </div>
+                    <div className="benefit-item">
+                      <h4>Increased Security</h4>
+                      <p>Comprehensive security integration with real-time monitoring and remote access capabilities.</p>
+                    </div>
+                    <div className="benefit-item">
+                      <h4>Energy Efficiency</h4>
+                      <p>Smart automation reduces energy consumption through intelligent scheduling and occupancy-based controls.</p>
+                    </div>
+                    <div className="benefit-item">
+                      <h4>Future-Proof Technology</h4>
+                      <p>Scalable system that grows with your needs and integrates with thousands of current and future devices.</p>
+                    </div>
+                  </div>
                   
                   <div className="cta-section">
-                    <h3>Experience Control4</h3>
-                    <p>Schedule a demonstration to see how Control4 can transform your home.</p>
+                    <h3>Ready to Transform Your Home?</h3>
+                    <p>Contact our certified Control4 integrators today for a personalized consultation and discover how Control4 can enhance your lifestyle.</p>
                     <button className="cta-button primary large" onClick={() => navigateToPage('contact')}>
-                      Schedule Demo
+                      Schedule Consultation
                     </button>
                   </div>
                 </div>
                 
                 <div className="content-sidebar">
                   <div className="info-box">
-                    <h4>Control4 Benefits</h4>
+                    <h4>Authorized Platinum Dealer</h4>
+                    <img src="C4_Dealer_Status_Badge_2025_Platinum.png" alt="Control4 Authorized Platinum Dealer 2025" className="sidebar-image control4-badge" />
+                    <p>We are an authorized Control4 Platinum Dealer, ensuring the highest level of expertise and service for your smart home installation.</p>
+                  </div>
+                  
+                  <div className="info-box">
+                    <h4>System Benefits</h4>
                     <ul>
-                      <li>One app controls everything</li>
-                      <li>Professional support</li>
-                      <li>Reliable performance</li>
-                      <li>Future-proof technology</li>
-                      <li>Increased home value</li>
+                      <li>One-touch control of entire home</li>
+                      <li>Seamless device integration</li>
+                      <li>Professional installation & support</li>
+                      <li>Scalable for future expansion</li>
+                      <li>Energy efficiency optimization</li>
+                      <li>Enhanced home security</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="info-box">
+                    <h4>Compatible Devices</h4>
+                    <p>Control4 integrates with over 20,000 third-party devices including:</p>
+                    <ul>
+                      <li>Smart TVs and audio systems</li>
+                      <li>Lighting and electrical controls</li>
+                      <li>Security cameras and door locks</li>
+                      <li>Thermostats and HVAC systems</li>
+                      <li>Window shades and motorized blinds</li>
+                      <li>Pool and spa controls</li>
                     </ul>
                   </div>
                 </div>
@@ -1643,10 +1795,37 @@ function App() {
                   <p>Transform your closet into an organized, efficient space with our custom closet systems. Every closet is designed specifically for your needs, space, and lifestyle.</p>
                   
                   <div className="closet-gallery">
+                    <h3>View Our Work</h3>
                     <div className="gallery-grid">
-                      <img src="Closet5.jpg" alt="Walk-in closet with custom shelving" />
-                      <img src="Closet3.jpg" alt="Organized closet with drawers" />
-                      <img src="ReachinCloset1.jpg" alt="Reach-in closet organization" />
+                      <div className="gallery-item">
+                        <img src="Closet5.jpg" alt="Walk-in closet with custom shelving" />
+                        <div className="gallery-overlay">
+                          <span>Walk-In Closet</span>
+                        </div>
+                      </div>
+                      <div className="gallery-item">
+                        <img src="Closet3.jpg" alt="Organized closet with drawers" />
+                        <div className="gallery-overlay">
+                          <span>Custom Organization</span>
+                        </div>
+                      </div>
+                      <div className="gallery-item">
+                        <img src="ReachinCloset1.jpg" alt="Reach-in closet organization" />
+                        <div className="gallery-overlay">
+                          <span>Reach-In Closet</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="gallery-cta">
+                      <p>See more of our custom closet installations</p>
+                      <a 
+                        href="https://lifetimehomeservices.my.salesforce-sites.com/gallery" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="gallery-link"
+                      >
+                        View Complete Gallery →
+                      </a>
                     </div>
                   </div>
                   
