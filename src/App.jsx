@@ -362,7 +362,7 @@ function App() {
         {
           title: 'Smart Home Automation',
           description: 'Complete Control4 home automation systems for modern living.',
-          image: 'control4-smart-home.jpg',
+          image: 'C4_Dealer_Status_Badge_2025_Platinum.png',
           page: 'smart-home'
         },
         {
@@ -374,7 +374,7 @@ function App() {
         {
           title: 'Control4 Integration',
           description: 'Advanced Control4 integration for seamless home automation.',
-          image: 'control4-integration.jpg',
+          image: 'C4_Dealer_Status_Badge_2025_Platinum.png',
           page: 'control4'
         }
       ],
@@ -1256,36 +1256,31 @@ function App() {
                   
                   <div className="color-gallery">
                     <h3>View Our Work</h3>
-                    <div className="gallery-grid">
-                      <div className="gallery-item">
+                    <div className="gallery-grid-direct">
+                      <div className="gallery-item-direct">
                         <img src="Before1.jpg" alt="Garage floor before coating" />
-                        <div className="gallery-overlay">
-                          <span>Before Coating</span>
-                        </div>
+                        <div className="image-caption">Before Coating</div>
                       </div>
-                      <div className="gallery-item">
+                      <div className="gallery-item-direct">
                         <img src="after1.jpg" alt="Garage floor after coating" />
-                        <div className="gallery-overlay">
-                          <span>After Coating</span>
-                        </div>
+                        <div className="image-caption">After Coating</div>
                       </div>
-                      <div className="gallery-item">
+                      <div className="gallery-item-direct">
                         <img src="Working.jpg" alt="Professional installation process" />
-                        <div className="gallery-overlay">
-                          <span>Professional Installation</span>
-                        </div>
+                        <div className="image-caption">Professional Installation</div>
                       </div>
-                    </div>
-                    <div className="gallery-cta">
-                      <p>See more of our concrete coating installations</p>
-                      <a 
-                        href="https://lifetimehomeservices.my.salesforce-sites.com/coatings-gallery" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="gallery-link"
-                      >
-                        View Complete Gallery →
-                      </a>
+                      <div className="gallery-item-direct">
+                        <img src="Before2.jpg" alt="Another before example" />
+                        <div className="image-caption">Before Treatment</div>
+                      </div>
+                      <div className="gallery-item-direct">
+                        <img src="after2.jpg" alt="Another after example" />
+                        <div className="image-caption">After Treatment</div>
+                      </div>
+                      <div className="gallery-item-direct">
+                        <img src="Working2.jpg" alt="Installation in progress" />
+                        <div className="image-caption">Installation Process</div>
+                      </div>
                     </div>
                   </div>
                   
@@ -1795,36 +1790,31 @@ function App() {
                   
                   <div className="closet-gallery">
                     <h3>View Our Work</h3>
-                    <div className="gallery-grid">
-                      <div className="gallery-item">
+                    <div className="gallery-grid-direct">
+                      <div className="gallery-item-direct">
                         <img src="Closet5.jpg" alt="Walk-in closet with custom shelving" />
-                        <div className="gallery-overlay">
-                          <span>Walk-In Closet</span>
-                        </div>
+                        <div className="image-caption">Walk-In Closet</div>
                       </div>
-                      <div className="gallery-item">
+                      <div className="gallery-item-direct">
                         <img src="Closet3.jpg" alt="Organized closet with drawers" />
-                        <div className="gallery-overlay">
-                          <span>Custom Organization</span>
-                        </div>
+                        <div className="image-caption">Custom Organization</div>
                       </div>
-                      <div className="gallery-item">
+                      <div className="gallery-item-direct">
                         <img src="ReachinCloset1.jpg" alt="Reach-in closet organization" />
-                        <div className="gallery-overlay">
-                          <span>Reach-In Closet</span>
-                        </div>
+                        <div className="image-caption">Reach-In Closet</div>
                       </div>
-                    </div>
-                    <div className="gallery-cta">
-                      <p>See more of our custom closet installations</p>
-                      <a 
-                        href="https://lifetimehomeservices.my.salesforce-sites.com/gallery" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="gallery-link"
-                      >
-                        View Complete Gallery →
-                      </a>
+                      <div className="gallery-item-direct">
+                        <img src="Garage1.jpg" alt="Garage storage system" />
+                        <div className="image-caption">Garage Storage</div>
+                      </div>
+                      <div className="gallery-item-direct">
+                        <img src="HomeOffice4.jpg" alt="Home office organization" />
+                        <div className="image-caption">Home Office</div>
+                      </div>
+                      <div className="gallery-item-direct">
+                        <img src="Pantry1.jpeg" alt="Pantry organization system" />
+                        <div className="image-caption">Pantry System</div>
+                      </div>
                     </div>
                   </div>
                   
