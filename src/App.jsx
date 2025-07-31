@@ -541,7 +541,6 @@ function App() {
           <p>Saturday: By Appointment Only</p>
           <p>Sunday: Closed</p>
         </div>
-        </div>
       </div>
       
       <div className="footer-bottom">
