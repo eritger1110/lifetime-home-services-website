@@ -746,9 +746,10 @@ function App() {
                     <h3>How Radon Mitigation Works</h3>
                     <div className="video-container">
                       <iframe
-                        src="https://www.youtube.com/embed/oSLf6kJW_CM"
+                        src="https://www.youtube.com/embed/oSLf6kJW_CM?rel=0&modestbranding=1"
                         title="Radon Mitigation System Animation"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
                       ></iframe>
                     </div>
@@ -757,55 +758,57 @@ function App() {
                   
                   <h3>Types of Mitigation Systems</h3>
                   
-                  <div className="mitigation-system">
-                    <h4>Sub-Slab Depressurization</h4>
-                    <p>The most common and effective method for homes with basements or slab-on-grade foundations. A pipe system draws radon from beneath the foundation and vents it safely outside.</p>
-                    <div className="system-features">
-                      <ul>
-                        <li>Most effective for basement homes</li>
-                        <li>Reduces levels by 90%+ typically</li>
-                        <li>Quiet operation</li>
-                        <li>Minimal disruption to home</li>
-                      </ul>
+                  <div className="mitigation-systems-grid">
+                    <div className="mitigation-system">
+                      <h4>Sub-Slab Depressurization</h4>
+                      <p>The most common and effective method for homes with basements or slab-on-grade foundations. A pipe system draws radon from beneath the foundation and vents it safely outside.</p>
+                      <div className="system-features">
+                        <ul>
+                          <li>Most effective for basement homes</li>
+                          <li>Reduces levels by 90%+ typically</li>
+                          <li>Quiet operation</li>
+                          <li>Minimal disruption to home</li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className="mitigation-system">
-                    <h4>Sump Pit System</h4>
-                    <p>Utilizes existing sump pit for radon removal. The system draws radon through the sump pit and vents it outside through a dedicated fan system.</p>
-                    <div className="system-features">
-                      <ul>
-                        <li>Uses existing sump pit</li>
-                        <li>Cost-effective solution</li>
-                        <li>Effective for many home types</li>
-                        <li>Professional installation required</li>
-                      </ul>
+                    
+                    <div className="mitigation-system">
+                      <h4>Sump Pit System</h4>
+                      <p>Utilizes existing sump pit for radon removal. The system draws radon through the sump pit and vents it outside through a dedicated fan system.</p>
+                      <div className="system-features">
+                        <ul>
+                          <li>Uses existing sump pit</li>
+                          <li>Cost-effective solution</li>
+                          <li>Effective for many home types</li>
+                          <li>Professional installation required</li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className="mitigation-system">
-                    <h4>Drain Tile System</h4>
-                    <p>Utilizes existing perimeter drain system for radon removal. Effective for homes with existing drain tile around the foundation.</p>
-                    <div className="system-features">
-                      <ul>
-                        <li>Works with existing drainage</li>
-                        <li>Comprehensive coverage</li>
-                        <li>Effective for older homes</li>
-                        <li>Professional assessment needed</li>
-                      </ul>
+                    
+                    <div className="mitigation-system">
+                      <h4>Drain Tile System</h4>
+                      <p>Utilizes existing perimeter drain system for radon removal. Effective for homes with existing drain tile around the foundation.</p>
+                      <div className="system-features">
+                        <ul>
+                          <li>Works with existing drainage</li>
+                          <li>Comprehensive coverage</li>
+                          <li>Effective for older homes</li>
+                          <li>Professional assessment needed</li>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className="mitigation-system">
-                    <h4>Crawl Space Encapsulation</h4>
-                    <p>For homes with crawl spaces, we seal and ventilate the space to prevent radon entry and ensure proper air circulation.</p>
-                    <div className="system-features">
-                      <ul>
-                        <li>Complete space sealing</li>
-                        <li>Moisture control included</li>
-                        <li>Improves air quality</li>
-                        <li>Energy efficiency benefits</li>
-                      </ul>
+                    
+                    <div className="mitigation-system">
+                      <h4>Crawl Space Encapsulation</h4>
+                      <p>For homes with crawl spaces, we seal and ventilate the space to prevent radon entry and ensure proper air circulation.</p>
+                      <div className="system-features">
+                        <ul>
+                          <li>Complete space sealing</li>
+                          <li>Moisture control included</li>
+                          <li>Improves air quality</li>
+                          <li>Energy efficiency benefits</li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                   
@@ -1023,7 +1026,249 @@ function App() {
       );
     }
 
-    // Control4 Integration Page
+    // Duct Cleaning/AeroSeal Page
+    if (currentPage === 'duct-cleaning') {
+      return (
+        <div className="service-page">
+          <div className="page-header">
+            <div className="container">
+              <h1>Duct Cleaning & AeroSeal Services</h1>
+              <p>Professional duct cleaning and sealing for improved air quality and energy efficiency</p>
+            </div>
+          </div>
+          
+          <div className="page-content">
+            <div className="container">
+              <div className="content-grid">
+                <div className="content-main">
+                  <h2>Professional Duct Cleaning & AeroSeal</h2>
+                  <p>Improve your home's air quality and energy efficiency with our comprehensive duct cleaning and AeroSeal duct sealing services. Our certified technicians use state-of-the-art equipment to clean and seal your ductwork for optimal performance.</p>
+                  
+                  <h3>Duct Cleaning Services</h3>
+                  <p>Over time, dust, debris, and contaminants build up in your ductwork, reducing air quality and system efficiency. Our thorough duct cleaning process removes these contaminants, improving your indoor air quality and helping your HVAC system run more efficiently.</p>
+                  
+                  <div className="service-benefits">
+                    <h4>Benefits of Professional Duct Cleaning:</h4>
+                    <ul>
+                      <li>Improved indoor air quality</li>
+                      <li>Reduced allergens and dust</li>
+                      <li>Better HVAC system efficiency</li>
+                      <li>Extended equipment life</li>
+                      <li>Reduced energy costs</li>
+                      <li>Elimination of odors</li>
+                    </ul>
+                  </div>
+                  
+                  <h3>AeroSeal Duct Sealing</h3>
+                  <p>AeroSeal is a revolutionary duct sealing technology that seals leaks from the inside out. This patented process can seal up to 90% of duct leaks, dramatically improving your home's energy efficiency and comfort.</p>
+                  
+                  <div className="aeroseal-process">
+                    <h4>How AeroSeal Works:</h4>
+                    <div className="process-steps">
+                      <div className="process-step">
+                        <div className="step-number">1</div>
+                        <h5>System Preparation</h5>
+                        <p>We prepare your duct system and measure existing leakage</p>
+                      </div>
+                      <div className="process-step">
+                        <div className="step-number">2</div>
+                        <h5>Sealant Application</h5>
+                        <p>Safe, non-toxic sealant is blown through your ducts</p>
+                      </div>
+                      <div className="process-step">
+                        <div className="step-number">3</div>
+                        <h5>Automatic Sealing</h5>
+                        <p>Sealant finds and seals leaks automatically</p>
+                      </div>
+                      <div className="process-step">
+                        <div className="step-number">4</div>
+                        <h5>Verification</h5>
+                        <p>We verify the sealing results and provide documentation</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <h3>AeroSeal Benefits</h3>
+                  <div className="aeroseal-benefits">
+                    <div className="benefit-card">
+                      <h4>Energy Savings</h4>
+                      <p>Reduce energy costs by up to 30% with properly sealed ducts</p>
+                    </div>
+                    <div className="benefit-card">
+                      <h4>Improved Comfort</h4>
+                      <p>Eliminate hot and cold spots throughout your home</p>
+                    </div>
+                    <div className="benefit-card">
+                      <h4>Better Air Quality</h4>
+                      <p>Prevent dust and contaminants from entering your ductwork</p>
+                    </div>
+                    <div className="benefit-card">
+                      <h4>Proven Results</h4>
+                      <p>Real-time measurement shows exactly how much leakage was sealed</p>
+                    </div>
+                  </div>
+                  
+                  <div className="cta-section">
+                    <h3>Ready to Improve Your Air Quality?</h3>
+                    <p>Contact us today for a free consultation and estimate on duct cleaning and AeroSeal services.</p>
+                    <button className="cta-button primary large" onClick={() => navigateToPage('contact')}>
+                      Get Free Estimate
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="content-sidebar">
+                  <div className="info-box">
+                    <h4>Service Benefits</h4>
+                    <ul>
+                      <li>Improved air quality</li>
+                      <li>Energy savings up to 30%</li>
+                      <li>Better HVAC performance</li>
+                      <li>Reduced allergens</li>
+                      <li>Proven technology</li>
+                      <li>Professional installation</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="info-box">
+                    <h4>AeroSeal Technology</h4>
+                    <img src="aeroseal-logo.png" alt="AeroSeal technology" className="sidebar-image" />
+                    <p>AeroSeal is the industry-leading duct sealing technology, proven to seal up to 90% of duct leaks.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Floor Coatings Page
+    if (currentPage === 'floor-coatings') {
+      return (
+        <div className="service-page">
+          <div className="page-header">
+            <div className="container">
+              <h1>Concrete Floor Coatings</h1>
+              <p>Premium Torginol floor coatings with lifetime warranty</p>
+            </div>
+          </div>
+          
+          <div className="page-content">
+            <div className="container">
+              <div className="content-grid">
+                <div className="content-main">
+                  <h2>Premium Concrete Floor Coatings</h2>
+                  <p>Transform your concrete floors with our premium Torginol coating systems. Our polyaspartic topcoat technology provides superior durability, chemical resistance, and a beautiful finish that will last a lifetime.</p>
+                  
+                  <h3>Why Choose Polyaspartic Over Epoxy?</h3>
+                  <p>While traditional epoxy coatings have been popular, polyaspartic technology represents the next generation of floor coatings. Unlike old epoxy systems, our polyaspartic topcoat provides superior performance and longevity.</p>
+                  
+                  <div className="coating-comparison">
+                    <div className="comparison-grid">
+                      <div className="comparison-card polyaspartic">
+                        <h4>Polyaspartic (Our System)</h4>
+                        <ul>
+                          <li>UV stable - won't yellow</li>
+                          <li>Faster cure time (1 day)</li>
+                          <li>Superior chemical resistance</li>
+                          <li>Flexible - resists cracking</li>
+                          <li>Temperature tolerant</li>
+                          <li>Lifetime warranty</li>
+                        </ul>
+                      </div>
+                      <div className="comparison-card epoxy">
+                        <h4>Traditional Epoxy</h4>
+                        <ul>
+                          <li>Yellows over time</li>
+                          <li>Longer cure time (3-5 days)</li>
+                          <li>Limited chemical resistance</li>
+                          <li>Brittle - can crack</li>
+                          <li>Temperature sensitive</li>
+                          <li>Limited warranty</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <h3>Our Installation Process</h3>
+                  <p>Proper preparation is key to a long-lasting floor coating. We take 2-3 days to ensure proper prep of the floor, including the first coat of base material and flakes that need time to adhere to the concrete before adding the polyaspartic topcoat.</p>
+                  
+                  <div className="installation-timeline">
+                    <div className="timeline-step">
+                      <h4>Day 1: Surface Preparation</h4>
+                      <p>Diamond grinding and crack repair to ensure proper adhesion</p>
+                    </div>
+                    <div className="timeline-step">
+                      <h4>Day 2: Base Coat & Flakes</h4>
+                      <p>Application of base coat and decorative flakes with proper cure time</p>
+                    </div>
+                    <div className="timeline-step">
+                      <h4>Day 3: Polyaspartic Topcoat</h4>
+                      <p>Final polyaspartic topcoat application for ultimate protection</p>
+                    </div>
+                  </div>
+                  
+                  <h3>Color Options & Customization</h3>
+                  <p>Choose from a wide variety of color flakes and solid colors to create the perfect look for your space. Our design team will help you select the ideal combination to complement your home or business.</p>
+                  
+                  <div className="color-gallery">
+                    <img src="concrete-coatings-professional.jpg" alt="Professional concrete coating installation" className="gallery-image" />
+                  </div>
+                  
+                  <h3>Applications</h3>
+                  <div className="applications-grid">
+                    <div className="application-card">
+                      <h4>Garage Floors</h4>
+                      <p>Protect your garage floor from oil stains, chemicals, and wear</p>
+                    </div>
+                    <div className="application-card">
+                      <h4>Basement Floors</h4>
+                      <p>Transform damp basements into beautiful, functional spaces</p>
+                    </div>
+                    <div className="application-card">
+                      <h4>Commercial Spaces</h4>
+                      <p>Durable flooring solutions for retail, warehouse, and office spaces</p>
+                    </div>
+                    <div className="application-card">
+                      <h4>Outdoor Patios</h4>
+                      <p>Weather-resistant coatings for outdoor concrete surfaces</p>
+                    </div>
+                  </div>
+                  
+                  <div className="cta-section">
+                    <h3>Ready to Transform Your Floors?</h3>
+                    <p>Contact us today for a free estimate on your concrete floor coating project.</p>
+                    <button className="cta-button primary large" onClick={() => navigateToPage('contact')}>
+                      Get Free Estimate
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="content-sidebar">
+                  <div className="info-box">
+                    <h4>Coating Benefits</h4>
+                    <ul>
+                      <li>Lifetime warranty</li>
+                      <li>Chemical resistant</li>
+                      <li>Easy to clean</li>
+                      <li>Slip resistant options</li>
+                      <li>UV stable</li>
+                      <li>Fast installation</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="info-box">
+                    <h4>Maintenance</h4>
+                    <p>Our polyaspartic coatings require minimal maintenance. Simply sweep and mop as needed to keep your floors looking like new.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
     if (currentPage === 'control4') {
       return (
         <div className="service-page">
@@ -1191,10 +1436,9 @@ function App() {
                   
                   <div className="contact-card">
                     <h3>Business Hours</h3>
-                    <p>Monday - Friday: 8:00 AM - 5:00 PM<br />
-                       Saturday: 9:00 AM - 3:00 PM<br />
-                       Sunday: Closed</p>
-                    <p className="emergency-note">Emergency services available 24/7</p>
+          <p>Monday - Friday: 8:00 AM - 5:00 PM<br />
+             Saturday: 9:00 AM - 3:00 PM<br />
+             Sunday: Closed</p>
                   </div>
                   
                   <div className="google-map-container">
@@ -1294,6 +1538,367 @@ function App() {
                     {areaCodes.map((code, index) => (
                       <span key={index} className="area-code">({code})</span>
                     ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Closet Concepts Main Page
+    if (currentPage === 'closet-concepts') {
+      return (
+        <div className="brand-page closet-concepts-page">
+          <div className="brand-hero">
+            <div className="container">
+              <div className="hero-content">
+                <img src="ClosetConcepts_Logo.jpg" alt="Closet Concepts" className="brand-logo" />
+                <h1>Custom Storage Solutions</h1>
+                <p>Premium Wisconsin-made closets and organization systems since 1987</p>
+                <div className="hero-buttons">
+                  <button className="cta-button primary large" onClick={() => navigateToPage('contact')}>
+                    Get Free Design Consultation
+                  </button>
+                  <button className="cta-button secondary large" onClick={() => navigateToPage('custom-closets')}>
+                    View Our Work
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="services-section">
+            <div className="container">
+              <h2>Our Storage Solutions</h2>
+              <div className="services-grid">
+                <div className="service-card" onClick={() => navigateToPage('custom-closets')}>
+                  <img src="Closet5.jpg" alt="Custom Closets" />
+                  <h3>Custom Closets</h3>
+                  <p>Maximize your closet space with custom-designed storage solutions</p>
+                </div>
+                <div className="service-card" onClick={() => navigateToPage('garage-storage')}>
+                  <img src="Garage1.jpg" alt="Garage Storage" />
+                  <h3>Garage Storage</h3>
+                  <p>Transform your garage into an organized, functional space</p>
+                </div>
+                <div className="service-card" onClick={() => navigateToPage('home-office')}>
+                  <img src="HomeOffice4.jpg" alt="Home Office" />
+                  <h3>Home Office</h3>
+                  <p>Built-in office solutions for productivity and organization</p>
+                </div>
+                <div className="service-card" onClick={() => navigateToPage('pantry-systems')}>
+                  <img src="Pantry1.jpeg" alt="Pantry Systems" />
+                  <h3>Pantry Systems</h3>
+                  <p>Custom pantry organization for maximum efficiency</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="why-choose-section">
+            <div className="container">
+              <h2>Why Choose Closet Concepts?</h2>
+              <div className="features-grid">
+                <div className="feature-card">
+                  <h3>Wisconsin Made</h3>
+                  <p>All products manufactured in Wisconsin with premium materials</p>
+                </div>
+                <div className="feature-card">
+                  <h3>Custom Design</h3>
+                  <p>Every system is designed specifically for your space and needs</p>
+                </div>
+                <div className="feature-card">
+                  <h3>Professional Installation</h3>
+                  <p>Expert installation by our certified technicians</p>
+                </div>
+                <div className="feature-card">
+                  <h3>Lifetime Quality</h3>
+                  <p>Built to last with premium hardware and finishes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Custom Closets Page
+    if (currentPage === 'custom-closets') {
+      return (
+        <div className="service-page">
+          <div className="page-header">
+            <div className="container">
+              <h1>Custom Closets</h1>
+              <p>Maximize your storage with custom-designed closet solutions</p>
+            </div>
+          </div>
+          
+          <div className="page-content">
+            <div className="container">
+              <div className="content-grid">
+                <div className="content-main">
+                  <h2>Custom Closet Design & Installation</h2>
+                  <p>Transform your closet into an organized, efficient space with our custom closet systems. Every closet is designed specifically for your needs, space, and lifestyle.</p>
+                  
+                  <div className="closet-gallery">
+                    <div className="gallery-grid">
+                      <img src="Closet5.jpg" alt="Walk-in closet with custom shelving" />
+                      <img src="Closet3.jpg" alt="Organized closet with drawers" />
+                      <img src="ReachinCloset1.jpg" alt="Reach-in closet organization" />
+                    </div>
+                  </div>
+                  
+                  <h3>Closet Types</h3>
+                  <div className="closet-types">
+                    <div className="type-card">
+                      <h4>Walk-In Closets</h4>
+                      <p>Maximize your walk-in closet with custom shelving, drawers, and hanging solutions</p>
+                    </div>
+                    <div className="type-card">
+                      <h4>Reach-In Closets</h4>
+                      <p>Double your storage capacity in standard reach-in closets</p>
+                    </div>
+                    <div className="type-card">
+                      <h4>Master Suites</h4>
+                      <p>Luxury closet systems for master bedroom suites</p>
+                    </div>
+                    <div className="type-card">
+                      <h4>Kids' Closets</h4>
+                      <p>Adjustable systems that grow with your children</p>
+                    </div>
+                  </div>
+                  
+                  <h3>Design Process</h3>
+                  <div className="process-steps">
+                    <div className="process-step">
+                      <div className="step-number">1</div>
+                      <h4>Free Consultation</h4>
+                      <p>We visit your home to assess your space and discuss your needs</p>
+                    </div>
+                    <div className="process-step">
+                      <div className="step-number">2</div>
+                      <h4>Custom Design</h4>
+                      <p>Our designers create a 3D rendering of your new closet</p>
+                    </div>
+                    <div className="process-step">
+                      <div className="step-number">3</div>
+                      <h4>Manufacturing</h4>
+                      <p>Your closet is built to order in our Wisconsin facility</p>
+                    </div>
+                    <div className="process-step">
+                      <div className="step-number">4</div>
+                      <h4>Professional Installation</h4>
+                      <p>Expert installation by our certified technicians</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="content-sidebar">
+                  <div className="info-box">
+                    <h4>Features</h4>
+                    <ul>
+                      <li>Custom shelving</li>
+                      <li>Soft-close drawers</li>
+                      <li>Adjustable hanging rods</li>
+                      <li>LED lighting options</li>
+                      <li>Premium finishes</li>
+                      <li>Lifetime warranty</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Garage Storage Page
+    if (currentPage === 'garage-storage') {
+      return (
+        <div className="service-page">
+          <div className="page-header">
+            <div className="container">
+              <h1>Garage Storage Systems</h1>
+              <p>Transform your garage into an organized, functional space</p>
+            </div>
+          </div>
+          
+          <div className="page-content">
+            <div className="container">
+              <div className="content-grid">
+                <div className="content-main">
+                  <h2>Custom Garage Organization</h2>
+                  <p>Reclaim your garage space with our custom storage solutions. From wall systems to overhead storage, we'll help you organize everything from tools to seasonal items.</p>
+                  
+                  <div className="garage-gallery">
+                    <div className="gallery-grid">
+                      <img src="Garage1.jpg" alt="Organized garage with wall storage" />
+                      <img src="Garage2.jpg" alt="Garage storage system with cabinets" />
+                    </div>
+                  </div>
+                  
+                  <h3>Storage Solutions</h3>
+                  <div className="storage-solutions">
+                    <div className="solution-card">
+                      <h4>Wall Storage Systems</h4>
+                      <p>Maximize wall space with slatwall and hook systems</p>
+                    </div>
+                    <div className="solution-card">
+                      <h4>Overhead Storage</h4>
+                      <p>Utilize ceiling space for seasonal and bulk items</p>
+                    </div>
+                    <div className="solution-card">
+                      <h4>Garage Cabinets</h4>
+                      <p>Secure storage for tools, chemicals, and valuables</p>
+                    </div>
+                    <div className="solution-card">
+                      <h4>Workbenches</h4>
+                      <p>Custom workstations for projects and repairs</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="content-sidebar">
+                  <div className="info-box">
+                    <h4>Benefits</h4>
+                    <ul>
+                      <li>Maximize floor space</li>
+                      <li>Easy access to items</li>
+                      <li>Weather-resistant materials</li>
+                      <li>Custom configurations</li>
+                      <li>Professional installation</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Home Office Page
+    if (currentPage === 'home-office') {
+      return (
+        <div className="service-page">
+          <div className="page-header">
+            <div className="container">
+              <h1>Home Office Solutions</h1>
+              <p>Built-in office systems for productivity and organization</p>
+            </div>
+          </div>
+          
+          <div className="page-content">
+            <div className="container">
+              <div className="content-grid">
+                <div className="content-main">
+                  <h2>Custom Home Office Design</h2>
+                  <p>Create the perfect workspace with our custom home office solutions. From built-in desks to storage systems, we'll design an office that maximizes productivity and organization.</p>
+                  
+                  <div className="office-gallery">
+                    <div className="gallery-grid">
+                      <img src="HomeOffice2.png" alt="Built-in home office desk" />
+                      <img src="HomeOffice4.jpg" alt="Custom office storage" />
+                      <img src="HomeOffice5.jpg" alt="Home office organization" />
+                    </div>
+                  </div>
+                  
+                  <h3>Office Features</h3>
+                  <div className="office-features">
+                    <div className="feature-card">
+                      <h4>Built-In Desks</h4>
+                      <p>Custom desks designed for your space and work style</p>
+                    </div>
+                    <div className="feature-card">
+                      <h4>Storage Solutions</h4>
+                      <p>File storage, bookshelves, and organization systems</p>
+                    </div>
+                    <div className="feature-card">
+                      <h4>Cable Management</h4>
+                      <p>Integrated solutions for clean, organized technology</p>
+                    </div>
+                    <div className="feature-card">
+                      <h4>Lighting Integration</h4>
+                      <p>Built-in lighting for optimal work conditions</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="content-sidebar">
+                  <div className="info-box">
+                    <h4>Design Options</h4>
+                    <ul>
+                      <li>Standing desk options</li>
+                      <li>Multiple monitor setups</li>
+                      <li>Printer storage</li>
+                      <li>Reference material storage</li>
+                      <li>Personal item display</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Pantry Systems Page
+    if (currentPage === 'pantry-systems') {
+      return (
+        <div className="service-page">
+          <div className="page-header">
+            <div className="container">
+              <h1>Pantry Organization Systems</h1>
+              <p>Custom pantry solutions for maximum efficiency and organization</p>
+            </div>
+          </div>
+          
+          <div className="page-content">
+            <div className="container">
+              <div className="content-grid">
+                <div className="content-main">
+                  <h2>Custom Pantry Design</h2>
+                  <p>Transform your pantry into an organized, efficient space with our custom storage solutions. From adjustable shelving to specialized storage for different food types, we'll maximize every inch of your pantry.</p>
+                  
+                  <div className="pantry-gallery">
+                    <img src="Pantry1.jpeg" alt="Organized pantry with custom shelving" className="gallery-image" />
+                  </div>
+                  
+                  <h3>Pantry Solutions</h3>
+                  <div className="pantry-solutions">
+                    <div className="solution-card">
+                      <h4>Adjustable Shelving</h4>
+                      <p>Flexible shelving that adapts to your storage needs</p>
+                    </div>
+                    <div className="solution-card">
+                      <h4>Pull-Out Drawers</h4>
+                      <p>Easy access to items in deep pantry spaces</p>
+                    </div>
+                    <div className="solution-card">
+                      <h4>Specialized Storage</h4>
+                      <p>Custom solutions for spices, cans, and bulk items</p>
+                    </div>
+                    <div className="solution-card">
+                      <h4>Door Storage</h4>
+                      <p>Maximize door space with specialized racks and holders</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="content-sidebar">
+                  <div className="info-box">
+                    <h4>Benefits</h4>
+                    <ul>
+                      <li>Easy inventory management</li>
+                      <li>Reduced food waste</li>
+                      <li>Quick meal preparation</li>
+                      <li>Maximized storage space</li>
+                      <li>Clean, organized appearance</li>
+                    </ul>
                   </div>
                 </div>
               </div>
