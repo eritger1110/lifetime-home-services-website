@@ -1,0 +1,44 @@
+# Netlify redirects for Lifetime Home Services
+# Legacy domain redirects for SEO preservation
+
+# America In-Home domain redirects
+https://americainhome.com/* https://lifetimehomeservices.com/america-in-home 301!
+https://www.americainhome.com/* https://lifetimehomeservices.com/america-in-home 301!
+
+# Closet Concepts domain redirects  
+https://closetconcepts.com/* https://lifetimehomeservices.com/closet-concepts 301!
+https://www.closetconcepts.com/* https://lifetimehomeservices.com/closet-concepts 301!
+
+# Service-specific redirects for SEO
+/smart-home /america-in-home 301
+/home-automation /america-in-home 301
+/security-systems /america-in-home 301
+/control4 /america-in-home 301
+
+/closets /closet-concepts 301
+/garage-storage /closet-concepts 301
+/organization /closet-concepts 301
+/storage-solutions /closet-concepts 301
+
+/radon /contact 301
+/radon-testing /contact 301
+/radon-mitigation /contact 301
+/floor-coatings /contact 301
+/duct-cleaning /contact 301
+/aeroseal /contact 301
+
+# State redirects
+/wi /wisconsin 301
+/il /illinois 301
+/mn /minnesota 301
+/co /colorado 301
+
+# General redirects
+/services /home 301
+/about /home 301
+/estimates /contact 301
+/quote /contact 301
+
+# Catch-all for any other paths
+/* /home 200
+
