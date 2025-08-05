@@ -1,0 +1,16 @@
+# Netlify redirects file for domain handling
+
+# Legacy domain redirects
+https://americainhome.com/* https://lifetimehomeservices.com/?brand=aih 301!
+https://www.americainhome.com/* https://lifetimehomeservices.com/?brand=aih 301!
+http://americainhome.com/* https://lifetimehomeservices.com/?brand=aih 301!
+http://www.americainhome.com/* https://lifetimehomeservices.com/?brand=aih 301!
+
+https://closetconcepts.com/* https://lifetimehomeservices.com/?brand=closets 301!
+https://www.closetconcepts.com/* https://lifetimehomeservices.com/?brand=closets 301!
+http://closetconcepts.com/* https://lifetimehomeservices.com/?brand=closets 301!
+http://www.closetconcepts.com/* https://lifetimehomeservices.com/?brand=closets 301!
+
+# SPA fallback
+/* /index.html 200
+
