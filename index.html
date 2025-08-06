@@ -12,39 +12,2257 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Lifetime Home Services",
-        "description": "Professional home services including radon testing, smart home automation, and custom storage solutions",
-        "telephone": "(833) 941-6888",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "123 Main Street",
-            "addressLocality": "Brookfield",
-            "addressRegion": "WI",
-            "postalCode": "53045"
-        },
-        "serviceArea": ["Wisconsin", "Illinois", "Minnesota", "Colorado"],
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Home Services",
-            "itemListElement": [
+    <!-- Embedded CSS -->
+    <style>
+        /* CSS Variables for Brand Colors */
+        :root {
+            --lifetime-primary: #1a365d;
+            --lifetime-secondary: #2d5a87;
+            --lifetime-accent: #d4af37;
+            --lifetime-gold: #f7d794;
+            --lifetime-light: #f8f9fa;
+            --lifetime-dark: #2c3e50;
+            
+            --america-primary: #c41e3a;
+            --america-secondary: #1e3a8a;
+            --america-accent: #fbbf24;
+            --america-light: #fef3c7;
+            
+            --closet-primary: #4a5568;
+            --closet-secondary: #2d3748;
+            --closet-accent: #ed8936;
+            --closet-light: #fed7aa;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            min-height: 80px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--lifetime-primary);
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--lifetime-accent);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--lifetime-accent);
+            border-left-color: var(--lifetime-accent);
+        }
+
+        .phone-number {
+            background: linear-gradient(135deg, var(--lifetime-accent), #f1c40f);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            white-space: nowrap;
+        }
+
+        .phone-number:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Brand Switcher */
+        .brand-switcher {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1rem 0;
+            margin-top: 80px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .brand-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .brand-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .brand-btn:hover,
+        .brand-btn.active {
+            border-color: var(--lifetime-accent);
+            background: var(--lifetime-accent);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .brand-logo {
+            height: 30px;
+            width: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-background {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.7), rgba(45, 90, 135, 0.5));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--lifetime-gold);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        /* Video Hero Section */
+        .video-hero {
+            min-height: 100vh;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-hero-container {
+            display: flex;
+            height: 100vh;
+            align-items: center;
+        }
+
+        .vertical-showcase {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 2rem 1rem;
+            overflow: hidden;
+        }
+
+        .showcase-image {
+            position: relative;
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .showcase-image:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .showcase-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .showcase-image:hover .image-overlay {
+            transform: translateY(0);
+        }
+
+        .image-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .image-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .video-hero-content {
+            flex: 2;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .video-container {
+            position: relative;
+            width: 90%;
+            height: 70vh;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .video-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-description {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-large {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--lifetime-accent), #f1c40f);
+            color: white;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--lifetime-primary);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--lifetime-primary);
+            border: 2px solid var(--lifetime-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--lifetime-primary);
+            color: white;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-subtitle {
+            color: var(--lifetime-accent);
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--lifetime-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            position: relative;
+        }
+
+        .services::before {
+            content: 'LIFETIME';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 8rem;
+            font-weight: 900;
+            color: rgba(212, 175, 55, 0.05);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--lifetime-primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background: var(--lifetime-primary);
+            color: white;
+            position: relative;
+        }
+
+        .reviews::before {
+            content: 'REVIEWS';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 6rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.05);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .reviews .section-title {
+            position: relative;
+            z-index: 2;
+        }
+
+        .reviews .section-subtitle {
+            color: var(--lifetime-gold);
+        }
+
+        .reviews .section-title h2 {
+            color: white;
+        }
+
+        .reviews .section-title p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .review-stars {
+            color: var(--lifetime-gold);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: var(--lifetime-gold);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--lifetime-primary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-item strong {
+            color: var(--lifetime-primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form-container {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--lifetime-primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--lifetime-primary);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--lifetime-accent);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        /* Page Content Styles */
+        .page-content {
+            margin-top: 140px;
+            min-height: calc(100vh - 140px);
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .service-page {
+            margin-top: 140px;
+            min-height: calc(100vh - 140px);
+            background: white;
+            padding: 4rem 0;
+        }
+
+        .service-page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .service-page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--lifetime-primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-page-subtitle {
+            font-size: 1.25rem;
+            color: #666;
+        }
+
+        .service-page-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .service-page-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-page-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--lifetime-primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-page-text h3 {
+            font-size: 1.5rem;
+            color: var(--lifetime-primary);
+            margin: 2rem 0 1rem;
+        }
+
+        .service-page-text ul {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .service-page-text li {
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .service-cta {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* About Page Styles */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .about-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--lifetime-primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-content h3 {
+            color: var(--lifetime-primary);
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+        }
+
+        .about-content ul {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .about-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Page Styles */
+        .contact-page-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--lifetime-primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .contact-page-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin: 3rem 0;
+        }
+
+        .contact-page-info h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--lifetime-primary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-page-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 16px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .map-container {
+            margin-top: 3rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Financing Page Styles */
+        .financing-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .financing-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--lifetime-primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .financing-benefits,
+        .financing-cta,
+        .financing-contact {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+
+        .financing-cta {
+            text-align: center;
+            background: linear-gradient(135deg, var(--lifetime-primary), var(--lifetime-secondary));
+            color: white;
+        }
+
+        .financing-cta h3 {
+            color: white;
+        }
+
+        /* Service Areas Page Styles */
+        .service-areas-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--lifetime-primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .states-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .state-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--lifetime-accent);
+        }
+
+        .state-section h3 {
+            color: var(--lifetime-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .zip-codes p {
+            margin-bottom: 1rem;
+        }
+
+        .zip-codes details {
+            margin-top: 1rem;
+        }
+
+        .zip-codes summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--lifetime-primary);
+            padding: 0.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .zip-codes summary:hover {
+            background: rgba(212, 175, 55, 0.2);
+        }
+
+        .service-note {
+            background: var(--lifetime-primary);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .contact-link {
+            color: var(--lifetime-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: var(--lifetime-dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--lifetime-gold);
+        }
+
+        .footer-link {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--lifetime-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+            text-align: center;
+            color: #999;
+        }
+
+        /* Success Message Styles */
+        .success-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .success-content {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 400px;
+            animation: slideInUp 0.3s ease-out;
+        }
+
+        .success-content h3 {
+            color: #28a745;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .success-content p {
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .video-hero-container {
+                flex-direction: column;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .vertical-showcase {
+                flex-direction: row;
+                height: 200px;
+                padding: 1rem;
+            }
+
+            .video-hero-content {
+                flex: none;
+                height: 60vh;
+                padding: 1rem;
+            }
+
+            .video-container {
+                height: 50vh;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid,
+            .service-page-content,
+            .contact-page-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .states-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .brand-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .brand-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-content {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .contact-form-container {
+                padding: 1.5rem;
+            }
+
+            .service-page,
+            .page-content {
+                padding: 2rem 0;
+            }
+        }
+
+        /* Brand-specific styles */
+        .america-brand .hero {
+            background: linear-gradient(135deg, var(--america-primary), var(--america-secondary));
+        }
+
+        .america-brand .brand-name,
+        .america-brand .section-title h2,
+        .america-brand .service-content h3 {
+            color: var(--america-primary);
+        }
+
+        .america-brand .btn-primary {
+            background: linear-gradient(135deg, var(--america-primary), var(--america-accent));
+        }
+
+        .closet-brand .hero {
+            background: linear-gradient(135deg, var(--closet-primary), var(--closet-secondary));
+        }
+
+        .closet-brand .brand-name,
+        .closet-brand .section-title h2,
+        .closet-brand .service-content h3 {
+            color: var(--closet-primary);
+        }
+
+        .closet-brand .btn-primary {
+            background: linear-gradient(135deg, var(--closet-primary), var(--closet-accent));
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo-container">
+                <img src="LifetimeHomeServicesLogo.png" alt="Lifetime Home Services" class="logo" id="headerLogo">
+                <span class="brand-name" id="headerBrandName">Lifetime Home Services</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Services</a>
+                    <div class="dropdown">
+                        <a href="#radon-testing-page" class="dropdown-item">Radon Testing</a>
+                        <a href="#radon-mitigation-page" class="dropdown-item">Radon Mitigation</a>
+                        <a href="#epoxy-flooring-page" class="dropdown-item">Epoxy Floor Coatings</a>
+                        <a href="#aeroseal-page" class="dropdown-item">AeroSeal Duct Sealing</a>
+                        <a href="#smart-home-page" class="dropdown-item">Smart Home Automation</a>
+                        <a href="#security-page" class="dropdown-item">Security Systems</a>
+                        <a href="#custom-closets-page" class="dropdown-item">Custom Closets</a>
+                        <a href="#home-theater-page" class="dropdown-item">Home Theater</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#service-areas-page" class="nav-link">Service Areas</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about-page" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#financing-page" class="nav-link">Financing</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact-page" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            
+            <a href="tel:8339416888" class="phone-number">(833) 941-6888</a>
+        </nav>
+    </header>
+
+    <!-- Brand Switcher -->
+    <section class="brand-switcher">
+        <div class="container">
+            <div class="brand-buttons">
+                <a href="#" class="brand-btn active" data-brand="lifetime">
+                    <img src="LifetimeHomeServicesLogo.png" alt="Lifetime Home Services" class="brand-logo">
+                    <span>Lifetime</span>
+                </a>
+                <a href="#" class="brand-btn" data-brand="america">
+                    <img src="AmericaIn-HomeLogo.jpg" alt="America In-Home" class="brand-logo">
+                    <span>America In-Home</span>
+                </a>
+                <a href="#" class="brand-btn" data-brand="closet">
+                    <img src="NewClosetConceptsLogo.png" alt="Closet Concepts" class="brand-logo">
+                    <span>Closet Concepts</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- Hero Section (Image-based for Lifetime) -->
+        <section class="hero" id="home">
+            <div class="hero-image-container">
+                <img src="lifetime-hero-house.jpg" alt="Beautiful home with professional services" class="hero-background">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Lifetime Home Services</h1>
+                    <p class="hero-subtitle">Trusted Solutions. Lifetime Results.</p>
+                    <p class="hero-description">Expert care for the spaces beneath, around, and within your home</p>
+                    <div class="hero-buttons">
+                        <a href="#contact-form" class="btn btn-primary btn-large">Get Free Estimate</a>
+                        <a href="#services" class="btn btn-secondary btn-large">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Hero Section (for America In-Home and Closet Concepts) -->
+        <section class="video-hero" id="video-hero" style="display: none;">
+            <div class="video-hero-container">
+                <!-- Left Showcase -->
+                <div class="vertical-showcase left-showcase">
+                    <div class="showcase-image">
+                        <img src="HomeTheater1.jpg" alt="Home Theater" loading="lazy">
+                        <div class="image-overlay">
+                            <div class="image-title">Home Theater</div>
+                            <div class="image-description">Ultimate entertainment experience</div>
+                        </div>
+                    </div>
+                    <div class="showcase-image">
+                        <img src="smart-home-automation.jpg" alt="Smart Home" loading="lazy">
+                        <div class="image-overlay">
+                            <div class="image-title">Smart Home Control</div>
+                            <div class="image-description">Complete automation systems</div>
+                        </div>
+                    </div>
+                    <div class="showcase-image">
+                        <img src="security-systems.jpg" alt="Security Systems" loading="lazy">
+                        <div class="image-overlay">
+                            <div class="image-title">Advanced Security</div>
+                            <div class="image-description">24/7 monitoring and protection</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Video -->
+                <div class="video-hero-content">
+                    <div class="video-container">
+                        <iframe class="hero-video" id="heroVideo" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="video-overlay">
+                            <h1 class="video-title" id="videoTitle">America In-Home</h1>
+                            <p class="video-description" id="videoDescription">Luxury Technology. Seamless Living.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Showcase -->
+                <div class="vertical-showcase right-showcase">
+                    <div class="showcase-image">
+                        <img src="WalkInCloset1.jpg" alt="Walk-in Closet" loading="lazy">
+                        <div class="image-overlay">
+                            <div class="image-title">Walk-in Closets</div>
+                            <div class="image-description">Luxury storage solutions</div>
+                        </div>
+                    </div>
+                    <div class="showcase-image">
+                        <img src="ReachinCloset1.jpg" alt="Reach-in Closet" loading="lazy">
+                        <div class="image-overlay">
+                            <div class="image-title">Reach-in Closets</div>
+                            <div class="image-description">Maximize small spaces</div>
+                        </div>
+                    </div>
+                    <div class="showcase-image">
+                        <img src="Pantry1.jpeg" alt="Pantry System" loading="lazy">
+                        <div class="image-overlay">
+                            <div class="image-title">Pantry Systems</div>
+                            <div class="image-description">Organized kitchen storage</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services section" id="services">
+            <div class="container">
+                <div class="section-title">
+                    <p class="section-subtitle">What We Do</p>
+                    <h2>Professional Home Services</h2>
+                    <p>Comprehensive solutions for every aspect of your home</p>
+                </div>
+                
+                <div class="services-grid" id="servicesGrid">
+                    <!-- Services will be dynamically populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews section" id="reviews">
+            <div class="container">
+                <div class="section-title">
+                    <p class="section-subtitle">What Our Customers Say</p>
+                    <h2>5-Star Google Reviews</h2>
+                    <p>Don't just take our word for it - see what our satisfied customers have to say about our services.</p>
+                </div>
+                
+                <div class="reviews-container">
+                    <div class="reviews-grid" id="reviewsGrid">
+                        <!-- Reviews will be dynamically populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section" id="contact-section">
+            <div class="container">
+                <div class="section-title">
+                    <p class="section-subtitle">Get In Touch</p>
+                    <h2>Ready to Get Started?</h2>
+                    <p>Contact us today for a free consultation and estimate on your home service needs.</p>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="contact-item">
+                            <strong>Phone:</strong>
+                            <a href="tel:8339416888" class="phone-number">(833) 941-6888</a>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Hours:</strong>
+                            <span>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM</span>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Service Areas:</strong>
+                            <span>Wisconsin, Illinois, Minnesota, Colorado</span>
+                        </div>
+                        <div class="contact-item">
+                            <a href="#contact-form" class="btn btn-primary btn-large">Get Free Estimate</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container" id="contact-form">
+                        <form class="contact-form" id="quickContactForm">
+                            <h3>Quick Contact</h3>
+                            <div class="form-group">
+                                <label for="quickName" class="form-label">Name *</label>
+                                <input type="text" id="quickName" name="name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="quickEmail" class="form-label">Email *</label>
+                                <input type="email" id="quickEmail" name="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="quickPhone" class="form-label">Phone *</label>
+                                <input type="tel" id="quickPhone" name="phone" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="quickService" class="form-label">Service Interest *</label>
+                                <select id="quickService" name="service" class="form-input" required>
+                                    <option value="">Select a service</option>
+                                    <option value="Radon Testing">Radon Testing</option>
+                                    <option value="Radon Mitigation">Radon Mitigation</option>
+                                    <option value="Custom Closets">Custom Closets</option>
+                                    <option value="Smart Home Technology (AIH)">Smart Home Technology</option>
+                                    <option value="Floor Coatings (EPOXY)">Floor Coatings</option>
+                                    <option value="Home Security">Home Security</option>
+                                    <option value="Multiple (Concierge Services)">Multiple Services</option>
+                                </select>
+                            </div>
+                            <input type="hidden" name="lead_source" value="internet">
+                            <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Pages (Hidden by default) -->
+        
+        <!-- Radon Testing Page -->
+        <section class="service-page" id="radon-testing-page" style="display: none;">
+            <div class="container">
+                <div class="service-page-header">
+                    <h1>Professional Radon Testing Services</h1>
+                    <p class="service-page-subtitle">Protect your family with accurate radon testing</p>
+                </div>
+                
+                <div class="service-page-content">
+                    <div class="service-page-image">
+                        <img src="radon-testing.jpg" alt="Professional Radon Testing" loading="lazy">
+                    </div>
+                    
+                    <div class="service-page-text">
+                        <h2>Why Radon Testing Matters</h2>
+                        <p>Radon is a colorless, odorless gas that can accumulate in your home and pose serious health risks. Our professional radon testing services provide accurate measurements to help you make informed decisions about your family's safety.</p>
+                        
+                        <h3>Our Testing Process</h3>
+                        <ul>
+                            <li>Professional-grade testing equipment</li>
+                            <li>48-72 hour testing period for accurate results</li>
+                            <li>Detailed report with recommendations</li>
+                            <li>EPA-certified testing procedures</li>
+                        </ul>
+                        
+                        <h3>What You Get</h3>
+                        <ul>
+                            <li>Comprehensive radon level analysis</li>
+                            <li>Written report within 24 hours</li>
+                            <li>Mitigation recommendations if needed</li>
+                            <li>Peace of mind for your family</li>
+                        </ul>
+                        
+                        <div class="service-cta">
+                            <a href="#contact-form" class="btn btn-primary btn-large">Schedule Testing</a>
+                            <a href="tel:8339416888" class="btn btn-secondary btn-large">Call (833) 941-6888</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Radon Mitigation Page -->
+        <section class="service-page" id="radon-mitigation-page" style="display: none;">
+            <div class="container">
+                <div class="service-page-header">
+                    <h1>Professional Radon Mitigation Services</h1>
+                    <p class="service-page-subtitle">Effective radon reduction for your home</p>
+                </div>
+                
+                <div class="service-page-content">
+                    <div class="service-page-image">
+                        <img src="radon-mitigation.jpg" alt="Professional Radon Mitigation" loading="lazy">
+                    </div>
+                    
+                    <div class="service-page-text">
+                        <h2>Professional Radon Reduction</h2>
+                        <p>If your home has elevated radon levels, our professional mitigation systems can reduce radon concentrations to safe levels, protecting your family's health.</p>
+                        
+                        <h3>Our Mitigation Systems</h3>
+                        <ul>
+                            <li>Sub-slab depressurization systems</li>
+                            <li>Crawl space ventilation</li>
+                            <li>Basement pressurization</li>
+                            <li>Custom solutions for your home</li>
+                        </ul>
+                        
+                        <h3>Installation Process</h3>
+                        <ul>
+                            <li>Detailed home assessment</li>
+                            <li>Custom system design</li>
+                            <li>Professional installation</li>
+                            <li>Post-installation testing</li>
+                            <li>Warranty and maintenance</li>
+                        </ul>
+                        
+                        <div class="service-cta">
+                            <a href="#contact-form" class="btn btn-primary btn-large">Get Free Estimate</a>
+                            <a href="tel:8339416888" class="btn btn-secondary btn-large">Call (833) 941-6888</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section class="page-content" id="about-page" style="display: none;">
+            <div class="container">
+                <div class="about-content">
+                    <h1>About Us</h1>
+                    <p>At Lifetime Home Services, we believe your home should be as hardworking, comfortable, and personalized as the people who live in it. That's why we've brought together three of Southeast Wisconsin's most trusted home service companies—each with decades of experience—under one roof to offer a full suite of solutions for the modern homeowner.</p>
+
+                    <h3>Our Story</h3>
+                    <p>Our story begins over 25 years ago with Lifetime Radon Solutions, a locally-owned company dedicated to keeping Wisconsin families safe through professional radon testing and mitigation. Meanwhile, Closet Concepts and America In-Home were also building loyal followings—Closet Concepts by designing beautiful, custom storage systems for homes across the region, and America In-Home by pioneering whole-home automation, audio/video systems, and smart technology integration.</p>
+
+                    <p>These three family-driven businesses have deep roots in the community and have long shared a simple philosophy: deliver high-quality, honest service that stands the test of time. In 2025, we joined forces to offer something even more powerful—a single, seamless source for expert solutions that enhance how people live, work, and feel in their homes.</p>
+
+                    <h3>What We Offer</h3>
+                    <p>What was once known as the Brookfield Idea Center—a collaborative space where local businesses showcased innovation—has now evolved into a new kind of one-stop shop. Under the Lifetime Home Services banner, we proudly offer:</p>
+
+                    <ul>
+                        <li>Radon Testing & Mitigation</li>
+                        <li>Epoxy Floor Coatings</li>
+                        <li>Duct Cleaning & Sealing</li>
+                        <li>Smart Home Automation & Whole-Home Networking</li>
+                        <li>Custom Closets & Storage Solutions</li>
+                    </ul>
+
+                    <p>And the best part? All the original owners and teams are still here, working side-by-side to bring you the same trusted service with even more value. We're local, we're experienced, and we're here to serve—with integrity, transparency, and a commitment to excellence that spans generations.</p>
+
+                    <p><strong>Welcome to Lifetime. Trusted Solutions. Lifetime Results.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section class="page-content" id="contact-page" style="display: none;">
+            <div class="container">
+                <div class="contact-page-content">
+                    <h1>Contact Us</h1>
+                    <p>Ready to enhance your home with professional services? Get in touch with us today for a free consultation and estimate.</p>
+
+                    <div class="contact-page-grid">
+                        <div class="contact-page-info">
+                            <h3>Get In Touch</h3>
+                            <div class="contact-item">
+                                <strong>Phone:</strong>
+                                <a href="tel:8339416888" class="phone-number">(833) 941-6888</a>
+                            </div>
+                            <div class="contact-item">
+                                <strong>Email:</strong>
+                                <a href="mailto:info@lifetimehomeservices.com">info@lifetimehomeservices.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <strong>Address:</strong>
+                                <span>123 Main Street<br>Brookfield, WI 53045</span>
+                            </div>
+                            <div class="contact-item">
+                                <strong>Hours:</strong>
+                                <span>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Closed</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-page-form">
+                            <form class="contact-form" id="mainContactForm">
+                                <h3>Send Us a Message</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <input type="text" id="firstName" name="firstName" class="form-input" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <input type="text" id="lastName" name="lastName" class="form-input" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email *</label>
+                                        <input type="email" id="email" name="email" class="form-input" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Phone *</label>
+                                        <input type="tel" id="phone" name="phone" class="form-input" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="service" class="form-label">Service Interest *</label>
+                                    <select id="service" name="service" class="form-input" required>
+                                        <option value="">Select a service</option>
+                                        <option value="Radon Testing">Radon Testing</option>
+                                        <option value="Radon Mitigation">Radon Mitigation</option>
+                                        <option value="Custom Closets">Custom Closets</option>
+                                        <option value="Smart Home Technology">Smart Home Technology</option>
+                                        <option value="Floor Coatings">Floor Coatings</option>
+                                        <option value="Home Security">Home Security</option>
+                                        <option value="Multiple Services">Multiple Services</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea id="message" name="message" class="form-input" rows="5" placeholder="Tell us about your project..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.5!2d-88.1!3d43.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDA2JzAwLjAiTiA4OMKwMDYnMDAuMCJX!5e0!3m2!1sen!2sus!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Financing Page -->
+        <section class="page-content" id="financing-page" style="display: none;">
+            <div class="container">
+                <div class="financing-content">
+                    <h1>Financing Options</h1>
+                    <p>Make your home improvement dreams a reality with flexible financing options through our partnership with Synchrony Financial.</p>
+
+                    <div class="financing-benefits">
+                        <h3>Why Choose Our Financing?</h3>
+                        <ul>
+                            <li><strong>Quick and Easy Application:</strong> Get approved in minutes with our online application process</li>
+                            <li><strong>Flexible Terms:</strong> Choose from various payment plans that fit your budget</li>
+                            <li><strong>Competitive Rates:</strong> Enjoy competitive interest rates and promotional offers</li>
+                            <li><strong>No Prepayment Penalties:</strong> Pay off your loan early without additional fees</li>
+                        </ul>
+                    </div>
+
+                    <div class="financing-cta">
+                        <h3>Ready to Get Started?</h3>
+                        <p>Apply for financing today and start your home improvement project tomorrow.</p>
+                        <a href="https://www.synchrony.com/mysynchrony/apply" target="_blank" class="btn btn-primary btn-large">Apply for Financing</a>
+                    </div>
+
+                    <div class="financing-contact">
+                        <h3>Questions About Financing?</h3>
+                        <p>Our team is here to help you understand your financing options and find the best solution for your needs.</p>
+                        <a href="tel:8339416888" class="btn btn-secondary btn-large">Call (833) 941-6888</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Areas Page -->
+        <section class="page-content" id="service-areas-page" style="display: none;">
+            <div class="container">
+                <div class="service-areas-content">
+                    <h1>Service Areas</h1>
+                    <p>We proudly serve homeowners across Wisconsin, Illinois, Minnesota, and Colorado with professional home services.</p>
+
+                    <div class="states-grid">
+                        <div class="state-section">
+                            <h3>Wisconsin</h3>
+                            <p><strong>All Services Available</strong></p>
+                            <p>We offer our complete range of services throughout Wisconsin, including radon testing and mitigation, custom closets, smart home automation, floor coatings, and duct sealing.</p>
+                            
+                            <div class="zip-codes">
+                                <p><strong>Service Areas Include:</strong></p>
+                                <p>Milwaukee, Madison, Green Bay, Kenosha, Racine, Appleton, Waukesha, Oshkosh, Eau Claire, Janesville, West Allis, La Crosse, Sheboygan, Wauwatosa, Fond du Lac, New Berlin, Brookfield, Beloit, Greenfield, Manitowoc, and surrounding areas.</p>
+                                
+                                <details>
+                                    <summary>View All Zip Codes (+50 more)</summary>
+                                    <p>53001, 53002, 53005, 53007, 53008, 53012, 53013, 53014, 53015, 53016, 53017, 53018, 53019, 53020, 53021, 53022, 53023, 53024, 53025, 53026, 53027, 53029, 53031, 53032, 53033, 53034, 53035, 53037, 53040, 53041, 53042, 53043, 53044, 53045, 53046, 53047, 53048, 53049, 53051, 53052, 53056, 53057, 53058, 53059, 53060, 53061, 53063, 53064, 53065, 53066, 53067, 53068, 53069, 53070, 53071, 53072, 53073, 53074, 53075, 53076, 53077, 53078, 53079, 53080, 53081, 53082, 53083, 53085, 53086, 53089, 53090, 53092, 53093, 53094, 53095, 53097, 53098, 53099, 53102, 53103, 53104, 53105, 53108, 53109, 53110, 53114, 53115, 53118, 53119, 53120, 53121, 53122, 53125, 53126, 53128, 53129, 53130, 53132, 53133, 53134, 53135, 53137, 53138, 53139, 53140, 53141, 53142, 53143, 53144, 53146, 53147, 53149, 53150, 53151, 53152, 53153, 53154, 53156, 53158, 53159, 53168, 53177, 53178, 53179, 53181, 53182, 53183, 53184, 53185, 53186, 53187, 53188, 53189, 53190, 53191, 53192, 53193, 53194, 53195, 53201, 53202, 53203, 53204, 53205, 53206, 53207, 53208, 53209, 53210, 53211, 53212, 53213, 53214, 53215, 53216, 53217, 53218, 53219, 53220, 53221, 53222, 53223, 53224, 53225, 53226, 53227, 53228, 53233, 53234, 53235, 53237, 53244, 53259, 53263, 53267, 53268, 53274, 53278, 53288, 53290, 53293, 53295</p>
+                                </details>
+                            </div>
+                        </div>
+
+                        <div class="state-section">
+                            <h3>Illinois</h3>
+                            <p><strong>Radon Mitigation & AeroSeal Services</strong></p>
+                            <p>We provide professional radon mitigation and AeroSeal duct sealing services throughout northern Illinois.</p>
+                            
+                            <div class="zip-codes">
+                                <p><strong>Service Areas Include:</strong></p>
+                                <p>Chicago suburbs, Lake County, McHenry County, Kane County, DuPage County, Cook County, and surrounding areas.</p>
+                                
+                                <details>
+                                    <summary>View All Zip Codes (+30 more)</summary>
+                                    <p>60004, 60005, 60006, 60007, 60008, 60009, 60010, 60011, 60012, 60013, 60014, 60015, 60016, 60017, 60018, 60019, 60020, 60021, 60022, 60025, 60026, 60029, 60030, 60031, 60033, 60034, 60035, 60037, 60038, 60039, 60040, 60041, 60042, 60043, 60044, 60045, 60046, 60047, 60048, 60050, 60051, 60053, 60055, 60056, 60060, 60061, 60062, 60064, 60065, 60067, 60068, 60069, 60070, 60071, 60072, 60073, 60074, 60075, 60076, 60077, 60078, 60079, 60081, 60082, 60083, 60084, 60085, 60086, 60087, 60088, 60089, 60090, 60091, 60092, 60093, 60094, 60095, 60096, 60097, 60098, 60099</p>
+                                </details>
+                            </div>
+                        </div>
+
+                        <div class="state-section">
+                            <h3>Minnesota</h3>
+                            <p><strong>Radon Testing & Mitigation Services</strong></p>
+                            <p>We offer comprehensive radon testing and mitigation services throughout the Twin Cities metro area and southern Minnesota.</p>
+                            
+                            <div class="zip-codes">
+                                <p><strong>Service Areas Include:</strong></p>
+                                <p>Minneapolis, St. Paul, Bloomington, Plymouth, Woodbury, Maple Grove, Blaine, Lakeville, Burnsville, Eden Prairie, Minnetonka, Coon Rapids, and surrounding areas.</p>
+                                
+                                <details>
+                                    <summary>View All Zip Codes (+25 more)</summary>
+                                    <p>55001, 55003, 55005, 55009, 55011, 55014, 55016, 55017, 55018, 55019, 55020, 55021, 55024, 55025, 55027, 55029, 55030, 55031, 55033, 55038, 55040, 55041, 55042, 55043, 55044, 55045, 55046, 55047, 55051, 55052, 55054, 55055, 55056, 55057, 55060, 55063, 55066, 55068, 55069, 55070, 55071, 55075, 55076, 55077, 55079, 55082, 55083, 55090, 55092, 55101, 55102, 55103, 55104, 55105, 55106, 55107, 55108, 55109, 55110, 55111, 55112, 55113, 55114, 55115, 55116, 55117, 55118, 55119, 55120, 55121, 55122, 55123, 55124, 55125, 55126, 55127, 55128, 55129, 55130, 55133, 55144, 55150, 55155, 55161, 55164, 55165, 55166, 55168, 55169, 55170, 55171, 55172, 55175, 55177, 55182, 55187, 55188, 55191, 55337, 55343, 55344, 55345, 55346, 55347, 55356, 55357, 55359, 55364, 55369, 55372, 55375, 55378, 55379, 55381, 55382, 55383, 55384, 55386, 55387, 55391, 55392, 55395, 55396, 55397, 55398</p>
+                                </details>
+                            </div>
+                        </div>
+
+                        <div class="state-section">
+                            <h3>Colorado</h3>
+                            <p><strong>Radon Testing & Mitigation Services</strong></p>
+                            <p>We provide professional radon testing and mitigation services throughout the Denver metro area and Front Range communities.</p>
+                            
+                            <div class="zip-codes">
+                                <p><strong>Service Areas Include:</strong></p>
+                                <p>Denver, Aurora, Colorado Springs, Lakewood, Thornton, Arvada, Westminster, Pueblo, Centennial, Boulder, Greeley, Longmont, Loveland, Grand Junction, and surrounding areas.</p>
+                                
+                                <details>
+                                    <summary>View All Zip Codes (+20 more)</summary>
+                                    <p>80001, 80002, 80003, 80004, 80005, 80007, 80010, 80011, 80012, 80013, 80014, 80015, 80016, 80017, 80018, 80019, 80020, 80021, 80022, 80023, 80024, 80025, 80026, 80027, 80028, 80030, 80031, 80033, 80034, 80035, 80036, 80037, 80038, 80040, 80041, 80045, 80046, 80047, 80101, 80102, 80103, 80104, 80105, 80106, 80107, 80108, 80109, 80110, 80111, 80112, 80113, 80116, 80117, 80118, 80120, 80121, 80122, 80123, 80124, 80125, 80126, 80127, 80128, 80129, 80130, 80131, 80132, 80133, 80134, 80135, 80136, 80137, 80138, 80202, 80203, 80204, 80205, 80206, 80207, 80208, 80209, 80210, 80211, 80212, 80214, 80215, 80216, 80218, 80219, 80220, 80221, 80222, 80223, 80224, 80225, 80226, 80227, 80228, 80229, 80230, 80231, 80232, 80233, 80234, 80235, 80236, 80237, 80238, 80239, 80246, 80247, 80249, 80260, 80264, 80290, 80293, 80294</p>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-note">
+                        <h3>Don't See Your Area?</h3>
+                        <p>We're always expanding our service areas. Contact us to see if we can serve your location.</p>
+                        <a href="tel:8339416888" class="contact-link">(833) 941-6888</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Lifetime Home Services</h4>
+                    <p>Professional home services you can trust. From radon testing to smart home automation, we provide comprehensive solutions for the modern homeowner.</p>
+                    <p><strong>Phone:</strong> <a href="tel:8339416888" class="phone-number">(833) 941-6888</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <a href="#radon-testing-page" class="footer-link">Radon Testing</a>
+                    <a href="#radon-mitigation-page" class="footer-link">Radon Mitigation</a>
+                    <a href="#epoxy-flooring-page" class="footer-link">Epoxy Floor Coatings</a>
+                    <a href="#aeroseal-page" class="footer-link">AeroSeal Duct Sealing</a>
+                    <a href="#smart-home-page" class="footer-link">Smart Home Automation</a>
+                    <a href="#custom-closets-page" class="footer-link">Custom Closets</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#about-page" class="footer-link">About Us</a>
+                    <a href="#service-areas-page" class="footer-link">Service Areas</a>
+                    <a href="#financing-page" class="footer-link">Financing</a>
+                    <a href="#contact-page" class="footer-link">Contact Us</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Service Areas</h4>
+                    <a href="#service-areas-page" class="footer-link">Wisconsin</a>
+                    <a href="#service-areas-page" class="footer-link">Illinois</a>
+                    <a href="#service-areas-page" class="footer-link">Minnesota</a>
+                    <a href="#service-areas-page" class="footer-link">Colorado</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Lifetime Home Services. All rights reserved. | Professional home services for Wisconsin, Illinois, Minnesota, and Colorado.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Message Template (hidden) -->
+    <div class="success-message" style="display: none;" id="successMessage">
+        <div class="success-content">
+            <h3>Success!</h3>
+            <p>Thank you! Your message has been sent. We'll contact you soon.</p>
+            <button class="btn btn-primary" onclick="closeSuccessMessage()">Close</button>
+        </div>
+    </div>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        // Global variables
+        let currentBrand = 'lifetime';
+        let currentReviewIndex = 0;
+
+        // Service data for each brand
+        const serviceData = {
+            lifetime: [
                 {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Radon Testing"
-                    }
+                    title: 'Radon Testing',
+                    description: 'Learn more about our professional radon testing services.',
+                    image: 'radon-testing.jpg',
+                    link: '#radon-testing-page'
                 },
                 {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Smart Home Automation"
+                    title: 'Radon Mitigation',
+                    description: 'Learn more about our professional radon mitigation services.',
+                    image: 'radon-mitigation.jpg',
+                    link: '#radon-mitigation-page'
+                },
+                {
+                    title: 'Duct Cleaning/AeroSeal',
+                    description: 'Learn more about our professional duct cleaning/aeroseal services.',
+                    image: 'EPTrailer.jpg',
+                    link: '#aeroseal-page'
+                },
+                {
+                    title: 'Floor Coatings',
+                    description: 'Learn more about our professional floor coatings services.',
+                    image: 'after1.jpg',
+                    link: '#epoxy-flooring-page'
+                }
+            ],
+            america: [
+                {
+                    title: 'Smart Home Automation',
+                    description: 'Learn more about our professional smart home automation services.',
+                    image: 'smart-home-automation.jpg',
+                    link: '#smart-home-page'
+                },
+                {
+                    title: 'Security Systems',
+                    description: 'Learn more about our professional security systems services.',
+                    image: 'security-systems.jpg',
+                    link: '#security-page'
+                },
+                {
+                    title: 'Home Theater',
+                    description: 'Learn more about our professional home theater services.',
+                    image: 'HomeTheater1.jpg',
+                    link: '#home-theater-page'
+                },
+                {
+                    title: 'Whole-Home Wi-Fi',
+                    description: 'Learn more about our professional whole-home wi-fi services.',
+                    image: 'Sonos1.jpg',
+                    link: '#wifi-page'
+                }
+            ],
+            closet: [
+                {
+                    title: 'Walk-in Closets',
+                    description: 'Custom walk-in closet solutions designed for your lifestyle.',
+                    image: 'WalkInCloset1.jpg',
+                    link: '#walk-in-closets-page'
+                },
+                {
+                    title: 'Reach-in Closets',
+                    description: 'Maximize your reach-in closet space with custom organization.',
+                    image: 'ReachinCloset1.jpg',
+                    link: '#reach-in-closets-page'
+                },
+                {
+                    title: 'Pantry Systems',
+                    description: 'Organized pantry solutions for efficient kitchen storage.',
+                    image: 'Pantry1.jpeg',
+                    link: '#pantries-page'
+                },
+                {
+                    title: 'Laundry Rooms',
+                    description: 'Transform your laundry room with custom storage solutions.',
+                    image: 'Laundry1.jpg',
+                    link: '#laundry-rooms-page'
+                }
+            ]
+        };
+
+        // Reviews data
+        const reviewsData = [
+            {
+                stars: 5,
+                text: "Excellent service! The team was professional, punctual, and did outstanding work on our radon mitigation system. Highly recommend!",
+                author: "Sarah Johnson"
+            },
+            {
+                stars: 5,
+                text: "Amazing custom closet installation. They transformed our bedroom closet into a beautiful, organized space. Worth every penny!",
+                author: "Mike Chen"
+            },
+            {
+                stars: 5,
+                text: "The smart home automation system they installed is incredible. Everything works seamlessly and the team was very knowledgeable.",
+                author: "Jennifer Davis"
+            },
+            {
+                stars: 5,
+                text: "Professional radon testing service. Quick, accurate results and great communication throughout the process.",
+                author: "Robert Wilson"
+            },
+            {
+                stars: 5,
+                text: "Outstanding floor coating work in our garage. Looks fantastic and the team was very professional and clean.",
+                author: "Lisa Thompson"
+            }
+        ];
+
+        // Brand configuration
+        const brandConfig = {
+            lifetime: {
+                logo: 'LifetimeHomeServicesLogo.png',
+                name: 'Lifetime Home Services',
+                heroTitle: 'Lifetime Home Services',
+                heroSubtitle: 'Trusted Solutions. Lifetime Results.',
+                heroDescription: 'Expert care for the spaces beneath, around, and within your home',
+                showVideo: false
+            },
+            america: {
+                logo: 'AmericaIn-HomeLogo.jpg',
+                name: 'America In-Home',
+                heroTitle: 'America In-Home',
+                heroSubtitle: 'Luxury Technology. Seamless Living.',
+                heroDescription: 'Transforming homes with intelligent solutions',
+                showVideo: true,
+                videoUrl: 'https://www.youtube.com/embed/NXCMKyYHl-o?autoplay=1&mute=1&loop=1&playlist=NXCMKyYHl-o&controls=0&showinfo=0&rel=0&modestbranding=1'
+            },
+            closet: {
+                logo: 'NewClosetConceptsLogo.png',
+                name: 'Closet Concepts',
+                heroTitle: 'Closet Concepts',
+                heroSubtitle: 'Handcrafted in Brookfield, WI. Designed for Life.',
+                heroDescription: 'Custom storage solutions that enhance your lifestyle',
+                showVideo: true,
+                videoUrl: 'https://www.youtube.com/embed/sample-closet-video?autoplay=1&mute=1&loop=1&controls=0'
+            }
+        };
+
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeBrandSwitcher();
+            initializeNavigation();
+            initializeServices();
+            initializeReviews();
+            initializeForms();
+            initializeScrollToTop();
+        });
+
+        // Brand switcher functionality
+        function initializeBrandSwitcher() {
+            const brandButtons = document.querySelectorAll('.brand-btn');
+            
+            brandButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const brand = this.dataset.brand;
+                    switchBrand(brand);
+                    
+                    // Update active state
+                    brandButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        }
+
+        // Switch brand functionality
+        function switchBrand(brand) {
+            currentBrand = brand;
+            const config = brandConfig[brand];
+            
+            // Update header logo and name
+            const headerLogo = document.getElementById('headerLogo');
+            const headerBrandName = document.getElementById('headerBrandName');
+            
+            if (headerLogo) headerLogo.src = config.logo;
+            if (headerBrandName) headerBrandName.textContent = config.name;
+            
+            // Update hero section
+            updateHeroSection(config);
+            
+            // Update services
+            updateServices();
+            
+            // Update body class for brand-specific styling
+            document.body.className = document.body.className.replace(/\b\w+-brand\b/g, '');
+            if (brand !== 'lifetime') {
+                document.body.classList.add(brand + '-brand');
+            }
+        }
+
+        // Update hero section based on brand
+        function updateHeroSection(config) {
+            const hero = document.getElementById('home');
+            const videoHero = document.getElementById('video-hero');
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const heroDescription = document.querySelector('.hero-description');
+            
+            if (config.showVideo) {
+                hero.style.display = 'none';
+                videoHero.style.display = 'block';
+                
+                // Update video
+                const heroVideo = document.getElementById('heroVideo');
+                const videoTitle = document.getElementById('videoTitle');
+                const videoDescription = document.getElementById('videoDescription');
+                
+                if (heroVideo) heroVideo.src = config.videoUrl;
+                if (videoTitle) videoTitle.textContent = config.heroTitle;
+                if (videoDescription) videoDescription.textContent = config.heroSubtitle;
+            } else {
+                hero.style.display = 'flex';
+                videoHero.style.display = 'none';
+                
+                // Update text content
+                if (heroTitle) heroTitle.textContent = config.heroTitle;
+                if (heroSubtitle) heroSubtitle.textContent = config.heroSubtitle;
+                if (heroDescription) heroDescription.textContent = config.heroDescription;
+            }
+        }
+
+        // Navigation functionality
+        function initializeNavigation() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    
+                    if (target) {
+                        // Hide all pages first
+                        hideAllPages();
+                        
+                        // Show target page
+                        target.style.display = 'block';
+                        
+                        // Scroll to top
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
                     }
+                });
+            });
+
+            // Logo click to home
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                logo.addEventListener('click', function() {
+                    hideAllPages();
+                    showHomePage();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        }
+
+        // Hide all pages
+        function hideAllPages() {
+            const pages = document.querySelectorAll('.page-content, .service-page');
+            pages.forEach(page => {
+                page.style.display = 'none';
+            });
+        }
+
+        // Show home page
+        function showHomePage() {
+            const hero = document.getElementById('home');
+            const videoHero = document.getElementById('video-hero');
+            const services = document.getElementById('services');
+            const reviews = document.getElementById('reviews');
+            const contactSection = document.getElementById('contact-section');
+            
+            const config = brandConfig[currentBrand];
+            
+            if (config.showVideo) {
+                hero.style.display = 'none';
+                videoHero.style.display = 'block';
+            } else {
+                hero.style.display = 'flex';
+                videoHero.style.display = 'none';
+            }
+            
+            services.style.display = 'block';
+            reviews.style.display = 'block';
+            contactSection.style.display = 'block';
+        }
+
+        // Initialize services
+        function initializeServices() {
+            updateServices();
+        }
+
+        // Update services based on current brand
+        function updateServices() {
+            const servicesGrid = document.getElementById('servicesGrid');
+            const services = serviceData[currentBrand];
+            
+            if (!servicesGrid || !services) return;
+            
+            servicesGrid.innerHTML = '';
+            
+            services.forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card';
+                serviceCard.innerHTML = `
+                    <div class="service-image">
+                        <img src="${service.image}" alt="${service.title}" loading="lazy">
+                    </div>
+                    <div class="service-content">
+                        <h3>${service.title}</h3>
+                        <p>${service.description}</p>
+                        <a href="${service.link}" class="btn btn-outline">Learn More</a>
+                    </div>
+                `;
+                servicesGrid.appendChild(serviceCard);
+            });
+        }
+
+        // Initialize reviews
+        function initializeReviews() {
+            updateReviews();
+            
+            // Auto-rotate reviews every 5 seconds
+            setInterval(() => {
+                currentReviewIndex = (currentReviewIndex + 3) % reviewsData.length;
+                updateReviews();
+            }, 5000);
+        }
+
+        // Update reviews display
+        function updateReviews() {
+            const reviewsGrid = document.getElementById('reviewsGrid');
+            if (!reviewsGrid) return;
+            
+            reviewsGrid.innerHTML = '';
+            
+            // Show 3 reviews starting from currentReviewIndex
+            for (let i = 0; i < 3; i++) {
+                const reviewIndex = (currentReviewIndex + i) % reviewsData.length;
+                const review = reviewsData[reviewIndex];
+                
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'review-card';
+                reviewCard.innerHTML = `
+                    <div class="review-stars">${'★'.repeat(review.stars)}</div>
+                    <p class="review-text">"${review.text}"</p>
+                    <div class="review-author">- ${review.author}</div>
+                `;
+                reviewsGrid.appendChild(reviewCard);
+            }
+        }
+
+        // Initialize forms
+        function initializeForms() {
+            const forms = document.querySelectorAll('.contact-form');
+            
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Show success message
+                    showSuccessMessage();
+                    
+                    // Reset form
+                    this.reset();
+                });
+            });
+        }
+
+        // Show success message
+        function showSuccessMessage() {
+            const successMessage = document.getElementById('successMessage');
+            if (successMessage) {
+                successMessage.style.display = 'flex';
+            }
+        }
+
+        // Close success message
+        function closeSuccessMessage() {
+            const successMessage = document.getElementById('successMessage');
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+        }
+
+        // Initialize scroll to top functionality
+        function initializeScrollToTop() {
+            // Smooth scrolling for all internal links
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href === '#home' || href === '#') {
+                        e.preventDefault();
+                        hideAllPages();
+                        showHomePage();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            });
+        }
+
+        // Utility function to scroll to element
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Expose functions to global scope for onclick handlers
+        window.closeSuccessMessage = closeSuccessMessage;
+        window.scrollToElement = scrollToElement;
+    </script>
+</body>
+</html>
+
