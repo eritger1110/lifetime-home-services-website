@@ -424,7 +424,8 @@
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
@@ -434,7 +435,8 @@
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: #4a90e2;
         }
@@ -494,78 +496,6 @@
             padding-top: 20px;
             margin-top: 20px;
             color: #999;
-        }
-
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
-            .navbar {
-                height: 70px;
-            }
-
-            .nav-container {
-                flex-direction: column;
-                gap: 10px;
-                padding: 10px 20px;
-            }
-
-            .nav-links {
-                gap: 15px;
-                font-size: 0.9rem;
-            }
-
-            .hero {
-                margin-top: 70px;
-            }
-
-            .video-hero {
-                margin-top: 70px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .contact-info {
-                padding-right: 0;
-            }
-
-            .video-showcases {
-                display: none;
-            }
-
-            .services::before {
-                font-size: 8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
         }
 
         /* PAGE CONTENT STYLES */
@@ -831,6 +761,88 @@
         .hidden {
             display: none;
         }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .navbar {
+                height: 70px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                margin-top: 70px;
+            }
+
+            .video-hero {
+                margin-top: 70px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-info {
+                padding-right: 0;
+            }
+
+            .video-showcases {
+                display: none;
+            }
+
+            .services::before {
+                font-size: 8rem;
+            }
+
+            .zip-grid,
+            .hidden-zips.show {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .zip-grid,
+            .hidden-zips.show {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1071,7 +1083,7 @@
                 <div class="container">
                     <div class="contact">
                         <h2 style="text-align: center; margin-bottom: 20px; font-size: 2.5rem;">Contact Us</h2>
-                        <p style="text-align: center; margin-bottom: 60px; font-size: 1.2rem;">Get in touch for your free estimate</p>
+                        <p style="text-align: center; margin-bottom: 40px; font-size: 1.2rem;">Get in touch for your free estimate</p>
                         
                         <div class="contact-grid">
                             <div class="contact-info">
@@ -1128,7 +1140,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="serviceArea">Service Area *</label>
-                                        <select id="serviceArea" name="serviceArea" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                                        <select id="serviceArea" name="serviceArea" required>
                                             <option value="">Select your state</option>
                                             <option value="wisconsin">Wisconsin</option>
                                             <option value="illinois">Illinois</option>
@@ -1138,7 +1150,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="serviceType">Service Interest</label>
-                                        <select id="serviceType" name="serviceType" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px;">
+                                        <select id="serviceType" name="serviceType">
                                             <option value="">Select a service</option>
                                             <option value="radon-testing">Radon Testing</option>
                                             <option value="radon-mitigation">Radon Mitigation</option>
@@ -1161,6 +1173,134 @@
             </div>
         </div>
 
+        <!-- SERVICE AREAS PAGE -->
+        <div id="service-areas-page" class="hidden">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Service Areas</h1>
+                    <p>Professional home services across four states</p>
+                </div>
+            </div>
+            <div class="content-section">
+                <div class="container">
+                    <div class="services-grid">
+                        <div class="service-card" onclick="showStatePage('wisconsin')">
+                            <div class="service-card-content">
+                                <h3>Wisconsin</h3>
+                                <p>All services including Closet Concepts and America In-Home</p>
+                                <a href="#" class="btn">View Service Areas</a>
+                            </div>
+                        </div>
+                        <div class="service-card" onclick="showStatePage('illinois')">
+                            <div class="service-card-content">
+                                <h3>Illinois</h3>
+                                <p>Radon Mitigation and AeroSeal Duct Sealing</p>
+                                <a href="#" class="btn">View Service Areas</a>
+                            </div>
+                        </div>
+                        <div class="service-card" onclick="showStatePage('minnesota')">
+                            <div class="service-card-content">
+                                <h3>Minnesota</h3>
+                                <p>Radon Testing and Mitigation</p>
+                                <a href="#" class="btn">View Service Areas</a>
+                            </div>
+                        </div>
+                        <div class="service-card" onclick="showStatePage('colorado')">
+                            <div class="service-card-content">
+                                <h3>Colorado</h3>
+                                <p>Radon Testing and Mitigation</p>
+                                <a href="#" class="btn">View Service Areas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABOUT PAGE -->
+        <div id="about-page" class="hidden">
+            <div class="page-header">
+                <div class="container">
+                    <h1>About Lifetime Home Services</h1>
+                    <p>Your trusted partner for comprehensive home solutions</p>
+                </div>
+            </div>
+            <div class="content-section">
+                <div class="container">
+                    <div class="main-content">
+                        <h2>Our Story</h2>
+                        <p>Lifetime Home Services is a family-owned business dedicated to providing comprehensive home improvement solutions throughout Wisconsin, Illinois, Minnesota, and Colorado. With decades of combined experience, our team specializes in creating healthier, more comfortable, and more efficient homes.</p>
+                        
+                        <h2>Our Mission</h2>
+                        <p>We believe every homeowner deserves a safe, comfortable, and efficient living environment. Our mission is to provide expert services that protect your family's health, enhance your home's comfort, and add lasting value to your property.</p>
+                        
+                        <h2>Our Services</h2>
+                        <p>From radon testing and mitigation to smart home automation and custom storage solutions, we offer a complete range of services designed to improve every aspect of your home:</p>
+                        <ul>
+                            <li><strong>Health & Safety:</strong> Radon testing and mitigation services</li>
+                            <li><strong>Energy Efficiency:</strong> AeroSeal duct sealing technology</li>
+                            <li><strong>Home Enhancement:</strong> Epoxy floor coatings and custom storage</li>
+                            <li><strong>Smart Technology:</strong> Home automation and security systems</li>
+                        </ul>
+                        
+                        <h2>Why Choose Us?</h2>
+                        <ul>
+                            <li><strong>Local Expertise:</strong> We understand the unique challenges of homes in our service areas</li>
+                            <li><strong>Certified Professionals:</strong> Our technicians are trained and certified in their specialties</li>
+                            <li><strong>Quality Materials:</strong> We use only the best products and materials available</li>
+                            <li><strong>Customer Satisfaction:</strong> Your satisfaction is our top priority</li>
+                            <li><strong>Comprehensive Service:</strong> From assessment to completion, we handle everything</li>
+                        </ul>
+                        
+                        <h2>Our Commitment</h2>
+                        <p>We're committed to providing exceptional service, using the latest technology and techniques, and standing behind our work with comprehensive warranties. When you choose Lifetime Home Services, you're choosing a partner who cares about your home as much as you do.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FINANCING PAGE -->
+        <div id="financing-page" class="hidden">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Financing Options</h1>
+                    <p>Flexible payment solutions for your home improvement projects</p>
+                </div>
+            </div>
+            <div class="content-section">
+                <div class="container">
+                    <div class="main-content">
+                        <h2>Synchrony Financing Available</h2>
+                        <p>We partner with Synchrony to offer flexible financing options that make it easier to invest in your home's health, safety, and comfort.</p>
+                        
+                        <h3>Financing Benefits</h3>
+                        <ul>
+                            <li>Quick and easy application process</li>
+                            <li>Competitive interest rates</li>
+                            <li>Flexible payment terms</li>
+                            <li>No prepayment penalties</li>
+                            <li>Same-day approval available</li>
+                        </ul>
+                        
+                        <h3>How It Works</h3>
+                        <ol>
+                            <li><strong>Apply:</strong> Complete a simple application online or over the phone</li>
+                            <li><strong>Get Approved:</strong> Receive a decision quickly, often within minutes</li>
+                            <li><strong>Choose Your Terms:</strong> Select the payment plan that works best for you</li>
+                            <li><strong>Start Your Project:</strong> Begin your home improvement project right away</li>
+                        </ol>
+                        
+                        <h3>Ready to Get Started?</h3>
+                        <p>Contact us today to learn more about our financing options and how we can help make your home improvement dreams a reality.</p>
+                        
+                        <div style="text-align: center; margin-top: 40px;">
+                            <a href="#" class="btn btn-primary" onclick="showPage('contact')">Contact Us for Financing Information</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- STATE SERVICE PAGES -->
         <div id="wisconsin-page" class="hidden">
             <div class="state-hero">
@@ -1177,20 +1317,28 @@
                     <h2>Services Available in Wisconsin</h2>
                     <div class="services-grid">
                         <div class="service-card">
-                            <h3>Radon Testing & Mitigation</h3>
-                            <p>Complete radon services throughout Wisconsin</p>
+                            <div class="service-card-content">
+                                <h3>Radon Testing & Mitigation</h3>
+                                <p>Complete radon services throughout Wisconsin</p>
+                            </div>
                         </div>
                         <div class="service-card">
-                            <h3>AeroSeal Duct Sealing</h3>
-                            <p>Energy-efficient duct sealing technology</p>
+                            <div class="service-card-content">
+                                <h3>AeroSeal Duct Sealing</h3>
+                                <p>Energy-efficient duct sealing technology</p>
+                            </div>
                         </div>
                         <div class="service-card">
-                            <h3>Epoxy Floor Coatings</h3>
-                            <p>Durable garage and basement floor solutions</p>
+                            <div class="service-card-content">
+                                <h3>Epoxy Floor Coatings</h3>
+                                <p>Durable garage and basement floor solutions</p>
+                            </div>
                         </div>
                         <div class="service-card">
-                            <h3>Custom Closets (Closet Concepts)</h3>
-                            <p>Professional storage solutions within 1 hour of Brookfield</p>
+                            <div class="service-card-content">
+                                <h3>Custom Closets (Closet Concepts)</h3>
+                                <p>Professional storage solutions within 1 hour of Brookfield</p>
+                            </div>
                         </div>
                     </div>
                     
@@ -1277,6 +1425,321 @@
                 </div>
             </div>
         </div>
+
+        <div id="illinois-page" class="hidden">
+            <div class="state-hero">
+                <div class="state-silhouette">IL</div>
+                <div class="container">
+                    <div class="state-content">
+                        <h1>Illinois Services</h1>
+                        <p>Radon mitigation and duct sealing services in the Chicago metro area</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-section">
+                <div class="container">
+                    <h2>Services Available in Illinois</h2>
+                    <div class="services-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="service-card">
+                            <div class="service-card-content">
+                                <h3>Radon Mitigation</h3>
+                                <p>Professional radon reduction systems for Chicago metro area homes</p>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-card-content">
+                                <h3>AeroSeal Duct Sealing</h3>
+                                <p>Revolutionary duct sealing technology for improved energy efficiency</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zip-codes">
+                        <h3>Service Areas & Zip Codes</h3>
+                        <div class="zip-grid" id="il-zips-visible">
+                            <div class="zip-code">60004</div>
+                            <div class="zip-code">60005</div>
+                            <div class="zip-code">60006</div>
+                            <div class="zip-code">60007</div>
+                            <div class="zip-code">60008</div>
+                            <div class="zip-code">60010</div>
+                            <div class="zip-code">60014</div>
+                            <div class="zip-code">60016</div>
+                            <div class="zip-code">60018</div>
+                            <div class="zip-code">60025</div>
+                            <div class="zip-code">60026</div>
+                            <div class="zip-code">60035</div>
+                            <div class="zip-code">60056</div>
+                            <div class="zip-code">60067</div>
+                            <div class="zip-code">60074</div>
+                            <div class="zip-code">60076</div>
+                            <div class="zip-code">60077</div>
+                            <div class="zip-code">60090</div>
+                            <div class="zip-code">60101</div>
+                            <div class="zip-code">60102</div>
+                            <div class="zip-code">60103</div>
+                            <div class="zip-code">60104</div>
+                            <div class="zip-code">60106</div>
+                            <div class="zip-code">60107</div>
+                            <div class="zip-code">60108</div>
+                        </div>
+                        <button class="expand-btn" onclick="toggleZips('il')">+35 more zip codes</button>
+                        <div class="hidden-zips" id="il-zips-hidden">
+                            <div class="zip-code">60110</div>
+                            <div class="zip-code">60118</div>
+                            <div class="zip-code">60120</div>
+                            <div class="zip-code">60126</div>
+                            <div class="zip-code">60131</div>
+                            <div class="zip-code">60133</div>
+                            <div class="zip-code">60137</div>
+                            <div class="zip-code">60139</div>
+                            <div class="zip-code">60148</div>
+                            <div class="zip-code">60154</div>
+                            <div class="zip-code">60156</div>
+                            <div class="zip-code">60157</div>
+                            <div class="zip-code">60160</div>
+                            <div class="zip-code">60164</div>
+                            <div class="zip-code">60169</div>
+                            <div class="zip-code">60172</div>
+                            <div class="zip-code">60173</div>
+                            <div class="zip-code">60176</div>
+                            <div class="zip-code">60179</div>
+                            <div class="zip-code">60181</div>
+                            <div class="zip-code">60184</div>
+                            <div class="zip-code">60185</div>
+                            <div class="zip-code">60187</div>
+                            <div class="zip-code">60188</div>
+                            <div class="zip-code">60189</div>
+                            <div class="zip-code">60190</div>
+                            <div class="zip-code">60191</div>
+                            <div class="zip-code">60192</div>
+                            <div class="zip-code">60193</div>
+                            <div class="zip-code">60194</div>
+                            <div class="zip-code">60195</div>
+                            <div class="zip-code">60196</div>
+                            <div class="zip-code">60197</div>
+                            <div class="zip-code">60199</div>
+                            <div class="zip-code">60201</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="minnesota-page" class="hidden">
+            <div class="state-hero">
+                <div class="state-silhouette">MN</div>
+                <div class="container">
+                    <div class="state-content">
+                        <h1>Minnesota Services</h1>
+                        <p>Radon testing and mitigation services in the Twin Cities metro area</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-section">
+                <div class="container">
+                    <h2>Services Available in Minnesota</h2>
+                    <div class="services-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="service-card">
+                            <div class="service-card-content">
+                                <h3>Radon Testing</h3>
+                                <p>Professional radon detection using EPA-approved methods</p>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-card-content">
+                                <h3>Radon Mitigation</h3>
+                                <p>Expert radon reduction systems for Twin Cities area homes</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zip-codes">
+                        <h3>Service Areas & Zip Codes</h3>
+                        <div class="zip-grid" id="mn-zips-visible">
+                            <div class="zip-code">55101</div>
+                            <div class="zip-code">55102</div>
+                            <div class="zip-code">55103</div>
+                            <div class="zip-code">55104</div>
+                            <div class="zip-code">55105</div>
+                            <div class="zip-code">55106</div>
+                            <div class="zip-code">55107</div>
+                            <div class="zip-code">55108</div>
+                            <div class="zip-code">55109</div>
+                            <div class="zip-code">55110</div>
+                            <div class="zip-code">55112</div>
+                            <div class="zip-code">55113</div>
+                            <div class="zip-code">55114</div>
+                            <div class="zip-code">55115</div>
+                            <div class="zip-code">55116</div>
+                            <div class="zip-code">55117</div>
+                            <div class="zip-code">55118</div>
+                            <div class="zip-code">55119</div>
+                            <div class="zip-code">55120</div>
+                            <div class="zip-code">55121</div>
+                            <div class="zip-code">55122</div>
+                            <div class="zip-code">55123</div>
+                            <div class="zip-code">55124</div>
+                            <div class="zip-code">55125</div>
+                            <div class="zip-code">55126</div>
+                        </div>
+                        <button class="expand-btn" onclick="toggleZips('mn')">+40 more zip codes</button>
+                        <div class="hidden-zips" id="mn-zips-hidden">
+                            <div class="zip-code">55127</div>
+                            <div class="zip-code">55128</div>
+                            <div class="zip-code">55129</div>
+                            <div class="zip-code">55130</div>
+                            <div class="zip-code">55133</div>
+                            <div class="zip-code">55144</div>
+                            <div class="zip-code">55155</div>
+                            <div class="zip-code">55301</div>
+                            <div class="zip-code">55302</div>
+                            <div class="zip-code">55303</div>
+                            <div class="zip-code">55304</div>
+                            <div class="zip-code">55305</div>
+                            <div class="zip-code">55306</div>
+                            <div class="zip-code">55307</div>
+                            <div class="zip-code">55308</div>
+                            <div class="zip-code">55309</div>
+                            <div class="zip-code">55311</div>
+                            <div class="zip-code">55316</div>
+                            <div class="zip-code">55317</div>
+                            <div class="zip-code">55318</div>
+                            <div class="zip-code">55331</div>
+                            <div class="zip-code">55337</div>
+                            <div class="zip-code">55343</div>
+                            <div class="zip-code">55344</div>
+                            <div class="zip-code">55345</div>
+                            <div class="zip-code">55346</div>
+                            <div class="zip-code">55347</div>
+                            <div class="zip-code">55356</div>
+                            <div class="zip-code">55357</div>
+                            <div class="zip-code">55359</div>
+                            <div class="zip-code">55364</div>
+                            <div class="zip-code">55369</div>
+                            <div class="zip-code">55372</div>
+                            <div class="zip-code">55374</div>
+                            <div class="zip-code">55375</div>
+                            <div class="zip-code">55376</div>
+                            <div class="zip-code">55378</div>
+                            <div class="zip-code">55379</div>
+                            <div class="zip-code">55391</div>
+                            <div class="zip-code">55401</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="colorado-page" class="hidden">
+            <div class="state-hero">
+                <div class="state-silhouette">CO</div>
+                <div class="container">
+                    <div class="state-content">
+                        <h1>Colorado Services</h1>
+                        <p>Radon testing and mitigation services in the Denver metro area</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-section">
+                <div class="container">
+                    <h2>Services Available in Colorado</h2>
+                    <div class="services-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="service-card">
+                            <div class="service-card-content">
+                                <h3>Radon Testing</h3>
+                                <p>Professional radon detection using EPA-approved methods</p>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-card-content">
+                                <h3>Radon Mitigation</h3>
+                                <p>Expert radon reduction systems for Denver metro area homes</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="zip-codes">
+                        <h3>Service Areas & Zip Codes</h3>
+                        <div class="zip-grid" id="co-zips-visible">
+                            <div class="zip-code">80002</div>
+                            <div class="zip-code">80003</div>
+                            <div class="zip-code">80004</div>
+                            <div class="zip-code">80005</div>
+                            <div class="zip-code">80007</div>
+                            <div class="zip-code">80020</div>
+                            <div class="zip-code">80021</div>
+                            <div class="zip-code">80022</div>
+                            <div class="zip-code">80023</div>
+                            <div class="zip-code">80026</div>
+                            <div class="zip-code">80027</div>
+                            <div class="zip-code">80030</div>
+                            <div class="zip-code">80031</div>
+                            <div class="zip-code">80033</div>
+                            <div class="zip-code">80102</div>
+                            <div class="zip-code">80104</div>
+                            <div class="zip-code">80108</div>
+                            <div class="zip-code">80109</div>
+                            <div class="zip-code">80110</div>
+                            <div class="zip-code">80111</div>
+                            <div class="zip-code">80112</div>
+                            <div class="zip-code">80113</div>
+                            <div class="zip-code">80116</div>
+                            <div class="zip-code">80120</div>
+                            <div class="zip-code">80121</div>
+                        </div>
+                        <button class="expand-btn" onclick="toggleZips('co')">+45 more zip codes</button>
+                        <div class="hidden-zips" id="co-zips-hidden">
+                            <div class="zip-code">80122</div>
+                            <div class="zip-code">80123</div>
+                            <div class="zip-code">80124</div>
+                            <div class="zip-code">80125</div>
+                            <div class="zip-code">80126</div>
+                            <div class="zip-code">80127</div>
+                            <div class="zip-code">80128</div>
+                            <div class="zip-code">80129</div>
+                            <div class="zip-code">80130</div>
+                            <div class="zip-code">80131</div>
+                            <div class="zip-code">80132</div>
+                            <div class="zip-code">80134</div>
+                            <div class="zip-code">80135</div>
+                            <div class="zip-code">80136</div>
+                            <div class="zip-code">80137</div>
+                            <div class="zip-code">80138</div>
+                            <div class="zip-code">80202</div>
+                            <div class="zip-code">80203</div>
+                            <div class="zip-code">80204</div>
+                            <div class="zip-code">80205</div>
+                            <div class="zip-code">80206</div>
+                            <div class="zip-code">80207</div>
+                            <div class="zip-code">80209</div>
+                            <div class="zip-code">80210</div>
+                            <div class="zip-code">80211</div>
+                            <div class="zip-code">80212</div>
+                            <div class="zip-code">80214</div>
+                            <div class="zip-code">80215</div>
+                            <div class="zip-code">80216</div>
+                            <div class="zip-code">80218</div>
+                            <div class="zip-code">80219</div>
+                            <div class="zip-code">80220</div>
+                            <div class="zip-code">80221</div>
+                            <div class="zip-code">80222</div>
+                            <div class="zip-code">80223</div>
+                            <div class="zip-code">80224</div>
+                            <div class="zip-code">80226</div>
+                            <div class="zip-code">80227</div>
+                            <div class="zip-code">80228</div>
+                            <div class="zip-code">80229</div>
+                            <div class="zip-code">80230</div>
+                            <div class="zip-code">80231</div>
+                            <div class="zip-code">80232</div>
+                            <div class="zip-code">80233</div>
+                            <div class="zip-code">80234</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- AMERICA IN-HOME CONTENT -->
@@ -1334,9 +1797,7 @@
     <div id="closet-concepts-content" class="hidden closet-concepts">
         <div id="cc-home-page">
             <section class="video-hero">
-                <video class="video-background" autoplay muted loop>
-                    <source src="https://youtu.be/peXyP7H94kQ" type="video/mp4">
-                </video>
+                <iframe class="video-background" src="https://www.youtube.com/embed/peXyP7H94kQ?autoplay=1&mute=1&loop=1&playlist=peXyP7H94kQ&controls=0&showinfo=0&rel=0&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media"></iframe>
                 <div class="video-overlay"></div>
                 
                 <div class="video-showcases left">
@@ -1479,6 +1940,11 @@
             showPage(service);
         }
 
+        // STATE PAGE NAVIGATION
+        function showStatePage(state) {
+            showPage(state);
+        }
+
         // PHONE MODAL
         function showPhoneModal() {
             document.getElementById('phone-modal').style.display = 'block';
@@ -1495,7 +1961,8 @@
             
             if (hiddenZips.classList.contains('show')) {
                 hiddenZips.classList.remove('show');
-                button.textContent = '+47 more zip codes';
+                const count = state === 'wi' ? '+47' : state === 'il' ? '+35' : state === 'mn' ? '+40' : '+45';
+                button.textContent = count + ' more zip codes';
             } else {
                 hiddenZips.classList.add('show');
                 button.textContent = 'Show less';
