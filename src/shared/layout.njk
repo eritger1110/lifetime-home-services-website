@@ -1,19 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if title %}{{ title }} | {{ site.brand }}{% else %}{{ site.brand }}{% endif %}</title>
-  <meta name="description" content="{{ description | default(site.brand ~ ' services for your home.') }}">
-  <link rel="canonical" href="{{ canonical | default(site.domain + page.url) }}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% if title %}{{ title }} | {% endif %}{{ site.brand }}</title>
+  <meta name="description" content="{{ description | default(site.metaDescription) }}">
+  <link rel="canonical" href="{{ site.domain }}{{ page.url }}">
   <link rel="stylesheet" href="/assets/styles.css">
-  <script defer src="/assets/js/reviews.js"></script>
 </head>
 <body>
-  {% include "header.njk" %}
-  <main>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/"><img src="/assets/{{ assets[site.key].logo }}" alt="{{ site.brand }} logo"></a>
+      <nav>
+        <a href="/">Home</a>
+        <div class="dropdown">
+          <button>Services</button>
+          <div class="menu">
+            {% for s in services %}
+              <a href="/services/{{ s.slug }}/">{{ s.name }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </nav>
+      <a class="phone" href="tel:{{ site.phone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">{{ site.phone }}</a>
+    </div>
+  </header>
+
+  <main class="container">
     {{ content | safe }}
   </main>
-  {% include "footer.njk" %}
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© {{ 'now' | date('yyyy') }} {{ site.brand }}</small>
+      <nav><a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Service</a></nav>
+    </div>
+  </footer>
+  <script defer src="/assets/js/reviews.js"></script>
 </body>
 </html>
