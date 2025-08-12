@@ -1,0 +1,14 @@
+{
+  "name": "lifetime-sites",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:lifetime": "eleventy --config=eleventy.lifetime.js",
+    "build:aih": "eleventy --config=eleventy.aih.js",
+    "build:cc": "eleventy --config=eleventy.cc.js",
+    "build:all": "npm run build:lifetime && npm run build:aih && npm run build:cc"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

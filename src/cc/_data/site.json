@@ -1,0 +1,11 @@
+{
+  "brand": "Closet Concepts",
+  "domain": "https://www.closetconcepts.com",
+  "logo": "NewClosetConceptsLogo.png",
+  "phone": "(555) 246-8100",
+  "home": "/",
+  "services": [
+    {"name": "Closet Design", "url": "/services/closet-design/"},
+    {"name": "Garage Storage", "url": "/services/garage-storage/"}
+  ]
+}

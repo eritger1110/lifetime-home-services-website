@@ -1,0 +1,20 @@
+---
+title: Home
+description: "Smart security and automation tailored to your family."
+canonical: "https://www.americainhome.com/"
+layout: "layout.njk"
+---
+{% set assets = require('../assets/assets-manifest.json') %}
+
+{% include "hero-video.njk" with { src: "/assets/" + assets.aih.heroVideo } %}
+
+<section class="services">
+  <h1>America In-Home</h1>
+  <p>We integrate security systems and smart home controls so everything works together seamlessly.</p>
+  <ul>
+    <li><a href="/services/security-systems/">Security Systems</a></li>
+    <li><a href="/services/smart-home-automation/">Smart Home Automation</a></li>
+  </ul>
+</section>
+
+{% include "review-rotator.njk" %}
