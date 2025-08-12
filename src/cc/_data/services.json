@@ -1,0 +1,10 @@
+[
+  {"slug":"radon-testing","name":"Radon Testing","hero":"radon-testing.jpg",
+   "intro":"Certified technicians use modern monitors to measure indoor air and provide clear results."},
+  {"slug":"radon-mitigation","name":"Radon Mitigation","hero":"radon-mitigation.jpg",
+   "intro":"Customized mitigation systems designed and installed by pros."},
+  {"slug":"duct-sealing","name":"AeroSeal Duct Sealing","hero":"duct-sealing.jpg",
+   "intro":"Seal hidden leaks for better comfort and lower utility bills."},
+  {"slug":"floor-coatings","name":"Epoxy Floor Coatings","hero":"floor-coatings.jpg",
+   "intro":"Durable, beautiful floors for garages and basements."}
+]
