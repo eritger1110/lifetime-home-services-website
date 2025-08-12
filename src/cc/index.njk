@@ -1,0 +1,20 @@
+---
+title: Home
+description: "Custom closets and storage built for life."
+canonical: "https://www.closetconcepts.com/"
+layout: "layout.njk"
+---
+{% set assets = require('../assets/assets-manifest.json') %}
+
+{% include "hero-video.njk" with { src: "/assets/" + assets.cc.heroVideo } %}
+
+<section class="services">
+  <h1>Closet Concepts</h1>
+  <p>From reach-in closets to full garage makeovers, we design storage that fits your space.</p>
+  <ul>
+    <li><a href="/services/closet-design/">Closet Design</a></li>
+    <li><a href="/services/garage-storage/">Garage Storage</a></li>
+  </ul>
+</section>
+
+{% include "review-rotator.njk" %}

@@ -1,0 +1,24 @@
+---
+title: Home
+description: "Lifetime Home Services provides radon mitigation, duct cleaning, and more."
+canonical: "https://www.lifetimehomeservices.com/"
+layout: "layout.njk"
+---
+{% set assets = require('../assets/assets-manifest.json') %}
+
+<section class="hero">
+  <img src="/assets/{{ assets.lifetime.hero }}" alt="House exterior" />
+</section>
+
+<section class="services">
+  <h1>Lifetime Home Services</h1>
+  <p>We keep your home safe and efficient with professional radon mitigation, duct cleaning, and indoor air quality solutions throughout the region.</p>
+  <ul>
+    <li><a href="/services/radon-testing/">Radon Testing</a></li>
+    <li><a href="/services/radon-mitigation/">Radon Mitigation</a></li>
+    <li><a href="/services/duct-sealing/">Duct Sealing</a></li>
+    <li><a href="/services/floor-coatings/">Floor Coatings</a></li>
+  </ul>
+</section>
+
+{% include "review-rotator.njk" %}
