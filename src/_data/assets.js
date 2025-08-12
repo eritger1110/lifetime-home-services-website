@@ -1,2 +1,2 @@
-// Expose the JSON manifest to all Nunjucks templates as "assets"
-module.exports = require("../assets/assets-manifest.json");
+// src/_data/assets.js
+module.exports = require('../assets/assets-manifest.json');
