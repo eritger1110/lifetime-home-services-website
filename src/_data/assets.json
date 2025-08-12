@@ -8,10 +8,6 @@
       "floorCoatings": "floor-coatings.jpg"
     }
   },
-  "aih": {
-    "heroVideo": "AmericaIn-Home25spotREV1(2).mp4"
-  },
-  "cc": {
-    "heroVideo": "ClosetConceptsCompanyVideo.mp4"
-  }
+  "aih": { "heroVideo": "AmericaIn-Home25spotREV1(2).mp4" },
+  "cc":  { "heroVideo": "ClosetConceptsCompanyVideo.mp4" }
 }
