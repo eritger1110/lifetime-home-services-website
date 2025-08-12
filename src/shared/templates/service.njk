@@ -1,0 +1,29 @@
+---
+pagination:
+  data: services
+  size: 1
+permalink: "services/{{ pagination.items[0].slug }}/index.html"
+layout: "layout.njk"
+---
+{% set s = pagination.items[0] %}
+<section class="hero">
+  <img src="/assets/{{ s.hero }}" alt="{{ s.name }}">
+</section>
+
+<h1>{{ s.name }}</h1>
+<p>{{ s.intro }}</p>
+
+<div class="card-grid">
+  <div class="card">
+    <h3>Why it matters</h3>
+    <p>We focus on safety, comfort, and measurable results. Our team explains every step in plain language.</p>
+  </div>
+  <div class="card">
+    <h3>What to expect</h3>
+    <p>Clear pricing, clean installs, and post-service follow-up to verify performance.</p>
+  </div>
+  <div class="card">
+    <h3>Get a quote</h3>
+    <p>Call <a href="tel:{{ site.phone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">{{ site.phone }}</a> or <a href="/contact/">request a consultation</a>.</p>
+  </div>
+</div>
