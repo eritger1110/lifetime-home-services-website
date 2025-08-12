@@ -1,0 +1,17 @@
+{
+  "lifetime": {
+    "hero": "lifetime-hero-house.jpg",
+    "services": {
+      "radonTesting": "radon-testing.jpg",
+      "radonMitigation": "radon-mitigation.jpg",
+      "ductSealing": "duct-sealing.jpg",
+      "floorCoatings": "floor-coatings.jpg"
+    }
+  },
+  "aih": {
+    "heroVideo": "AmericaIn-Home25spotREV1(2).mp4"
+  },
+  "cc": {
+    "heroVideo": "ClosetConceptsCompanyVideo.mp4"
+  }
+}
