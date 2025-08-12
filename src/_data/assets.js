@@ -1,2 +1,2 @@
-// src/_data/assets.js
-module.exports = require('../assets/assets-manifest.json');
+const manifest = require("../assets/assets-manifest.json");
+module.exports = manifest;
