@@ -1,0 +1,26 @@
+---
+pagination:
+  data: areas.states
+  size: 1
+permalink: "service-areas/{{ pagination.items[0].slug }}/index.html"
+layout: "layout.njk"
+---
+{% set st = pagination.items[0] %}
+<section class="hero">
+  <h1>{{ st.name }} Service Areas</h1>
+  <p>Comprehensive home services across {{ st.name }}.</p>
+</section>
+
+<h2>Cities & Metros</h2>
+<ul>
+  {% for m in st.metros %}
+    <li><a href="/service-areas/{{ st.slug }}/{{ m.slug }}/">{{ m.name }}</a></li>
+  {% endfor %}
+</ul>
+
+<h2>Services available in {{ st.name }}</h2>
+<ul>
+  {% for s in services | filter(attribute="slug", test="in", array=st.services) %}
+    <li><a href="/services/{{ s.slug }}/">{{ s.name }}</a></li>
+  {% endfor %}
+</ul>
