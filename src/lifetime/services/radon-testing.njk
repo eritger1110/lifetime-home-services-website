@@ -4,7 +4,8 @@ description: "Certified radon testing for homes and businesses."
 canonical: "https://www.lifetimehomeservices.com/services/radon-testing/"
 layout: "layout.njk"
 ---
-{% set assets = require('../../assets/assets-manifest.json') %}
+{# Lifetime pages #}
+{% set assets = site.assets.lifetime %}
 
 <section class="hero">
   <img src="/assets/{{ assets.lifetime.services.radonTesting }}" alt="Radon testing device" />
