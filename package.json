@@ -6,7 +6,8 @@
     "build:lifetime": "eleventy --config=eleventy.lifetime.js",
     "build:aih": "eleventy --config=eleventy.aih.js",
     "build:cc": "eleventy --config=eleventy.cc.js",
-    "build:all": "npm run build:lifetime && npm run build:aih && npm run build:cc"
+    "build:all": "npm run build:lifetime && npm run build:aih && npm run build:cc",
+    "build:root": "node scripts/postbuild.cjs"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1"
