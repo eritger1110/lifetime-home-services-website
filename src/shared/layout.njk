@@ -14,7 +14,7 @@ permalink: false
   {% if css %}<style>{{ css | safe }}</style>{% endif %}
 </head>
 
-<body class="brand-{{ brand or 'lifetime' }}">
+<body class="shell {{ brand | default('lifetime') }}">
   <header class="site-header">
     <div class="shell">
       <div class="logos">
