@@ -7,66 +7,64 @@ permalink: false
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>{{ title or "Lifetime Home Services" }}</title>
+  <title>{{ title or "Lifetime Home Services - Professional Home Services You Can Trust" }}</title>
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  {# IMPORTANT: styles.css is served from site root via /styles.css by Eleventy passthrough #}
   <link rel="stylesheet" href="/styles.css?v={{ collections.all | length }}">
   {% if css %}<style>{{ css | safe }}</style>{% endif %}
 </head>
 
-<body class="shell {{ brand | default('lifetime') }}">
-  <header class="site-header">
-    <div class="shell">
-      <div class="logos">
-        <a href="/" class="brand">
-          {% if brand == "aih" %}
-            <img src="/assets/AmericanIn-HomeLogo.jpg" alt="America In-Home" />
-          {% elif brand == "cc" %}
-            <img src="/assets/ClosetConceptsLogo.png" alt="Closet Concepts" />
-          {% else %}
-            <img src="/assets/LifetimeHomeServicesLogo.png" alt="Lifetime Home Services" />
-          {% endif %}
+<body class="shell lifetime">
+  <!-- Top nav -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="brand-switcher">
+        <a class="brand-logo {% if brand == 'lifetime' or not brand %}active{% endif %}" href="/lifetime/">
+          <img src="/assets/LifetimeHomeServicesLogo.png" alt="Lifetime Home Services" />
         </a>
-        <nav class="brands">
-          <a href="https://lifetime-home-services-website.netlify.app/"> <img src="/assets/LifetimeHomeServicesLogo.png" alt="Lifetime" /></a>
-          <a href="https://americainhome.com/"> <img src="/assets/AmericanIn-HomeLogo.jpg" alt="AIH" /></a>
-          <a href="https://closetconcepts.com/"> <img src="/assets/ClosetConceptsLogo.png" alt="CC" /></a>
-        </nav>
+        <a class="brand-logo {% if brand == 'aih' %}active{% endif %}" href="/aih/">
+          <img src="/assets/AmericaIn-HomeLogo.jpg" alt="America In-Home" />
+        </a>
+        <a class="brand-logo {% if brand == 'cc' %}active{% endif %}" href="/cc/">
+          <img src="/assets/ClosetConceptsLogo.png" alt="Closet Concepts" />
+        </a>
       </div>
 
-      <nav class="main-nav">
-        <a href="/">Home</a>
-        <a href="/services/">Services</a>
-        <a href="/service-areas/">Service Areas</a>
-        <a href="/financing/">Financing</a>
-        <a href="/about/">About</a>
-        <a href="/contact/" class="cta">Get Free Estimate</a>
-        <a class="phone" href="tel:+18339416888">(833) 941-6888</a>
-      </nav>
+      <ul class="nav-links">
+        <li><a href="/lifetime/services/">Services</a></li>
+        <li><a href="/lifetime/about/">About</a></li>
+        <li><a href="/lifetime/contact/">Contact</a></li>
+        <li><a href="/lifetime/financing/">Financing</a></li>
+        <li><a href="/lifetime/service-areas/">Service Areas</a></li>
+      </ul>
+
+      <a class="phone-btn" href="tel:+18339416888">(833) 941-6888</a>
     </div>
-  </header>
+  </nav>
 
   <main>
     {{ content | safe }}
   </main>
 
-  <footer class="site-footer">
-    <div class="shell">
-      <div class="cols">
-        <div>
-          <strong>Showroom</strong><br>
-          3485 North 124th Street, Brookfield, WI 53005<br>
-          Hours: Mon–Fri 9–5, Sat by appt only
-        </div>
-        <div>
-          <strong>Phone Support</strong><br>
-          24/7 at <a href="tel:+18339416888">(833) 941-6888</a>
-        </div>
-        <div>
-          <a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Service</a>
-        </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-phone"><a href="tel:+18339416888">(833) 941-6888</a></div>
+      <div class="footer-info">
+        <p>Professional Home Services | Licensed & Insured</p>
+        <p>Serving Wisconsin, Illinois, Minnesota & Colorado</p>
       </div>
-      <p class="copy">© {{ "now" | date | replace("Jan ", "") | replace("Feb ", "") }} Lifetime Home Services</p>
+      <div class="footer-bottom">
+        <p>&copy; {{ "now" | date("yyyy") }} Lifetime Home Services Group. All rights reserved.</p>
+        {% if brand == "cc" %}
+        <div id="closet-footer">
+          <p style="font-size: 0.8rem; color: #666;">formerly closetconcepts.com</p>
+        </div>
+        {% endif %}
+      </div>
     </div>
   </footer>
 
