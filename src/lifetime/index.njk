@@ -1,22 +1,69 @@
 ---
-title: Home
-description: "Lifetime Home Services provides radon mitigation, duct cleaning, and more."
-canonical: "https://www.lifetimehomeservices.com/"
-layout: "layout.njk"
+layout: ../shared/layout.njk
+title: Lifetime Home Services
+brand: lifetime
 ---
-<section class="hero">
-  <img src="/assets/{{ assets.lifetime.hero }}" alt="House exterior" />
+
+<section class="hero" style="background-image:url('/assets/lifetime-hero-house.jpg')">
+  <div class="overlay"></div>
+  <div class="inner">
+    <h1>Lifetime Home Solutions</h1>
+    <p>Trusted Solutions. Lifetime Results.</p>
+    <div class="actions">
+      <a href="/contact/" class="button">Get Free Estimate</a>
+      <a href="/financing/" class="button outline">Financing Options</a>
+    </div>
+  </div>
+  <video autoplay muted loop playsinline>
+    <source src="/assets/hero-loop.mp4" type="video/mp4">
+  </video>
 </section>
 
-<section class="services">
-  <h1>Lifetime Home Services</h1>
-  <p>We keep your home safe and efficient with professional radon mitigation, duct cleaning, and indoor air quality solutions throughout the region.</p>
-  <ul>
-    <li><a href="/services/radon-testing/">Radon Testing</a></li>
-    <li><a href="/services/radon-mitigation/">Radon Mitigation</a></li>
-    <li><a href="/services/duct-sealing/">Duct Sealing</a></li>
-    <li><a href="/services/floor-coatings/">Floor Coatings</a></li>
-  </ul>
-</section>
+<section class="section alt">
+  <div class="shell">
+    <h2 class="h2">Our Professional Services</h2>
+    <p class="lead">Radon testing & mitigation, AeroSeal duct sealing, and premium floor coatings.</p>
 
-{% include "review-rotator.njk" %}
+    <div class="grid cards">
+      <article class="card">
+        <img src="/assets/radon-testing.jpg" alt="Radon Testing">
+        <div class="pad">
+          <div class="tag">Testing</div>
+          <h3>Radon Testing</h3>
+          <p>Professional testing to ensure your home’s safety.</p>
+          <a class="button" href="/services/radon-testing/">Learn more</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="/assets/radon-mitigation.jpg" alt="Radon Mitigation">
+        <div class="pad">
+          <div class="tag">Mitigation</div>
+          <h3>Radon Mitigation</h3>
+          <p>Expert systems to reduce radon levels quickly.</p>
+          <a class="button" href="/services/radon-mitigation/">Learn more</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="/assets/aeroseal.jpg" alt="AeroSeal Duct Sealing">
+        <div class="pad">
+          <div class="tag">Efficiency</div>
+          <h3>AeroSeal Duct Sealing</h3>
+          <p>Seal leaks from the inside for comfort & savings.</p>
+          <a class="button" href="/services/duct-sealing/">Learn more</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="/assets/epoxy.jpg" alt="Epoxy Floor Coatings">
+        <div class="pad">
+          <div class="tag">Floors</div>
+          <h3>Epoxy Floor Coatings</h3>
+          <p>Durable, beautiful polyaspartic systems.</p>
+          <a class="button" href="/services/floor-coatings/">Learn more</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
