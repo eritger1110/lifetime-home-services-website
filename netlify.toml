@@ -1,10 +1,7 @@
 [build]
-  command = "npm run build:lifetime"
-  publish = "dist/lifetime"
-  command = "npm run build:aih"
-  publish = "dist/aih"
-  command = "npm run build:cc"
-  publish = "dist/cc"
+command = "npm run build:lifetime && npm run build:aih && npm run build:cc"
+publish = "dist"
+
 
 # Build commands for other brands:
 #   npm run build:aih  # outputs to dist/aih
