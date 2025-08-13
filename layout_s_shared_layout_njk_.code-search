@@ -1,0 +1,69 @@
+# Query: layout:\\s*['"]?(\\.\\.\\/)+shared\\/layout\\.njk['"]?
+# Flags: RegExp
+# ContextLines: 1
+
+13 results - 13 files
+
+src\about\index.njk:
+  1  ---
+  2: layout: main
+  3  title: "About Lifetime Home Services"
+
+  1  ---
+  2: layout: main
+  3  title: America In-Home
+
+src\cc\index.njk:
+  1  ---
+  2: layout: main
+  3  title: Closet Concepts
+
+src\contact\index.njk:
+  1  ---
+  2: layout: main
+  3  title: "Contact Us"
+
+src\financing\index.njk:
+  1  ---
+  2: layout: main
+  3  title: "Flexible Financing Options"
+
+src\lifetime\index.njk:
+  1  ---
+  2: layout: main
+  3  title: "Lifetime Home Services - Professional Home Services You Can Trust"
+
+src\lifetime\services\duct-sealing.njk:
+  1  ---
+  2: layout: main
+  3  title: "AeroSeal Duct Sealing"
+
+src\lifetime\services\floor-coatings.njk:
+  1  ---
+  2: layout: main
+  3  title: "Premium Epoxy Floor Coatings"
+
+src\lifetime\services\index.njk:
+  1  ---
+  2: layout: main
+  3  title: "Services"
+
+src\lifetime\services\radon-mitigation.njk:
+  1  ---
+  2: layout: main
+  3  title: "Professional Radon Mitigation"
+
+src\lifetime\services\radon-testing.njk:
+  1  ---
+  2: layout: main
+  3  title: "Professional Radon Testing"
+
+src\service-areas\index.njk:
+  1  ---
+  2: layout: main
+  3  title: "Our Service Areas"
+
+src\thank-you\index.njk:
+  1  ---
+  2: layout: main
+  3  title: "Thank You"
