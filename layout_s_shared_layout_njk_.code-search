@@ -9,6 +9,7 @@ src\about\index.njk:
   2: layout: main
   3  title: "About Lifetime Home Services"
 
+src\aih\index.njk:
   1  ---
   2: layout: main
   3  title: America In-Home
