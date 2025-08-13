@@ -1,18 +1,20 @@
 ---
-title: Home
-description: "Custom closets and storage built for life."
-canonical: "https://www.closetconcepts.com/"
-layout: "layout.njk"
+layout: ../shared/layout.njk
+title: Closet Concepts
+brand: cc
 ---
-{% include "hero-video.njk" with { src: "/assets/" + assets.cc.heroVideo } %}
 
-<section class="services">
-  <h1>Closet Concepts</h1>
-  <p>From reach-in closets to full garage makeovers, we design storage that fits your space.</p>
-  <ul>
-    <li><a href="/services/closet-design/">Closet Design</a></li>
-    <li><a href="/services/garage-storage/">Garage Storage</a></li>
-  </ul>
+<section class="hero" style="background-image:url('/assets/cc-hero.jpg')">
+  <div class="overlay"></div>
+  <div class="inner">
+    <h1>Closet Concepts</h1>
+    <p>Custom storage solutions for every space.</p>
+    <div class="actions">
+      <a href="/contact/" class="button">Get Free Estimate</a>
+      <a href="/financing/" class="button outline">Financing Options</a>
+    </div>
+  </div>
+  <video autoplay muted loop playsinline>
+    <source src="/assets/cc-loop.mp4" type="video/mp4">
+  </video>
 </section>
-
-{% include "review-rotator.njk" %}
