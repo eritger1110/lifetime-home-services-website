@@ -16,7 +16,7 @@ module.exports = function (eleventyConfig) {
   return {
     dir: {
       input: "src/cc",
-      includes: "../shared",
+      includes: "src/shared",
       output: "dist/cc"
     }
   };
