@@ -1,42 +1,75 @@
+---
+permalink: false
+---
+
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{% if title %}{{ title }} | {% endif %}{{ site.brand }}</title>
-  <meta name="description" content="{{ description | default(site.metaDescription) }}">
-  <link rel="canonical" href="{{ site.domain }}{{ page.url }}">
-  <link rel="stylesheet" href="/assets/styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ title or "Lifetime Home Services" }}</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+  {% if css %}<style>{{ css | safe }}</style>{% endif %}
 </head>
-<body>
+
+<body class="brand-{{ brand or 'lifetime' }}">
   <header class="site-header">
-    <div class="container">
-      <a class="brand" href="/"><img src="/assets/{{ assets[site.key].logo }}" alt="{{ site.brand }} logo"></a>
-      <nav>
+    <div class="shell">
+      <div class="logos">
+        <a href="/" class="brand">
+          {% if brand == "aih" %}
+            <img src="/assets/AmericanIn-HomeLogo.jpg" alt="America In-Home" />
+          {% elif brand == "cc" %}
+            <img src="/assets/ClosetConceptsLogo.png" alt="Closet Concepts" />
+          {% else %}
+            <img src="/assets/LifetimeHomeServicesLogo.png" alt="Lifetime Home Services" />
+          {% endif %}
+        </a>
+        <nav class="brands">
+          <a href="https://lifetime-home-services-website.netlify.app/"> <img src="/assets/LifetimeHomeServicesLogo.png" alt="Lifetime" /></a>
+          <a href="https://americainhome.com/"> <img src="/assets/AmericanIn-HomeLogo.jpg" alt="AIH" /></a>
+          <a href="https://closetconcepts.com/"> <img src="/assets/ClosetConceptsLogo.png" alt="CC" /></a>
+        </nav>
+      </div>
+
+      <nav class="main-nav">
         <a href="/">Home</a>
-        <div class="dropdown">
-          <button>Services</button>
-          <div class="menu">
-            {% for s in services %}
-              <a href="/services/{{ s.slug }}/">{{ s.name }}</a>
-            {% endfor %}
-          </div>
-        </div>
+        <a href="/services/">Services</a>
+        <a href="/service-areas/">Service Areas</a>
+        <a href="/financing/">Financing</a>
+        <a href="/about/">About</a>
+        <a href="/contact/" class="cta">Get Free Estimate</a>
+        <a class="phone" href="tel:+18339416888">(833) 941-6888</a>
       </nav>
-      <a class="phone" href="tel:{{ site.phone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">{{ site.phone }}</a>
     </div>
   </header>
 
-  <main class="container">
+  <main>
     {{ content | safe }}
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <small>© {{ 'now' | date('yyyy') }} {{ site.brand }}</small>
-      <nav><a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Service</a></nav>
+    <div class="shell">
+      <div class="cols">
+        <div>
+          <strong>Showroom</strong><br>
+          3485 North 124th Street, Brookfield, WI 53005<br>
+          Hours: Mon–Fri 9–5, Sat by appt only
+        </div>
+        <div>
+          <strong>Phone Support</strong><br>
+          24/7 at <a href="tel:+18339416888">(833) 941-6888</a>
+        </div>
+        <div>
+          <a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Service</a>
+        </div>
+      </div>
+      <p class="copy">© {{ "now" | date | replace("Jan ", "") | replace("Feb ", "") }} Lifetime Home Services</p>
     </div>
   </footer>
-  <script defer src="/assets/js/reviews.js"></script>
+
+  <script src="/script.js" defer></script>
 </body>
 </html>
