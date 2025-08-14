@@ -1,4 +1,3 @@
-// eleventy.aih.js
 module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksFilter("date", (value, format = "yyyy") => {
     const d = value ? new Date(value) : new Date();
@@ -6,21 +5,19 @@ module.exports = function (eleventyConfig) {
     return d.toISOString();
   });
 
-  eleventyConfig.addLayoutAlias("layout", "shared/layout.njk");
-  
   eleventyConfig.addPassthroughCopy({
     "src/assets": "assets",
     "styles.css": "styles.css",
     "script.js": "script.js",
-    "src/aih/_redirects": "_redirects"
+    "src/aih/_redirects": "_redirects",
   });
 
   return {
     dir: {
       input: "src/aih",
-      includes: "../_includes", 
-      layouts: "../_includes",
+      includes: "../_includes",
       output: "dist/aih"
     }
   };
 };
+
