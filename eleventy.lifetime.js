@@ -16,7 +16,7 @@ module.exports = function (eleventyConfig) {
   return {
     dir: {
       input: "src/lifetime",
-      includes: "../_includes",     // used for includes and layouts
+      includes: "../_includes",
       output: "dist/lifetime",
     },
   };
