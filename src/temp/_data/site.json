@@ -1,0 +1,13 @@
+{
+  "brand": "Lifetime Home Services",
+  "domain": "https://www.lifetimehomeservices.com",
+  "logo": "LifetimeHomeServicesLogo.png",
+  "phone": "(833-941-6888)",
+  "home": "/",
+  "services": [
+    {"name": "Radon Testing", "url": "/services/radon-testing/"},
+    {"name": "Radon Mitigation", "url": "/services/radon-mitigation/"},
+    {"name": "Duct Sealing", "url": "/services/duct-sealing/"},
+    {"name": "Floor Coatings", "url": "/services/floor-coatings/"}
+  ]
+}
