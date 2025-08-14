@@ -1,4 +1,16 @@
 [build]
-  # Build all brands, then create a root index + redirects inside /dist
-  command = "npm run build:all && npm run build:root"
-  publish = "dist"
+command = "npx @11ty/eleventy --config=eleventy.lifetime.js"
+publish = "_site/lifetime"
+
+[dev]
+command = "npx @11ty/eleventy --serve --config=eleventy.lifetime.js"
+targetPort = 8080
+port = 8888
+framework = "#custom"
+autoLaunch = true
+
+[[redirects]]
+from = "/"
+to = "/lifetime/"
+status = 301
+
