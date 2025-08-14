@@ -6,6 +6,8 @@ module.exports = function (eleventyConfig) {
     return d.toISOString();
   });
 
+  eleventyConfig.addLayoutAlias("layout", "shared/layout.njk");
+  
   eleventyConfig.addPassthroughCopy({
     "src/assets": "assets",
     "styles.css": "styles.css",
