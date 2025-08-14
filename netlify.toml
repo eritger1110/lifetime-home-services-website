@@ -1,16 +1,6 @@
 [build]
-command = "npx @11ty/eleventy --config=eleventy.lifetime.js"
-publish = "_site/lifetime"
-# Closet Concepts
-
-[build.cc]
-command = "npx @11ty/eleventy --config=eleventy.cc.js"
-publish = "_site/cc"
-
-# America In-Home
-[build.aih]
-command = "npx @11ty/eleventy --config=eleventy.aih.js"
-publish = "_site/aih"
+command = "npm run build:all && npm run build:root"
+publish = "_site"
 
 [dev]
 command = "npx @11ty/eleventy --serve --config=eleventy.lifetime.js"
