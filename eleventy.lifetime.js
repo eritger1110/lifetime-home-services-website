@@ -7,6 +7,8 @@ module.exports = function (eleventyConfig) {
     return d.toISOString(); // fallback
   });
 
+  eleventyConfig.addLayoutAlias("layout", "shared/layout.njk");
+  
   // Copy assets needed by the built site into dist/lifetime
   eleventyConfig.addPassthroughCopy({
     "src/assets": "assets",             // shared images/fonts/etc
