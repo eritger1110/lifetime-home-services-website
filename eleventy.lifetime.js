@@ -19,8 +19,9 @@ module.exports = function (eleventyConfig) {
   return {
     dir: {
       input: "src/lifetime",
-      includes: "src/Lifetime/_includes/shared",
-      output: "dist/lifetime"
+      includes: "../_includes", 
+      layouts: "../_includes",
+      output: "_site"
     }
   };
 };
