@@ -9,15 +9,16 @@ module.exports = function (eleventyConfig) {
     "src/assets": "assets",
     "styles.css": "styles.css",
     "script.js": "script.js",
-    "src/aih/_redirects": "_redirects",
+
+    // ✅ NEW LINE: copy from src/_redirects
+    "src/_redirects": "_redirects",
   });
 
   return {
     dir: {
       input: "src/aih",
       includes: "../_includes",
-      output: "dist/aih"
-    }
+      output: "dist/aih",
+    },
   };
 };
-
