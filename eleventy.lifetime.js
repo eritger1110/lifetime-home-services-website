@@ -17,11 +17,10 @@ module.exports = function (eleventyConfig) {
   });
 
   return {
-    dir: {
-      input: "src/lifetime",
-      includes: "../_includes", 
-      layouts: "../_includes",
-      output: "_site/lifetime"
-    }
-  };
+  dir: {
+    input: "src/lifetime",
+    includes: "../_includes", 
+    layouts: "../_includes",
+    output: "dist/lifetime" 
+  }
 };
