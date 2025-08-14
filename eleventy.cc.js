@@ -6,21 +6,18 @@ module.exports = function (eleventyConfig) {
     return d.toISOString();
   });
 
-  eleventyConfig.addLayoutAlias("layout", "shared/layout.njk");
-  
   eleventyConfig.addPassthroughCopy({
     "src/assets": "assets",
     "styles.css": "styles.css",
     "script.js": "script.js",
-    "src/cc/_redirects": "_redirects"
+    "src/cc/_redirects": "_redirects",
   });
 
   return {
     dir: {
       input: "src/cc",
-      includes: "../_includes", 
-      layouts: "../_includes",
-      output: "dist/cc"
-    }
+      includes: "../_includes",     // used for includes and layouts
+      output: "dist/cc",
+    },
   };
 };
