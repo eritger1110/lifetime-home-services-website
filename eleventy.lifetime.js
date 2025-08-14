@@ -21,7 +21,7 @@ module.exports = function (eleventyConfig) {
       input: "src/lifetime",
       includes: "../_includes", 
       layouts: "../_includes",
-      output: "_site"
+      output: "_site/lifetime"
     }
   };
 };
