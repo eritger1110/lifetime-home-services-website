@@ -18,7 +18,7 @@ module.exports = function (eleventyConfig) {
       input: "src/aih",
       includes: "../_includes", 
       layouts: "../_includes",
-      output: "_site"
+      output: "_site/aih"
     }
   };
 };
