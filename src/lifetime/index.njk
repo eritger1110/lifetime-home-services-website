@@ -1,68 +1,109 @@
 ---
 layout: layout.njk
-title: "Lifetime Home Services - Professional Home Services You Can Trust"
-brand: "lifetime"
+title: Lifetime Home Services - Trusted Solutions. Lifetime Results.
 ---
 
-<section class="hero" style="background-image:url('/assets/lifetime-hero-house.jpg')">
+<div class="hero-section">
   <div class="hero-content">
-    <h1>Lifetime Home Solutions</h1>
-    <p>Trusted Solutions. Lifetime Results.</p>
+    <h1>Lifetime Home Services</h1>
+    <p class="hero-tagline">Trusted Solutions. Lifetime Results.</p>
     <div class="hero-buttons">
-      <a href="/lifetime/contact/" class="btn btn-primary">Get Free Estimate</a>
-      <a href="/lifetime/financing/" class="btn btn-secondary">Financing Options</a>
+      <a href="#contact" class="btn btn-primary">Get Free Estimate</a>
+      <a href="#financing" class="btn btn-secondary">Financing Options</a>
     </div>
   </div>
-</section>
+</div>
 
-<section class="services">
+<div class="brand-navigation">
   <div class="container">
-    <h2 class="section-title">Our Professional Services</h2>
+    <div class="brand-logos">
+      <div class="brand-item active">
+        <img src="/assets/lifetime-logo.png" alt="Lifetime Home Services" class="brand-logo">
+        <span>Home Services</span>
+      </div>
+      <div class="brand-item">
+        <img src="/assets/closet-concepts-logo.png" alt="Closet Concepts" class="brand-logo">
+        <span>Closet Concepts</span>
+      </div>
+      <div class="brand-item">
+        <img src="/assets/america-in-home-logo.png" alt="America In-Home" class="brand-logo">
+        <span>America In-Home</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="services-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Professional Services</h2>
+      <p>Expert solutions for your home's health, safety, and beauty</p>
+    </div>
+    
     <div class="services-grid">
-      <a class="service-card" href="/lifetime/services/radon-testing/">
-        <img src="/assets/radon-testing.jpg" alt="Radon Testing">
-        <div class="service-card-content">
+      <div class="service-card">
+        <div class="service-image">
+          <img src="/assets/iTiU36rD42bh.jpg" alt="Professional Radon Testing Equipment">
+        </div>
+        <div class="service-content">
           <h3>Radon Testing</h3>
           <p>Professional radon testing to ensure your home's safety and your family's health.</p>
-          <span class="btn">Learn More</span>
+          <a href="/services/radon-testing" class="btn btn-service">Learn More</a>
         </div>
-      </a>
-      <a class="service-card" href="/lifetime/services/radon-mitigation/">
-        <img src="/assets/radon-mitigation.jpg" alt="Radon Mitigation">
-        <div class="service-card-content">
+      </div>
+
+      <div class="service-card">
+        <div class="service-image">
+          <img src="/assets/Fan_and_accessories.jpg" alt="Radon Mitigation Fan System">
+        </div>
+        <div class="service-content">
           <h3>Radon Mitigation</h3>
           <p>Expert mitigation systems to reduce dangerous radon levels in your home.</p>
-          <span class="btn">Learn More</span>
+          <a href="/services/radon-mitigation" class="btn btn-service">Learn More</a>
         </div>
-      </a>
-      <a class="service-card" href="/lifetime/services/duct-sealing/">
-        <img src="/assets/smart-home-automation.jpg" alt="AeroSeal Duct Sealing">
-        <div class="service-card-content">
-          <h3>AeroSeal Duct Sealing</h3>
+      </div>
+
+      <div class="service-card">
+        <div class="service-image">
+          <img src="/assets/aeroseal-logo.webp" alt="AeroSeal Duct Sealing">
+        </div>
+        <div class="service-content">
+          <h3>Duct Cleaning & Sealing</h3>
           <p>Revolutionary duct sealing technology to improve your home's efficiency.</p>
-          <span class="btn">Learn More</span>
+          <a href="/services/duct-sealing" class="btn btn-service">Learn More</a>
         </div>
-      </a>
-      <a class="service-card" href="/lifetime/services/floor-coatings/">
-        <img src="/assets/epoxysample2.jpg" alt="Floor Coatings">
-        <div class="service-card-content">
+      </div>
+
+      <div class="service-card">
+        <div class="service-image">
+          <img src="/assets/epoxysample2.jpg" alt="Professional Epoxy Floor Coating">
+        </div>
+        <div class="service-content">
           <h3>Floor Coatings</h3>
           <p>Durable, beautiful epoxy floors for garages, basements, and commercial spaces.</p>
-          <span class="btn">Learn More</span>
+          <a href="/services/floor-coatings" class="btn btn-service">Learn More</a>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="contact">
+<section class="contact-section" id="contact">
   <div class="container">
     <div class="contact-grid">
       <div class="contact-info">
-        <h2>Get Your Free Estimate Today</h2>
+        <h3>Contact Us Today</h3>
         <p>Ready to improve your home? Contact us today for a free, no-obligation estimate on any of our services.</p>
+        
         <div class="contact-details">
-          <h3>Showroom Hours</h3>
+          <div class="contact-item phone-highlight">
+            <strong>Call Now: (833) 941-6888</strong>
+            <p>Available 24/7 for your convenience</p>
+          </div>
+        </div>
+
+        <div class="showroom-hours">
+          <h4>Showroom Hours</h4>
           <div class="contact-item"><strong>Mon - Fri:</strong> 8:00 AM - 5:00 PM</div>
           <div class="contact-item"><strong>Saturday:</strong> By appointment only</div>
           <div class="contact-item"><strong>Sunday:</strong> Closed</div>
@@ -73,46 +114,94 @@ brand: "lifetime"
         <h3>Request Your Free Estimate</h3>
 
         <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
-          <input type="hidden" name="oid" value="00D8c000007WNZP">
-          <input type="hidden" name="retURL" value="https://lifetimehomeservices.netlify.app/lifetime/thank-you/">
+          <input type="hidden" name="oid" value="00D5f000005JQXK">
+          <input type="hidden" name="retURL" value="https://lifetimehomesolutions.com/thank-you">
 
           <div class="form-group">
             <label for="first_name">First Name *</label>
             <input type="text" id="first_name" name="first_name" required>
           </div>
+
           <div class="form-group">
             <label for="last_name">Last Name *</label>
             <input type="text" id="last_name" name="last_name" required>
           </div>
+
           <div class="form-group">
             <label for="email">Email *</label>
             <input type="email" id="email" name="email" required>
           </div>
+
           <div class="form-group">
-            <label for="phone">Phone *</label>
-            <input type="tel" id="phone" name="phone" required>
-          </div>
-          <div class="form-group">
-            <label for="00N8c00000QkPZr">Service Interested In</label>
-            <select id="00N8c00000QkPZr" name="00N8c00000QkPZr">
-              <option value="">Select a Service</option>
-              <option value="Radon Testing">Radon Testing</option>
-              <option value="Radon Mitigation">Radon Mitigation</option>
-              <option value="AeroSeal Duct Sealing">AeroSeal Duct Sealing</option>
-              <option value="Epoxy Floor Coatings">Epoxy Floor Coatings</option>
-              <option value="Custom Closets">Custom Closets</option>
-              <option value="Smart Home Automation">Smart Home Automation</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="description">Additional Details</label>
-            <textarea id="description" name="description" placeholder="Tell us about your project..."></textarea>
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
           </div>
 
-          <input type="hidden" name="company" value="Lifetime Home Services">
-          <button type="submit" class="submit-btn">Send Message</button>
+          <div class="form-group">
+            <label for="description">Tell us about your project</label>
+            <textarea id="description" name="description" rows="4"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">Get My Free Estimate</button>
         </form>
       </div>
     </div>
   </div>
 </section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h4>Lifetime Home Services</h4>
+        <p>Trusted solutions for your home's health, safety, and beauty. Serving Wisconsin and surrounding areas with professional expertise since 1999.</p>
+        <div class="footer-contact">
+          <p><strong>(833) 941-6888</strong></p>
+          <p>Available 24/7</p>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="/services/radon-testing">Radon Testing</a></li>
+          <li><a href="/services/radon-mitigation">Radon Mitigation</a></li>
+          <li><a href="/services/duct-sealing">Duct Cleaning & Sealing</a></li>
+          <li><a href="/services/floor-coatings">Floor Coatings</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/financing">Financing</a></li>
+          <li><a href="/service-areas">Service Areas</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Business Hours</h4>
+        <div class="hours-list">
+          <div><strong>Mon - Fri:</strong> 8:00 AM - 5:00 PM</div>
+          <div><strong>Saturday:</strong> By appointment only</div>
+          <div><strong>Sunday:</strong> Closed</div>
+        </div>
+        <p class="phone-hours">Phone support available 24/7</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-brands">
+        <span>Part of the Lifetime Home Services family:</span>
+        <a href="/closet-concepts">Closet Concepts</a> | 
+        <a href="/america-in-home">America In-Home</a>
+      </div>
+      <div class="footer-copyright">
+        <p>&copy; 2024 Lifetime Home Services. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
