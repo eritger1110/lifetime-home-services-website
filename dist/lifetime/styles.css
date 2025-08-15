@@ -129,3 +129,134 @@ body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Ari
   .brand-switcher{gap:10px}
   .brand-logo img{height:35px}
 }
+
+/* FOOTER STYLES */
+.footer {
+  background: #2c3e50;
+  color: #fff;
+  padding: 60px 0 20px;
+  margin-top: 80px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-section h4 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #f4c430;
+  font-weight: 700;
+}
+
+.footer-section p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: #bdc3c7;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #f4c430;
+}
+
+.footer-contact p {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.footer-bottom {
+  border-top: 1px solid #34495e;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #f4c430;
+}
+
+/* CONTACT SECTION IMPROVEMENTS */
+.phone-highlight {
+  background: #f4c430;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.phone-highlight strong {
+  font-size: 1.3rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.phone-highlight p {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* FIX SERVICE CARD UNDERLINES */
+.service-card {
+  text-decoration: none !important;
+}
+
+.service-card h3 {
+  text-decoration: none !important;
+}
+
+.service-card:hover h3 {
+  text-decoration: none !important;
+}
+
+/* RESPONSIVE FOOTER */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
