@@ -151,6 +151,8 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;col
   text-align: center;
   color: white;
   position: relative;
+  margin-top: -60px;
+  padding-top: 60px;
 }
 
 .hero-content h1 {
