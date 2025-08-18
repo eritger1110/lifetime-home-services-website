@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **CRITICAL:** Asset pipeline - images and videos now load properly instead of returning HTML
+- `_redirects` file SPA fallback was hijacking all asset requests
+- Added explicit asset path rules before SPA fallback to serve files correctly
+- Assets paths `/assets/*`, `/lifetime/assets/*`, `/cc/assets/*`, `/aih/assets/*` now serve actual files
+- Missing `lifetime-logo.png` and `lifetime-hero.webp` assets added to source
+
 ### Added
 - CHANGELOG.md to track all website changes
 - Strict change-control workflow with feature branches and PR reviews

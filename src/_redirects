@@ -11,6 +11,18 @@ https://www.closetconcepts.com/* https://lifetimehomeservices.com/?brand=closets
 http://closetconcepts.com/* https://lifetimehomeservices.com/?brand=closets 301!
 http://www.closetconcepts.com/* https://lifetimehomeservices.com/?brand=closets 301!
 
-# SPA fallback
-/* /index.html 200
+# Service-specific redirects
+/old-radon-page /lifetime/services/radon-mitigation/ 301
+
+# CRITICAL: Assets must be served as files, not HTML
+# These rules MUST come before the SPA fallback
+/assets/* /assets/:splat 200
+/lifetime/assets/* /lifetime/assets/:splat 200
+/cc/assets/* /cc/assets/:splat 200
+/aih/assets/* /aih/assets/:splat 200
+/styles.css /styles.css 200
+/script.js /script.js 200
+
+# SPA fallback for HTML pages only (MUST be last)
+/* /lifetime/index.html 200
 
