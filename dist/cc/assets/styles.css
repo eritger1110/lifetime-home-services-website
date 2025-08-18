@@ -1,0 +1,35 @@
+:root{
+  --brand: #0bb6b6; /* tweak per brand later via small brand class */
+  --ink: #0c2340;
+  --muted: #556070;
+  --bg: #ffffff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",sans-serif}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+.site-header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;z-index:10}
+.site-header .container{display:flex;align-items:center;gap:24px;padding:14px 20px}
+.site-header .brand img{height:42px;width:auto;display:block}
+.site-header nav{display:flex;gap:16px;margin-left:auto}
+.site-header nav a{color:var(--ink);text-decoration:none}
+.dropdown{position:relative}
+.dropdown button{border:0;background:transparent;cursor:pointer;font:inherit}
+.dropdown .menu{position:absolute;top:100%;left:0;background:#fff;border:1px solid #eee;box-shadow:0 8px 24px rgba(0,0,0,.08);padding:8px 0;display:none;min-width:220px}
+.dropdown:hover .menu{display:block}
+.dropdown .menu a{display:block;padding:8px 14px;color:var(--ink);text-decoration:none}
+.dropdown .menu a:hover{background:#f7f7f7}
+
+.phone{margin-left:16px;font-weight:700;color:var(--brand);text-decoration:none}
+
+main h1{font-size:2rem;margin:1.5rem 0 .5rem}
+main h2{font-size:1.5rem;margin:1.25rem 0 .5rem}
+main img{max-width:100%;height:auto;border-radius:8px}
+
+.hero{margin:24px 0}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.card{border:1px solid #eee;border-radius:12px;padding:16px;background:#fff}
+
+.site-footer{border-top:1px solid #eee;margin-top:48px}
+.site-footer .container{display:flex;justify-content:space-between;align-items:center;padding:22px 20px}
+.site-footer a{color:var(--muted);text-decoration:none}
