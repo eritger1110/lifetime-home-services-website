@@ -18,6 +18,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Missing `lifetime-logo.png` and `lifetime-hero.webp` assets added to source
 
 ### Added
+- **AIH Homepage Enhancement** - Complete America In-Home homepage with YouTube hero video and smart home technology focus
+  - Added specified YouTube video (https://youtu.be/NXCMKyYHl-o) to hero section with autoplay and clean overlay
+  - Implemented AIH-specific navigation with 8 menu items (Home, Services, Gallery, Packages, About, Showroom, Financing, Contact)
+  - Added brand watermarks ("AMERICA IN-HOME" background branding)
+  - Enhanced footer with AIH-specific messaging and division attribution
+  - Comprehensive smart home content: Control4 systems, WiFi setup, home theater, security solutions
+  - Professional service packages with pricing (Smart Home Starter, Ultimate Home Theater, Complete Security Suite)
+  - Customer testimonials and FAQ section
+  - Free consultation form and contact methods
 - Projects page with portfolio of completed work and before/after galleries
 - Showroom page with location, hours, and visit scheduling information
 - CHANGELOG.md to track all website changes
