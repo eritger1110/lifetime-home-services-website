@@ -7,7 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added - Section B: LHS Home Hero & Multi-Unit Navigation
+- **CRITICAL**: Netlify configuration with `build:all` command to deploy all three units
+- **Multi-Unit Build**: LHS, AIH, and CC homepages now all accessible
+- **Asset Structure**: Updated LHS hero to use organized `/assets/images/lhs/lifetime-hero-house.webp`
+- **Navigation Routing**: Fixed brand switcher links to proper unit routes
+
 ### Fixed
+- **CRITICAL**: AIH homepage navigation (was 404, now working)
+- **CRITICAL**: CC homepage navigation (was 404, now working)  
 - **Navigation incomplete** - Added missing 3 navigation items (Home, Projects, Showroom)
 - All 8 required navigation items now present: Home, Services, Projects, Showroom, Financing, About, Service Areas, Contact
 - Adjusted navigation spacing from 30px to 20px gap to accommodate 8 items without wrapping
@@ -16,8 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added explicit asset path rules before SPA fallback to serve files correctly
 - Assets paths `/assets/*`, `/lifetime/assets/*`, `/cc/assets/*`, `/aih/assets/*` now serve actual files
 - Missing `lifetime-logo.png` and `lifetime-hero.webp` assets added to source
-
-### Added
+- LHS navigation links updated to root paths for proper routing
 - **Assets & File Conventions Implementation** - Systematic asset management with proper folder structure and naming conventions
   - Created organized folder structure: `/assets/images/lhs`, `/assets/images/cc`, `/assets/images/aih`, `/assets/images/common`, `/assets/video`, `/assets/data`
   - Implemented lowercase, hyphenated naming convention for all assets (e.g., `lifetime-hero-house.webp`, `closet-concepts-company-video-v2.mp4`)
