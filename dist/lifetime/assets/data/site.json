@@ -1,0 +1,41 @@
+{
+  "lhs": {
+    "hero": "/assets/images/lhs/lifetime-hero-house.webp",
+    "ctaPrimary": "Get Free Estimate",
+    "ctaSecondary": "Financing Options"
+  },
+  "cc": {
+    "video": "/assets/video/closet-concepts-company-video-v2.mp4",
+    "rails": [
+      "/assets/images/cc/walkin2.webp",
+      "/assets/images/cc/walkin3.webp",
+      "/assets/images/cc/walkin4.webp",
+      "/assets/images/cc/reachin-closet1.webp",
+      "/assets/images/cc/reachin-closet2.webp",
+      "/assets/images/cc/reachin-closet3.webp",
+      "/assets/images/cc/laundry3.webp",
+      "/assets/images/cc/laundry4.webp",
+      "/assets/images/cc/garage1.webp",
+      "/assets/images/cc/garage2.webp",
+      "/assets/images/cc/home-office2.webp",
+      "/assets/images/cc/pantry1.webp",
+      "/assets/images/cc/mudroom1.webp",
+      "/assets/images/cc/mudroom2.webp"
+    ]
+  },
+  "aih": {
+    "video": "/assets/video/america-in-home-web-banner-rev1.mp4",
+    "rails": [
+      "/assets/images/aih/home-theater1.webp",
+      "/assets/images/aih/home-theater2.webp",
+      "/assets/images/aih/home-theater3.webp",
+      "/assets/images/aih/home-theater4.webp",
+      "/assets/images/aih/home-theater5.webp",
+      "/assets/images/aih/samsung1.webp",
+      "/assets/images/aih/sonos1.webp",
+      "/assets/images/aih/sonos2.webp",
+      "/assets/images/aih/sonos3.webp"
+    ]
+  }
+}
+
