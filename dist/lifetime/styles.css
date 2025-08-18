@@ -6,7 +6,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;col
 /* NAV */
 .navbar{background:#fff;padding:8px 0;box-shadow:0 2px 10px rgba(0,0,0,.1);position:fixed;top:0;width:100%;z-index:1000;height:60px}
 .nav-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px;height:100%}
-.brand-switcher{display:flex;align-items:center;gap:15px}
+.brand-switcher{display:flex;align-items:center;gap:25px}
 .brand-logo{display:inline-flex;align-items:center;justify-content:center;height:40px;transition:transform .3s ease}
 .brand-logo img{height:40px;width:auto;display:block}
 .brand-logo.active{transform:scale(1.06)}
@@ -151,6 +151,8 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;col
   text-align: center;
   color: white;
   position: relative;
+  margin-top: -60px;
+  padding-top: 60px;
 }
 
 .hero-content h1 {
@@ -591,6 +593,658 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;col
   
   .services-section::before {
     font-size: 5rem;
+  }
+}
+
+/* Force deployment - Fri Aug 15 18:03:39 EDT 2025 */
+
+
+/* COMPACT HERO FOR INTERIOR PAGES */
+.hero-compact {
+  height: 40vh;
+  min-height: 300px;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  margin-top: 60px;
+}
+
+.hero-compact .hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.hero-compact .hero-tagline {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* CONTACT PAGE STYLES */
+.contact-page {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.contact-form {
+  background: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.contact-info-section h2 {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.contact-item {
+  margin-bottom: 35px;
+  padding: 25px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+.contact-item h3 {
+  margin-bottom: 15px;
+  color: #4a90e2;
+  font-size: 1.2rem;
+}
+
+.phone-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f4c430;
+  margin: 10px 0;
+}
+
+.phone-number a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-cta {
+  padding: 60px 0;
+  background: #4a90e2;
+  color: #fff;
+  text-align: center;
+}
+
+.cta-content h2 {
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+/* ABOUT PAGE STYLES */
+.about-story {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.story-content h2 {
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2.2rem;
+}
+
+.story-content p {
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+.company-values {
+  margin-top: 50px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.value-item {
+  padding: 25px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #4a90e2;
+}
+
+.value-item h4 {
+  margin-bottom: 15px;
+  color: #4a90e2;
+  font-size: 1.1rem;
+}
+
+.story-image img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0,0,0,.1);
+}
+
+.image-caption {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+}
+
+.about-services {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.services-overview {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.service-overview {
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+.service-overview h3 {
+  margin-bottom: 20px;
+  color: #4a90e2;
+  font-size: 1.3rem;
+}
+
+.about-trust {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.trust-item {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.trust-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px;
+  background: #f8f9fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trust-icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.trust-item h3 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.about-showroom {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.showroom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.showroom-details {
+  margin-top: 30px;
+}
+
+.showroom-cta {
+  margin-top: 30px;
+}
+
+.showroom-cta .btn {
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+/* FINANCING PAGE STYLES */
+.financing-overview {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.financing-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.financing-intro h2 {
+  margin-bottom: 25px;
+  font-size: 2.2rem;
+  color: #333;
+}
+
+.financing-intro p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+.financing-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.benefit-item {
+  text-align: center;
+  padding: 30px 20px;
+  background: #f8f9fa;
+  border-radius: 15px;
+}
+
+.benefit-item h3 {
+  margin-bottom: 15px;
+  color: #4a90e2;
+  font-size: 1.2rem;
+}
+
+.financing-programs {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.program-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  transition: transform 0.3s ease;
+}
+
+.program-card:hover {
+  transform: translateY(-5px);
+}
+
+.program-card.featured {
+  border: 3px solid #f4c430;
+  transform: scale(1.05);
+}
+
+.program-header {
+  background: #4a90e2;
+  color: #fff;
+  padding: 25px;
+  text-align: center;
+  position: relative;
+}
+
+.program-card.featured .program-header {
+  background: #f4c430;
+  color: #333;
+}
+
+.program-badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: #ff6b6b;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.program-header h3 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.program-details {
+  padding: 30px;
+}
+
+.program-rate {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4a90e2;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.program-card.featured .program-rate {
+  color: #f4c430;
+}
+
+.program-term {
+  text-align: center;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.program-features {
+  list-style: none;
+  margin-bottom: 25px;
+}
+
+.program-features li {
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.program-features li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #4a90e2;
+  font-weight: 700;
+}
+
+.program-ideal {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.financing-process {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.step {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  background: #4a90e2;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 25px;
+}
+
+.step h3 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.financing-calculator {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.calculator-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.calculator-form {
+  background: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+}
+
+.payment-result {
+  margin-top: 30px;
+  padding: 25px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.result-amount {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.result-label {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.result-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4a90e2;
+}
+
+.result-note {
+  font-size: 0.8rem;
+  color: #666;
+  font-style: italic;
+}
+
+.calculator-benefits ul {
+  list-style: none;
+}
+
+.calculator-benefits li {
+  padding: 12px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.calculator-benefits li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #4a90e2;
+  font-weight: 700;
+}
+
+.financing-faq {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.faq-item {
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 15px;
+}
+
+.faq-item h3 {
+  margin-bottom: 20px;
+  color: #4a90e2;
+  font-size: 1.2rem;
+}
+
+.financing-cta {
+  padding: 80px 0;
+  background: #4a90e2;
+  color: #fff;
+  text-align: center;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .contact-grid,
+  .content-grid,
+  .showroom-grid,
+  .calculator-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .services-overview,
+  .programs-grid,
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .values-grid,
+  .financing-benefits {
+    grid-template-columns: 1fr;
+  }
+  
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .hero-compact .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trust-grid,
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+  
+  .brand-switcher {
+    gap: 15px;
+  }
+  
+  .nav-links {
+    gap: 20px;
   }
 }
 
