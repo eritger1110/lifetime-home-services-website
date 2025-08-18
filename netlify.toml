@@ -1,0 +1,51 @@
+[build]
+  command = "npm run build:all"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/*"
+  to = "/lifetime/:splat"
+  status = 200
+  conditions = {Role = ["admin"]}
+
+# Serve assets as files, not HTML
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/lifetime/assets/*"
+  to = "/lifetime/assets/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/cc/assets/*"
+  to = "/cc/assets/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/aih/assets/*"
+  to = "/aih/assets/:splat"
+  status = 200
+
+# Unit-specific routes
+[[redirects]]
+  from = "/aih/*"
+  to = "/aih/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/cc/*"
+  to = "/cc/:splat"
+  status = 200
+
+# Default fallback to LHS
+[[redirects]]
+  from = "/*"
+  to = "/lifetime/:splat"
+  status = 200
+
