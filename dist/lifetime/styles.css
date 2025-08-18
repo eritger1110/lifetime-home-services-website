@@ -10,7 +10,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;col
 .brand-logo{display:inline-flex;align-items:center;justify-content:center;height:40px;transition:transform .3s ease}
 .brand-logo img{height:40px;width:auto;display:block}
 .brand-logo.active{transform:scale(1.06)}
-.nav-links{display:flex;list-style:none;gap:30px;align-items:center}
+.nav-links{display:flex;list-style:none;gap:20px;align-items:center}
 .nav-links a{text-decoration:none;color:#333;font-weight:500;transition:color .3s ease}
 .nav-links a:hover{color:#f4c430}
 .phone-btn{background:#f4c430;color:#333;padding:8px 16px;border-radius:25px;text-decoration:none;font-weight:700;transition:all .3s ease;border:none}

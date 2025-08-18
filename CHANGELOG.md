@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- **Navigation incomplete** - Added missing 3 navigation items (Home, Projects, Showroom)
+- All 8 required navigation items now present: Home, Services, Projects, Showroom, Financing, About, Service Areas, Contact
+- Adjusted navigation spacing from 30px to 20px gap to accommodate 8 items without wrapping
 - **CRITICAL:** Asset pipeline - images and videos now load properly instead of returning HTML
 - `_redirects` file SPA fallback was hijacking all asset requests
 - Added explicit asset path rules before SPA fallback to serve files correctly
@@ -15,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Missing `lifetime-logo.png` and `lifetime-hero.webp` assets added to source
 
 ### Added
+- Projects page with portfolio of completed work and before/after galleries
+- Showroom page with location, hours, and visit scheduling information
 - CHANGELOG.md to track all website changes
 - Strict change-control workflow with feature branches and PR reviews
 - Comprehensive footer structure with state service area links
