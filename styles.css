@@ -140,7 +140,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;col
 
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/lifetime-hero-house.jpg');
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/assets/lhs-hero-background.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -232,16 +232,17 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;col
 }
 
 .services-section::before {
-  content: 'LIFETIME';
+  content: 'LIFETIME HOME SERVICES';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
-  font-size: 15rem;
+  font-size: 8rem;
   font-weight: 900;
-  color: rgba(0, 123, 255, 0.05);
+  color: rgba(0, 123, 255, 0.03);
   z-index: 1;
   pointer-events: none;
+  white-space: nowrap;
 }
 
 .section-header {
