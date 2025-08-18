@@ -151,6 +151,8 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;col
   text-align: center;
   color: white;
   position: relative;
+  margin-top: -60px;
+  padding-top: 60px;
 }
 
 .hero-content h1 {
@@ -594,3 +596,4 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;col
   }
 }
 
+/* Force deployment - Fri Aug 15 18:03:39 EDT 2025 */
