@@ -48,4 +48,19 @@
   from = "/*"
   to = "/lifetime/:splat"
   status = 200
+  
+[build]
+  command = "npm ci && npm run build:all && npm run build:root"
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--no-fund --no-audit"
+  NODE_OPTIONS = "--max-old-space-size=2048"
+
+# Serve real files before any fallback (multi-page site)
+[[redirects]]
+  from = "/assets/*"
+  to   = "/assets/:splat"
+  status = 200
 
