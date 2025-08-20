@@ -1,6 +1,7 @@
 # ---------- Build ----------
 [build]
-  command = "npm ci && npm run build:all && npm run build:root"
+  # You can keep build:all if you like; build:lifetime is faster
+  command = "npm ci && npm run build:lifetime && npm run build:root"
   publish = "dist/lifetime"
 
 [build.environment]
@@ -8,23 +9,9 @@
   NPM_FLAGS = "--no-fund --no-audit"
   NODE_OPTIONS = "--max-old-space-size=2048"
 
-# (Optional safety) Always serve real files under /assets/
-[[redirects]]
-  from = "/assets/*"
-  to   = "/assets/:splat"
-  status = 200
-
-# ---------- Deploy Preview only ----------
-[context.deploy-preview]
-  command = "npm ci && npm run build:all && npm run build:root"
-  publish = "dist/lifetime"
-
-  [[context.deploy-preview.headers]]
+# ---------- Preview-only headers ----------
+[context."deploy-preview"]
+  [[context."deploy-preview".headers]]
     for = "/*"
-    [context.deploy-preview.headers.values]
+    [context."deploy-preview".headers.values]
       X-Robots-Tag = "noindex, nofollow"
-
-# ---------- Production (explicit, same publish dir) ----------
-[context.production]
-  command = "npm ci && npm run build:all && npm run build:root"
-  publish = "dist/lifetime"
