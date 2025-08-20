@@ -1,54 +1,4 @@
-[build]
-  command = "npm run build:all"
-  publish = "dist"
-
-[build.environment]
-  NODE_VERSION = "18"
-
-[[redirects]]
-  from = "/*"
-  to = "/lifetime/:splat"
-  status = 200
-  conditions = {Role = ["admin"]}
-
-# Serve assets as files, not HTML
-[[redirects]]
-  from = "/assets/*"
-  to = "/assets/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/lifetime/assets/*"
-  to = "/lifetime/assets/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/cc/assets/*"
-  to = "/cc/assets/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/aih/assets/*"
-  to = "/aih/assets/:splat"
-  status = 200
-
-# Unit-specific routes
-[[redirects]]
-  from = "/aih/*"
-  to = "/aih/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/cc/*"
-  to = "/cc/:splat"
-  status = 200
-
-# Default fallback to LHS
-[[redirects]]
-  from = "/*"
-  to = "/lifetime/:splat"
-  status = 200
-  
+# ---------- Build ----------
 [build]
   command = "npm ci && npm run build:all && npm run build:root"
   publish = "."
@@ -58,9 +8,48 @@
   NPM_FLAGS = "--no-fund --no-audit"
   NODE_OPTIONS = "--max-old-space-size=2048"
 
-# Serve real files before any fallback (multi-page site)
+# ---------- Redirects ----------
+# Serve assets as files (avoid SPA hijack)
 [[redirects]]
   from = "/assets/*"
   to   = "/assets/:splat"
   status = 200
 
+# Domain → subpath rewrites (will take effect after DNS cutover)
+[[redirects]]
+  from = "https://lifetimehomeservices.com/*"
+  to   = "/lifetime/:splat"
+  status = 200
+[[redirects]]
+  from = "https://www.lifetimehomeservices.com/*"
+  to   = "/lifetime/:splat"
+  status = 200
+[[redirects]]
+  from = "https://americainhome.com/*"
+  to   = "/aih/:splat"
+  status = 200
+[[redirects]]
+  from = "https://www.americainhome.com/*"
+  to   = "/aih/:splat"
+  status = 200
+[[redirects]]
+  from = "https://closetconcepts.com/*"
+  to   = "/cc/:splat"
+  status = 200
+[[redirects]]
+  from = "https://www.closetconcepts.com/*"
+  to   = "/cc/:splat"
+  status = 200
+
+# Default fallback to LHS for unknown hosts/paths (keeps previews working)
+[[redirects]]
+  from = "/*"
+  to   = "/lifetime/:splat"
+  status = 200
+
+# ---------- Preview-only headers ----------
+[context."deploy-preview"]
+  [[context."deploy-preview".headers]]
+    for = "/*"
+    [context."deploy-preview".headers.values]
+      X-Robots-Tag = "noindex, nofollow"
