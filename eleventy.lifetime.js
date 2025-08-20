@@ -1,4 +1,11 @@
 module.exports = function (eleventyConfig) {
+  // Useful filter (OK to keep)
+  eleventyConfig.addNunjucksFilter("date", (value, format = "yyyy") => {
+    const d = new Date(value || new Date());
+    if (format === "yyyy") return String(d.getFullYear());
+    return d.toISOString();
+  });
+
   // Static passthroughs
   eleventyConfig.addPassthroughCopy({
     "src/assets": "assets",
@@ -7,21 +14,21 @@ module.exports = function (eleventyConfig) {
     "src/_redirects": "_redirects",
   });
 
-  // Allow templates to say layout: base.njk (maps to layout.njk at src/)
+  // Support templates that say `layout: base` or `layout: base.njk`
   eleventyConfig.addLayoutAlias("base", "layout.njk");
+  eleventyConfig.addLayoutAlias("base.njk", "layout.njk");
 
   return {
     dir: {
-      // Build only the Lifetime site for this config
-      input: "src/lifetime",
+      input: "src/lifetime",      // build the Lifetime site
       output: "dist/lifetime",
-
-      // Tell Eleventy where our shared includes/layout files live
-      // (they’re at the src/ root, not inside src/lifetime/_includes)
-      includes: "../", // so {% include "header.njk" %} works
-      layouts: "../",  // so layout: layout.njk (or base.njk via alias) works
-      data: "../_data" // use shared data files like src/_data/*.js
+      includes: "../",            // allow {% include "header.njk" %} etc. from src/
+      layouts: "../",             // allow layout: layout.njk (or base via alias)
+      data: "../_data"
     },
     templateFormats: ["njk", "md", "html"],
+    htmlTemplateEngine: "njk",
+    markdownTemplateEngine: "njk",
+    passthroughFileCopy: true,
   };
 };
