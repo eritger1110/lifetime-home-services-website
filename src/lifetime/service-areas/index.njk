@@ -1,45 +1,52 @@
 ---
 layout: layout.njk
-title: Service Areas
-permalink: /service-areas/index.html
+title: Our Service Areas
+permalink: /service-areas/
 ---
 
-<section class="page-hero">
+<section class="hero simple-hero">
   <div class="container">
     <h1>Our Service Areas</h1>
     <p>Professional home services across Wisconsin, Illinois, Minnesota, and Colorado.</p>
   </div>
 </section>
 
-<section class="cards container">
-  <div class="card-grid">
-    <a class="card" href="/service-areas/wi/">
-      <div class="card-body">
-        <h2>WI</h2>
-        <p>Wisconsin</p>
-        <span class="button">View Services</span>
-      </div>
-    </a>
-    <a class="card" href="/service-areas/il/">
-      <div class="card-body">
-        <h2>IL</h2>
-        <p>Illinois</p>
-        <span class="button">View Services</span>
-      </div>
-    </a>
-    <a class="card" href="/service-areas/mn/">
-      <div class="card-body">
-        <h2>MN</h2>
-        <p>Minnesota</p>
-        <span class="button">View Services</span>
-      </div>
-    </a>
-    <a class="card" href="/service-areas/co/">
-      <div class="card-body">
-        <h2>CO</h2>
-        <p>Colorado</p>
-        <span class="button">View Services</span>
-      </div>
-    </a>
+<section class="cards-section">
+  <div class="container cards-grid">
+    <article class="card">
+      <h2>WI</h2>
+      <h3>Wisconsin</h3>
+      <p>Complete home services including all specialties and custom solutions.</p>
+      <p><a class="btn" href="{{ site.home }}service-areas/wi/">View Services</a></p>
+    </article>
+
+    <article class="card">
+      <h2>IL</h2>
+      <h3>Illinois</h3>
+      <p>Radon mitigation and AeroSeal duct sealing services.</p>
+      <p><a class="btn" href="{{ site.home }}service-areas/il/">View Services</a></p>
+    </article>
+
+    <article class="card">
+      <h2>MN</h2>
+      <h3>Minnesota</h3>
+      <p>Professional radon testing and mitigation services.</p>
+      <p><a class="btn" href="{{ site.home }}service-areas/mn/">View Services</a></p>
+    </article>
+
+    <article class="card">
+      <h2>CO</h2>
+      <h3>Colorado</h3>
+      <p>Expert radon testing and mitigation solutions.</p>
+      <p><a class="btn" href="{{ site.home }}service-areas/co/">View Services</a></p>
+    </article>
   </div>
 </section>
+
+<style>
+  .simple-hero{padding:4rem 0;background:linear-gradient(180deg,#2f6fb1, #3d82c7);color:#fff}
+  .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem}
+  .card{background:#fff;border-radius:12px;padding:1.25rem;box-shadow:0 6px 16px rgba(0,0,0,.06)}
+  .card h2{font-size:2rem;margin:0;color:#2f6fb1}
+  .card .btn{display:inline-block;margin-top:.5rem;padding:.5rem .9rem;border-radius:999px;border:1px solid #2f6fb1}
+</style>
