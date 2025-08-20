@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "clean": "rimraf dist",
     "build:lifetime": "npx @11ty/eleventy --config=eleventy.lifetime.js",
     "build:aih": "npx @11ty/eleventy --config=eleventy.aih.js",
     "build:cc": "npx @11ty/eleventy --config=eleventy.cc.js",
@@ -10,6 +11,7 @@
     "build:root": "node scripts/postbuild.cjs"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^2.0.1",
+    "rimraf": "^5.0.5"
   }
 }
