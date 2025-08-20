@@ -3,17 +3,18 @@
     <a href="{{ site.home }}"><img src="/assets/{{ site.logo }}" alt="{{ site.brand }} logo" /></a>
   </div>
   <nav class="primary-nav">
-    <ul>
-      <li><a href="{{ site.home }}">Home</a></li>
-      <li class="services-menu">
-        <span>Services ▾</span>
-        <ul class="dropdown">
-          {% for svc in site.services %}
-          <li><a href="{{ svc.url }}">{{ svc.name }}</a></li>
-          {% endfor %}
-        </ul>
-      </li>
-    </ul>
-  </nav>
+  <ul>
+    <li><a href="{{ site.home }}">Home</a></li>
+    <li class="services-menu">
+      <span>Services ▾</span>
+      <ul class="dropdown">
+        {% for svc in site.services %}
+        <li><a href="{{ svc.url }}">{{ svc.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
+    <li><a href="/service-areas/">Service Areas</a></li>
+  </ul>
+</nav>
   <div class="phone"><a href="tel:{{ site.phone | replace('(', '') | replace(')', '') | replace(' ', '') | replace('-', '') }}">{{ site.phone }}</a></div>
 </header>
