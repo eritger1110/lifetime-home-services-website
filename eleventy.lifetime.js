@@ -1,10 +1,7 @@
 module.exports = function (eleventyConfig) {
-  // Useful filter (OK to keep)
-  eleventyConfig.addNunjucksFilter("date", (value, format = "yyyy") => {
-    const d = new Date(value || new Date());
-    if (format === "yyyy") return String(d.getFullYear());
-    return d.toISOString();
-  });
+  // Build ONLY the Lifetime brand
+  eleventyConfig.ignores.add("src/aih/**");
+  eleventyConfig.ignores.add("src/cc/**");
 
   // Static passthroughs
   eleventyConfig.addPassthroughCopy({
@@ -14,21 +11,17 @@ module.exports = function (eleventyConfig) {
     "src/_redirects": "_redirects",
   });
 
-  // Support templates that say `layout: base` or `layout: base.njk`
+  // Let templates use `layout: base` to map to `layout.njk` at project root
   eleventyConfig.addLayoutAlias("base", "layout.njk");
-  eleventyConfig.addLayoutAlias("base.njk", "layout.njk");
 
   return {
     dir: {
-      input: "src/lifetime",      // build the Lifetime site
+      input: "src",          // <— build from the entire /src tree
       output: "dist/lifetime",
-      includes: "../",            // allow {% include "header.njk" %} etc. from src/
-      layouts: "../",             // allow layout: layout.njk (or base via alias)
-      data: "../_data"
+      includes: ".",         // look for includes in /src
+      layouts: ".",          // look for layouts in /src
+      data: "_data",         // use /src/_data
     },
     templateFormats: ["njk", "md", "html"],
-    htmlTemplateEngine: "njk",
-    markdownTemplateEngine: "njk",
-    passthroughFileCopy: true,
   };
 };
