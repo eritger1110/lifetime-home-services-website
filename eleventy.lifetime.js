@@ -1,13 +1,9 @@
 // eleventy.lifetime.js
 module.exports = function (eleventyConfig) {
-  // Static passthroughs
+  // Copy everything in /public/assets to /assets in the output
   eleventyConfig.addPassthroughCopy({ "public/assets": "assets" });
-    "src/assets": "assets",
-    "styles.css": "styles.css",
-    "script.js": "script.js"
-  });
 
-  // optional alias; using 'layout.njk' directly is fine too
+  // Optional alias; using 'layout.njk' directly is fine too
   eleventyConfig.addLayoutAlias("layout", "layout.njk");
 
   return {
