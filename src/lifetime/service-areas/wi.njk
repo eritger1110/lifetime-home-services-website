@@ -1,136 +1,100 @@
 ---
-layout: layout.njk
-title: Wisconsin Services
-permalink: "{{ site.home }}service-areas/wi/"
----
-description: "Lifetime Home Services provides radon testing, duct sealing, and epoxy floor coatings across Wisconsin. Find your ZIP code and service area."
-canonical: "https://lifetimehomeservices.com/lifetime/service-areas/wi"
-brand: lhs
-state: wi
+layout: layouts/base.njk
+title: "Service Areas in Wisconsin"
+description: "Lifetime Home Services provides radon testing, duct sealing, and epoxy flooring services across 141 ZIP codes in 59 Wisconsin communities."
+canonical: "{{ brandLinks.lifetime }}/service-areas/wi"
 ---
 
-{% set stateData = serviceAreas.wi %}
-{% set stateName = "Wisconsin" %}
-{% set totalZips = stateData.areas | map(attribute="zips") | list | join(",") | split(",") | length %}
-{% set totalAreas = stateData.areas | length %}
+{% set wiData = serviceAreas.wi %}
 
-<div class="state-service-area-page">
-    <!-- Hero Section -->
-    <section class="hero-section state-hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Service Areas in {{ stateName }}</h1>
-                <p class="hero-subtitle">Serving {{ totalZips }} ZIP codes across {{ totalAreas }} areas in {{ stateName }}</p>
-                <div class="services-offered">
-                    <span class="service-tag">Radon Testing & Mitigation</span>
-                    <span class="service-tag">Duct Cleaning & Sealing</span>
-                    <span class="service-tag">Epoxy Floor Coatings</span>
+<main class="service-areas-page">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-background">
+      <!-- Wisconsin Silhouette Watermark -->
+      <div class="state-silhouette wisconsin-silhouette" aria-hidden="true"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Service Areas in Wisconsin</h1>
+        <p class="hero-subtitle">Professional home services across the state</p>
+        <div class="service-counts">
+          <span class="count-text">Serving {{ wiData.counts.zips }} ZIP codes across {{ wiData.counts.areas }} areas in Wisconsin</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search and Areas Section -->
+  <section class="areas-section">
+    <div class="container">
+      <!-- Search Bar -->
+      <div class="search-container">
+        <div class="search-box">
+          <input 
+            type="text" 
+            id="areaSearch" 
+            placeholder="Search by city name or ZIP code..."
+            aria-label="Search Wisconsin service areas by city name or ZIP code"
+            autocomplete="off"
+          >
+          <button type="button" class="search-clear" id="searchClear" aria-label="Clear search">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="search-results" id="searchResults" role="region" aria-live="polite"></div>
+      </div>
+
+      <!-- A-Z Accordion of Areas -->
+      <div class="areas-accordion" id="areasAccordion">
+        <h2>Wisconsin Service Areas</h2>
+        <div class="accordion-container">
+          {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+            {% set letterAreas = wiData.areas | selectattr("name", "match", "^" + letter) | list %}
+            {% if letterAreas | length > 0 %}
+              <details class="accordion-section" data-letter="{{ letter }}">
+                <summary class="accordion-header" tabindex="0">
+                  <span class="letter">{{ letter }}</span>
+                  <span class="count">({{ letterAreas | length }} areas)</span>
+                  <span class="chevron" aria-hidden="true">▼</span>
+                </summary>
+                <div class="accordion-content">
+                  {% for area in letterAreas %}
+                    <div class="area-card" data-area="{{ area.name | lower }}" data-zips="{{ area.zips | join(',') }}">
+                      <h3 class="area-name">{{ area.name }}</h3>
+                      <p class="area-county">{{ area.county }} County</p>
+                      <div class="area-zips">
+                        <span class="zip-label">ZIP Codes:</span>
+                        <div class="zip-chips">
+                          {% for zip in area.zips %}
+                            <span class="zip-chip" data-zip="{{ zip }}">{{ zip }}</span>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
                 </div>
-            </div>
+              </details>
+            {% endif %}
+          {% endfor %}
         </div>
-        
-        <!-- Wisconsin State Silhouette -->
-        <div class="state-silhouette wisconsin-silhouette">
-            <svg viewBox="0 0 400 300" class="state-outline">
-                <path d="M50,50 L350,50 L350,200 L300,250 L100,250 L50,200 Z" fill="rgba(44, 90, 160, 0.05)" stroke="rgba(44, 90, 160, 0.1)" stroke-width="2"/>
-                <text x="200" y="150" text-anchor="middle" font-family="Inter, sans-serif" font-weight="bold" font-size="24" fill="rgba(44, 90, 160, 0.1)">WISCONSIN</text>
-            </svg>
-        </div>
-    </section>
+      </div>
 
-    <!-- Search and Filter Section -->
-    <section class="search-section">
-        <div class="container">
-            <div class="search-box-container">
-                <label for="area-search" class="search-label">Search by city or ZIP code</label>
-                <input 
-                    type="text" 
-                    id="area-search" 
-                    class="search-input" 
-                    placeholder="Search by city or ZIP..."
-                    autocomplete="off"
-                    aria-describedby="search-help"
-                >
-                <div id="search-help" class="search-help">
-                    Type a city name or ZIP code to find your service area
-                </div>
-                <div id="search-results" class="search-results" role="region" aria-live="polite"></div>
-            </div>
+      <!-- All ZIP Codes Section -->
+      <div class="all-zips-section">
+        <h2>All Wisconsin ZIP Codes</h2>
+        <div class="zip-grid" id="zipGrid">
+          {% for zip in wiData.zipIndex | slice(0, 20) %}
+            <span class="zip-chip" data-zip="{{ zip }}">{{ zip }}</span>
+          {% endfor %}
         </div>
-    </section>
-
-    <!-- A-Z Accordion Section -->
-    <section class="accordion-section">
-        <div class="container">
-            <h2>All Service Areas</h2>
-            <div class="alphabet-nav">
-                {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
-                    <button class="letter-nav" data-letter="{{ letter }}">{{ letter }}</button>
-                {% endfor %}
-            </div>
-            
-            <div class="areas-accordion" id="areas-accordion">
-                {% set areasByLetter = {} %}
-                {% for area in stateData.areas %}
-                    {% set firstLetter = area.name[0] | upper %}
-                    {% if not areasByLetter[firstLetter] %}
-                        {% set areasByLetter = areasByLetter | merge({(firstLetter): []}) %}
-                    {% endif %}
-                    {% set areasByLetter = areasByLetter | merge({(firstLetter): (areasByLetter[firstLetter] + [area])}) %}
-                {% endfor %}
-
-                {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
-                    {% if areasByLetter[letter] %}
-                        <details class="accordion-group" data-letter="{{ letter }}">
-                            <summary class="accordion-header">
-                                <span class="letter-badge">{{ letter }}</span>
-                                <span class="letter-count">{{ areasByLetter[letter] | length }} areas</span>
-                                <span class="accordion-icon" aria-hidden="true">▼</span>
-                            </summary>
-                            <div class="accordion-content">
-                                <div class="area-cards">
-                                    {% for area in areasByLetter[letter] %}
-                                        <div class="area-card" data-area="{{ area.name | lower }}" data-zips="{{ area.zips | join(' ') }}">
-                                            <h3 class="area-name">{{ area.name }}</h3>
-                                            {% if area.aka %}
-                                                <p class="area-aka">Also known as: {{ area.aka | join(', ') }}</p>
-                                            {% endif %}
-                                            <div class="zip-codes">
-                                                <span class="zip-label">ZIP codes:</span>
-                                                <div class="zip-list">
-                                                    {% for zip in area.zips %}
-                                                        <span class="zip-code">{{ zip }}</span>
-                                                    {% endfor %}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </details>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Get Started?</h2>
-                <p>Contact us today for a free estimate on radon testing, duct sealing, or epoxy floor coatings in your area.</p>
-                <div class="cta-buttons">
-                    <a href="tel:+18339416888" class="btn btn-primary">
-                        <span class="btn-icon">📞</span>
-                        Call (833) 941-6888
-                    </a>
-                    <a href="/lifetime/contact" class="btn btn-secondary">Get Free Estimate</a>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+        <button type="button" class="show-more-btn" id="showMoreZips">
+          Show more ZIP codes ({{ wiData.zipIndex | length - 20 }} remaining)
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json">
@@ -138,692 +102,648 @@ state: wi
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Lifetime Home Services",
-  "description": "Professional radon testing, duct sealing, and epoxy floor coatings in Wisconsin",
-  "telephone": "+1-833-941-6888",
-  "url": "https://lifetimehomeservices.com",
-  "logo": "https://lifetimehomeservices.com/assets/images/common/lifetime-logo.png",
+  "description": "Professional radon testing, duct sealing, and epoxy flooring services in Wisconsin",
+  "url": "{{ brandLinks.lifetime }}/service-areas/wi",
+  "telephone": "{{ site.phone }}",
   "address": {
     "@type": "PostalAddress",
-    "addressCountry": "US",
     "addressRegion": "WI",
-    "addressLocality": "Milwaukee"
+    "addressCountry": "US"
   },
   "areaServed": [
-    {% for area in stateData.areas %}
-        {% for zip in area.zips %}
-            {
-                "@type": "PostalAddress",
-                "addressCountry": "US",
-                "addressRegion": "WI",
-                "postalCode": "{{ zip }}",
-                "addressLocality": "{{ area.name }}"
-            }{% if not loop.last %},{% endif %}
-        {% endfor %}{% if not loop.last %},{% endif %}
+    {% for area in wiData.areas %}
+      {% for zip in area.zips %}
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "{{ area.name }}",
+          "addressRegion": "WI",
+          "postalCode": "{{ zip }}",
+          "addressCountry": "US"
+        }{% if not loop.last or not loop.parent.loop.last %},{% endif %}
+      {% endfor %}
     {% endfor %}
   ],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Home Services",
-    "itemListElement": [
-      {
-        "@type": "Service",
-        "name": "Radon Testing",
-        "description": "Professional radon testing services for Wisconsin homes"
-      },
-      {
-        "@type": "Service", 
-        "name": "Radon Mitigation",
-        "description": "EPA-certified radon mitigation systems installation"
-      },
-      {
-        "@type": "Service",
-        "name": "Duct Cleaning & Sealing",
-        "description": "AeroSeal duct sealing and cleaning services"
-      },
-      {
-        "@type": "Service",
-        "name": "Epoxy Floor Coatings",
-        "description": "Professional epoxy floor coating installation"
-      }
-    ]
-  },
-  "openingHours": "Mo-Su 08:00-20:00",
-  "priceRange": "$$"
+  "serviceType": [
+    "Radon Testing",
+    "Radon Mitigation", 
+    "Duct Sealing",
+    "Epoxy Floor Coatings"
+  ]
 }
 </script>
 
+<!-- Wisconsin Page Styles -->
 <style>
-    /* State Service Area Page Styles */
-    .state-service-area-page {
-        min-height: 100vh;
-    }
-
-    /* Hero Section */
-    .state-hero {
-        background: linear-gradient(135deg, var(--primary-blue) 0%, #1e3d6f 100%);
-        color: white;
-        padding: 4rem 0 3rem;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .state-hero .hero-content {
-        text-align: center;
-        position: relative;
-        z-index: 2;
-    }
-
-    .state-hero h1 {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        font-weight: 700;
-        margin-bottom: 1rem;
-        line-height: 1.2;
-    }
-
-    .hero-subtitle {
-        font-size: 1.25rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
-    }
-
-    .services-offered {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-        margin-top: 2rem;
-    }
-
-    .service-tag {
-        background: rgba(255, 255, 255, 0.2);
-        padding: 0.5rem 1rem;
-        border-radius: 25px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    /* State Silhouette */
-    .state-silhouette {
-        position: absolute;
-        top: 50%;
-        right: 5%;
-        transform: translateY(-50%);
-        width: 300px;
-        height: 200px;
-        opacity: 0.1;
-        z-index: 1;
-    }
-
-    .state-outline {
-        width: 100%;
-        height: 100%;
-    }
-
-    /* Search Section */
-    .search-section {
-        padding: 3rem 0;
-        background: #f8f9fa;
-    }
-
-    .search-box-container {
-        max-width: 600px;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .search-label {
-        display: block;
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        color: var(--text-dark);
-    }
-
-    .search-input {
-        width: 100%;
-        padding: 1rem 1.5rem;
-        font-size: 1.1rem;
-        border: 2px solid #e0e0e0;
-        border-radius: 50px;
-        background: white;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .search-input:focus {
-        outline: none;
-        border-color: var(--primary-blue);
-        box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
-    }
-
-    .search-help {
-        font-size: 0.9rem;
-        color: #666;
-        margin-top: 0.5rem;
-    }
-
-    .search-results {
-        margin-top: 1rem;
-        text-align: left;
-    }
-
-    .search-result {
-        background: white;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        padding: 1rem;
-        margin-bottom: 0.5rem;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .search-result h4 {
-        margin: 0 0 0.5rem 0;
-        color: var(--primary-blue);
-    }
-
-    .search-result .zip-codes {
-        font-size: 0.9rem;
-        color: #666;
-    }
-
-    /* Accordion Section */
-    .accordion-section {
-        padding: 4rem 0;
-    }
-
-    .accordion-section h2 {
-        text-align: center;
-        margin-bottom: 2rem;
-        font-size: 2.5rem;
-        color: var(--text-dark);
-    }
-
-    .alphabet-nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
-        margin-bottom: 3rem;
-        padding: 1rem;
-        background: #f8f9fa;
-        border-radius: 15px;
-    }
-
-    .letter-nav {
-        width: 40px;
-        height: 40px;
-        border: 2px solid #e0e0e0;
-        background: white;
-        border-radius: 50%;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .letter-nav:hover,
-    .letter-nav.active {
-        background: var(--primary-blue);
-        color: white;
-        border-color: var(--primary-blue);
-        transform: scale(1.1);
-    }
-
-    .letter-nav:disabled {
-        opacity: 0.3;
-        cursor: not-allowed;
-    }
-
-    /* Accordion Groups */
-    .areas-accordion {
-        max-width: 1000px;
-        margin: 0 auto;
-    }
-
-    .accordion-group {
-        margin-bottom: 1rem;
-        border: 1px solid #e0e0e0;
-        border-radius: 10px;
-        overflow: hidden;
-        background: white;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    }
-
-    .accordion-header {
-        padding: 1.5rem;
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        font-weight: 600;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        list-style: none;
-    }
-
-    .accordion-header:hover {
-        background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-    }
-
-    .accordion-group[open] .accordion-header {
-        background: linear-gradient(135deg, var(--primary-blue) 0%, #1e3d6f 100%);
-        color: white;
-    }
-
-    .letter-badge {
-        width: 40px;
-        height: 40px;
-        background: var(--primary-blue);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 1.2rem;
-    }
-
-    .accordion-group[open] .letter-badge {
-        background: white;
-        color: var(--primary-blue);
-    }
-
-    .letter-count {
-        flex: 1;
-    }
-
-    .accordion-icon {
-        transition: transform 0.3s ease;
-    }
-
-    .accordion-group[open] .accordion-icon {
-        transform: rotate(180deg);
-    }
-
-    .accordion-content {
-        padding: 2rem;
-    }
-
-    /* Area Cards */
-    .area-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
-    }
-
-    .area-card {
-        background: #f8f9fa;
-        border: 1px solid #e0e0e0;
-        border-radius: 10px;
-        padding: 1.5rem;
-        transition: all 0.3s ease;
-    }
-
-    .area-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        border-color: var(--primary-blue);
-    }
-
-    .area-name {
-        font-size: 1.3rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: var(--primary-blue);
-    }
-
-    .area-aka {
-        font-size: 0.9rem;
-        color: #666;
-        margin-bottom: 1rem;
-        font-style: italic;
-    }
-
-    .zip-codes {
-        margin-top: 1rem;
-    }
-
-    .zip-label {
-        font-weight: 600;
-        color: var(--text-dark);
-        display: block;
-        margin-bottom: 0.5rem;
-    }
-
-    .zip-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-
-    .zip-code {
-        background: var(--primary-blue);
-        color: white;
-        padding: 0.25rem 0.75rem;
-        border-radius: 15px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        font-family: 'Courier New', monospace;
-    }
-
-    /* CTA Section */
-    .cta-section {
-        background: linear-gradient(135deg, var(--primary-blue) 0%, #1e3d6f 100%);
-        color: white;
-        padding: 4rem 0;
-        text-align: center;
-    }
-
-    .cta-content h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .cta-content p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
-    }
-
-    .cta-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-    }
-
-    .btn {
-        padding: 1rem 2rem;
-        border-radius: 50px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 1.1rem;
-    }
-
-    .btn-primary {
-        background: #ffd700;
-        color: var(--primary-blue);
-        border: 2px solid #ffd700;
-    }
-
-    .btn-primary:hover {
-        background: #ffed4e;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-    }
-
-    .btn-secondary {
-        background: transparent;
-        color: white;
-        border: 2px solid white;
-    }
-
-    .btn-secondary:hover {
-        background: white;
-        color: var(--primary-blue);
-        transform: translateY(-2px);
-    }
-
-    .btn-icon {
-        font-size: 1.2rem;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        .state-hero {
-            padding: 3rem 0 2rem;
-        }
-
-        .state-hero h1 {
-            font-size: 2rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-        }
-
-        .services-offered {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .state-silhouette {
-            display: none;
-        }
-
-        .search-section {
-            padding: 2rem 0;
-        }
-
-        .accordion-section {
-            padding: 3rem 0;
-        }
-
-        .accordion-section h2 {
-            font-size: 2rem;
-        }
-
-        .alphabet-nav {
-            gap: 0.25rem;
-        }
-
-        .letter-nav {
-            width: 35px;
-            height: 35px;
-            font-size: 0.9rem;
-        }
-
-        .accordion-header {
-            padding: 1rem;
-            font-size: 1rem;
-        }
-
-        .letter-badge {
-            width: 35px;
-            height: 35px;
-            font-size: 1rem;
-        }
-
-        .area-cards {
-            grid-template-columns: 1fr;
-        }
-
-        .cta-content h2 {
-            font-size: 2rem;
-        }
-
-        .cta-buttons {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .btn {
-            width: 100%;
-            max-width: 300px;
-            justify-content: center;
-        }
-    }
-
-    /* Print Styles */
-    @media print {
-        .search-section,
-        .cta-section {
-            display: none;
-        }
-        
-        .accordion-group {
-            break-inside: avoid;
-        }
-    }
-
-    /* High Contrast Mode */
-    @media (prefers-contrast: high) {
-        .state-silhouette {
-            display: none;
-        }
-        
-        .service-tag {
-            background: white;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-    }
-
-    /* Reduced Motion */
-    @media (prefers-reduced-motion: reduce) {
-        .letter-nav,
-        .area-card,
-        .btn {
-            transition: none;
-        }
-        
-        .letter-nav:hover,
-        .area-card:hover,
-        .btn:hover {
-            transform: none;
-        }
-    }
+.service-areas-page {
+  min-height: 100vh;
+}
+
+.hero-section {
+  position: relative;
+  background: linear-gradient(135deg, #2c5aa0 0%, #1e3d6f 100%);
+  color: white;
+  padding: 4rem 0;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.wisconsin-silhouette {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 400px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M20,10 L80,10 L85,20 L90,40 L85,60 L80,80 L70,100 L50,110 L30,100 L20,80 L15,60 L10,40 L15,20 Z' fill='white' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  .wisconsin-silhouette {
+    display: none;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.service-counts {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  display: inline-block;
+  backdrop-filter: blur(10px);
+}
+
+.count-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.areas-section {
+  padding: 4rem 0;
+  background: #f8f9fa;
+}
+
+.search-container {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  position: relative;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#areaSearch {
+  width: 100%;
+  padding: 1rem 3rem 1rem 1.5rem;
+  font-size: 1.1rem;
+  border: 2px solid #ddd;
+  border-radius: 50px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#areaSearch:focus {
+  border-color: #2c5aa0;
+  box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+}
+
+.search-clear {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: none;
+}
+
+.search-clear:hover {
+  background: #f0f0f0;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 10;
+  display: none;
+}
+
+.search-result-item {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-result-item:hover,
+.search-result-item.focused {
+  background: #f8f9fa;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.result-name {
+  font-weight: 600;
+  color: #2c5aa0;
+}
+
+.result-county {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.result-zips {
+  color: #888;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.areas-accordion h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2c5aa0;
+  font-size: 2rem;
+}
+
+.accordion-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.accordion-section {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: background-color 0.2s ease;
+  list-style: none;
+}
+
+.accordion-header:hover {
+  background: #f8f9fa;
+}
+
+.accordion-header:focus {
+  outline: 2px solid #2c5aa0;
+  outline-offset: -2px;
+}
+
+.accordion-section[open] .accordion-header {
+  background: #2c5aa0;
+  color: white;
+}
+
+.accordion-section[open] .chevron {
+  transform: rotate(180deg);
+}
+
+.letter {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c5aa0;
+}
+
+.accordion-section[open] .letter {
+  color: white;
+}
+
+.count {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.accordion-section[open] .count {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.chevron {
+  transition: transform 0.3s ease;
+  font-size: 0.8rem;
+}
+
+.accordion-content {
+  padding: 0;
+  background: #f8f9fa;
+}
+
+.area-card {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+  background: white;
+  margin: 0.5rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.area-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.area-card.highlighted {
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+}
+
+.area-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2c5aa0;
+  margin-bottom: 0.5rem;
+}
+
+.area-county {
+  color: #666;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.area-zips {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.zip-label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.zip-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.zip-chip {
+  background: #e9ecef;
+  color: #495057;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.zip-chip:hover {
+  background: #2c5aa0;
+  color: white;
+  transform: scale(1.05);
+}
+
+.zip-chip.highlighted {
+  background: #ffc107;
+  color: #000;
+  font-weight: 600;
+}
+
+.all-zips-section {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.all-zips-section h2 {
+  color: #2c5aa0;
+  margin-bottom: 2rem;
+}
+
+.zip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.show-more-btn {
+  background: #2c5aa0;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.show-more-btn:hover {
+  background: #1e3d6f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
+}
+
+.show-more-btn:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .service-counts {
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .count-text {
+    font-size: 1rem;
+  }
+  
+  .accordion-header {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .area-card {
+    padding: 1rem;
+    margin: 0.25rem;
+  }
+  
+  .zip-chips {
+    gap: 0.25rem;
+  }
+  
+  .zip-chip {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
 </style>
 
+<!-- Wisconsin Page JavaScript -->
 <script>
-    // Search functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.getElementById('area-search');
-        const searchResults = document.getElementById('search-results');
-        const areaCards = document.querySelectorAll('.area-card');
-        const letterNavs = document.querySelectorAll('.letter-nav');
-        const accordionGroups = document.querySelectorAll('.accordion-group');
-
-        // Service areas data for search
-        const serviceAreasData = {{ stateData | dump | safe }};
-
-        // Search functionality
-        searchInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase().trim();
-            
-            if (query.length === 0) {
-                searchResults.innerHTML = '';
-                searchResults.style.display = 'none';
-                return;
-            }
-
-            const results = [];
-            
-            // Search through areas and ZIP codes
-            serviceAreasData.areas.forEach(area => {
-                const areaName = area.name.toLowerCase();
-                const akaNames = area.aka ? area.aka.map(name => name.toLowerCase()) : [];
-                const zips = area.zips;
-                
-                // Check if query matches area name or aka
-                if (areaName.includes(query) || akaNames.some(aka => aka.includes(query))) {
-                    results.push({
-                        type: 'area',
-                        name: area.name,
-                        aka: area.aka,
-                        zips: area.zips
-                    });
-                }
-                
-                // Check if query matches any ZIP code
-                zips.forEach(zip => {
-                    if (zip.includes(query)) {
-                        results.push({
-                            type: 'zip',
-                            name: area.name,
-                            aka: area.aka,
-                            zips: [zip],
-                            matchedZip: zip
-                        });
-                    }
-                });
-            });
-
-            // Display results
-            if (results.length > 0) {
-                searchResults.innerHTML = results.slice(0, 5).map(result => `
-                    <div class="search-result">
-                        <h4>${result.name}${result.aka ? ` (${result.aka.join(', ')})` : ''}</h4>
-                        <div class="zip-codes">
-                            ${result.type === 'zip' ? 
-                                `ZIP: <strong>${result.matchedZip}</strong>` : 
-                                `ZIP codes: ${result.zips.join(', ')}`
-                            }
-                        </div>
-                    </div>
-                `).join('');
-                searchResults.style.display = 'block';
-            } else {
-                searchResults.innerHTML = '<div class="search-result">No areas found matching your search.</div>';
-                searchResults.style.display = 'block';
-            }
-        });
-
-        // Letter navigation
-        letterNavs.forEach(nav => {
-            nav.addEventListener('click', function() {
-                const letter = this.dataset.letter;
-                const targetGroup = document.querySelector(`[data-letter="${letter}"]`);
-                
-                if (targetGroup) {
-                    // Close all other groups
-                    accordionGroups.forEach(group => {
-                        if (group !== targetGroup) {
-                            group.removeAttribute('open');
-                        }
-                    });
-                    
-                    // Open target group
-                    targetGroup.setAttribute('open', '');
-                    
-                    // Scroll to target
-                    targetGroup.scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'start' 
-                    });
-                    
-                    // Update active state
-                    letterNavs.forEach(n => n.classList.remove('active'));
-                    this.classList.add('active');
-                }
-            });
-        });
-
-        // Disable letter navigation for letters with no areas
-        const availableLetters = new Set();
-        accordionGroups.forEach(group => {
-            availableLetters.add(group.dataset.letter);
-        });
-        
-        letterNavs.forEach(nav => {
-            if (!availableLetters.has(nav.dataset.letter)) {
-                nav.disabled = true;
-            }
-        });
-
-        // Hide search results when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-                searchResults.style.display = 'none';
-            }
-        });
-
-        // Keyboard navigation for search results
-        searchInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                searchResults.style.display = 'none';
-                this.blur();
-            }
-        });
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('areaSearch');
+  const searchClear = document.getElementById('searchClear');
+  const searchResults = document.getElementById('searchResults');
+  const showMoreBtn = document.getElementById('showMoreZips');
+  const zipGrid = document.getElementById('zipGrid');
+  
+  // Wisconsin service areas data
+  const wisconsinData = {{ wiData | dump | safe }};
+  let currentFocusIndex = -1;
+  let allZipsShown = false;
+  
+  // Search functionality
+  searchInput.addEventListener('input', function() {
+    const query = this.value.trim().toLowerCase();
+    
+    if (query.length === 0) {
+      hideSearchResults();
+      clearHighlights();
+      searchClear.style.display = 'none';
+      return;
+    }
+    
+    searchClear.style.display = 'block';
+    
+    if (query.length < 2) {
+      hideSearchResults();
+      return;
+    }
+    
+    performSearch(query);
+  });
+  
+  // Clear search
+  searchClear.addEventListener('click', function() {
+    searchInput.value = '';
+    hideSearchResults();
+    clearHighlights();
+    searchClear.style.display = 'none';
+    searchInput.focus();
+  });
+  
+  // Keyboard navigation
+  searchInput.addEventListener('keydown', function(e) {
+    const results = searchResults.querySelectorAll('.search-result-item');
+    
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      currentFocusIndex = Math.min(currentFocusIndex + 1, results.length - 1);
+      updateFocus(results);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      currentFocusIndex = Math.max(currentFocusIndex - 1, -1);
+      updateFocus(results);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (currentFocusIndex >= 0 && results[currentFocusIndex]) {
+        selectResult(results[currentFocusIndex]);
+      }
+    } else if (e.key === 'Escape') {
+      hideSearchResults();
+      clearHighlights();
+    }
+  });
+  
+  // Show more ZIP codes
+  showMoreBtn.addEventListener('click', function() {
+    if (allZipsShown) return;
+    
+    const remainingZips = wisconsinData.zipIndex.slice(20);
+    remainingZips.forEach(zip => {
+      const zipChip = document.createElement('span');
+      zipChip.className = 'zip-chip';
+      zipChip.setAttribute('data-zip', zip);
+      zipChip.textContent = zip;
+      zipGrid.appendChild(zipChip);
     });
+    
+    allZipsShown = true;
+    showMoreBtn.textContent = 'All ZIP codes shown';
+    showMoreBtn.disabled = true;
+  });
+  
+  function performSearch(query) {
+    const results = [];
+    
+    // Search areas by name
+    wisconsinData.areas.forEach(area => {
+      if (area.name.toLowerCase().includes(query)) {
+        results.push({
+          type: 'area',
+          area: area,
+          matchType: 'name'
+        });
+      }
+    });
+    
+    // Search by ZIP code
+    wisconsinData.areas.forEach(area => {
+      area.zips.forEach(zip => {
+        if (zip.includes(query)) {
+          results.push({
+            type: 'zip',
+            area: area,
+            zip: zip,
+            matchType: 'zip'
+          });
+        }
+      });
+    });
+    
+    displaySearchResults(results, query);
+  }
+  
+  function displaySearchResults(results, query) {
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
+      searchResults.style.display = 'block';
+      return;
+    }
+    
+    const html = results.slice(0, 8).map(result => {
+      const area = result.area;
+      const highlightedName = highlightMatch(area.name, query);
+      const zipList = area.zips.join(', ');
+      
+      return `
+        <div class="search-result-item" data-area="${area.name.toLowerCase()}" data-zips="${area.zips.join(',')}">
+          <div class="result-name">${highlightedName}</div>
+          <div class="result-county">${area.county} County</div>
+          <div class="result-zips">ZIP: ${zipList}</div>
+        </div>
+      `;
+    }).join('');
+    
+    searchResults.innerHTML = html;
+    searchResults.style.display = 'block';
+    currentFocusIndex = -1;
+    
+    // Add click handlers
+    searchResults.querySelectorAll('.search-result-item').forEach(item => {
+      item.addEventListener('click', () => selectResult(item));
+    });
+  }
+  
+  function selectResult(resultItem) {
+    const areaName = resultItem.getAttribute('data-area');
+    const zips = resultItem.getAttribute('data-zips').split(',');
+    
+    // Find and highlight the area card
+    const areaCard = document.querySelector(`[data-area="${areaName}"]`);
+    if (areaCard) {
+      // Open the accordion section containing this area
+      const accordionSection = areaCard.closest('details');
+      if (accordionSection) {
+        accordionSection.open = true;
+      }
+      
+      // Scroll to and highlight the area
+      areaCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      clearHighlights();
+      areaCard.classList.add('highlighted');
+      
+      // Highlight matching ZIP codes
+      zips.forEach(zip => {
+        const zipChip = areaCard.querySelector(`[data-zip="${zip}"]`);
+        if (zipChip) {
+          zipChip.classList.add('highlighted');
+        }
+      });
+    }
+    
+    hideSearchResults();
+    searchInput.blur();
+  }
+  
+  function updateFocus(results) {
+    results.forEach((item, index) => {
+      item.classList.toggle('focused', index === currentFocusIndex);
+    });
+  }
+  
+  function hideSearchResults() {
+    searchResults.style.display = 'none';
+    currentFocusIndex = -1;
+  }
+  
+  function clearHighlights() {
+    document.querySelectorAll('.highlighted').forEach(el => {
+      el.classList.remove('highlighted');
+    });
+  }
+  
+  function highlightMatch(text, query) {
+    const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+    return text.replace(regex, '<strong>$1</strong>');
+  }
+  
+  function escapeRegex(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+  
+  // Accordion keyboard navigation
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const details = this.closest('details');
+        details.open = !details.open;
+      }
+    });
+  });
+});
 </script>
 
