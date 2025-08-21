@@ -1,51 +1,22 @@
+# ---------- Build ----------
 [build]
-  command = "npm run build:all"
-  publish = "dist"
+  command = "npm ci && npm run build:lifetime"
+  publish = "dist/lifetime"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
+  NPM_FLAGS    = "--no-fund --no-audit"
+  NODE_OPTIONS = "--max-old-space-size=2048"
 
+# Cache control for static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# SPA fallback: fixes 404s on deep links/hard refresh
 [[redirects]]
   from = "/*"
-  to = "/lifetime/:splat"
-  status = 200
-  conditions = {Role = ["admin"]}
-
-# Serve assets as files, not HTML
-[[redirects]]
-  from = "/assets/*"
-  to = "/assets/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/lifetime/assets/*"
-  to = "/lifetime/assets/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/cc/assets/*"
-  to = "/cc/assets/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/aih/assets/*"
-  to = "/aih/assets/:splat"
-  status = 200
-
-# Unit-specific routes
-[[redirects]]
-  from = "/aih/*"
-  to = "/aih/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/cc/*"
-  to = "/cc/:splat"
-  status = 200
-
-# Default fallback to LHS
-[[redirects]]
-  from = "/*"
-  to = "/lifetime/:splat"
+  to   = "/index.html"
   status = 200
 
