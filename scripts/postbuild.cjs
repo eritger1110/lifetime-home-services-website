@@ -1,2 +1,2 @@
 // scripts/postbuild.cjs
-console.log("postbuild: skipped (publishing dist/lifetime directly)");
+console.log("Postbuild: nothing to do for publish=dist/lifetime");
