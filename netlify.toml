@@ -1,6 +1,5 @@
 # ---------- Build ----------
 [build]
-  # You can keep build:all if you like; build:lifetime is faster
   command = "npm ci && npm run build:lifetime && npm run build:root"
   publish = "dist/lifetime"
 
@@ -9,7 +8,13 @@
   NPM_FLAGS = "--no-fund --no-audit"
   NODE_OPTIONS = "--max-old-space-size=2048"
 
-# ---------- Preview-only headers ----------
+# Serve assets as files (prevent SPA hijack)
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
+# Preview-only noindex
 [context."deploy-preview"]
   [[context."deploy-preview".headers]]
     for = "/*"
