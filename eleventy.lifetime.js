@@ -1,7 +1,7 @@
 // eleventy.lifetime.js
 module.exports = function (eleventyConfig) {
   // Static passthroughs
-  eleventyConfig.addPassthroughCopy({
+  eleventyConfig.addPassthroughCopy({ "public/assets": "assets" });
     "src/assets": "assets",
     "styles.css": "styles.css",
     "script.js": "script.js"
