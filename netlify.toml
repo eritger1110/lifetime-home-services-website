@@ -14,16 +14,7 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Temporary: send /service-areas (with/without slash) to WI
-[[redirects]]
-  from = "/service-areas"
-  to   = "/service-areas/wi"
-  status = 301
-
-[[redirects]]
-  from = "/service-areas/"
-  to   = "/service-areas/wi"
-  status = 301
+# Landing page now exists at /service-areas/ - no redirects needed
 
 # Back-compat if any old links exist
 [[redirects]]
