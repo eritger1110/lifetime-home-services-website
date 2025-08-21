@@ -1,18 +1,24 @@
+// eleventy.lifetime.js
 module.exports = function (eleventyConfig) {
+  // Static passthroughs
   eleventyConfig.addPassthroughCopy({
     "src/assets": "assets",
     "styles.css": "styles.css",
-    "script.js":  "script.js"
+    "script.js": "script.js"
   });
+
+  // optional alias; using 'layout.njk' directly is fine too
+  eleventyConfig.addLayoutAlias("layout", "layout.njk");
 
   return {
     dir: {
-      input:  "src/lifetime",
+      input: "src/lifetime",
       output: "dist/lifetime",
-      includes: "../",       // shared templates in src/
-      layouts:  "../",       // shared layouts in src/
-      data:     "../_data"   // shared data in src/_data
+      // allow shared includes/layouts and shared data at the src/ root
+      includes: "../",
+      layouts: "../",
+      data: "../_data"
     },
-    templateFormats: ["njk", "html", "md"]
+    templateFormats: ["njk", "md", "html"]
   };
 };
