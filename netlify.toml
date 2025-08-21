@@ -14,6 +14,23 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Temporary: send /service-areas (with/without slash) to WI
+[[redirects]]
+  from = "/service-areas"
+  to   = "/service-areas/wi"
+  status = 301
+
+[[redirects]]
+  from = "/service-areas/"
+  to   = "/service-areas/wi"
+  status = 301
+
+# Back-compat if any old links exist
+[[redirects]]
+  from = "/lifetime/service-areas/*"
+  to   = "/service-areas/:splat"
+  status = 301
+
 # SPA fallback: fixes 404s on deep links/hard refresh
 [[redirects]]
   from = "/*"
