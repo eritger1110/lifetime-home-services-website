@@ -1,6 +1,5 @@
 ---
 ---
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,36 +7,43 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{{ title or "Lifetime Home Services - Professional Home Services You Can Trust" }}</title>
 
+  {# Canonical (brand aware) #}
+  {% set canonBase = brandLinks[brand].canonicalBase if brandLinks and brand else "" %}
+  {% if canonBase and canonical %}
+    <link rel="canonical" href="{{ canonBase }}{{ canonical }}" />
+  {% endif %}
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-  {# IMPORTANT: styles.css is served from site root via /styles.css by Eleventy passthrough #}
   <link rel="stylesheet" href="/styles.css?v={{ collections.all | length }}">
   {% if css %}<style>{{ css | safe }}</style>{% endif %}
 </head>
 
-<body class="shell lifetime">
-  <!-- Top nav -->
+<body class="shell {{ brand }}">
   <nav class="navbar">
     <div class="nav-container">
+      {# Brand switcher: cross-domain in prod, subpaths in preview #}
       <div class="brand-switcher">
-        <a class="brand-logo {% if brand == 'lifetime' or not brand %}active{% endif %}" href="/">
+        <a class="brand-logo {% if brand == 'lifetime' %}active{% endif %}" href="{{ brandLinks.lifetime.root }}">
           <img src="/assets/LifetimeHomeServicesLogo.png" alt="Lifetime Home Services" />
         </a>
-        <a class="brand-logo {% if brand == 'aih' %}active{% endif %}" href="/aih/">
+        <a class="brand-logo {% if brand == 'aih' %}active{% endif %}" href="{{ brandLinks.aih.root }}">
           <img src="/assets/AmericaIn-HomeLogo.jpg" alt="America In-Home" />
         </a>
-        <a class="brand-logo {% if brand == 'cc' %}active{% endif %}" href="/cc/">
+        <a class="brand-logo {% if brand == 'cc' %}active{% endif %}" href="{{ brandLinks.cc.root }}">
           <img src="/assets/ClosetConceptsLogo.png" alt="Closet Concepts" />
         </a>
       </div>
 
+      {# Brand-aware internal nav #}
+      {% set base = brandLinks[brand].base %}
       <ul class="nav-links">
-        <li><a href="/services/">Services</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/contact/">Contact</a></li>
-        <li><a href="/financing/">Financing</a></li>
-        <li><a href="/service-areas/">Service Areas</a></li>
+        <li><a href="{{ base }}services/">Services</a></li>
+        <li><a href="{{ base }}about/">About</a></li>
+        <li><a href="{{ base }}contact/">Contact</a></li>
+        <li><a href="{{ base }}financing/">Financing</a></li>
+        <li><a href="{{ base }}service-areas/">Service Areas</a></li>
       </ul>
 
       <a class="phone-btn" href="tel:+18339416888">(833) 941-6888</a>
@@ -48,7 +54,6 @@
     {{ content | safe }}
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-phone"><a href="tel:+18339416888">(833) 941-6888</a></div>
@@ -60,7 +65,7 @@
         <p>&copy; {{ "now" | date("yyyy") }} Lifetime Home Services Group. All rights reserved.</p>
         {% if brand == "cc" %}
         <div id="closet-footer">
-          <p style="font-size: 0.8rem; color: #666;">formerly closetconcepts.com</p>
+          <p style="font-size: .8rem; color: #666;">formerly closetconcepts.com</p>
         </div>
         {% endif %}
       </div>
