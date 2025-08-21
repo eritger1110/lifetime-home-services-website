@@ -1,54 +1,20 @@
-# ------------------- Build & Publish -------------------
+# ---------- Build ----------
 [build]
-  command = "npm ci && npm run build:all && npm run build:root"
-  publish = "."
+  command = "npm ci && npm run build:lifetime"
+  publish = "dist/lifetime"
 
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--no-fund --no-audit"
   NODE_OPTIONS = "--max-old-space-size=2048"
 
-# ------------------- Always serve assets as files -------------------
+# Serve static assets as files (prevent SPA hijack)
 [[redirects]]
   from = "/assets/*"
   to   = "/assets/:splat"
   status = 200
 
-# ------------------- Host → subpath glue (production) -------------------
-# Lifetime
-[[redirects]]
-  from = "/*"
-  to   = "/lifetime/:splat"
-  status = 200
-  conditions = { Host = ["lifetimehomeservices.com", "www.lifetimehomeservices.com"] }
-
-# America In-Home
-[[redirects]]
-  from = "/*"
-  to   = "/aih/:splat"
-  status = 200
-  conditions = { Host = ["americainhome.com", "www.americainhome.com"] }
-
-# Closet Concepts
-[[redirects]]
-  from = "/*"
-  to   = "/cc/:splat"
-  status = 200
-  conditions = { Host = ["closetconcepts.com", "www.closetconcepts.com"] }
-
-# ------------------- Default (preview/branch) fallback -------------------
-# On preview/branch deploys, route everything to /lifetime (so / works)
-[[redirects]]
-  from = "/"
-  to   = "/lifetime/"
-  status = 302
-
-[[redirects]]
-  from = "/*"
-  to   = "/lifetime/:splat"
-  status = 200
-
-# ------------------- Preview-only headers -------------------
+# Preview-only: keep search engines out
 [context."deploy-preview"]
   [[context."deploy-preview".headers]]
     for = "/*"
