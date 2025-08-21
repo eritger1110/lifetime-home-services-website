@@ -7,7 +7,8 @@
     "build:aih": "npx @11ty/eleventy --config=eleventy.aih.js",
     "build:cc": "npx @11ty/eleventy --config=eleventy.cc.js",
     "build:all": "npm run build:lifetime && npm run build:aih && npm run build:cc",
-    "build:root": "node scripts/postbuild.cjs"
+    "build:root": "node scripts/postbuild.cjs",
+    "prebuild:lifetime": "node scripts/generate-headers.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1"

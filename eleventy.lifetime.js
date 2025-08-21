@@ -9,9 +9,9 @@ module.exports = function (eleventyConfig) {
     "src/assets": "assets",
     "styles.css": "styles.css",
     "script.js": "script.js",
+    "public/assets": "assets",
+    "public/_headers": "_headers",
 
-    // ✅ NEW LINE: copy from src/_redirects
-    "src/_redirects": "_redirects",
   });
 
   return {
