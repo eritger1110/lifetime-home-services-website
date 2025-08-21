@@ -1,20 +1,54 @@
-# ---------- Build ----------
+# ------------------- Build & Publish -------------------
 [build]
-  command = "npm ci && npm run build:lifetime && npm run build:root"
-  publish = "dist/lifetime"
+  command = "npm ci && npm run build:all && npm run build:root"
+  publish = "."
 
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS = "--no-fund --no-audit"
   NODE_OPTIONS = "--max-old-space-size=2048"
 
-# Serve assets as files (prevent SPA hijack)
+# ------------------- Always serve assets as files -------------------
 [[redirects]]
   from = "/assets/*"
-  to = "/assets/:splat"
+  to   = "/assets/:splat"
   status = 200
 
-# Preview-only noindex
+# ------------------- Host → subpath glue (production) -------------------
+# Lifetime
+[[redirects]]
+  from = "/*"
+  to   = "/lifetime/:splat"
+  status = 200
+  conditions = { Host = ["lifetimehomeservices.com", "www.lifetimehomeservices.com"] }
+
+# America In-Home
+[[redirects]]
+  from = "/*"
+  to   = "/aih/:splat"
+  status = 200
+  conditions = { Host = ["americainhome.com", "www.americainhome.com"] }
+
+# Closet Concepts
+[[redirects]]
+  from = "/*"
+  to   = "/cc/:splat"
+  status = 200
+  conditions = { Host = ["closetconcepts.com", "www.closetconcepts.com"] }
+
+# ------------------- Default (preview/branch) fallback -------------------
+# On preview/branch deploys, route everything to /lifetime (so / works)
+[[redirects]]
+  from = "/"
+  to   = "/lifetime/"
+  status = 302
+
+[[redirects]]
+  from = "/*"
+  to   = "/lifetime/:splat"
+  status = 200
+
+# ------------------- Preview-only headers -------------------
 [context."deploy-preview"]
   [[context."deploy-preview".headers]]
     for = "/*"
