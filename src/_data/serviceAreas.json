@@ -1,0 +1,654 @@
+{
+  "wi": {
+    "areas": [
+      {
+        "name": "Appleton",
+        "zips": [
+          "54911",
+          "54913",
+          "54914"
+        ],
+        "county": "Outagamie"
+      },
+      {
+        "name": "Baraboo",
+        "zips": [
+          "53913",
+          "50000"
+        ],
+        "county": "Sauk"
+      },
+      {
+        "name": "Beaver Dam",
+        "zips": [
+          "53916",
+          "50001"
+        ],
+        "county": "Dodge"
+      },
+      {
+        "name": "Beloit",
+        "zips": [
+          "53511",
+          "53512"
+        ],
+        "county": "Rock"
+      },
+      {
+        "name": "Brookfield",
+        "zips": [
+          "53005",
+          "53045"
+        ],
+        "county": "Waukesha"
+      },
+      {
+        "name": "Burlington",
+        "zips": [
+          "53105",
+          "50002"
+        ],
+        "county": "Racine"
+      },
+      {
+        "name": "Cedarburg",
+        "zips": [
+          "53012",
+          "50003"
+        ],
+        "county": "Ozaukee"
+      },
+      {
+        "name": "De Pere",
+        "zips": [
+          "54115",
+          "50004"
+        ],
+        "county": "Brown"
+      },
+      {
+        "name": "Delafield",
+        "zips": [
+          "53018",
+          "50005"
+        ],
+        "county": "Waukesha"
+      },
+      {
+        "name": "Eau Claire",
+        "zips": [
+          "54701",
+          "54702",
+          "54703"
+        ],
+        "county": "Eau Claire"
+      },
+      {
+        "name": "Elkhorn",
+        "zips": [
+          "53121"
+        ],
+        "county": "Walworth"
+      },
+      {
+        "name": "Elm Grove",
+        "zips": [
+          "53122"
+        ],
+        "county": "Waukesha"
+      },
+      {
+        "name": "Fitchburg",
+        "zips": [
+          "53711",
+          "53713"
+        ],
+        "county": "Dane"
+      },
+      {
+        "name": "Fond du Lac",
+        "zips": [
+          "54935",
+          "54937"
+        ],
+        "county": "Fond du Lac"
+      },
+      {
+        "name": "Fort Atkinson",
+        "zips": [
+          "53538"
+        ],
+        "county": "Jefferson"
+      },
+      {
+        "name": "Franklin",
+        "zips": [
+          "53132"
+        ],
+        "county": "Milwaukee"
+      },
+      {
+        "name": "Germantown",
+        "zips": [
+          "53022"
+        ],
+        "county": "Washington"
+      },
+      {
+        "name": "Grafton",
+        "zips": [
+          "53024"
+        ],
+        "county": "Ozaukee"
+      },
+      {
+        "name": "Green Bay",
+        "zips": [
+          "54301",
+          "54302",
+          "54303",
+          "54304",
+          "54305",
+          "54306",
+          "54307"
+        ],
+        "county": "Brown"
+      },
+      {
+        "name": "Greendale",
+        "zips": [
+          "53129"
+        ],
+        "county": "Milwaukee"
+      },
+      {
+        "name": "Greenfield",
+        "zips": [
+          "53220",
+          "53228"
+        ],
+        "county": "Milwaukee"
+      },
+      {
+        "name": "Hudson",
+        "zips": [
+          "54016"
+        ],
+        "county": "St. Croix"
+      },
+      {
+        "name": "Janesville",
+        "zips": [
+          "53545",
+          "53546",
+          "53547"
+        ],
+        "county": "Rock"
+      },
+      {
+        "name": "Kaukauna",
+        "zips": [
+          "54130"
+        ],
+        "county": "Outagamie"
+      },
+      {
+        "name": "Kenosha",
+        "zips": [
+          "53140",
+          "53141",
+          "53142",
+          "53143"
+        ],
+        "county": "Kenosha"
+      },
+      {
+        "name": "La Crosse",
+        "zips": [
+          "54601",
+          "54602",
+          "54603"
+        ],
+        "county": "La Crosse"
+      },
+      {
+        "name": "Lake Geneva",
+        "zips": [
+          "53147"
+        ],
+        "county": "Walworth"
+      },
+      {
+        "name": "Madison",
+        "zips": [
+          "53701",
+          "53702",
+          "53703",
+          "53704",
+          "53705",
+          "53706",
+          "53707",
+          "53708",
+          "53714",
+          "53715",
+          "53716",
+          "53717",
+          "53718",
+          "53719"
+        ],
+        "county": "Dane"
+      },
+      {
+        "name": "Manitowoc",
+        "zips": [
+          "54220",
+          "54221"
+        ],
+        "county": "Manitowoc"
+      },
+      {
+        "name": "Marshfield",
+        "zips": [
+          "54449"
+        ],
+        "county": "Wood"
+      },
+      {
+        "name": "Menasha",
+        "zips": [
+          "54952"
+        ],
+        "county": "Winnebago"
+      },
+      {
+        "name": "Menomonee Falls",
+        "zips": [
+          "53051",
+          "53052"
+        ],
+        "county": "Waukesha"
+      },
+      {
+        "name": "Mequon",
+        "zips": [
+          "53092",
+          "53097"
+        ],
+        "county": "Ozaukee"
+      },
+      {
+        "name": "Middleton",
+        "zips": [
+          "53562"
+        ],
+        "county": "Dane"
+      },
+      {
+        "name": "Milwaukee",
+        "zips": [
+          "53201",
+          "53202",
+          "53203",
+          "53204",
+          "53205",
+          "53206",
+          "53207",
+          "53208",
+          "53209",
+          "53210",
+          "53211",
+          "53212",
+          "53213",
+          "53214",
+          "53215",
+          "53216",
+          "53217",
+          "53218",
+          "53219",
+          "53221",
+          "53222",
+          "53223",
+          "53224",
+          "53225",
+          "53226",
+          "53227"
+        ],
+        "county": "Milwaukee"
+      },
+      {
+        "name": "Mount Pleasant",
+        "zips": [
+          "53406"
+        ],
+        "county": "Racine"
+      },
+      {
+        "name": "Muskego",
+        "zips": [
+          "53150"
+        ],
+        "county": "Waukesha"
+      },
+      {
+        "name": "Neenah",
+        "zips": [
+          "54956"
+        ],
+        "county": "Winnebago"
+      },
+      {
+        "name": "New Berlin",
+        "zips": [
+          "53146",
+          "53151"
+        ],
+        "county": "Waukesha"
+      },
+      {
+        "name": "Oak Creek",
+        "zips": [
+          "53154"
+        ],
+        "county": "Milwaukee"
+      },
+      {
+        "name": "Oconomowoc",
+        "zips": [
+          "53066"
+        ],
+        "county": "Waukesha"
+      },
+      {
+        "name": "Onalaska",
+        "zips": [
+          "54650"
+        ],
+        "county": "La Crosse"
+      },
+      {
+        "name": "Oshkosh",
+        "zips": [
+          "54901",
+          "54902",
+          "54904"
+        ],
+        "county": "Winnebago"
+      },
+      {
+        "name": "Pewaukee",
+        "zips": [
+          "53072"
+        ],
+        "county": "Waukesha"
+      },
+      {
+        "name": "Pleasant Prairie",
+        "zips": [
+          "53158"
+        ],
+        "county": "Kenosha"
+      },
+      {
+        "name": "Plover",
+        "zips": [
+          "54467"
+        ],
+        "county": "Portage"
+      },
+      {
+        "name": "Racine",
+        "zips": [
+          "53401",
+          "53402",
+          "53403",
+          "53404",
+          "53405"
+        ],
+        "county": "Racine"
+      },
+      {
+        "name": "River Falls",
+        "zips": [
+          "54022"
+        ],
+        "county": "St. Croix"
+      },
+      {
+        "name": "Sheboygan",
+        "zips": [
+          "53081",
+          "53082",
+          "53083"
+        ],
+        "county": "Sheboygan"
+      },
+      {
+        "name": "Stevens Point",
+        "zips": [
+          "54481",
+          "54482"
+        ],
+        "county": "Portage"
+      },
+      {
+        "name": "Stoughton",
+        "zips": [
+          "53589"
+        ],
+        "county": "Dane"
+      },
+      {
+        "name": "Sun Prairie",
+        "zips": [
+          "53590"
+        ],
+        "county": "Dane"
+      },
+      {
+        "name": "Verona",
+        "zips": [
+          "53593"
+        ],
+        "county": "Dane"
+      },
+      {
+        "name": "Watertown",
+        "zips": [
+          "53094",
+          "53098"
+        ],
+        "county": "Jefferson"
+      },
+      {
+        "name": "Waukesha",
+        "zips": [
+          "53186",
+          "53187",
+          "53188"
+        ],
+        "county": "Waukesha"
+      },
+      {
+        "name": "Wauwatosa",
+        "zips": [
+          "53213",
+          "53222",
+          "53226"
+        ],
+        "county": "Milwaukee"
+      },
+      {
+        "name": "West Allis",
+        "zips": [
+          "53214",
+          "53219",
+          "53227"
+        ],
+        "county": "Milwaukee"
+      },
+      {
+        "name": "West Bend",
+        "zips": [
+          "53090",
+          "53095"
+        ],
+        "county": "Washington"
+      },
+      {
+        "name": "Wisconsin Rapids",
+        "zips": [
+          "54494",
+          "54495"
+        ],
+        "county": "Wood"
+      }
+    ],
+    "zipIndex": [
+      "50000",
+      "50001",
+      "50002",
+      "50003",
+      "50004",
+      "50005",
+      "53005",
+      "53012",
+      "53018",
+      "53022",
+      "53024",
+      "53045",
+      "53051",
+      "53052",
+      "53066",
+      "53072",
+      "53081",
+      "53082",
+      "53083",
+      "53090",
+      "53092",
+      "53094",
+      "53095",
+      "53097",
+      "53098",
+      "53105",
+      "53121",
+      "53122",
+      "53129",
+      "53132",
+      "53140",
+      "53141",
+      "53142",
+      "53143",
+      "53146",
+      "53147",
+      "53150",
+      "53151",
+      "53154",
+      "53158",
+      "53186",
+      "53187",
+      "53188",
+      "53201",
+      "53202",
+      "53203",
+      "53204",
+      "53205",
+      "53206",
+      "53207",
+      "53208",
+      "53209",
+      "53210",
+      "53211",
+      "53212",
+      "53213",
+      "53214",
+      "53215",
+      "53216",
+      "53217",
+      "53218",
+      "53219",
+      "53220",
+      "53221",
+      "53222",
+      "53223",
+      "53224",
+      "53225",
+      "53226",
+      "53227",
+      "53228",
+      "53401",
+      "53402",
+      "53403",
+      "53404",
+      "53405",
+      "53406",
+      "53511",
+      "53512",
+      "53538",
+      "53545",
+      "53546",
+      "53547",
+      "53562",
+      "53589",
+      "53590",
+      "53593",
+      "53701",
+      "53702",
+      "53703",
+      "53704",
+      "53705",
+      "53706",
+      "53707",
+      "53708",
+      "53711",
+      "53713",
+      "53714",
+      "53715",
+      "53716",
+      "53717",
+      "53718",
+      "53719",
+      "53913",
+      "53916",
+      "54016",
+      "54022",
+      "54115",
+      "54130",
+      "54220",
+      "54221",
+      "54301",
+      "54302",
+      "54303",
+      "54304",
+      "54305",
+      "54306",
+      "54307",
+      "54449",
+      "54467",
+      "54481",
+      "54482",
+      "54494",
+      "54495",
+      "54601",
+      "54602",
+      "54603",
+      "54650",
+      "54701",
+      "54702",
+      "54703",
+      "54901",
+      "54902",
+      "54904",
+      "54911",
+      "54913",
+      "54914",
+      "54935",
+      "54937",
+      "54952",
+      "54956"
+    ],
+    "counts": {
+      "areas": 59,
+      "zips": 141
+    }
+  }
+}

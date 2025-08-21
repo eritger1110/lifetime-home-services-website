@@ -1,23 +1,20 @@
+// eleventy.lifetime.js
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addNunjucksFilter("date", (value, format = "yyyy") => {
-    const d = value ? new Date(value) : new Date();
-    if (format === "yyyy") return String(d.getFullYear());
-    return d.toISOString();
-  });
+  // Copy everything in /public/assets to /assets in the output
+  eleventyConfig.addPassthroughCopy({ "public/assets": "assets" });
 
-  eleventyConfig.addPassthroughCopy({
-    "src/assets": "assets",
-    "styles.css": "styles.css",
-    "script.js": "script.js",
-
-    // ✅ NEW LINE: copy from src/_redirects
-    "src/_redirects": "_redirects",
-  });
+  // Optional alias; using 'layout.njk' directly is fine too
+  eleventyConfig.addLayoutAlias("layout", "layout.njk");
 
   return {
     dir: {
       input: "src/lifetime",
       output: "dist/lifetime",
+      // allow shared includes/layouts and shared data at the src/ root
+      includes: "../",
+      layouts: "../",
+      data: "../_data"
     },
+    templateFormats: ["njk", "md", "html"]
   };
 };
