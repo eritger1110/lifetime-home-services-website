@@ -8,13 +8,13 @@
   NPM_FLAGS = "--no-fund --no-audit"
   NODE_OPTIONS = "--max-old-space-size=2048"
 
-# Serve static assets as files (prevent SPA hijack)
+# Serve assets as files (prevent SPA hijack)
 [[redirects]]
   from = "/assets/*"
-  to   = "/assets/:splat"
+  to = "/assets/:splat"
   status = 200
 
-# Preview-only: keep search engines out
+# Preview-only noindex
 [context."deploy-preview"]
   [[context."deploy-preview".headers]]
     for = "/*"
