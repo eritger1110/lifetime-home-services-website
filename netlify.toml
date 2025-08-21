@@ -5,18 +5,17 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  NPM_FLAGS = "--no-fund --no-audit"
+  NPM_FLAGS    = "--no-fund --no-audit"
   NODE_OPTIONS = "--max-old-space-size=2048"
 
-# Serve assets as files (prevent SPA hijack)
-[[redirects]]
-  from = "/assets/*"
-  to = "/assets/:splat"
-  status = 200
+# Cache control for static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
-# Preview-only noindex
-[context."deploy-preview"]
-  [[context."deploy-preview".headers]]
-    for = "/*"
-    [context."deploy-preview".headers.values]
-      X-Robots-Tag = "noindex, nofollow"
+# SPA fallback (fixes 404 on deep links/hard refresh)
+[[redirects]]
+  from = "/*"
+  to   = "/index.html"
+  status = 200
