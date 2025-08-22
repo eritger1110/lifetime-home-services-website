@@ -1,0 +1,68 @@
+{
+  "state": "Illinois",
+  "stateCode": "IL",
+  "totalAreas": 4,
+  "totalZipCodes": 15,
+  "services": [
+    "Radon Mitigation",
+    "AeroSeal Duct Sealing"
+  ],
+  "areas": [
+    {
+      "name": "Aurora",
+      "county": "Kane County",
+      "zipCodes": [
+        "60502",
+        "60503",
+        "60504",
+        "60505"
+      ]
+    },
+    {
+      "name": "Naperville",
+      "county": "DuPage County",
+      "zipCodes": [
+        "60540",
+        "60563",
+        "60564",
+        "60565"
+      ]
+    },
+    {
+      "name": "Rockford",
+      "county": "Winnebago County",
+      "zipCodes": [
+        "61101",
+        "61102",
+        "61103",
+        "61104"
+      ]
+    },
+    {
+      "name": "Schaumburg",
+      "county": "Cook County",
+      "zipCodes": [
+        "60173",
+        "60193",
+        "60194"
+      ]
+    }
+  ],
+  "zipIndex": [
+    "60173",
+    "60193",
+    "60194",
+    "60502",
+    "60503",
+    "60504",
+    "60505",
+    "60540",
+    "60563",
+    "60564",
+    "60565",
+    "61101",
+    "61102",
+    "61103",
+    "61104"
+  ]
+}
