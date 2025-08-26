@@ -1,7 +1,9 @@
 // scripts/postbuild.cjs
 const fs = require("fs");
 const path = require("path");
-const { generateHostAwareSitemaps } = require("./generate-sitemap.js");
+
+// Import sitemap generator
+const { generateHostAwareSitemaps } = require("./generate-host-aware-sitemaps");
 
 const dist = path.join(process.cwd(), "dist");
 
@@ -54,11 +56,23 @@ brands.forEach(brand => {
   }
 });
 
+// 4) Netlify redirects in the PUBLISH FOLDER (critical!)
+const redirects = [
+  "/ /lifetime/ 302",                 // root -> /lifetime/
+  // keep a few samples; add more as needed:
+  "/old-radon-page /services/radon-mitigation/ 301",
+  // SPA fallback for client-side routing
+  "/* /index.html 200"
+].join("\n") + "\n";
+
+fs.writeFileSync(path.join(dist, "_redirects"), redirects, "utf8");
+
 console.log("✔ Multi-brand postbuild complete");
 console.log("✔ Brands available: /lifetime/, /cc/, /aih/");
 console.log("✔ Shared assets: /assets/");
+console.log("✔ Wrote dist/index.html and dist/_redirects");
 
-// 3) Generate host-aware sitemaps and robots.txt (PR #27)
+// 5) Generate host-aware sitemaps and robots.txt (PR #27)
 try {
   if (typeof generateHostAwareSitemaps === "function") {
     generateHostAwareSitemaps();

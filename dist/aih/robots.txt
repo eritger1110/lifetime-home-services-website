@@ -1,27 +1,3 @@
-# Robots.txt for americainhome.com
-# Generated automatically for America In-Home
-
 User-agent: *
 Allow: /
-
-# Sitemaps
 Sitemap: https://americainhome.com/sitemap.xml
-
-# Block common bot traps
-Disallow: /admin/
-Disallow: /private/
-Disallow: /.git/
-Disallow: /node_modules/
-
-# Allow all major search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-# Crawl delay for courtesy
-Crawl-delay: 1

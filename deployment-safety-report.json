@@ -1,0 +1,111 @@
+{
+  "timestamp": "2025-08-26T16:56:44.627Z",
+  "status": "READY",
+  "summary": {
+    "total_checks": 19,
+    "passed": 16,
+    "failed": 0,
+    "warnings": 2,
+    "errors": 0
+  },
+  "checks": [
+    {
+      "name": "Critical File: Root index file",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Critical File: Netlify redirects",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Critical File: Lifetime homepage",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Critical File: Lifetime sitemap",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Critical File: Lifetime robots.txt",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Redirect Configuration",
+      "status": "PASS",
+      "details": "3 redirect rules configured"
+    },
+    {
+      "name": "LIFETIME Assets",
+      "status": "PASS",
+      "details": "81 asset files found"
+    },
+    {
+      "name": "CC Assets",
+      "status": "PASS",
+      "details": "80 asset files found"
+    },
+    {
+      "name": "AIH Assets",
+      "status": "PASS",
+      "details": "80 asset files found"
+    },
+    {
+      "name": "LIFETIME Sitemap",
+      "status": "PASS",
+      "details": "1 URLs indexed"
+    },
+    {
+      "name": "LIFETIME Robots.txt",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "CC Sitemap",
+      "status": "PASS",
+      "details": "1 URLs indexed"
+    },
+    {
+      "name": "CC Robots.txt",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "AIH Sitemap",
+      "status": "PASS",
+      "details": "1 URLs indexed"
+    },
+    {
+      "name": "AIH Robots.txt",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Security Headers",
+      "status": "PASS",
+      "details": "Header configuration found"
+    },
+    {
+      "name": "Build Size",
+      "status": "WARN",
+      "details": "Large build size: 197.09MB"
+    },
+    {
+      "name": "Environment Variable: NODE_ENV",
+      "status": "WARN",
+      "details": "Not set"
+    },
+    {
+      "name": "External Dependencies",
+      "status": "INFO",
+      "details": "20 external services referenced"
+    }
+  ],
+  "errors": [],
+  "warnings": [],
+  "deployment_recommendation": "PROCEED"
+}
