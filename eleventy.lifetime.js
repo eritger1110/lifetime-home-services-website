@@ -17,7 +17,6 @@ module.exports = function (eleventyConfig) {
       layouts: "../",
       data: "../_data"
     },
-    templateFormats: ["njk", "md", "html"],
-    pathPrefix: "/lifetime/"
+    templateFormats: ["njk", "md", "html"]
   };
 };

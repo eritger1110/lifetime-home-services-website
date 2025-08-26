@@ -15,7 +15,6 @@ module.exports = function (eleventyConfig) {
     dir: {
       input: "src/cc",
       output: "dist/cc",
-    },
-    pathPrefix: "/cc/"
+    }
   };
 };

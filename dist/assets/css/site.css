@@ -1,7 +1,13 @@
-/* Base reset */
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%}
-body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;color:#333;overflow-x:hidden}
+/* P0 Baseline CSS for stabilization */
+:root{--maxw:1200px}
+html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
+body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#111}
+img,svg,video{max-width:100%;height:auto;display:block}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 16px}
+header,main,footer{width:100%}
+.hero img{width:100%;object-fit:cover}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:20px}
+a{text-decoration:none;color:#0b67c2}
 
 /* NAV */
 .navbar{background:#fff;padding:8px 0;box-shadow:0 2px 10px rgba(0,0,0,.1);position:fixed;top:0;width:100%;z-index:1000;height:60px}
