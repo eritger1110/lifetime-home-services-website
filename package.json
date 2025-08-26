@@ -8,6 +8,7 @@
     "build:cc": "npx @11ty/eleventy --config=eleventy.cc.js",
     "build:all": "npm run build:lifetime && npm run build:aih && npm run build:cc",
     "build:root": "node scripts/postbuild.cjs",
+    "postbuild": "node scripts/postbuild.cjs",
     "prebuild:lifetime": "node scripts/generate-headers.js",
     "validate:pre-commit": "node scripts/pre-commit-checks.js",
     "validate:build": "node scripts/validate-build.js",

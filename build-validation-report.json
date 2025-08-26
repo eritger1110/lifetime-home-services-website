@@ -1,29 +1,13 @@
 {
-  "timestamp": "2025-08-26T12:32:59.179Z",
-  "status": "FAIL",
+  "timestamp": "2025-08-26T16:56:13.406Z",
+  "status": "PASS",
   "summary": {
-    "errors": 17,
-    "warnings": 0,
+    "errors": 0,
+    "warnings": 1,
     "brands_validated": 3
   },
-  "errors": [
-    "Missing root file: index.html",
-    "Missing root file: _redirects",
-    "Missing root file: sitemap.xml",
-    "Missing root file: robots.txt",
-    "Missing lifetime file: sitemap.xml",
-    "Missing lifetime file: robots.txt",
-    "Missing cc file: sitemap.xml",
-    "Missing cc file: robots.txt",
-    "Missing aih file: sitemap.xml",
-    "Missing aih file: robots.txt",
-    "_redirects file missing",
-    "Missing sitemap for lifetime",
-    "Missing sitemap for cc",
-    "Missing sitemap for aih",
-    "Missing robots.txt for lifetime",
-    "Missing robots.txt for cc",
-    "Missing robots.txt for aih"
-  ],
-  "warnings": []
+  "errors": [],
+  "warnings": [
+    "_redirects may be missing SPA fallback rules"
+  ]
 }

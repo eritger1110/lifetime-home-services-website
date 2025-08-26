@@ -1,0 +1,483 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wisconsin Service Areas - Lifetime Home Services</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="/styles.css?v=15">
+  
+</head>
+
+<body class="shell lifetime">
+  <!-- Top nav -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="brand-switcher">
+        <a class="brand-logo active" href="/">
+          <img src="/assets/LifetimeHomeServicesLogo.png" alt="Lifetime Home Services" />
+        </a>
+        <a class="brand-logo " href="/aih/">
+          <img src="/assets/AmericaIn-HomeLogo.jpg" alt="America In-Home" />
+        </a>
+        <a class="brand-logo " href="/cc/">
+          <img src="/assets/ClosetConceptsLogo.png" alt="Closet Concepts" />
+        </a>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/showroom/">Showroom</a></li>
+        <li><a href="/financing/">Financing</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/service-areas/wi">Service Areas</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+
+      <a class="phone-btn" href="tel:+18339416888">(833) 941-6888</a>
+    </div>
+  </nav>
+
+  <main>
+    
+<div class="service-areas-page">
+  <div class="container">
+    <header class="page-header">
+      <h1>Wisconsin Service Areas</h1>
+      <p class="lead">Serving 141 ZIP codes across 59 areas in Wisconsin</p>
+    </header>
+
+    <div class="service-areas-content">
+      <div class="search-section">
+        <label for="area-search">Search for your area or ZIP code:</label>
+        <input type="text" id="area-search" placeholder="Enter city name or ZIP code">
+        <div id="search-results" class="search-results" aria-live="polite"></div>
+      </div>
+
+      <div class="areas-accordion" id="areas-accordion">
+        <!-- Areas will be loaded dynamically -->
+      </div>
+
+      <div class="zip-codes-section">
+        <h2>All Wisconsin ZIP Codes We Serve</h2>
+        <div id="zip-codes-display">
+          <div id="zip-codes-preview"></div>
+          <button id="show-more-zips" type="button">Show all 141 ZIP codes</button>
+          <div id="all-zip-codes" style="display: none;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Lifetime Home Services",
+  "description": "Professional radon testing, radon mitigation, duct sealing, and floor coating services in Wisconsin",
+  "url": "https://lifetimehomeservices.com/lifetime/service-areas/wi",
+  "telephone": "(833) 941-6888",
+  "areaServed": [
+    
+  ],
+  "serviceType": [
+    "Radon Testing",
+    "Radon Mitigation", 
+    "Duct Sealing",
+    "Floor Coatings"
+  ]
+}
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', async function() {
+  try {
+    // Load Wisconsin service areas data
+    const response = await fetch('/assets/data/service-areas.json');
+    const data = await response.json();
+    const wiData = data.wi;
+    
+    // Initialize search functionality
+    initializeSearch(wiData);
+    
+    // Initialize areas accordion
+    initializeAreasAccordion(wiData);
+    
+    // Initialize ZIP codes display
+    initializeZipCodesDisplay(wiData);
+    
+  } catch (error) {
+    console.error('Error loading service areas data:', error);
+    document.getElementById('areas-accordion').innerHTML = 
+      '<p>Error loading service areas. Please try again later.</p>';
+  }
+});
+
+function initializeSearch(wiData) {
+  const searchInput = document.getElementById('area-search');
+  const searchResults = document.getElementById('search-results');
+  
+  searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase().trim();
+    
+    if (query.length < 2) {
+      searchResults.innerHTML = '';
+      return;
+    }
+    
+    const matches = [];
+    
+    // Search areas
+    wiData.areas.forEach(area => {
+      if (area.name.toLowerCase().includes(query)) {
+        matches.push({
+          type: 'area',
+          name: area.name,
+          county: area.county,
+          zips: area.zips
+        });
+      }
+    });
+    
+    // Search ZIP codes
+    wiData.zipIndex.forEach(zip => {
+      if (zip.includes(query)) {
+        const area = wiData.areas.find(a => a.zips.includes(zip));
+        if (area) {
+          matches.push({
+            type: 'zip',
+            zip: zip,
+            area: area.name,
+            county: area.county
+          });
+        }
+      }
+    });
+    
+    displaySearchResults(matches, searchResults);
+  });
+  
+  // Handle Enter key
+  searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      const firstResult = searchResults.querySelector('.search-result');
+      if (firstResult) {
+        firstResult.focus();
+      }
+    }
+  });
+}
+
+function displaySearchResults(matches, container) {
+  if (matches.length === 0) {
+    container.innerHTML = '<div class="no-results">No areas or ZIP codes found</div>';
+    return;
+  }
+  
+  const html = matches.slice(0, 10).map(match => {
+    if (match.type === 'area') {
+      return `
+        <div class="search-result" tabindex="0">
+          <strong>${match.name}</strong> (${match.county} County)
+          <br><small>ZIP codes: ${match.zips.join(', ')}</small>
+        </div>
+      `;
+    } else {
+      return `
+        <div class="search-result" tabindex="0">
+          <strong>ZIP ${match.zip}</strong> in ${match.area} (${match.county} County)
+        </div>
+      `;
+    }
+  }).join('');
+  
+  container.innerHTML = html;
+}
+
+function initializeAreasAccordion(wiData) {
+  const accordion = document.getElementById('areas-accordion');
+  
+  // Group areas alphabetically
+  const groupedAreas = {};
+  wiData.areas.forEach(area => {
+    const firstLetter = area.name.charAt(0).toUpperCase();
+    if (!groupedAreas[firstLetter]) {
+      groupedAreas[firstLetter] = [];
+    }
+    groupedAreas[firstLetter].push(area);
+  });
+  
+  // Sort areas within each group
+  Object.keys(groupedAreas).forEach(letter => {
+    groupedAreas[letter].sort((a, b) => a.name.localeCompare(b.name));
+  });
+  
+  // Create accordion HTML
+  const html = Object.keys(groupedAreas).sort().map(letter => `
+    <details class="letter-group">
+      <summary class="letter-header">${letter} (${groupedAreas[letter].length} areas)</summary>
+      <div class="areas-grid">
+        ${groupedAreas[letter].map(area => `
+          <div class="area-card">
+            <h3>${area.name}</h3>
+            <p class="county">${area.county} County</p>
+            <p class="zip-count">${area.zips.length} ZIP codes</p>
+            <div class="zip-codes">
+              ${area.zips.join(', ')}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </details>
+  `).join('');
+  
+  accordion.innerHTML = html;
+}
+
+function initializeZipCodesDisplay(wiData) {
+  const preview = document.getElementById('zip-codes-preview');
+  const showMoreBtn = document.getElementById('show-more-zips');
+  const allZips = document.getElementById('all-zip-codes');
+  
+  // Show first 20 ZIP codes
+  const previewZips = wiData.zipIndex.slice(0, 20);
+  preview.innerHTML = `
+    <div class="zip-grid">
+      ${previewZips.map(zip => `<span class="zip-code">${zip}</span>`).join('')}
+    </div>
+    <p><em>Showing first 20 of ${wiData.zipIndex.length} ZIP codes</em></p>
+  `;
+  
+  // Show more functionality
+  showMoreBtn.addEventListener('click', function() {
+    allZips.innerHTML = `
+      <div class="zip-grid">
+        ${wiData.zipIndex.map(zip => `<span class="zip-code">${zip}</span>`).join('')}
+      </div>
+    `;
+    
+    preview.style.display = 'none';
+    showMoreBtn.style.display = 'none';
+    allZips.style.display = 'block';
+  });
+}
+</script>
+
+<style>
+.service-areas-page {
+  padding: 2rem 0;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.lead {
+  font-size: 1.25rem;
+  color: #666;
+}
+
+.search-section {
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-section label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+#area-search {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+#area-search:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.search-results {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+}
+
+.search-result {
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.search-result:hover,
+.search-result:focus {
+  background-color: #f8f9fa;
+  outline: none;
+}
+
+.search-result:last-child {
+  border-bottom: none;
+}
+
+.no-results {
+  padding: 1rem;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}
+
+.letter-group {
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.letter-header {
+  padding: 1rem;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.letter-header:hover {
+  background-color: #e9ecef;
+}
+
+.areas-grid {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.area-card {
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background: white;
+}
+
+.area-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: #2c3e50;
+}
+
+.county {
+  margin: 0 0 0.5rem 0;
+  color: #666;
+  font-weight: 500;
+}
+
+.zip-count {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.zip-codes {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.zip-codes-section {
+  margin-top: 3rem;
+}
+
+.zip-codes-section h2 {
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+}
+
+.zip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.zip-code {
+  padding: 0.25rem 0.5rem;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 3px;
+  text-align: center;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+#show-more-zips {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#show-more-zips:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .zip-grid {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  }
+}
+</style>
+
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-phone"><a href="tel:+18339416888">(833) 941-6888</a></div>
+      <div class="footer-info">
+        <p>Professional Home Services | Licensed & Insured</p>
+        <p>Serving Wisconsin, Illinois, Minnesota & Colorado</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Lifetime Home Services Group. All rights reserved.</p>
+        
+      </div>
+    </div>
+  </footer>
+
+  <script src="/script.js" defer></script>
+</body>
+</html>

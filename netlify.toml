@@ -1,7 +1,7 @@
 # ---------- Build ----------
 [build]
-  command = "npm ci && npm run build:lifetime"
-  publish = "dist/lifetime"
+  command = "npm ci && npm run build:all && npm run build:root"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
@@ -27,4 +27,3 @@
   from = "/*"
   to   = "/index.html"
   status = 200
-
