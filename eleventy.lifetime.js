@@ -6,18 +6,18 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addPassthroughCopy({
-    "src/assets": "assets",
-    "styles.css": "styles.css",
-    "script.js": "script.js",
-    "public/assets": "assets",
-    "public/_headers": "_headers",
-
+    "public/assets": "assets"
   });
 
   return {
     dir: {
       input: "src/lifetime",
       output: "dist/lifetime",
+      includes: "../",
+      layouts: "../",
+      data: "../_data"
     },
+    templateFormats: ["njk", "md", "html"],
+    pathPrefix: "/lifetime/"
   };
 };

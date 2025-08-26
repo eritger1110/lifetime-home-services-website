@@ -88,6 +88,14 @@ class BuildValidator {
   }
 
   validateAssetStructure() {
+    // Check shared assets directory
+    const sharedAssetsDir = path.join(this.distDir, 'assets');
+    if (!fs.existsSync(sharedAssetsDir)) {
+      this.addError('Shared assets directory (dist/assets) does not exist');
+      return;
+    }
+    this.log('Shared assets directory exists');
+
     this.brands.forEach(brand => {
       const assetsDir = path.join(this.distDir, brand, 'assets');
       
@@ -98,6 +106,22 @@ class BuildValidator {
 
       this.log(`Assets directory exists: ${brand}/assets/`);
 
+      // Check for critical CSS file
+      const cssFile = path.join(assetsDir, 'css', 'site.css');
+      if (fs.existsSync(cssFile)) {
+        this.log(`${brand} CSS file exists: assets/css/site.css`);
+      } else {
+        this.addError(`${brand} missing critical CSS file: assets/css/site.css`);
+      }
+      
+      // Check for critical JS file
+      const jsFile = path.join(assetsDir, 'js', 'site.js');
+      if (fs.existsSync(jsFile)) {
+        this.log(`${brand} JS file exists: assets/js/site.js`);
+      } else {
+        this.addWarning(`${brand} missing JS file: assets/js/site.js`);
+      }
+
       // Check for common asset types
       const assetTypes = ['css', 'js', 'images'];
       assetTypes.forEach(type => {
@@ -107,6 +131,22 @@ class BuildValidator {
         }
       });
     });
+
+    // Check for hero images in shared assets
+    const heroWebP = path.join(sharedAssetsDir, 'images', 'lifetime-hero-house.webp');
+    const heroJPG = path.join(sharedAssetsDir, 'images', 'lifetime-hero-house.jpg');
+    
+    if (fs.existsSync(heroWebP)) {
+      this.log('Hero WebP image exists');
+    } else {
+      this.addError('Missing hero WebP image: assets/images/lifetime-hero-house.webp');
+    }
+    
+    if (fs.existsSync(heroJPG)) {
+      this.log('Hero JPG image exists');
+    } else {
+      this.addError('Missing hero JPG image: assets/images/lifetime-hero-house.jpg');
+    }
   }
 
   validateRedirects() {

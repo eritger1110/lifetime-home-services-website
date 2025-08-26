@@ -1,13 +1,11 @@
 {
-  "timestamp": "2025-08-26T16:56:13.406Z",
+  "timestamp": "2025-08-26T18:30:00.283Z",
   "status": "PASS",
   "summary": {
     "errors": 0,
-    "warnings": 1,
+    "warnings": 0,
     "brands_validated": 3
   },
   "errors": [],
-  "warnings": [
-    "_redirects may be missing SPA fallback rules"
-  ]
+  "warnings": []
 }
