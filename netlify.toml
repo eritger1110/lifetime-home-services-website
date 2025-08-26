@@ -1,30 +1,106 @@
 # ---------- Build ----------
 [build]
-  command = "npm ci && npm run build:lifetime"
-  publish = "dist/lifetime"
+  command = "npm ci && npm run build:all && npm run build:root"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
   NPM_FLAGS    = "--no-fund --no-audit"
   NODE_OPTIONS = "--max-old-space-size=2048"
 
-# Cache control for static assets
+# ---------- Multi-Brand SPA Fallbacks ----------
+# Host-aware routing for three domains
+
+# Lifetime Home Services (primary domain)
+[[redirects]]
+  from = "https://lifetimehomeservices.com/*"
+  to   = "/lifetime/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://www.lifetimehomeservices.com/*"
+  to   = "/lifetime/:splat"
+  status = 200
+  force = true
+
+# Closet Concepts
+[[redirects]]
+  from = "https://closetconcepts.com/*"
+  to   = "/cc/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://www.closetconcepts.com/*"
+  to   = "/cc/:splat"
+  status = 200
+  force = true
+
+# America In-Home
+[[redirects]]
+  from = "https://americainhome.com/*"
+  to   = "/aih/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://www.americainhome.com/*"
+  to   = "/aih/:splat"
+  status = 200
+  force = true
+
+# ---------- SPA Fallbacks for Each Brand ----------
+# Lifetime Home Services SPA fallback
+[[redirects]]
+  from = "/lifetime/*"
+  to   = "/lifetime/index.html"
+  status = 200
+
+# Closet Concepts SPA fallback
+[[redirects]]
+  from = "/cc/*"
+  to   = "/cc/index.html"
+  status = 200
+
+# America In-Home SPA fallback
+[[redirects]]
+  from = "/aih/*"
+  to   = "/aih/index.html"
+  status = 200
+
+# ---------- Asset Caching ----------
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Landing page now exists at /service-areas/ - no redirects needed
+[[headers]]
+  for = "/lifetime/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
+[[headers]]
+  for = "/cc/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/aih/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# ---------- Legacy Redirects ----------
 # Back-compat if any old links exist
 [[redirects]]
   from = "/lifetime/service-areas/*"
-  to   = "/service-areas/:splat"
+  to   = "/lifetime/service-areas/:splat"
   status = 301
 
-# SPA fallback: fixes 404s on deep links/hard refresh
+# ---------- Default Fallback ----------
+# Catch-all for any unmatched routes (fallback to Lifetime)
 [[redirects]]
   from = "/*"
-  to   = "/index.html"
+  to   = "/lifetime/:splat"
   status = 200
 
