@@ -7,11 +7,8 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({
     "src/assets": "assets",
-    "styles.css": "styles.css",
-    "script.js": "script.js",
-
-    // ✅ NEW LINE: copy from src/_redirects
-    "src/_redirects": "_redirects",
+    "public/assets": "assets",
+    "public/_headers": "_headers",
   });
 
   return {
@@ -19,5 +16,6 @@ module.exports = function (eleventyConfig) {
       input: "src/cc",
       output: "dist/cc",
     },
+    pathPrefix: "/cc/"
   };
 };
