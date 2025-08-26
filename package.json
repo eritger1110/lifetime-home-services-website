@@ -10,6 +10,8 @@
     "build:root": "node scripts/postbuild.cjs",
     "postbuild": "node scripts/postbuild.cjs",
     "prebuild:lifetime": "node scripts/generate-headers.js",
+    "prebuild:aih": "node scripts/generate-headers.js",
+    "prebuild:cc": "node scripts/generate-headers.js",
     "validate:pre-commit": "node scripts/pre-commit-checks.js",
     "validate:build": "node scripts/validate-build.js",
     "validate:deployment": "node scripts/deployment-safety.js",
@@ -20,3 +22,4 @@
     "@11ty/eleventy": "^2.0.1"
   }
 }
+
