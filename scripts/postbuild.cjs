@@ -1,6 +1,7 @@
 // scripts/postbuild.cjs
 const fs = require("fs");
 const path = require("path");
+const { generateHostAwareSitemaps } = require("./generate-sitemap.js");
 
 const dist = path.join(process.cwd(), "dist");
 
@@ -57,3 +58,14 @@ console.log("✔ Multi-brand postbuild complete");
 console.log("✔ Brands available: /lifetime/, /cc/, /aih/");
 console.log("✔ Shared assets: /assets/");
 
+// 3) Generate host-aware sitemaps and robots.txt (PR #27)
+try {
+  if (typeof generateHostAwareSitemaps === "function") {
+    generateHostAwareSitemaps();
+    console.log("✓ Generated host-aware sitemaps and robots.txt");
+  } else {
+    console.warn("⚠︎ Skipping sitemap/robots generation (generateHostAwareSitemaps not found)");
+  }
+} catch (error) {
+  console.error("Error generating sitemaps:", error);
+}
