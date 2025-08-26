@@ -1,6 +1,7 @@
 // scripts/postbuild.cjs
 const fs = require("fs");
 const path = require("path");
+const { generateHostAwareSitemaps } = require("./generate-sitemap.js");
 
 const dist = path.join(process.cwd(), "dist");
 
@@ -31,4 +32,12 @@ const redirects = [
 
 fs.writeFileSync(path.join(dist, "_redirects"), redirects, "utf8");
 
+// 3) Generate host-aware sitemaps and robots.txt
+try {
+  generateHostAwareSitemaps();
+} catch (error) {
+  console.error("Error generating sitemaps:", error);
+}
+
 console.log("✔ Wrote dist/index.html and dist/_redirects");
+console.log("✔ Generated host-aware sitemaps and robots.txt");
