@@ -1,13 +1,17 @@
 {
-  "timestamp": "2025-08-26T16:56:13.406Z",
-  "status": "PASS",
+  "timestamp": "2025-08-26T18:22:44.038Z",
+  "status": "FAIL",
   "summary": {
-    "errors": 0,
-    "warnings": 1,
+    "errors": 2,
+    "warnings": 2,
     "brands_validated": 3
   },
-  "errors": [],
+  "errors": [
+    "cc missing critical CSS file: assets/css/site.css",
+    "aih missing critical CSS file: assets/css/site.css"
+  ],
   "warnings": [
-    "_redirects may be missing SPA fallback rules"
+    "cc missing JS file: assets/js/site.js",
+    "aih missing JS file: assets/js/site.js"
   ]
 }
