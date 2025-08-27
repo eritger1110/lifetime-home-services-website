@@ -17,7 +17,7 @@
     "validate:deployment": "node scripts/deployment-safety.js",
     "validate:assets": "node scripts/validate-assets.js",
     "validate:all": "npm run validate:pre-commit && npm run validate:build && npm run validate:deployment && npm run validate:assets",
-    "build:safe": "npm run validate:pre-commit && npm run build:all && npm run build:root && npm run validate:build && npm run validate:assets"
+    "build:safe": "npm ci && npm run validate:pre-commit && npm run build:all && npm run build:root && npm run validate:build && npm run validate:assets"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1"
