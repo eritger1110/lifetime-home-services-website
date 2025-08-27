@@ -10,6 +10,23 @@ const dist = path.join(process.cwd(), "dist");
 // ensure /dist exists
 fs.mkdirSync(dist, { recursive: true });
 
+// P0 HOTFIX: Required asset validation (fail fast)
+const requiredAssets = [
+  path.join(dist, "assets", "css", "site.css"),
+  path.join(dist, "assets", "images", "lifetime-hero-house.webp"),
+  path.join(dist, "assets", "images", "lifetime-hero-house.jpg")
+];
+
+function validateRequiredAssets() {
+  const missing = requiredAssets.filter(asset => !fs.existsSync(asset));
+  if (missing.length > 0) {
+    console.error("❌ P0 HOTFIX: Missing required assets:");
+    missing.forEach(asset => console.error(`   ${asset}`));
+    throw new Error("Build failed: Required assets missing");
+  }
+  console.log("✅ P0 HOTFIX: All required assets present");
+}
+
 // 1) Root index that forwards "/" to "/lifetime/" (default brand)
 const indexHtml = `<!doctype html>
 <html lang="en">
@@ -83,3 +100,6 @@ try {
 } catch (error) {
   console.error("Error generating sitemaps:", error);
 }
+
+// 6) P0 HOTFIX: Validate required assets exist
+validateRequiredAssets();
