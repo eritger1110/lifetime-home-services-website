@@ -1,0 +1,24 @@
+{
+  "lhs": {
+    "logo": "/assets/images/logos/lhs-logo.svg",
+    "hero_webp": "/assets/images/lifetime-hero-house.webp",
+    "hero_jpg": "/assets/images/lifetime-hero-house.jpg",
+    "og": "/assets/images/og/lhs-og-1200x630.jpg",
+    "favicon": "/assets/favicons/lhs/favicon.ico"
+  },
+  "cc": {
+    "logo": "/assets/images/logos/cc-logo.svg",
+    "hero_webp": "/assets/images/___TBD___.webp",
+    "hero_jpg": "/assets/images/___TBD___.jpg",
+    "og": "/assets/images/og/cc-og-1200x630.jpg",
+    "favicon": "/assets/favicons/cc/favicon.ico"
+  },
+  "aih": {
+    "logo": "/assets/images/logos/aih-logo.svg",
+    "hero_webp": "/assets/images/___TBD___.webp",
+    "hero_jpg": "/assets/images/___TBD___.jpg",
+    "og": "/assets/images/og/aih-og-1200x630.jpg",
+    "favicon": "/assets/favicons/aih/favicon.ico"
+  }
+}
+

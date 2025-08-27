@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-  {# Use | url filter for proper path prefixing #}
-  <link rel="stylesheet" href="{{ '/assets/css/site.css' | url }}">
+  {# Use absolute-root assets (no brand prefix) #}
+  <link rel="stylesheet" href="/assets/css/site.css">
   {% if css %}<style>{{ css | safe }}</style>{% endif %}
 </head>
 
@@ -21,14 +21,14 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="brand-switcher">
-        <a class="brand-logo {% if brand == 'lifetime' or not brand %}active{% endif %}" href="{{ '/' | url }}">
-          <img src="{{ '/assets/images/LifetimeHomeServicesLogo.png' | url }}" alt="Lifetime Home Services" />
+        <a class="brand-logo {% if brand == 'lifetime' or not brand %}active{% endif %}" href="/">
+          <img src="{{ brandAssets.lhs.logo }}" alt="Lifetime Home Services" class="logo" />
         </a>
         <a class="brand-logo {% if brand == 'aih' %}active{% endif %}" href="/aih/">
-          <img src="{{ '/assets/images/AmericaIn-HomeLogo.jpg' | url }}" alt="America In-Home" />
+          <img src="{{ brandAssets.aih.logo }}" alt="America In-Home" class="logo" />
         </a>
         <a class="brand-logo {% if brand == 'cc' %}active{% endif %}" href="/cc/">
-          <img src="{{ '/assets/images/ClosetConceptsLogo.png' | url }}" alt="Closet Concepts" />
+          <img src="{{ brandAssets.cc.logo }}" alt="Closet Concepts" class="logo" />
         </a>
       </div>
 
