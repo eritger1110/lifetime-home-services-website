@@ -108,16 +108,24 @@ validateRequiredAssets();
 const mustExist = p => { if (!fs.existsSync(p)) { console.error('Missing required file:', p); process.exit(1); } };
 
 // 1) CSS must exist
+// CSS must exist
 mustExist(path.join('dist','assets','css','site.css'));
 
-// 2) lifetime index must reference canonical CSS
-const lifetimeHtml = fs.readFileSync(path.join('dist','lifetime','index.html'),'utf8');
-if (/href=["']\/styles\.css["']/.test(lifetimeHtml)) {
-  console.error('Regression: lifetime index still references /styles.css');
+// lifetime index must reference canonical CSS and not legacy styles.css
+const lifetimeHtmlPath = path.join('dist','lifetime','index.html');
+mustExist(lifetimeHtmlPath);
+const lifetimeHtml = fs.readFileSync(lifetimeHtmlPath, 'utf8');
+
+// Fail if it still references any variant of styles.css
+if (/\bhref=["'](?:\/lifetime\/)?styles\.css["']/.test(lifetimeHtml) || /\bhref=["']styles\.css["']/.test(lifetimeHtml)) {
+  console.error('❌ Regression: lifetime index still references styles.css');
   process.exit(1);
 }
-if (!/href=["']\/assets\/css\/site\.css/.test(lifetimeHtml)) {
-  console.error('Lifetime index is not referencing /assets/css/site.css');
+
+// Require the canonical link
+if (!/\bhref=["']\/assets\/css\/site\.css/.test(lifetimeHtml)) {
+  console.error('❌ lifetime index does not link /assets/css/site.css');
   process.exit(1);
 }
-console.log('✅ CSS link validation passed');
+
+console.log('✅ CSS link validation passed for /lifetime/');

@@ -91,9 +91,28 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 # ---------- Legacy Redirects ----------
-# Belt-and-suspenders fallback for any lingering /styles.css references
+# Legacy CSS path → canonical CSS (root)
 [[redirects]]
   from = "/styles.css"
+  to   = "/assets/css/site.css"
+  status = 200
+  force = true
+
+# Brand subpaths (match exact folders we serve)
+[[redirects]]
+  from = "/lifetime/styles.css"
+  to   = "/assets/css/site.css"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/aih/styles.css"
+  to   = "/assets/css/site.css"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/cc/styles.css"
   to   = "/assets/css/site.css"
   status = 200
   force = true
