@@ -93,6 +93,11 @@
 # ---------- Legacy Redirects ----------
 # Back-compat if any old links exist
 [[redirects]]
+  from = "/styles.css"
+  to = "/assets/css/site.css"
+  status = 200
+
+[[redirects]]
   from = "/lifetime/service-areas/*"
   to   = "/lifetime/service-areas/:splat"
   status = 301
