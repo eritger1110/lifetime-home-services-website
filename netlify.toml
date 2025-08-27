@@ -1,6 +1,6 @@
 # ---------- Build ----------
 [build]
-  command = "npm ci && npm run build:all && npm run build:root"
+  command = "npm run build:safe"
   publish = "dist"
 
 [build.environment]
