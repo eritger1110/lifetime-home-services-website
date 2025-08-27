@@ -13,11 +13,10 @@ module.exports = function (eleventyConfig) {
     dir: {
       input: "src/lifetime",
       output: "dist/lifetime",
-      includes: "../",
-      layouts: "../",
+      includes: "_includes",
+      layouts: "_includes",
       data: "../_data"
     },
-    templateFormats: ["njk", "md", "html"],
-    pathPrefix: "/lifetime/"
+    templateFormats: ["njk", "md", "html"]
   };
 };

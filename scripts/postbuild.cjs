@@ -103,3 +103,15 @@ try {
 
 // 6) P0 HOTFIX: Validate required assets exist
 validateRequiredAssets();
+
+// 7) P0 GUARD: Ensure /lifetime/index.html links correct CSS
+const lifetimeHtml = fs.readFileSync(path.join('dist','lifetime','index.html'),'utf8');
+if (!lifetimeHtml.includes('/assets/css/site.css')) {
+  console.error('P0 guard: /lifetime/index.html is not linking /assets/css/site.css');
+  process.exit(1);
+}
+if (lifetimeHtml.includes('/styles.css')) {
+  console.error('P0 guard: Found legacy /styles.css reference in /lifetime/index.html');
+  process.exit(1);
+}
+console.log('✓ P0 guard: lifetime HTML links correct CSS');
