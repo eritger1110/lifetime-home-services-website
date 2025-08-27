@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-  {# Use absolute-root assets (no brand prefix) #}
-  <link rel="stylesheet" href="/assets/css/site.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
   {% if css %}<style>{{ css | safe }}</style>{% endif %}
 </head>
 
@@ -70,6 +70,6 @@
     </div>
   </footer>
 
-  <script src="{{ '/assets/js/site.js' | url }}" defer></script>
+  <script defer src="/assets/js/site.js"></script>
 </body>
 </html>
