@@ -91,11 +91,12 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 # ---------- Legacy Redirects ----------
-# Back-compat if any old links exist
+# Belt-and-suspenders fallback for any lingering /styles.css references
 [[redirects]]
   from = "/styles.css"
-  to = "/assets/css/site.css"
+  to   = "/assets/css/site.css"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/lifetime/service-areas/*"

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-08-27T17:32:14.788Z",
+  "timestamp": "2025-08-27T18:50:39.174Z",
   "status": "PASS",
   "summary": {
     "errors": 0,
@@ -385,7 +385,7 @@
     "Referenced asset not found in walk-in-pantry.njk: /assets/meal-prep-efficiency-icon.png",
     "Referenced asset not found in walk-in-pantry.njk: /assets/healthy-choices-icon.png",
     "Referenced asset not found in header.njk: /assets/{{",
-    "Referenced asset not found in layout.njk: /assets/css/site.css",
+    "Referenced asset not found in layout.njk: /assets/css/site.css?v={{",
     "Referenced asset not found in layout.njk: /assets/js/site.js",
     "Referenced asset not found in about.njk: /assets/lifetime-team.jpg",
     "Referenced asset not found in about.njk: /assets/icons/licensed-insured.svg",

@@ -104,14 +104,20 @@ try {
 // 6) P0 HOTFIX: Validate required assets exist
 validateRequiredAssets();
 
-// 7) P0 GUARD: Ensure /lifetime/index.html links correct CSS
+// 7) STRENGTHENED P0 GUARDS: CSS link validation with regex
+const mustExist = p => { if (!fs.existsSync(p)) { console.error('Missing required file:', p); process.exit(1); } };
+
+// 1) CSS must exist
+mustExist(path.join('dist','assets','css','site.css'));
+
+// 2) lifetime index must reference canonical CSS
 const lifetimeHtml = fs.readFileSync(path.join('dist','lifetime','index.html'),'utf8');
-if (!lifetimeHtml.includes('/assets/css/site.css')) {
-  console.error('P0 guard: /lifetime/index.html is not linking /assets/css/site.css');
+if (/href=["']\/styles\.css["']/.test(lifetimeHtml)) {
+  console.error('Regression: lifetime index still references /styles.css');
   process.exit(1);
 }
-if (lifetimeHtml.includes('/styles.css')) {
-  console.error('P0 guard: Found legacy /styles.css reference in /lifetime/index.html');
+if (!/href=["']\/assets\/css\/site\.css/.test(lifetimeHtml)) {
+  console.error('Lifetime index is not referencing /assets/css/site.css');
   process.exit(1);
 }
-console.log('✓ P0 guard: lifetime HTML links correct CSS');
+console.log('✅ CSS link validation passed');
