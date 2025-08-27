@@ -1,3 +1,19 @@
+/* P0 Minimal styling to stop "giant images" */
+/* Logos */
+.site-header img.logo { max-width: 220px; height: auto; display:block; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; }
+.hero picture, .hero img { display:block; width:100%; height:auto; }
+@media (min-width: 768px) {
+  .hero { max-height: 80vh; }
+  .hero img { object-fit: cover; }
+}
+
+/* Body text/layout resets (minimal) */
+img { max-width: 100%; height: auto; }
+ul { list-style: none; padding: 0; margin: 0; }
+
 /* Base reset */
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%}
