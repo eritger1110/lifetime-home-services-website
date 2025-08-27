@@ -1,15 +1,18 @@
 {
-  "timestamp": "2025-08-26T16:55:16.648Z",
+  "timestamp": "2025-08-27T15:33:20.547Z",
   "status": "PASS",
   "summary": {
     "errors": 0,
-    "warnings": 399
+    "warnings": 406
   },
   "errors": [],
   "warnings": [
+    "Hardcoded domain URL in co.njk: https://lifetimehomeservices.com/service-areas/co",
+    "Hardcoded domain URL in il.njk: https://lifetimehomeservices.com/service-areas/il",
     "Hardcoded domain URL in index.njk: https://lifetimehomeservices.com",
     "Hardcoded domain URL in index.njk: https://lifetimehomeservices.com/assets/images/lifetime-logo.png",
     "Hardcoded domain URL in index.njk: https://lifetimehomeservices.com/service-areas/wi/",
+    "Hardcoded domain URL in mn.njk: https://lifetimehomeservices.com/service-areas/mn",
     "Hardcoded domain URL in wi.njk: https://lifetimehomeservices.com/lifetime/service-areas/wi",
     "Missing required script in package.json: build",
     "Referenced asset not found in index.njk: /assets/closet-concepts-logo.png",
@@ -382,6 +385,8 @@
     "Referenced asset not found in walk-in-pantry.njk: /assets/meal-prep-efficiency-icon.png",
     "Referenced asset not found in walk-in-pantry.njk: /assets/healthy-choices-icon.png",
     "Referenced asset not found in header.njk: /assets/{{",
+    "Referenced asset not found in layout.njk: /assets/css/site.css",
+    "Referenced asset not found in layout.njk: /assets/js/site.js",
     "Referenced asset not found in about.njk: /assets/lifetime-team.jpg",
     "Referenced asset not found in about.njk: /assets/icons/licensed-insured.svg",
     "Referenced asset not found in about.njk: /assets/icons/certified-professionals.svg",
@@ -390,6 +395,7 @@
     "Referenced asset not found in about.njk: /assets/icons/free-estimates.svg",
     "Referenced asset not found in about.njk: /assets/icons/financing.svg",
     "Referenced asset not found in about.njk: /assets/showroom-interior.jpg",
+    "Referenced asset not found in index.njk: /assets/images/lifetime-hero-house.webp",
     "Referenced asset not found in index.njk: /assets/closet-concepts-logo.png",
     "Referenced asset not found in index.njk: /assets/america-in-home-logo.png",
     "Referenced asset not found in index.njk: /assets/Fan_and_accessories.jpg",
@@ -401,6 +407,7 @@
     "Referenced asset not found in index.njk: /assets/epoxy11.webp",
     "Referenced asset not found in radon-mitigation.njk: /assets/Fan_and_accessories.jpg",
     "Referenced asset not found in radon-mitigation.njk: /assets/Fan_and_accessories.jpg",
+    "Referenced asset not found in radon-testing.njk: /assets/images/services/radon/sub-slab-system-diagram.jpg",
     "Referenced asset not found in index.njk: /assets/smart-home-automation.jpg",
     "Referenced asset not found in index.njk: /assets/epoxy11.webp",
     "Referenced asset not found in floor-coatings.njk: /assets/EpoxySample3.jpg",
