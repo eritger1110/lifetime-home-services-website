@@ -1,9 +1,9 @@
 {
-  "timestamp": "2025-08-28T18:32:21.967Z",
+  "timestamp": "2025-08-28T19:25:34.382Z",
   "status": "PASS",
   "summary": {
     "errors": 0,
-    "warnings": 413
+    "warnings": 416
   },
   "errors": [],
   "warnings": [
@@ -15,6 +15,7 @@
     "Hardcoded domain URL in index.njk: https://lifetimehomeservices.com/service-areas/wi/",
     "Hardcoded domain URL in mn.njk: https://lifetimehomeservices.com/service-areas/mn",
     "Hardcoded domain URL in wi.njk: https://lifetimehomeservices.com/lifetime/service-areas/wi",
+    "Hardcoded domain URL in index.njk: https://lifetimehomeservices.com/thank-you",
     "Missing required script in package.json: build",
     "Referenced asset not found in index.njk: /assets/closet-concepts-logo.png",
     "Referenced asset not found in index.njk: /assets/america-in-home-logo.png",
@@ -411,7 +412,9 @@
     "Referenced asset not found in wi.njk: /assets/data/service-areas.json",
     "Referenced asset not found in duct-cleaning-sealing.njk: /assets/aeroseal-logo.webp",
     "Referenced asset not found in duct-cleaning-sealing.njk: /assets/aeroseal-logo.webp",
-    "Referenced asset not found in index.njk: /assets/epoxy11.webp",
+    "Referenced asset not found in index.njk: /assets/images/lifetime-hero-house.webp",
+    "Referenced asset not found in index.njk: /assets/Fan_and_accessories.jpg",
+    "Referenced asset not found in index.njk: /assets/aeroseal-logo.webp",
     "Referenced asset not found in radon-mitigation.njk: /assets/Fan_and_accessories.jpg",
     "Referenced asset not found in radon-mitigation.njk: /assets/Fan_and_accessories.jpg",
     "Referenced asset not found in radon-testing.njk: /assets/images/services/radon/sub-slab-system-diagram.jpg",

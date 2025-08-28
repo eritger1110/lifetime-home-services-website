@@ -1,63 +1,143 @@
 ---
 layout: layout.njk
-title: "Services"
-brand: "lifetime"
-permalink: "/services/index.html"
+title: Professional Home Services - Lifetime Home Services
+description: Expert radon testing, mitigation, duct sealing, and floor coating services. Professional solutions for your home's health, safety, and beauty.
 ---
 
-<div class="page-header">
-  <div class="container">
-    <h1>Our Services</h1>
-    <p>Explore professional solutions for a safer, smarter, more beautiful home.</p>
+<section class="hero">
+  <picture>
+    <source srcset="/assets/images/lifetime-hero-house.webp" type="image/webp">
+    <img src="/assets/images/lifetime-hero-house.jpg"
+         alt="Professional home services and solutions"
+         width="1536" height="1024"
+         loading="eager" decoding="async" fetchpriority="high"
+         class="hero-img">
+  </picture>
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <h1>Professional Home Services</h1>
+      <p>Expert solutions for your home's health, safety, and beauty</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Get Free Estimate</a>
+        <a href="tel:+18339416888" class="btn btn-secondary">Call (833) 941-6888</a>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-<section class="content-section">
+<section class="services-section">
   <div class="container">
+    <div class="section-header">
+      <h2>Our Professional Services</h2>
+      <p>Comprehensive home improvement solutions backed by expertise and quality</p>
+    </div>
+    
     <div class="services-grid">
       <div class="service-card">
-        <a href="/services/radon-testing/">
-          <img src="/assets/radon-testing.jpg" alt="Radon Testing">
-        </a>
-        <div class="service-card-content">
-          <h3><a href="/services/radon-testing/">Radon Testing</a></h3>
-          <p>Accurate testing, clear reports.</p>
-          <a class="btn" href="/services/radon-testing/">Learn More</a>
+        <div class="service-image">
+          <img src="{{ '/assets/iTiU36rD42bh.jpg' | url }}" alt="Professional Radon Testing Equipment">
+        </div>
+        <div class="service-content">
+          <h3>Radon Testing</h3>
+          <p>Professional radon testing to ensure your home's safety and your family's health. EPA-certified testing protocols.</p>
+          <a href="{{ '/services/radon-testing' | url }}" class="btn btn-service">Learn More</a>
         </div>
       </div>
 
       <div class="service-card">
-        <a href="/services/radon-mitigation/">
-          <img src="/assets/radon-mitigation.jpg" alt="Radon Mitigation">
-        </a>
-        <div class="service-card-content">
-          <h3><a href="/services/radon-mitigation/">Radon Mitigation</a></h3>
-          <p>Certified systems that work.</p>
-          <a class="btn" href="/services/radon-mitigation/">Learn More</a>
+        <div class="service-image">
+          <img src="{{ '/assets/Fan_and_accessories.jpg' | url }}" alt="Radon Mitigation Fan System">
+        </div>
+        <div class="service-content">
+          <h3>Radon Mitigation</h3>
+          <p>Expert mitigation systems to reduce dangerous radon levels in your home. Guaranteed results and warranty.</p>
+          <a href="{{ '/services/radon-mitigation' | url }}" class="btn btn-service">Learn More</a>
         </div>
       </div>
 
       <div class="service-card">
-        <a href="/services/duct-sealing/">
-          <img src="/assets/duct-sealing.jpg" alt="AeroSeal Duct Sealing">
-        </a>
-        <div class="service-card-content">
-          <h3><a href="/services/duct-sealing/">AeroSeal Duct Sealing</a></h3>
-          <p>Comfort, efficiency, air quality.</p>
-          <a class="btn" href="/services/duct-sealing/">Learn More</a>
+        <div class="service-image">
+          <img src="{{ '/assets/aeroseal-logo.webp' | url }}" alt="AeroSeal Duct Sealing">
+        </div>
+        <div class="service-content">
+          <h3>Duct Sealing</h3>
+          <p>Revolutionary duct sealing technology to improve your home's efficiency and indoor air quality.</p>
+          <a href="{{ '/services/duct-sealing' | url }}" class="btn btn-service">Learn More</a>
         </div>
       </div>
 
       <div class="service-card">
-        <a href="/services/floor-coatings/">
-          <img src="/assets/epoxy11.webp" alt="Floor Coatings">
-        </a>
-        <div class="service-card-content">
-          <h3><a href="/services/floor-coatings/">Floor Coatings</a></h3>
-          <p>Epoxy base + polyaspartic top.</p>
-          <a class="btn" href="/services/floor-coatings/">Learn More</a>
+        <div class="service-image">
+          <img src="{{ '/assets/epoxysample2.jpg' | url }}" alt="Professional Epoxy Floor Coating">
+        </div>
+        <div class="service-content">
+          <h3>Floor Coatings</h3>
+          <p>Durable, beautiful epoxy floors for garages, basements, and commercial spaces. Long-lasting protection.</p>
+          <a href="{{ '/services/floor-coatings' | url }}" class="btn btn-service">Learn More</a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Ready to Get Started?</h3>
+        <p>Contact us today for a free, no-obligation estimate on any of our professional services.</p>
+        
+        <div class="contact-details">
+          <div class="contact-item phone-highlight">
+            <strong>Call Now: (833) 941-6888</strong>
+            <p>Available 24/7 for your convenience</p>
+          </div>
+        </div>
+
+        <div class="showroom-hours">
+          <h4>Service Hours</h4>
+          <div class="contact-item"><strong>Mon - Fri:</strong> 8:00 AM - 5:00 PM</div>
+          <div class="contact-item"><strong>Saturday:</strong> By appointment only</div>
+          <div class="contact-item"><strong>Sunday:</strong> Emergency services available</div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Request Your Free Estimate</h3>
+
+        <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+          <input type="hidden" name="oid" value="00D5f000005JQXK">
+          <input type="hidden" name="retURL" value="https://lifetimehomeservices.com/thank-you">
+          
+          <div class="form-group">
+            <label for="first_name">First Name *</label>
+            <input type="text" id="first_name" name="first_name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="last_name">Last Name *</label>
+            <input type="text" id="last_name" name="last_name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+
+          <div class="form-group">
+            <label for="description">Tell us about your project</label>
+            <textarea id="description" name="description" rows="4" placeholder="Which service are you interested in? Any specific concerns or questions?"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">Get My Free Estimate</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
