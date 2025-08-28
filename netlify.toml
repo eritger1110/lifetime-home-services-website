@@ -70,6 +70,13 @@
   status = 200
 
 # ---------- Asset Caching ----------
+# HTML: no-cache to avoid stale pages at the alias
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+# Versioned/static assets: long-lived & immutable
 [[headers]]
   for = "/assets/*"
   [headers.values]
