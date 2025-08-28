@@ -12,34 +12,40 @@ title: Lifetime Home Services - Trusted Solutions. Lifetime Results.
          loading="eager" decoding="async" fetchpriority="high"
          class="hero-img">
   </picture>
-  <div class="hero-content">
-    <h1>Lifetime Home Services</h1>
-    <p>Trusted projects, transparent pricing, and local service pros.</p>
-    <div class="hero-buttons">
-      <a href="#contact" class="btn btn-primary">Get Free Estimate</a>
-      <a href="#financing" class="btn btn-secondary">Financing Options</a>
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <h1>Lifetime Home Services</h1>
+      <p>Trusted projects, transparent pricing, and local service pros.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Get Free Estimate</a>
+        <a href="tel:+18339416888" class="btn btn-secondary">Call (833) 941-6888</a>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="brand-navigation">
+<section class="brand-navigation">
   <div class="container">
-    <div class="brand-logos">
-      <div class="brand-item active">
-        <img src="{{ '/assets/lifetime-logo.png' | url }}" alt="Lifetime Home Services" class="brand-logo">
-        <span>Home Services</span>
-      </div>
-      <div class="brand-item">
-        <img src="{{ '/assets/closet-concepts-logo.png' | url }}" alt="Closet Concepts" class="brand-logo">
-        <span>Closet Concepts</span>
-      </div>
-      <div class="brand-item">
-        <img src="{{ '/assets/america-in-home-logo.png' | url }}" alt="America In-Home" class="brand-logo">
-        <span>America In-Home</span>
-      </div>
+    <h2>Our Family of Brands</h2>
+    <div class="brand-grid">
+      <a href="/" class="brand-card">
+        <img src="/assets/images/logos/lhs-logo.svg" alt="Lifetime Home Services" class="brand-logo">
+        <h3>Lifetime Home Services</h3>
+        <p>Radon testing, mitigation, duct sealing, and floor coatings</p>
+      </a>
+      <a href="/cc/" class="brand-card">
+        <img src="/assets/images/logos/cc-logo.svg" alt="Closet Concepts" class="brand-logo">
+        <h3>Closet Concepts</h3>
+        <p>Custom closet organization and storage solutions</p>
+      </a>
+      <a href="/aih/" class="brand-card">
+        <img src="/assets/images/logos/aih-logo.svg" alt="America In-Home" class="brand-logo">
+        <h3>America In-Home</h3>
+        <p>Professional home improvement and remodeling services</p>
+      </a>
     </div>
   </div>
-</div>
+</section>
 
 <section class="services-section">
   <div class="container">
@@ -96,6 +102,20 @@ title: Lifetime Home Services - Trusted Solutions. Lifetime Results.
   </div>
 </section>
 
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <h2>What Our Customers Say</h2>
+      <div class="rating">Loading reviews...</div>
+    </div>
+    <div class="reviews-carousel">
+      <div class="reviews-list">
+        <!-- Reviews loaded dynamically -->
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="contact-section" id="contact">
   <div class="container">
     <div class="contact-grid">
@@ -123,7 +143,18 @@ title: Lifetime Home Services - Trusted Solutions. Lifetime Results.
 
         <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
           <input type="hidden" name="oid" value="00D5f000005JQXK">
-          <input type="hidden" name="retURL" value="https://lifetimehomesolutions.com/thank-you">
+          <input type="hidden" name="retURL" value="https://lifetimehomeservices.com/thank-you">
+          
+          <!-- UTM Tracking Fields -->
+          <input type="hidden" name="URL__c" value="">
+          <input type="hidden" name="utm_source__c" value="">
+          <input type="hidden" name="utm_medium__c" value="">
+          <input type="hidden" name="utm_campaign__c" value="">
+          <input type="hidden" name="gclid__c" value="">
+          <input type="hidden" name="referrer__c" value="">
+          
+          <!-- Anti-spam honeypot -->
+          <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
 
           <div class="form-group">
             <label for="first_name">First Name *</label>
@@ -156,3 +187,7 @@ title: Lifetime Home Services - Trusted Solutions. Lifetime Results.
     </div>
   </div>
 </section>
+
+<!-- Load additional scripts -->
+<script defer src="/assets/js/reviews.js"></script>
+<script defer src="/assets/js/lead.js"></script>
