@@ -31,23 +31,28 @@
   {% if css %}<style>{{ css | safe }}</style>{% endif %}
 </head>
 
-<body class="shell lifetime">
+<body class="shell lifetime brand-lifetime">
   <!-- Top nav -->
   <nav class="navbar">
     <div class="nav-container">
       <div class="brand-switcher">
         <a class="brand-logo {% if brand == 'lifetime' or not brand %}active{% endif %}" href="/">
-          <img src="{{ brandAssets.lhs.logo }}" alt="Lifetime Home Services" class="logo" />
+          <img src="/assets/images/logos/lhs-logo.svg" alt="Lifetime Home Services" class="logo" />
         </a>
         <a class="brand-logo {% if brand == 'aih' %}active{% endif %}" href="/aih/">
-          <img src="{{ brandAssets.aih.logo }}" alt="America In-Home" class="logo" />
+          <img src="/assets/images/logos/aih-logo.svg" alt="America In-Home" class="logo" />
         </a>
         <a class="brand-logo {% if brand == 'cc' %}active{% endif %}" href="/cc/">
-          <img src="{{ brandAssets.cc.logo }}" alt="Closet Concepts" class="logo" />
+          <img src="/assets/images/logos/cc-logo.svg" alt="Closet Concepts" class="logo" />
         </a>
       </div>
 
-      <ul class="nav-links">
+      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">
+        <span class="sr-only">Menu</span>
+        ☰
+      </button>
+
+      <ul class="nav-links" id="primary-nav">
         <li><a href="{{ '/' | url }}">Home</a></li>
         <li><a href="{{ '/services/' | url }}">Services</a></li>
         <li><a href="{{ '/projects/' | url }}">Projects</a></li>

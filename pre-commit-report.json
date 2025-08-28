@@ -1,12 +1,13 @@
 {
-  "timestamp": "2025-08-28T03:46:07.824Z",
+  "timestamp": "2025-08-28T16:01:05.365Z",
   "status": "PASS",
   "summary": {
     "errors": 0,
-    "warnings": 406
+    "warnings": 413
   },
   "errors": [],
   "warnings": [
+    "Hardcoded domain URL in index.njk: https://lifetimehomeservices.com/thank-you",
     "Hardcoded domain URL in co.njk: https://lifetimehomeservices.com/service-areas/co",
     "Hardcoded domain URL in il.njk: https://lifetimehomeservices.com/service-areas/il",
     "Hardcoded domain URL in index.njk: https://lifetimehomeservices.com",
@@ -386,6 +387,9 @@
     "Referenced asset not found in walk-in-pantry.njk: /assets/healthy-choices-icon.png",
     "Referenced asset not found in header.njk: /assets/{{",
     "Referenced asset not found in layout.njk: /assets/css/site.css?v={{",
+    "Referenced asset not found in layout.njk: /assets/images/logos/lhs-logo.svg",
+    "Referenced asset not found in layout.njk: /assets/images/logos/aih-logo.svg",
+    "Referenced asset not found in layout.njk: /assets/images/logos/cc-logo.svg",
     "Referenced asset not found in layout.njk: /assets/js/site.js",
     "Referenced asset not found in about.njk: /assets/lifetime-team.jpg",
     "Referenced asset not found in about.njk: /assets/icons/licensed-insured.svg",
@@ -396,10 +400,13 @@
     "Referenced asset not found in about.njk: /assets/icons/financing.svg",
     "Referenced asset not found in about.njk: /assets/showroom-interior.jpg",
     "Referenced asset not found in index.njk: /assets/images/lifetime-hero-house.webp",
-    "Referenced asset not found in index.njk: /assets/closet-concepts-logo.png",
-    "Referenced asset not found in index.njk: /assets/america-in-home-logo.png",
+    "Referenced asset not found in index.njk: /assets/images/logos/lhs-logo.svg",
+    "Referenced asset not found in index.njk: /assets/images/logos/cc-logo.svg",
+    "Referenced asset not found in index.njk: /assets/images/logos/aih-logo.svg",
     "Referenced asset not found in index.njk: /assets/Fan_and_accessories.jpg",
     "Referenced asset not found in index.njk: /assets/aeroseal-logo.webp",
+    "Referenced asset not found in index.njk: /assets/js/reviews.js",
+    "Referenced asset not found in index.njk: /assets/js/lead.js",
     "Referenced asset not found in multi-brand-nav.njk: /assets/AmericaInHomeLogo.png",
     "Referenced asset not found in wi.njk: /assets/data/service-areas.json",
     "Referenced asset not found in duct-cleaning-sealing.njk: /assets/aeroseal-logo.webp",
