@@ -1,0 +1,26 @@
+<!-- FAQ Section -->
+{% if faqs and faqs.length > 0 %}
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Frequently Asked Questions</h2>
+      <p>Get answers to common questions about our custom storage solutions.</p>
+    </div>
+    
+    <div class="faq-list">
+      {% for faq in faqs %}
+      <div class="faq-item">
+        <button class="faq-button" aria-expanded="false" aria-controls="faq-{{ loop.index }}">
+          <span>{{ faq.question }}</span>
+          <span aria-hidden="true">+</span>
+        </button>
+        <div class="faq-content" id="faq-{{ loop.index }}">
+          <p>{{ faq.answer }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+

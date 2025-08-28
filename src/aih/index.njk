@@ -1,461 +1,220 @@
 ---
 layout: layout.njk
-title: America In-Home - Smart Home Automation Experts
-description: Professional smart home automation, Control4 systems, home theaters, and security solutions. Transform your home with intelligent technology.
+title: "America In-Home - Smart Home Technology"
+description: "Professional smart home automation, Control4 systems, home theater, and whole-home Wi-Fi solutions in Wisconsin."
 ---
 
-<div class="brand-header">
-  <div class="container">
-    <div class="brand-nav">
-      <div class="brand-logos">
-        <a href="/lifetime/" class="brand-logo">
-          <img src="/assets/lifetime-logo.png" alt="Lifetime Home Services">
-        </a>
-        <a href="/cc/" class="brand-logo">
-          <img src="/assets/closet-concepts-logo.png" alt="Closet Concepts">
-        </a>
-        <a href="/aih/" class="brand-logo active">
-          <img src="/assets/america-in-home-logo.png" alt="America In-Home">
-        </a>
-      </div>
-      <div class="contact-info">
-        <a href="tel:8339416888" class="phone-number">(833) 941-6888</a>
-        <span class="availability">Available 24/7</span>
-      </div>
+<!-- Hero Section with Video -->
+<section class="hero">
+  {% video "/assets/video/aih/america-in-home-25-spot-rev1.mp4", "/assets/images/aih/aih-showroom-picture.jpg", "hero-video" %}
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Smart Home Technology</h1>
+    <p>Transform your home with professional automation, Control4 systems, and whole-home Wi-Fi solutions designed for modern living.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary">Get Free Consultation</a>
+      <a href="tel:{{ phone }}" class="btn btn-secondary">Call {{ phone }}</a>
     </div>
   </div>
-</div>
+</section>
 
-<div class="hero-section">
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1>America In-Home</h1>
-        <p class="hero-subtitle">Your Smart Home Automation Experts</p>
-        <p class="hero-description">Transform your home with intelligent technology. From lighting and climate control to entertainment and security, we create seamless smart home experiences tailored to your lifestyle.</p>
-        
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-number">25+</span>
-            <span class="stat-label">Years Experience</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">Control4</span>
-            <span class="stat-label">Certified Gold Dealer</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">24/7</span>
-            <span class="stat-label">Local Support</span>
-          </div>
-        </div>
-        
-        <div class="hero-buttons">
-          <a href="tel:8339416888" class="btn btn-primary">Call (833) 941-6888</a>
-          <a href="#consultation" class="btn btn-secondary">Free Consultation</a>
-        </div>
-      </div>
-      
-      <div class="hero-video">
-        <iframe 
-          src="https://www.youtube.com/embed/NXCMKyYHl-o?autoplay=1&mute=1&loop=1&playlist=NXCMKyYHl-o&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1"
-          frameborder="0" 
-          allow="autoplay; encrypted-media" 
-          allowfullscreen
-          style="width: 100%; height: 100%; object-fit: cover;">
-        </iframe>
-        <div class="video-overlay"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<section class="what-is-smart-home">
+<!-- Services Grid -->
+<section class="section">
   <div class="container">
     <div class="section-header">
-      <h2>What Is a Smart Home?</h2>
-      <p class="section-intro">A smart home integrates advanced automation systems that provide homeowners with sophisticated monitoring, control, and convenience over their living environment. From lighting and climate control to entertainment, security, and energy management, smart home technology turns a standard house into an intelligent, connected ecosystem.</p>
+      <h2>Smart Home Solutions</h2>
+      <p>Professional installation and integration of cutting-edge home technology systems.</p>
     </div>
     
-    <div class="smart-home-grid">
-      <div class="feature-card">
-        <div class="feature-icon">
-          <img src="/assets/lighting-control-icon.png" alt="Lighting Control">
+    <div class="grid grid-4">
+      <!-- Control4 -->
+      <div class="service-card">
+        <div class="service-image">
+          {% picture "/assets/images/aih/control4-system.jpg", "Control4 smart home interface on tablet" %}
         </div>
-        <h3>Intelligent Lighting</h3>
-        <p>Create custom lighting scenes, control remotely, and reduce energy costs with automated schedules and occupancy sensors.</p>
+        <div class="service-content">
+          <h3>Control4 Systems</h3>
+          <p>Complete home automation with lighting, climate, security, and entertainment control from one interface.</p>
+          <a href="{{ baseUrl }}control4/" class="btn btn-service">Learn More</a>
+        </div>
       </div>
       
-      <div class="feature-card">
-        <div class="feature-icon">
-          <img src="/assets/climate-control-icon.png" alt="Climate Control">
+      <!-- Home Theater -->
+      <div class="service-card">
+        <div class="service-image">
+          {% picture "/assets/images/aih/home-theater-room.jpg", "Luxury home theater with surround sound" %}
         </div>
-        <h3>Climate Mastery</h3>
-        <p>Smart thermostats and zoned control maintain perfect comfort while maximizing efficiency throughout your home.</p>
+        <div class="service-content">
+          <h3>Home Theater</h3>
+          <p>Custom theater rooms with premium audio, video, and seating for the ultimate entertainment experience.</p>
+          <a href="{{ baseUrl }}home-theater/" class="btn btn-service">Learn More</a>
+        </div>
       </div>
       
-      <div class="feature-card">
-        <div class="feature-icon">
-          <img src="/assets/entertainment-icon.png" alt="Entertainment Systems">
+      <!-- Whole-Home Wi-Fi -->
+      <div class="service-card">
+        <div class="service-image">
+          {% picture "/assets/images/aih/wifi-coverage-home.jpg", "Home with strong Wi-Fi coverage visualization" %}
         </div>
-        <h3>Entertainment Hub</h3>
-        <p>Whole-home audio, immersive theaters, and centralized video systems for the ultimate entertainment experience.</p>
+        <div class="service-content">
+          <h3>Whole-Home Wi-Fi</h3>
+          <p>Professional-grade mesh networks that eliminate dead zones and provide fast, reliable internet everywhere.</p>
+          <a href="{{ baseUrl }}whole-home-wifi/" class="btn btn-service">Learn More</a>
+        </div>
       </div>
       
-      <div class="feature-card">
-        <div class="feature-icon">
-          <img src="/assets/security-icon.png" alt="Security Systems">
+      <!-- Smart Home Integration -->
+      <div class="service-card">
+        <div class="service-image">
+          {% picture "/assets/images/aih/smart-home-devices.jpg", "Connected smart home devices and sensors" %}
         </div>
-        <h3>Total Security</h3>
-        <p>Smart locks, cameras, monitoring, and 24/7 professional surveillance keep your family and property protected.</p>
+        <div class="service-content">
+          <h3>Smart Home Integration</h3>
+          <p>Seamlessly connect all your smart devices for unified control and enhanced home automation.</p>
+          <a href="{{ baseUrl }}smart-home/" class="btn btn-service">Learn More</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="our-services">
+<!-- Technology Partners -->
+<section class="section" style="background: var(--bg-light);">
   <div class="container">
-    <h2>Our Professional Services</h2>
-    <p class="section-intro">Comprehensive smart home solutions designed and installed by certified professionals.</p>
+    <div class="section-header">
+      <h2>Trusted Technology Partners</h2>
+      <p>We work with industry-leading brands to deliver reliable, cutting-edge solutions.</p>
+    </div>
     
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-image">
-          <img src="/assets/control4-system.jpg" alt="Control4 Smart Home System">
-        </div>
-        <h3>Control4 Systems</h3>
-        <p>The premier smart home operating system that unifies all your connected devices into one intuitive platform.</p>
-        <ul>
-          <li>Unified device control</li>
-          <li>Custom automation scenes</li>
-          <li>Voice assistant integration</li>
-          <li>Remote access anywhere</li>
-        </ul>
-        <a href="/aih/services/control4-systems" class="btn btn-outline">Learn More</a>
+    <div class="partners-grid">
+      <div class="partner-logo">
+        {% picture "/assets/images/aih/control4-logo.png", "Control4 authorized dealer" %}
       </div>
-      
-      <div class="service-card">
-        <div class="service-image">
-          <img src="/assets/wifi-networking.jpg" alt="Professional WiFi Setup">
-        </div>
-        <h3>WiFi Setup & Networking</h3>
-        <p>Enterprise-grade networking solutions for reliable connectivity throughout your entire home and property.</p>
-        <ul>
-          <li>Mesh network systems</li>
-          <li>Seamless coverage</li>
-          <li>Parental controls</li>
-          <li>Security monitoring</li>
-        </ul>
-        <a href="/aih/services/wifi-setup" class="btn btn-outline">Learn More</a>
+      <div class="partner-logo">
+        {% picture "/assets/images/aih/sonos-logo.png", "Sonos audio systems" %}
       </div>
-      
-      <div class="service-card">
-        <div class="service-image">
-          <img src="/assets/home-theater.jpg" alt="Luxury Home Theater">
-        </div>
-        <h3>Home Theater Solutions</h3>
-        <p>Immersive cinematic experiences with integrated audio, lighting, and video control systems.</p>
-        <ul>
-          <li>4K/8K projection systems</li>
-          <li>Dolby Atmos surround sound</li>
-          <li>Acoustic treatments</li>
-          <li>One-touch control</li>
-        </ul>
-        <a href="/aih/services/home-theater" class="btn btn-outline">Learn More</a>
+      <div class="partner-logo">
+        {% picture "/assets/images/aih/lutron-logo.png", "Lutron lighting control" %}
       </div>
-      
-      <div class="service-card">
-        <div class="service-image">
-          <img src="/assets/samsung-sonos.jpg" alt="Samsung TV and Sonos Sound System">
-        </div>
-        <h3>TV/Sound Packages</h3>
-        <p>Premium Samsung displays with Sonos audio systems for exceptional entertainment experiences.</p>
-        <ul>
-          <li>Samsung QLED/OLED displays</li>
-          <li>Sonos wireless audio</li>
-          <li>Professional installation</li>
-          <li>Seamless integration</li>
-        </ul>
-        <a href="/aih/services/tv-sound-packages" class="btn btn-outline">Learn More</a>
-      </div>
-      
-      <div class="service-card">
-        <div class="service-image">
-          <img src="/assets/home-security-system.jpg" alt="Smart Home Security">
-        </div>
-        <h3>Home Security</h3>
-        <p>Comprehensive security systems with 24/7 professional monitoring through Lifetime Security.</p>
-        <ul>
-          <li>Smart locks and cameras</li>
-          <li>24/7 UL-listed monitoring</li>
-          <li>Mobile alerts and control</li>
-          <li>Professional installation</li>
-        </ul>
-        <a href="/aih/services/home-security" class="btn btn-outline">Learn More</a>
+      <div class="partner-logo">
+        {% picture "/assets/images/aih/ubiquiti-logo.png", "Ubiquiti networking" %}
       </div>
     </div>
   </div>
 </section>
 
-<section class="why-choose-us">
+<!-- Showroom Section -->
+<section class="section">
   <div class="container">
-    <div class="why-choose-grid">
-      <div class="content-column">
-        <h2>Why Choose America In-Home?</h2>
-        
-        <div class="advantage-list">
-          <div class="advantage-item">
-            <div class="advantage-icon">✓</div>
-            <div class="advantage-content">
-              <h3>Over 25 Years of Expertise</h3>
-              <p>Our experienced team has been designing and installing smart home systems for over two decades. We understand how to blend advanced technology with elegant design and intuitive functionality.</p>
-            </div>
-          </div>
-          
-          <div class="advantage-item">
-            <div class="advantage-icon">✓</div>
-            <div class="advantage-content">
-              <h3>Certified Control4 Gold Dealer</h3>
-              <p>We work exclusively with trusted, high-end partners like Control4, delivering future-proof systems backed by expert support.</p>
-            </div>
-          </div>
-          
-          <div class="advantage-item">
-            <div class="advantage-icon">✓</div>
-            <div class="advantage-content">
-              <h3>Personalized Design & Installation</h3>
-              <p>Every system is customized for your specific lifestyle, preferences, and budget—whether you're building a luxury estate or upgrading a family home.</p>
-            </div>
-          </div>
-          
-          <div class="advantage-item">
-            <div class="advantage-icon">✓</div>
-            <div class="advantage-content">
-              <h3>Local Support You Can Trust</h3>
-              <p>Based in Wisconsin, we provide on-site consultations, white-glove installations, and ongoing service to keep your smart home running perfectly.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="testimonial-column">
-        <div class="testimonial-card">
-          <p>"America In-Home transformed our house into a truly smart home. The Control4 system is incredibly intuitive, and their support has been outstanding."</p>
-          <div class="testimonial-author">
-            <strong>Sarah & Mike Johnson</strong>
-            <span>Brookfield, WI</span>
-          </div>
-        </div>
-        
-        <div class="testimonial-card">
-          <p>"The home theater they installed is absolutely amazing. Movie nights have never been the same. Professional installation and ongoing support."</p>
-          <div class="testimonial-author">
-            <strong>David Chen</strong>
-            <span>Madison, WI</span>
-          </div>
-        </div>
-      </div>
+    <div class="section-header">
+      <h2>Experience Our Technology Showroom</h2>
+      <p>See, touch, and experience smart home technology before you buy. Our showroom features live demonstrations of all our systems.</p>
     </div>
-  </div>
-</section>
-
-<section class="popular-packages">
-  <div class="container">
-    <h2>Popular Packages & Solutions</h2>
-    <div class="packages-grid">
-      <div class="package-card">
-        <h3>Smart Home Starter</h3>
-        <p class="package-price">Starting at $2,999</p>
-        <p>Perfect for beginners looking to experience smart home automation.</p>
-        <ul>
-          <li>Lighting control system</li>
-          <li>Smart thermostat</li>
-          <li>Mobile app access</li>
-          <li>Professional installation</li>
-        </ul>
-        <a href="#consultation" class="btn btn-primary">Get Quote</a>
+    
+    <div class="showroom-content">
+      <div class="showroom-image">
+        {% picture "/assets/images/aih/aih-showroom-picture.jpg", "America In-Home technology showroom" %}
       </div>
-      
-      <div class="package-card featured">
-        <h3>Ultimate Home Theater</h3>
-        <p class="package-price">Starting at $15,999</p>
-        <p>Complete cinematic experience with premium components.</p>
-        <ul>
-          <li>4K projector or OLED display</li>
-          <li>Dolby Atmos surround sound</li>
-          <li>Acoustic treatments</li>
-          <li>Integrated lighting control</li>
-        </ul>
-        <a href="#consultation" class="btn btn-primary">Get Quote</a>
-      </div>
-      
-      <div class="package-card">
-        <h3>Complete Security Suite</h3>
-        <p class="package-price">Starting at $1,999</p>
-        <p>Comprehensive security with professional monitoring.</p>
-        <ul>
-          <li>Smart locks and cameras</li>
-          <li>24/7 monitoring service</li>
-          <li>Mobile alerts and control</li>
-          <li>Professional installation</li>
-        </ul>
-        <a href="#consultation" class="btn btn-primary">Get Quote</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="faq-section">
-  <div class="container">
-    <h2>Common Questions & Answers</h2>
-    <div class="faq-grid">
-      <div class="faq-item">
-        <h3>Do I need to rewire my home for smart systems?</h3>
-        <p>Not necessarily. Many smart devices can be installed with minimal electrical updates. We evaluate your home and make recommendations that work with your existing infrastructure.</p>
-      </div>
-      
-      <div class="faq-item">
-        <h3>Can I start small and expand later?</h3>
-        <p>Absolutely. Our systems are modular. Begin with a room or feature (like lighting or security) and scale as your needs grow.</p>
-      </div>
-      
-      <div class="faq-item">
-        <h3>How secure is a smart home?</h3>
-        <p>Our systems use encrypted communication protocols and secure networks. We help you set up strong passwords, two-factor authentication, and isolated IoT device networks.</p>
-      </div>
-      
-      <div class="faq-item">
-        <h3>Will I be able to use all this technology?</h3>
-        <p>Yes. We provide training, support, and intuitive interfaces that make controlling your home simple—even for non-tech-savvy users.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="consultation" class="consultation-section">
-  <div class="container">
-    <div class="consultation-content">
-      <div class="consultation-text">
-        <h2>Book Your Free Smart Home Consultation</h2>
-        <p>Ready to explore what's possible? We offer free in-home or virtual consultations to help you understand your options and start planning your perfect smart home system.</p>
-        
-        <div class="consultation-features">
+      <div class="showroom-details">
+        <h3>Visit Our Showroom</h3>
+        <div class="showroom-features">
           <div class="feature-item">
-            <span class="feature-icon">✓</span>
-            <span>Free In-Home Assessment</span>
+            <h4>Live Demonstrations</h4>
+            <p>Experience Control4, home theater, and smart home systems in action.</p>
           </div>
           <div class="feature-item">
-            <span class="feature-icon">✓</span>
-            <span>Custom System Design</span>
+            <h4>Expert Consultation</h4>
+            <p>Our certified technicians will design a system tailored to your home and lifestyle.</p>
           </div>
           <div class="feature-item">
-            <span class="feature-icon">✓</span>
-            <span>No Obligation Quote</span>
-          </div>
-          <div class="feature-item">
-            <span class="feature-icon">✓</span>
-            <span>Expert Recommendations</span>
+            <h4>Product Comparison</h4>
+            <p>Compare different brands and technologies to find the perfect fit for your needs.</p>
           </div>
         </div>
-        
-        <div class="contact-methods">
-          <a href="tel:8339416888" class="btn btn-primary btn-large">Call (833) 941-6888</a>
-          <p class="contact-note">Available 24/7 for your convenience</p>
+        <div class="showroom-hours">
+          <h4>Showroom Hours</h4>
+          <p><strong>Mon - Fri:</strong> 9:00 AM - 6:00 PM</p>
+          <p><strong>Saturday:</strong> 10:00 AM - 4:00 PM</p>
+          <p><strong>Sunday:</strong> By appointment only</p>
         </div>
-      </div>
-      
-      <div class="consultation-form">
-        <h3>Request Your Free Consultation</h3>
-        <form class="contact-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="first-name">First Name *</label>
-              <input type="text" id="first-name" name="first-name" required>
-            </div>
-            <div class="form-group">
-              <label for="last-name">Last Name *</label>
-              <input type="text" id="last-name" name="last-name" required>
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email *</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone">
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="project">Tell us about your smart home project</label>
-            <textarea id="project" name="project" rows="4" placeholder="What smart home features are you most interested in?"></textarea>
-          </div>
-          
-          <button type="submit" class="btn btn-primary btn-full">Get My Free Consultation</button>
-        </form>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="site-footer">
+<!-- Installation Process -->
+<section class="section" style="background: var(--bg-light);">
   <div class="container">
-    <div class="footer-content">
-      <div class="footer-column">
-        <h3>America In-Home</h3>
-        <p>Professional smart home automation solutions for Wisconsin homeowners. Transform your home with intelligent technology.</p>
-        <div class="contact-info">
-          <p><strong>Phone:</strong> <a href="tel:8339416888">(833) 941-6888</a></p>
-          <p><strong>Available:</strong> 24/7</p>
+    <div class="section-header">
+      <h2>Professional Installation Process</h2>
+      <p>From design to completion, we handle every aspect of your smart home installation.</p>
+    </div>
+    
+    <div class="grid grid-4">
+      <div class="card text-center">
+        <div class="card-content">
+          <h3>1. Consultation</h3>
+          <p>We assess your home, discuss your needs, and design a custom smart home solution.</p>
         </div>
       </div>
       
-      <div class="footer-column">
-        <h3>Our Services</h3>
-        <ul>
-          <li><a href="/aih/services/control4-systems">Control4 Systems</a></li>
-          <li><a href="/aih/services/wifi-setup">WiFi Setup</a></li>
-          <li><a href="/aih/services/home-theater">Home Theater Solutions</a></li>
-          <li><a href="/aih/services/tv-sound-packages">TV/Sound Packages</a></li>
-          <li><a href="/aih/services/home-security">Home Security</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h3>Company</h3>
-        <ul>
-          <li><a href="/aih/about">About Us</a></li>
-          <li><a href="/aih/portfolio">Portfolio</a></li>
-          <li><a href="/aih/testimonials">Testimonials</a></li>
-          <li><a href="/aih/contact">Contact</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h3>Service Areas</h3>
-        <p>Serving Wisconsin and surrounding areas with professional smart home installation and support.</p>
-        <div class="business-hours">
-          <h4>Business Hours</h4>
-          <p><strong>Mon - Fri:</strong> 8:00 AM - 5:00 PM</p>
-          <p><strong>Saturday:</strong> By appointment only</p>
-          <p><strong>Sunday:</strong> Closed</p>
-          <p><strong>Phone support available 24/7</strong></p>
+      <div class="card text-center">
+        <div class="card-content">
+          <h3>2. Planning</h3>
+          <p>Detailed system design, equipment selection, and installation timeline planning.</p>
         </div>
+      </div>
+      
+      <div class="card text-center">
+        <div class="card-content">
+          <h3>3. Installation</h3>
+          <p>Professional installation by certified technicians with minimal disruption to your home.</p>
+        </div>
+      </div>
+      
+      <div class="card text-center">
+        <div class="card-content">
+          <h3>4. Training</h3>
+          <p>Complete system walkthrough and training so you can enjoy your new smart home.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="reviews-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>What Our Customers Say</h2>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+        <div class="review-rating">★★★★★</div>
+        <span><strong>4.9</strong> (150+ reviews)</span>
       </div>
     </div>
     
-    <div class="footer-bottom">
-      <div class="footer-brands">
-        <p>Part of the Lifetime Home Services family:</p>
-        <a href="/lifetime/">Lifetime Home Services</a>
-        <a href="/cc/">Closet Concepts</a>
+    <div class="grid grid-3">
+      <div class="review-card">
+        <div class="review-rating">★★★★★</div>
+        <p class="review-text">"The Control4 system has transformed how we live in our home. Everything is so easy to control from one app. The installation was professional and seamless."</p>
+        <div class="review-author">— Mark T., Madison</div>
       </div>
-      <div class="footer-legal">
-        <p>&copy; 2024 America In-Home. All rights reserved.</p>
+      
+      <div class="review-card">
+        <div class="review-rating">★★★★★</div>
+        <p class="review-text">"Our home theater is incredible! The sound quality and picture are amazing. America In-Home made the whole process easy and stress-free."</p>
+        <div class="review-author">— Lisa K., Milwaukee</div>
+      </div>
+      
+      <div class="review-card">
+        <div class="review-rating">★★★★★</div>
+        <p class="review-text">"Finally have strong Wi-Fi throughout our entire house. No more dead zones! The team was knowledgeable and professional."</p>
+        <div class="review-author">— Robert S., Green Bay</div>
       </div>
     </div>
   </div>
-</footer>
+</section>
+
+<!-- Contact Form -->
+{% include "contact-form.njk" %}
 
