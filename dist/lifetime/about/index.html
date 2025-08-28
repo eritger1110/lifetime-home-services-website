@@ -9,8 +9,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
   <link rel="stylesheet" href="/assets/css/site.css?v=18" />
+
+  
+  <style id="critical-smoke-test">
+    :root{--max-w:1100px;--pad:16px}
+    *{box-sizing:border-box}
+    body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;color:#1a1a1a;line-height:1.5;margin:0}
+    .navbar{display:flex;gap:20px;align-items:center;padding:12px 0;border-bottom:1px solid #eee}
+    .nav-container{max-width:var(--max-w);margin:0 auto;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between}
+    .nav-links{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+    .hero{position:relative;margin:12px 0 24px}
+    .hero img{width:100%;height:clamp(220px,45vw,520px);object-fit:cover;border-radius:8px;display:block}
+    .section{padding:32px 0}
+    .container{max-width:var(--max-w);margin:0 auto;padding:0 var(--pad)}
+  </style>
+
   
 </head>
 
@@ -233,6 +248,15 @@
         <p>&copy; 2025 Lifetime Home Services Group. All rights reserved.</p>
         
       </div>
+    </div>
+  </footer>
+
+  <!-- Build stamp for verification -->
+  <footer class="site-footer">
+    <div class="container">
+      <small>
+        Build: 18 ·  · 2025-08-28T03:46:08.748Z
+      </small>
     </div>
   </footer>
 
