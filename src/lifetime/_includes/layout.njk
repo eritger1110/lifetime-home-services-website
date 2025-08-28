@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-  {# 1) CSS with cache-buster stays #}
-  <link rel="stylesheet" href="/assets/css/site.css?v={{ collections.all | length }}" />
+  {# 1) CSS with cache-buster using build SHA/timestamp #}
+  <link rel="stylesheet" href="/assets/css/site.css?v={{ (build.sha or build.ts) }}" />
 
   {# 2) Minimal inline "style smoke test" so page never looks broken #}
   <style id="critical-smoke-test">

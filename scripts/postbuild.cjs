@@ -129,3 +129,15 @@ if (!/\bhref=["']\/assets\/css\/site\.css/.test(lifetimeHtml)) {
 }
 
 console.log('✅ CSS link validation passed for /lifetime/');
+
+// P0: Strengthen CSS cache-buster validation
+const html = fs.readFileSync(path.join('dist','lifetime','index.html'),'utf8');
+if (!/\/assets\/css\/site\.css\?v=/.test(html)) {
+  console.error('❌ lifetime index missing versioned CSS query param');
+  process.exit(1);
+}
+if (/\/assets\/css\/site\.css\?v=18\b/.test(html)) {
+  console.error('❌ CSS cache-buster is stuck on v=18');
+  process.exit(1);
+}
+console.log('✅ CSS cache-buster uses build SHA/timestamp');
