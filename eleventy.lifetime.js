@@ -1,11 +1,13 @@
-module.exports = function (eleventyConfig) {
-  eleventyConfig.addNunjucksFilter("date", (value, format = "yyyy") => {
+module.exports = function (eleventy) {
+  eleventy.addLayoutAlias("base", "layout.njk");
+
+  eleventy.addNunjucksFilter("date", (value, format = "yyyy") => {
     const d = value ? new Date(value) : new Date();
     if (format === "yyyy") return String(d.getFullYear());
     return d.toISOString();
   });
 
-  eleventyConfig.addPassthroughCopy({
+  eleventy.addPassthroughCopy({
     "public/assets": "assets"
   });
 
@@ -13,10 +15,12 @@ module.exports = function (eleventyConfig) {
     dir: {
       input: "src/lifetime",
       output: "dist/lifetime",
-      includes: "_includes",
-      layouts: "_includes",
-      data: "../_data"
+      includes: "../_includes",
+      layouts: "../_includes",
+      data: "_data"
     },
     templateFormats: ["njk", "md", "html"]
   };
 };
+
+
