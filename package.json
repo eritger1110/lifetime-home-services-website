@@ -17,7 +17,15 @@
     "validate:deployment": "node scripts/deployment-safety.js",
     "validate:assets": "node scripts/validate-assets.js",
     "validate:all": "npm run validate:pre-commit && npm run validate:build && npm run validate:deployment && npm run validate:assets",
-    "build:safe": "npm ci && npm run validate:pre-commit && npm run build:all && npm run build:root && npm run validate:build && npm run validate:assets"
+    "build:safe": "npm ci && npm run validate:pre-commit && npm run build:all && npm run build:root && npm run validate:build && npm run validate:assets",
+    "cleanup": "node scripts/cleanup-build.js",
+    "optimize": "node scripts/optimize-images.js",
+    "health-check": "node scripts/health-check.js",
+    "maintenance": "npm run cleanup && npm run validate:assets && npm run optimize && npm run health-check",
+    "qa-guards": "node scripts/qa-guards.js",
+    "regression-tests": "node scripts/regression-tests.js",
+    "test": "npm run regression-tests && npm run qa-guards",
+    "full-validation": "npm run validate:all && npm run test && npm run health-check"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1"

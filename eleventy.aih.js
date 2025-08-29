@@ -1,6 +1,8 @@
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addLayoutAlias("base", "layout.njk");
+
   // Copy assets
   eleventyConfig.addPassthroughCopy({
     "src/assets": "assets",
@@ -20,7 +22,7 @@ module.exports = function (eleventyConfig) {
   // Build data
   eleventyConfig.addGlobalData("build", () => {
     return {
-      sha: process.env.COMMIT_REF || require('crypto').randomBytes(20).toString('hex'),
+      sha: process.env.COMMIT_REF || require("crypto").randomBytes(20).toString("hex"),
       ts: new Date().toISOString(),
       timestamp: Date.now()
     };
@@ -34,7 +36,7 @@ module.exports = function (eleventyConfig) {
   });
   
   eleventyConfig.addFilter("slug", function(str) {
-    return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    return str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   });
   
   eleventyConfig.addFilter("limit", function(array, limit) {
@@ -45,7 +47,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
   
   eleventyConfig.addShortcode("picture", function(src, alt, className = "") {
-    const webpSrc = src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+    const webpSrc = src.replace(/\.(jpg|jpeg|png)$/i, ".webp");
     return `<picture class="${className}">
       <source srcset="${webpSrc}" type="image/webp">
       <img src="${src}" alt="${alt}" loading="lazy">
@@ -63,7 +65,12 @@ module.exports = function (eleventyConfig) {
     dir: {
       input: "src/aih",
       output: "dist/aih",
+      includes: "../_includes",
+      layouts: "../_includes",
+      data: "_data"
     },
     pathPrefix: "/aih/"
   };
 };
+
+

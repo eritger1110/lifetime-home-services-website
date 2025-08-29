@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Title and Description -->
+  <title>{{ title or site.title }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ canonical or (site.url + page.url) }}">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ title or site.title }}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:url" content="{{ canonical or (site.url + page.url) }}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ ogImage or (site.url + '/assets/images/og/' + brand + '-og-1200x630.jpg') }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="{{ site.title }}">
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title or site.title }}">
+  <meta name="twitter:description" content="{{ description or site.description }}">
+  <meta name="twitter:image" content="{{ ogImage or (site.url + '/assets/images/og/' + brand + '-og-1200x630.jpg') }}">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/assets/favicons/{{ brand }}/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/{{ brand }}/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/{{ brand }}/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/{{ brand }}/favicon-16x16.png">
+  
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="/assets/css/site.css?v={{ build.sha or build.ts }}" as="style">
+  <link rel="preload" href="/assets/fonts/poppins-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/poppins-v20-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/assets/css/site.css?v={{ build.sha or build.ts }}">
+  
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ site.title }}",
+    "url": "{{ site.url }}",
+    "logo": "{{ site.url }}/assets/images/logos/{{ brand }}-logo.svg",
+    "description": "{{ site.description }}",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Wisconsin",
+      "addressCountry": "US"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "{{ site.phone }}",
+      "contactType": "customer service"
+    }
+  }
+  </script>
+  
+  <!-- Additional Schema -->
+  {% if schema %}{{ schema | safe }}{% endif %}
+</head>
+<body class="brand-{{ brand }}">
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Header -->
+  {% include "shared/components/Header.njk" %}
+  
+  <!-- Main Content -->
+  <main id="main-content" role="main">
+    {{ content | safe }}
+  </main>
+  
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="/assets/images/logos/{{ brand }}-logo.svg" alt="{{ site.title }}" class="footer-logo">
+          <p>{{ site.description }}</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-column">
+            <h3>Services</h3>
+            <ul>
+              {% for service in services %}
+              <li><a href="{{ service.url }}">{{ service.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="/{{ brand }}/about/">About</a></li>
+              <li><a href="/{{ brand }}/contact/">Contact</a></li>
+              <li><a href="/{{ brand }}/service-areas/">Service Areas</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h3>Contact</h3>
+            <p><strong>Phone:</strong> <a href="tel:{{ site.phone }}">{{ site.phone }}</a></p>
+            <p><strong>Email:</strong> <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+            <p><strong>Service Areas:</strong> Wisconsin, Illinois, Minnesota, Colorado</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; {{ build.year or "2025" }} {{ site.title }}. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="/privacy-policy/">Privacy Policy</a>
+          <a href="/terms-of-service/">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- JavaScript -->
+  <script src="/assets/js/site.js" defer></script>
+  
+  <!-- UTM Tracking Script -->
+  <script>
+    // Capture UTM parameters and store for forms
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmParams = {
+        utm_source: urlParams.get('utm_source') || '',
+        utm_medium: urlParams.get('utm_medium') || '',
+        utm_campaign: urlParams.get('utm_campaign') || '',
+        utm_content: urlParams.get('utm_content') || '',
+        utm_term: urlParams.get('utm_term') || ''
+      };
+      
+      // Store in sessionStorage for form population
+      sessionStorage.setItem('utmParams', JSON.stringify(utmParams));
+      
+      // Populate hidden form fields if they exist
+      Object.keys(utmParams).forEach(key => {
+        const field = document.getElementById(key);
+        if (field) field.value = utmParams[key];
+      });
+    })();
+  </script>
+</body>
+</html>
+

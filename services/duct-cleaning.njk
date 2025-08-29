@@ -1,0 +1,115 @@
+---
+layout: layout.njk
+title: "Duct Cleaning Services | Lifetime Home Services"
+description: "Breathe cleaner, healthier air with our professional duct cleaning services. Remove dust, allergens, and contaminants from your HVAC system."
+brand: lifetime
+canonical: "https://lifetimehomeservices.com/services/duct-cleaning/"
+ogImage: "/assets/images/og/lhs-duct-cleaning-og-1200x630.jpg"
+breadcrumbs:
+  - title: "Home"
+    url: "/lifetime/"
+  - title: "Services"
+    url: "/lifetime/services/"
+  - title: "Duct Cleaning"
+---
+
+{% set heroImageWebP = "/assets/images/lhs/duct-cleaning-service.webp" %}
+{% set heroImageJPG = "/assets/images/lhs/duct-cleaning-service.jpg" %}
+{% set heroTitle = "Professional Duct Cleaning" %}
+{% set heroSubtitle = "Breathe Cleaner, Healthier Air" %}
+{% set heroDescription = "Improve your home’s indoor air quality and HVAC efficiency with our comprehensive duct cleaning services. We remove dust, debris, and allergens from your ductwork, creating a healthier environment for you and your family."
+%}
+{% set primaryCTA = {
+  text: "Get a Free Duct Cleaning Quote",
+  url: "/lifetime/contact/?service=duct-cleaning",
+  icon: 
+    "<path d=\"M8 7V3M16 7V3M7 11H17M5 21H19C20.1046 21 21 20.1046 21 19V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"
+} %}
+{% set secondaryCTA = {
+  text: "Call for Information",
+  url: "tel:+18339416888",
+  phone: true,
+  icon: 
+    "<path d=\"M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08C5.16 2.08 5.56 4 6.28 5.76C6.44 6.12 6.32 6.56 6 6.84L4.84 8C6.84 11.88 10.12 15.16 14 17.16L15.16 16C15.44 15.68 15.88 15.56 16.24 15.72C18 16.44 19.92 16.84 21.92 16.84C22.52 16.84 23 17.32 23 17.92V20.92Z\" fill=\"currentColor\"/>"
+} %}
+
+{% include "shared/components/HeroImage.njk" %}
+
+<section class="section service-details-section">
+  <div class="container">
+    <div class="service-details-grid">
+      <div class="service-content">
+        <h2>Why is Duct Cleaning Important?</h2>
+        <p>Over time, your home’s ductwork can accumulate dust, debris, pet dander, and other allergens. These contaminants are then circulated throughout your home every time your HVAC system runs, contributing to poor indoor air quality and potential health issues. Professional duct cleaning removes these contaminants, improving the air you breathe and the efficiency of your HVAC system.</p>
+        
+        <h3>Benefits of Duct Cleaning</h3>
+        <ul>
+          <li><strong>Improved Indoor Air Quality:</strong> Remove dust, allergens, and other contaminants for cleaner, healthier air.</li>
+          <li><strong>Enhanced HVAC Efficiency:</strong> Clean ducts allow your HVAC system to run more efficiently, saving you money on energy bills.</li>
+          <li><strong>Reduced Allergens and Irritants:</strong> Alleviate allergy and asthma symptoms by removing triggers from your air ducts.</li>
+          <li><strong>Odor Removal:</strong> Eliminate musty smells and other odors caused by contaminants in your ductwork.</li>
+        </ul>
+
+        <h3>Our Duct Cleaning Process</h3>
+        <p>We use powerful, truck-mounted equipment to provide a thorough and effective duct cleaning:</p>
+        <ol>
+          <li><strong>Inspection:</strong> We inspect your ductwork to assess the level of contamination.</li>
+          <li><strong>Cleaning:</strong> We use a powerful vacuum and specialized tools to dislodge and remove debris from your entire duct system.</li>
+          <li><strong>Sanitizing:</strong> We can apply an EPA-approved sanitizer to kill bacteria, mold, and other microorganisms.</li>
+          <li><strong>Final Inspection:</strong> We perform a final inspection to ensure your ducts are clean and your system is running properly.</li>
+        </ol>
+      </div>
+
+      <div class="service-sidebar">
+        <div class="sidebar-widget">
+          <h4>Service Highlights</h4>
+          <ul>
+            <li>Powerful Truck-Mounted Equipment</li>
+            <li>NADCA Certified Technicians</li>
+            <li>Improved Indoor Air Quality</li>
+            <li>Enhanced HVAC Efficiency</li>
+            <li>Optional Sanitizing Service</li>
+            <li>Serving WI, IL, MN, & CO</li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Get a Free Estimate</h4>
+          <p>Contact us today for a free, no-obligation estimate on our professional duct cleaning services.</p>
+          <a href="/lifetime/contact/?service=duct-cleaning" class="btn btn-primary btn-full">Request Estimate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% set faqTitle = "Duct Cleaning FAQs" %}
+{% set faqs = [
+  {
+    question: "How often should I have my ducts cleaned?",
+    answer: "The National Air Duct Cleaners Association (NADCA) recommends having your air ducts cleaned every 3-5 years. However, you may want to have them cleaned more frequently if you have pets, smokers, or family members with allergies or asthma."
+  },
+  {
+    question: "How long does duct cleaning take?",
+    answer: "A typical residential duct cleaning takes 2-4 hours."
+  },
+  {
+    question: "Is duct cleaning messy?",
+    answer: "No, our technicians use containment measures to ensure that dust and debris are not released into your home. We leave your home as clean as we found it."
+  },
+  {
+    question: "What is NADCA certification?",
+    answer: "NADCA is the National Air Duct Cleaners Association. NADCA certified technicians have been trained in the proper methods of duct cleaning and adhere to a strict code of ethics."
+  }
+] %}
+
+{% include "shared/components/FAQ.njk" %}
+
+{% set formTitle = "Schedule Your Duct Cleaning Service" %}
+{% set formDescription = "Breathe cleaner, healthier air. Contact us today to schedule your professional duct cleaning service."
+%}
+{% set showContactInfo = true %}
+{% set showServiceField = true %}
+
+{% include "shared/components/ContactWebToLead.njk" %}
+
+

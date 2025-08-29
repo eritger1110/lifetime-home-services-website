@@ -1,0 +1,121 @@
+---
+layout: layout.njk
+title: "Premium Floor Coatings | Lifetime Home Services"
+description: "Durable and beautiful epoxy and polyurea floor coatings for garages, basements, and commercial spaces. Lifetime warranty available."
+brand: lifetime
+canonical: "https://lifetimehomeservices.com/services/floor-coatings/"
+ogImage: "/assets/images/og/lhs-floor-coatings-og-1200x630.jpg"
+breadcrumbs:
+  - title: "Home"
+    url: "/lifetime/"
+  - title: "Services"
+    url: "/lifetime/services/"
+  - title: "Premium Floor Coatings"
+---
+
+{% set heroImageWebP = "/assets/images/lhs/professional-floor-coating.webp" %}
+{% set heroImageJPG = "/assets/images/lhs/professional-floor-coating.jpg" %}
+{% set heroTitle = "Premium Floor Coatings" %}
+{% set heroSubtitle = "Durable, Beautiful, and Built to Last" %}
+{% set heroDescription = "Transform your garage, basement, or commercial space with our premium epoxy and polyurea floor coatings. Our professional installation ensures a durable, long-lasting finish that is both beautiful and functional."
+%}
+{% set primaryCTA = {
+  text: "Get a Free Floor Coating Quote",
+  url: "/lifetime/contact/?service=floor-coatings",
+  icon: 
+    "<path d=\"M8 7V3M16 7V3M7 11H17M5 21H19C20.1046 21 21 20.1046 21 19V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"
+} %}
+{% set secondaryCTA = {
+  text: "Call for Information",
+  url: "tel:+18339416888",
+  phone: true,
+  icon: 
+    "<path d=\"M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08C5.16 2.08 5.56 4 6.28 5.76C6.44 6.12 6.32 6.56 6 6.84L4.84 8C6.84 11.88 10.12 15.16 14 17.16L15.16 16C15.44 15.68 15.88 15.56 16.24 15.72C18 16.44 19.92 16.84 21.92 16.84C22.52 16.84 23 17.32 23 17.92V20.92Z\" fill=\"currentColor\"/>"
+} %}
+
+{% include "shared/components/HeroImage.njk" %}
+
+<section class="section service-details-section">
+  <div class="container">
+    <div class="service-details-grid">
+      <div class="service-content">
+        <h2>Transform Your Floors</h2>
+        <p>Our premium floor coatings provide a durable, seamless, and attractive finish for a variety of spaces. Whether you’re looking to upgrade your garage, finish your basement, or protect a commercial floor, we have a solution that will meet your needs and exceed your expectations.</p>
+        
+        <h3>Our Floor Coating Systems</h3>
+        <ul>
+          <li><strong>Epoxy Coatings:</strong> A durable and cost-effective solution for residential and commercial floors.</li>
+          <li><strong>Polyurea Coatings:</strong> A more flexible and UV-resistant option, ideal for spaces with direct sunlight exposure.</li>
+          <li><strong>Decorative Flake & Quartz Systems:</strong> Add color, texture, and slip resistance with our decorative flake and quartz systems.</li>
+        </ul>
+
+        <h3>Benefits of Our Floor Coatings</h3>
+        <ul>
+          <li><strong>Durability:</strong> Resistant to chemicals, stains, and abrasions.</li>
+          <li><strong>Longevity:</strong> Our coatings are built to last, with a lifetime warranty available.</li>
+          <li><strong>Easy Maintenance:</strong> Seamless and non-porous, our floors are easy to clean and maintain.</li>
+          <li><strong>Safety:</strong> We offer slip-resistant finishes to improve safety.</li>
+          <li><strong>Beauty:</strong> With a wide range of colors and finishes, we can create a floor that is as beautiful as it is durable.</li>
+        </ul>
+
+        <h3>Our Installation Process</h3>
+        <p>Our professional installation process ensures a flawless finish that will last for years to come:</p>
+        <ol>
+          <li><strong>Surface Preparation:</strong> We diamond grind the concrete to create the ideal profile for adhesion.</li>
+          <li><strong>Base Coat:</strong> We apply a moisture-mitigating primer and a 100% solids epoxy or polyurea base coat.</li>
+          <li><strong>Broadcast:</strong> We broadcast your choice of decorative flakes or quartz to create a custom look.</li>
+          <li><strong>Top Coat:</strong> We apply a clear, UV-stable polyaspartic top coat for ultimate protection and a beautiful finish.</li>
+        </ol>
+      </div>
+
+      <div class="service-sidebar">
+        <div class="sidebar-widget">
+          <h4>Service Highlights</h4>
+          <ul>
+            <li>Epoxy & Polyurea Systems</li>
+            <li>Lifetime Warranty Available</li>
+            <li>Professional Diamond Grinding</li>
+            <li>Chemical & Stain Resistant</li>
+            <li>UV-Stable Top Coats</li>
+            <li>Serving WI, IL, MN, & CO</li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Get a Free Estimate</h4>
+          <p>Contact us today for a free, no-obligation estimate on our premium floor coating services.</p>
+          <a href="/lifetime/contact/?service=floor-coatings" class="btn btn-primary btn-full">Request Estimate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% set faqTitle = "Floor Coating FAQs" %}
+{% set faqs = [
+  {
+    question: "How long does the installation process take?",
+    answer: "Most residential projects can be completed in just 1-2 days."
+  },
+  {
+    question: "How long until I can use my new floor?",
+    answer: "You can walk on your new floor in 24 hours and drive on it in 72 hours."
+  },
+  {
+    question: "Are your floor coatings slippery?",
+    answer: "We offer a variety of slip-resistant finishes to meet your needs. Our standard flake floors have a texture similar to an orange peel, providing excellent slip resistance."
+  },
+  {
+    question: "How do I clean my new floor?",
+    answer: "Our floors are non-porous and easy to clean. Simply use a mild cleaner and a mop or squeegee."
+  }
+] %}
+
+{% include "shared/components/FAQ.njk" %}
+
+{% set formTitle = "Get Your Free Floor Coating Estimate" %}
+{% set formDescription = "Transform your space with a durable, beautiful floor coating. Contact us today for a free estimate."
+%}
+{% set showContactInfo = true %}
+{% set showServiceField = true %}
+
+{% include "shared/components/ContactWebToLead.njk" %}
