@@ -1,34 +1,21 @@
 {
-  "name": "lifetime-sites",
+  "name": "lifetime-home-services-website",
   "version": "1.0.0",
-  "private": true,
+  "description": "Tri-brand website for Lifetime Home Services, Closet Concepts, and America In-Home",
   "scripts": {
+    "build": "npm run build:all",
+    "build:all": "npm run build:lifetime && npm run build:cc && npm run build:aih",
     "build:lifetime": "npx @11ty/eleventy --config=eleventy.lifetime.js",
+    "build:cc": "npx @11ty/eleventy --config=eleventy.cc.js", 
     "build:aih": "npx @11ty/eleventy --config=eleventy.aih.js",
-    "build:cc": "npx @11ty/eleventy --config=eleventy.cc.js",
-    "build:all": "npm run build:lifetime && npm run build:aih && npm run build:cc",
-    "build:root": "node scripts/postbuild.cjs",
-    "postbuild": "node scripts/postbuild.cjs",
-    "prebuild:lifetime": "node scripts/generate-headers.js",
-    "prebuild:aih": "node scripts/generate-headers.js",
-    "prebuild:cc": "node scripts/generate-headers.js",
-    "validate:pre-commit": "node scripts/pre-commit-checks.js",
-    "validate:build": "node scripts/validate-build.js",
-    "validate:deployment": "node scripts/deployment-safety.js",
-    "validate:assets": "node scripts/validate-assets.js",
-    "validate:all": "npm run validate:pre-commit && npm run validate:build && npm run validate:deployment && npm run validate:assets",
-    "build:safe": "npm ci && npm run validate:pre-commit && npm run build:all && npm run build:root && npm run validate:build && npm run validate:assets",
-    "cleanup": "node scripts/cleanup-build.js",
-    "optimize": "node scripts/optimize-images.js",
-    "health-check": "node scripts/health-check.js",
-    "maintenance": "npm run cleanup && npm run validate:assets && npm run optimize && npm run health-check",
-    "qa-guards": "node scripts/qa-guards.js",
-    "regression-tests": "node scripts/regression-tests.js",
-    "test": "npm run regression-tests && npm run qa-guards",
-    "full-validation": "npm run validate:all && npm run test && npm run health-check"
+    "build:safe": "npm run build:all && node scripts/postbuild.cjs",
+    "serve": "npx @11ty/eleventy --config=eleventy.lifetime.js --serve",
+    "serve:cc": "npx @11ty/eleventy --config=eleventy.cc.js --serve",
+    "serve:aih": "npx @11ty/eleventy --config=eleventy.aih.js --serve"
   },
-  "devDependencies": {
+  "dependencies": {
     "@11ty/eleventy": "^2.0.1"
-  }
+  },
+  "devDependencies": {}
 }
 

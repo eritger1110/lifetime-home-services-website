@@ -1,0 +1,110 @@
+---
+layout: layout.njk
+title: Professional Home Services
+description: Professional radon testing, duct sealing, and floor coating services for Wisconsin homes.
+---
+
+<!-- Hero Section -->
+<section class="hero hero-image">
+    <div class="hero-background">
+        {% picture site.hero.image, "Professional home services", "hero-image" %}
+        <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+        <div class="container">
+            <h1 class="hero-title">{{ site.hero.title }}</h1>
+            <p class="hero-subtitle">{{ site.hero.subtitle }}</p>
+            <a href="{{ site.ctaUrl }}" class="btn btn-primary btn-large">{{ site.hero.cta }}</a>
+        </div>
+    </div>
+</section>
+
+<!-- Services Grid -->
+<section class="services-grid">
+    <div class="container">
+        <h2>Our Professional Services</h2>
+        <div class="grid grid-4">
+            <div class="service-card">
+                {% picture "/assets/images/lhs/radon-testing.jpg", "Radon Testing", "service-image" %}
+                <h3>Radon Testing & Mitigation</h3>
+                <p>Professional radon testing and mitigation services to keep your family safe from this invisible threat.</p>
+                <a href="/services/radon-testing/" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="service-card">
+                {% picture "/assets/images/lhs/duct-sealing.jpg", "Duct Sealing", "service-image" %}
+                <h3>Duct Sealing (Aeroseal)</h3>
+                <p>Advanced Aeroseal technology to seal ductwork from the inside, improving efficiency and air quality.</p>
+                <a href="/services/duct-sealing/" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="service-card">
+                {% picture "/assets/images/lhs/floor-coatings.jpg", "Floor Coatings", "service-image" %}
+                <h3>Premium Floor Coatings</h3>
+                <p>Durable epoxy and polyurea floor coatings for garages, basements, and commercial spaces.</p>
+                <a href="/services/floor-coatings/" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="service-card">
+                {% picture "/assets/images/lhs/duct-cleaning.jpg", "Duct Cleaning", "service-image" %}
+                <h3>Duct Cleaning</h3>
+                <p>Professional duct cleaning services to improve indoor air quality and HVAC system efficiency.</p>
+                <a href="/services/duct-cleaning/" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="why-choose-us">
+    <div class="container">
+        <div class="grid grid-2">
+            <div class="content">
+                <h2>Why Choose Lifetime Home Services?</h2>
+                <ul class="feature-list">
+                    <li>Licensed and insured professionals</li>
+                    <li>Advanced technology and equipment</li>
+                    <li>Comprehensive warranties</li>
+                    <li>Free estimates and consultations</li>
+                    <li>Serving Wisconsin for over 20 years</li>
+                </ul>
+                <a href="/about/" class="btn btn-primary">Learn More About Us</a>
+            </div>
+            <div class="image">
+                {% picture "/assets/images/lhs/team-photo.jpg", "Lifetime Home Services Team", "team-photo" %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Service Areas -->
+<section class="service-areas">
+    <div class="container">
+        <h2>Serving Wisconsin Communities</h2>
+        <p>We proudly serve homeowners throughout Wisconsin with professional home services.</p>
+        <div class="areas-grid">
+            <div class="area">Madison</div>
+            <div class="area">Milwaukee</div>
+            <div class="area">Green Bay</div>
+            <div class="area">Appleton</div>
+            <div class="area">Kenosha</div>
+            <div class="area">Racine</div>
+        </div>
+        <a href="/service-areas/" class="btn btn-outline">View All Service Areas</a>
+    </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="contact-cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Get Started?</h2>
+            <p>Contact us today for a free estimate on any of our professional home services.</p>
+            <div class="cta-buttons">
+                <a href="tel:{{ site.phone }}" class="btn btn-primary">{{ site.phone }}</a>
+                <a href="/contact/" class="btn btn-outline">Get Free Quote</a>
+            </div>
+        </div>
+    </div>
+</section>
+

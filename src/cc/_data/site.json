@@ -1,0 +1,42 @@
+{
+  "name": "Closet Concepts",
+  "brand": "cc",
+  "url": "https://closetconcepts.com",
+  "description": "Custom storage solutions for closets, garages, home offices, and more throughout Wisconsin.",
+  "phone": "262-955-5701",
+  "ctaText": "Free Design",
+  "ctaUrl": "/contact/",
+  "address": {
+    "street": "123 Main Street",
+    "city": "Madison",
+    "state": "WI",
+    "zip": "53703"
+  },
+  "navigation": [
+    { "title": "Home", "url": "/" },
+    { "title": "Walk-In Closets", "url": "/services/walk-in-closets/" },
+    { "title": "Reach-In Closets", "url": "/services/reach-in-closets/" },
+    { "title": "Garage Storage", "url": "/services/garage-storage/" },
+    { "title": "Home Office", "url": "/services/home-office/" },
+    { "title": "Contact", "url": "/contact/" }
+  ],
+  "services": [
+    { "title": "Walk-In Closets", "url": "/services/walk-in-closets/" },
+    { "title": "Reach-In Closets", "url": "/services/reach-in-closets/" },
+    { "title": "Garage Storage", "url": "/services/garage-storage/" },
+    { "title": "Home Office", "url": "/services/home-office/" },
+    { "title": "Laundry Room", "url": "/services/laundry-room/" },
+    { "title": "Mudroom", "url": "/services/mudroom/" },
+    { "title": "Walk-In Pantry", "url": "/services/walk-in-pantry/" },
+    { "title": "Hobby Room", "url": "/services/hobby-room/" }
+  ],
+  "hero": {
+    "type": "video",
+    "video": "https://www.youtube.com/embed/closet-concepts-video",
+    "poster": "/assets/images/cc/closet-concepts-hero.jpg",
+    "title": "Custom Storage Solutions",
+    "subtitle": "Transform your space with professional closet and storage systems",
+    "cta": "Free Design Consultation"
+  }
+}
+

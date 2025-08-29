@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} - {% endif %}{{ site.name }}</title>
+    <meta name="description" content="{{ description or site.description }}">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="{% if title %}{{ title }} - {% endif %}{{ site.name }}">
+    <meta property="og:description" content="{{ description or site.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:image" content="{{ site.url }}/assets/images/{{ site.brand }}-og-image.jpg">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "{{ site.name }}",
+      "url": "{{ site.url }}",
+      "logo": "{{ site.url }}/assets/images/logos/{{ site.brand }}-logo.svg",
+      "description": "{{ site.description }}",
+      "telephone": "{{ site.phone }}",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "{{ site.address.city }}",
+        "addressRegion": "{{ site.address.state }}",
+        "postalCode": "{{ site.address.zip }}",
+        "streetAddress": "{{ site.address.street }}"
+      }
+    }
+    </script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/site.css?v={{ build.sha or build.ts }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logos/{{ site.brand }}-logo.svg">
+</head>
+<body class="brand-{{ site.brand }}">
+    <header class="site-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <!-- Brand Switcher -->
+                <div class="brand-switcher">
+                    <a href="/lifetime/" class="brand-link{% if site.brand == 'lhs' %} active{% endif %}">
+                        <img src="/assets/images/logos/lhs-logo.svg" alt="Lifetime Home Services">
+                    </a>
+                    <a href="/cc/" class="brand-link{% if site.brand == 'cc' %} active{% endif %}">
+                        <img src="/assets/images/logos/cc-logo.svg" alt="Closet Concepts">
+                    </a>
+                    <a href="/aih/" class="brand-link{% if site.brand == 'aih' %} active{% endif %}">
+                        <img src="/assets/images/logos/aih-logo.svg" alt="America In-Home">
+                    </a>
+                </div>
+                
+                <!-- Main Navigation -->
+                <div class="main-menu">
+                    {% for item in site.navigation %}
+                    <a href="{{ item.url }}" class="nav-link{% if page.url == item.url %} active{% endif %}">
+                        {{ item.title }}
+                    </a>
+                    {% endfor %}
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="header-contact">
+                    <a href="tel:{{ site.phone }}" class="phone-link">{{ site.phone }}</a>
+                    <a href="{{ site.ctaUrl }}" class="cta-button">{{ site.ctaText }}</a>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="site-main">
+        {{ content | safe }}
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="/assets/images/logos/{{ site.brand }}-logo.svg" alt="{{ site.name }}">
+                    <p>{{ site.description }}</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        {% for service in site.services %}
+                        <li><a href="{{ service.url }}">{{ service.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><a href="tel:{{ site.phone }}">{{ site.phone }}</a></p>
+                    <p>{{ site.address.street }}<br>
+                       {{ site.address.city }}, {{ site.address.state }} {{ site.address.zip }}</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; {% year %} {{ site.name }}. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/site.js"></script>
+</body>
+</html>
+
