@@ -1,711 +1,117 @@
 ---
-layout: layout.njk
-title: Home Theater Solutions - America In-Home
-description: Luxury home theater design and installation. 4K/8K projection, Dolby Atmos surround sound, acoustic treatments, and integrated lighting control.
+layout: shared/_includes/layout.njk
+title: "Custom Home Theater Systems | America In-Home"
+description: "Experience the magic of the movies in your own home with a custom-designed home theater system. Professional installation and calibration."
+brand: aih
+canonical: "https://americainhome.com/services/home-theater/"
+ogImage: "/assets/images/og/aih-home-theater-og-1200x630.jpg"
+breadcrumbs:
+  - title: "Home"
+    url: "/aih/"
+  - title: "Services"
+    url: "/aih/services/"
+  - title: "Home Theater Systems"
 ---
 
-<div class="service-hero">
-  <div class="container">
-    <div class="hero-content">
-      <h1>Home Theater Solutions</h1>
-      <p class="hero-subtitle">Cinematic Experiences Engineered for Your Home</p>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-number">4K/8K</span>
-          <span class="stat-label">Ultra HD Projection</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">Dolby Atmos</span>
-          <span class="stat-label">Immersive Audio</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">25+</span>
-          <span class="stat-label">Years Experience</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-image">
-      <img src="/assets/luxury-home-theater.jpg" alt="Luxury Home Theater Installation">
-    </div>
-  </div>
-</div>
+{% set heroImageWebP = "/assets/images/aih/home-theater.webp" %}
+{% set heroImageJPG = "/assets/images/aih/home-theater.jpg" %}
+{% set heroTitle = "Custom Home Theater Systems" %}
+{% set heroSubtitle = "Your Personal Cinema" %}
+{% set heroDescription = "Bring the movie theater experience home with a custom-designed home theater system from America In-Home. From the big screen and immersive sound to comfortable seating and automated lighting, we create home theaters that are tailored to your space and your style."
+%}
+{% set primaryCTA = {
+  text: "Get a Free Home Theater Consultation",
+  url: "/aih/contact/?service=home-theater",
+  icon: 
+    "<path d=\"M8 7V3M16 7V3M7 11H17M5 21H19C20.1046 21 21 20.1046 21 19V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"
+} %}
+{% set secondaryCTA = {
+  text: "Call for Information",
+  url: "tel:+18339416888",
+  phone: true,
+  icon: 
+    "<path d=\"M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08C5.16 2.08 5.56 4 6.28 5.76C6.44 6.12 6.32 6.56 6 6.84L4.84 8C6.84 11.88 10.12 15.16 14 17.16L15.16 16C15.44 15.68 15.88 15.56 16.24 15.72C18 16.44 19.92 16.84 21.92 16.84C22.52 16.84 23 17.32 23 17.92V20.92Z\" fill=\"currentColor\"/>"
+} %}
 
-<section class="theater-introduction">
+{% include "shared/components/HeroImage.njk" %}
+
+<section class="section service-details-section">
   <div class="container">
-    <div class="intro-grid">
-      <div class="content-column">
-        <h2>Transform Any Space Into a Cinematic Retreat</h2>
-        <p class="lead">Whether you're building a dedicated theater from the ground up or upgrading a spare room into a media oasis, we design immersive home theaters that rival commercial cinemas—without the sticky floors and overpriced concessions.</p>
+    <div class="service-details-grid">
+      <div class="service-content">
+        <h2>The Ultimate Entertainment Experience</h2>
+        <p>At America In-Home, we design and install custom home theater systems that deliver an unparalleled entertainment experience. We work with you to create a system that meets your unique needs and budget, from a simple media room to a dedicated home cinema.</p>
         
-        <div class="theater-benefits">
-          <div class="benefit-item">
-            <div class="benefit-icon">✓</div>
-            <div class="benefit-content">
-              <h3>Ultimate Convenience</h3>
-              <p>Watch what you want, when you want, with perfect picture and sound quality in the comfort of your own home.</p>
-            </div>
-          </div>
-          
-          <div class="benefit-item">
-            <div class="benefit-icon">✓</div>
-            <div class="benefit-content">
-              <h3>Immersive Experience</h3>
-              <p>Feel every explosion, hear every whisper, and see every detail with cinema-quality audio and video systems.</p>
-            </div>
-          </div>
-          
-          <div class="benefit-item">
-            <div class="benefit-icon">✓</div>
-            <div class="benefit-content">
-              <h3>Added Home Value</h3>
-              <p>A professional-grade home theater adds tremendous resale appeal and luxury comfort to your property.</p>
-            </div>
-          </div>
-          
-          <div class="benefit-item">
-            <div class="benefit-icon">✓</div>
-            <div class="benefit-content">
-              <h3>Family Entertainment Hub</h3>
-              <p>Create lasting memories with family movie nights, sports viewing parties, and gaming sessions.</p>
-            </div>
-          </div>
-        </div>
+        <h3>Our Design Process</h3>
+        <p>Our expert designers work with you to create a home theater that is both beautiful and functional. We take into account your space, your budget, and your entertainment preferences to create a design that you’ll love.</p>
+        <ol>
+          <li><strong>Consultation:</strong> We start with a free in-home consultation to discuss your vision and assess your space.</li>
+          <li><strong>System Design:</strong> We design a system that includes the best audio, video, and control components for your budget.</li>
+          <li><strong>Installation & Calibration:</strong> Our certified technicians install and calibrate your system for optimal performance.</li>
+        </ol>
+
+        <h3>Home Theater Components</h3>
+        <ul>
+          <li>Projectors and screens</li>
+          <li>Flat-panel displays</li>
+          <li>Surround sound systems</li>
+          <li>Acoustic treatments</li>
+          <li>Theater seating</li>
+          <li>Automated lighting and shades</li>
+          <li>And much more!</li>
+        </ul>
       </div>
-      
-      <div class="visual-column">
-        <div class="theater-comparison">
-          <h3>Home Theater vs. Commercial Cinema</h3>
-          <div class="comparison-table">
-            <div class="comparison-header">
-              <div class="home-theater">Your Home Theater</div>
-              <div class="commercial-cinema">Commercial Cinema</div>
-            </div>
-            
-            <div class="comparison-row">
-              <div class="feature">Convenience</div>
-              <div class="home-advantage">Watch anytime, pause when needed</div>
-              <div class="commercial-disadvantage">Fixed showtimes, no pausing</div>
-            </div>
-            
-            <div class="comparison-row">
-              <div class="feature">Comfort</div>
-              <div class="home-advantage">Your own seating, temperature control</div>
-              <div class="commercial-disadvantage">Shared space, fixed temperature</div>
-            </div>
-            
-            <div class="comparison-row">
-              <div class="feature">Cost</div>
-              <div class="home-advantage">No tickets, parking, or concessions</div>
-              <div class="commercial-disadvantage">$15+ per person plus extras</div>
-            </div>
-            
-            <div class="comparison-row">
-              <div class="feature">Content</div>
-              <div class="home-advantage">Any movie, show, or game</div>
-              <div class="commercial-disadvantage">Limited current releases</div>
-            </div>
-          </div>
+
+      <div class="service-sidebar">
+        <div class="sidebar-widget">
+          <h4>Service Highlights</h4>
+          <ul>
+            <li>Free In-Home Consultation</li>
+            <li>Custom System Design</li>
+            <li>Professional Installation & Calibration</li>
+            <li>Certified Technicians</li>
+            <li>Premium Audio & Video Brands</li>
+            <li>Serving WI, IL, MN, & CO</li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Get a Free Consultation</h4>
+          <p>Contact us today for a free, no-obligation consultation to learn more about how we can create the home theater of your dreams.</p>
+          <a href="/aih/contact/?service=home-theater" class="btn btn-primary btn-full">Request Free Consultation</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="installation-types">
-  <div class="container">
-    <h2>Home Theater Installation Options</h2>
-    <p class="section-intro">From dedicated theater rooms to multi-purpose spaces, we create the perfect entertainment solution for your home and lifestyle.</p>
-    
-    <div class="installation-grid">
-      <div class="installation-card">
-        <div class="installation-type">New Construction</div>
-        <h3>Built for Perfection</h3>
-        <div class="installation-image">
-          <img src="/assets/new-construction-theater.jpg" alt="New Construction Home Theater">
-        </div>
-        <div class="installation-details">
-          <h4>Designed from the Ground Up</h4>
-          <p>Collaborate with your builder to create the ultimate theater experience with optimal room acoustics, power distribution, and equipment placement.</p>
-          
-          <div class="features-list">
-            <h5>New Construction Advantages:</h5>
-            <ul>
-              <li>Optimal room dimensions and acoustics</li>
-              <li>Pre-wired for all audio/video equipment</li>
-              <li>Dedicated electrical circuits</li>
-              <li>Built-in acoustic treatments</li>
-              <li>Hidden wiring and equipment</li>
-              <li>Custom seating platforms</li>
-              <li>Integrated lighting control</li>
-              <li>HVAC optimization for equipment</li>
-            </ul>
-          </div>
-          
-          <div class="process-overview">
-            <h5>Our Process:</h5>
-            <ol>
-              <li>Room design and acoustic planning</li>
-              <li>Equipment selection and placement</li>
-              <li>Electrical and low-voltage planning</li>
-              <li>Construction coordination</li>
-              <li>Installation and calibration</li>
-              <li>Final testing and training</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-      
-      <div class="installation-card">
-        <div class="installation-type">Existing Spaces</div>
-        <h3>Transform Any Room</h3>
-        <div class="installation-image">
-          <img src="/assets/retrofit-theater.jpg" alt="Retrofit Home Theater Installation">
-        </div>
-        <div class="installation-details">
-          <h4>Maximize Your Existing Space</h4>
-          <p>Transform basements, living rooms, or spare bedrooms into incredible entertainment spaces with minimal disruption to your home.</p>
-          
-          <div class="features-list">
-            <h5>Retrofit Solutions Include:</h5>
-            <ul>
-              <li>Acoustic analysis and treatment</li>
-              <li>Lighting control integration</li>
-              <li>Motorized blackout shading</li>
-              <li>Hidden equipment installation</li>
-              <li>Wireless and wired connectivity</li>
-              <li>Seating recommendations</li>
-              <li>Décor and finishing touches</li>
-              <li>Minimal wall modifications</li>
-            </ul>
-          </div>
-          
-          <div class="space-options">
-            <h5>Popular Retrofit Locations:</h5>
-            <ul>
-              <li><strong>Basements:</strong> Natural darkness, isolated from noise</li>
-              <li><strong>Living Rooms:</strong> Multi-purpose entertainment space</li>
-              <li><strong>Bonus Rooms:</strong> Dedicated family entertainment</li>
-              <li><strong>Bedrooms:</strong> Personal viewing retreat</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+{% set faqTitle = "Home Theater FAQs" %}
+{% set faqs = [
+  {
+    question: "How much does a home theater cost?",
+    answer: "The cost of a home theater varies widely depending on the size of your space, the components you choose, and the level of customization. Entry-level systems can start around $5,000, while high-end dedicated home cinemas can range from $25,000 to $100,000 and up."
+  },
+  {
+    question: "What is the difference between a media room and a dedicated home theater?",
+    answer: "A media room is typically a multi-purpose space that is designed for a variety of entertainment activities, while a dedicated home theater is a room that is specifically designed for watching movies and other video content."
+  },
+  {
+    question: "What are the most important components of a home theater?",
+    answer: "The most important components of a home theater are the display (projector or flat-panel TV), the surround sound system, and the source components (Blu-ray player, streaming device, etc.)."
+  },
+  {
+    question: "Do you offer a warranty?",
+    answer: "Yes, we offer a 1-year warranty on all installation and programming, and all products come with a manufacturer’s warranty."
+  }
+] %}
 
-<section class="theater-components">
-  <div class="container">
-    <h2>Premium Theater Components</h2>
-    <p class="section-intro">Every component is carefully selected and calibrated to work together seamlessly for the ultimate viewing experience.</p>
-    
-    <div class="components-grid">
-      <div class="component-card">
-        <div class="component-image">
-          <img src="/assets/4k-projector.jpg" alt="4K Home Theater Projector">
-        </div>
-        <h3>4K/8K Projection Systems</h3>
-        <p>Experience stunning clarity with the latest projection technology featuring HDR, wide color gamut, and laser light sources.</p>
-        
-        <div class="component-features">
-          <h4>Features:</h4>
-          <ul>
-            <li>True 4K and 8K resolution</li>
-            <li>HDR10, HDR10+, and Dolby Vision</li>
-            <li>Laser and LED light sources</li>
-            <li>20,000+ hour lamp life</li>
-            <li>Motorized lens controls</li>
-            <li>Ultra-short throw options</li>
-          </ul>
-        </div>
-        
-        <div class="brand-partners">
-          <h4>Premium Brands:</h4>
-          <div class="brand-logos">
-            <img src="/assets/sony-logo.png" alt="Sony">
-            <img src="/assets/epson-logo.png" alt="Epson">
-            <img src="/assets/jvc-logo.png" alt="JVC">
-          </div>
-        </div>
-      </div>
-      
-      <div class="component-card">
-        <div class="component-image">
-          <img src="/assets/projection-screen.jpg" alt="Motorized Projection Screen">
-        </div>
-        <h3>Projection Screens</h3>
-        <p>Professional-grade screens optimized for your projector and room conditions, with motorized operation and perfect image quality.</p>
-        
-        <div class="component-features">
-          <h4>Screen Options:</h4>
-          <ul>
-            <li>Motorized drop-down screens</li>
-            <li>Fixed frame screens</li>
-            <li>Acoustically transparent options</li>
-            <li>Ultra-short throw screens</li>
-            <li>Curved screen installations</li>
-            <li>Custom sizes up to 200"</li>
-          </ul>
-        </div>
-        
-        <div class="screen-materials">
-          <h4>Screen Materials:</h4>
-          <ul>
-            <li><strong>Standard White:</strong> Bright, versatile performance</li>
-            <li><strong>Grey Screens:</strong> Enhanced contrast in bright rooms</li>
-            <li><strong>ALR (Ambient Light Rejecting):</strong> Optimal for rooms with windows</li>
-            <li><strong>Acoustic:</strong> Speakers behind screen for clean aesthetics</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="component-card">
-        <div class="component-image">
-          <img src="/assets/dolby-atmos-speakers.jpg" alt="Dolby Atmos Speaker System">
-        </div>
-        <h3>Dolby Atmos Surround Sound</h3>
-        <p>Three-dimensional audio that places sounds precisely in space, creating an incredibly immersive listening experience.</p>
-        
-        <div class="component-features">
-          <h4>Audio Configurations:</h4>
-          <ul>
-            <li>5.1.2 Atmos (7 speakers + subwoofer)</li>
-            <li>7.1.4 Atmos (11 speakers + subwoofer)</li>
-            <li>9.1.6 Atmos (15 speakers + subwoofer)</li>
-            <li>Custom configurations available</li>
-            <li>In-wall and in-ceiling options</li>
-            <li>Wireless subwoofer placement</li>
-          </ul>
-        </div>
-        
-        <div class="audio-benefits">
-          <h4>Dolby Atmos Benefits:</h4>
-          <ul>
-            <li>Sound moves around and above you</li>
-            <li>Pinpoint audio placement</li>
-            <li>Enhanced dialogue clarity</li>
-            <li>Immersive gaming audio</li>
-            <li>Compatible with streaming services</li>
-            <li>Future-proof technology</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="component-card">
-        <div class="component-image">
-          <img src="/assets/av-receiver.jpg" alt="AV Receiver and Processing">
-        </div>
-        <h3>AV Receivers & Processing</h3>
-        <p>The brain of your theater system, processing all audio and video signals with the latest formats and connectivity options.</p>
-        
-        <div class="component-features">
-          <h4>Processing Features:</h4>
-          <ul>
-            <li>Dolby Atmos and DTS:X processing</li>
-            <li>8K HDMI with eARC support</li>
-            <li>Room correction technology</li>
-            <li>Multi-zone audio capability</li>
-            <li>Streaming service integration</li>
-            <li>Voice control compatibility</li>
-          </ul>
-        </div>
-        
-        <div class="connectivity-options">
-          <h4>Connectivity:</h4>
-          <ul>
-            <li>Multiple 4K/8K HDMI inputs</li>
-            <li>WiFi and Ethernet networking</li>
-            <li>Bluetooth and AirPlay</li>
-            <li>USB media playback</li>
-            <li>Analog and digital audio inputs</li>
-            <li>Control system integration</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+{% include "shared/components/FAQ.njk" %}
 
-<section class="acoustic-treatments">
-  <div class="container">
-    <h2>Acoustic Design & Treatments</h2>
-    <p class="section-intro">Proper acoustics are essential for optimal sound quality. We analyze your room and implement treatments for the best possible audio experience.</p>
-    
-    <div class="acoustics-grid">
-      <div class="acoustic-analysis">
-        <h3>Room Acoustic Analysis</h3>
-        <div class="analysis-image">
-          <img src="/assets/acoustic-analysis.jpg" alt="Room Acoustic Analysis">
-        </div>
-        <div class="analysis-details">
-          <h4>What We Analyze:</h4>
-          <ul>
-            <li>Room dimensions and shape</li>
-            <li>Wall and ceiling materials</li>
-            <li>Flooring and furnishings</li>
-            <li>Window and door placement</li>
-            <li>HVAC noise sources</li>
-            <li>Reverberation time (RT60)</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="treatment-solutions">
-        <h3>Acoustic Treatment Solutions</h3>
-        <div class="treatments-grid">
-          <div class="treatment-item">
-            <h4>Absorption Panels</h4>
-            <p>Reduce echo and reverberation with strategically placed acoustic panels that can be decorative or hidden.</p>
-          </div>
-          
-          <div class="treatment-item">
-            <h4>Bass Traps</h4>
-            <p>Control low-frequency buildup in corners and along walls for tighter, more accurate bass response.</p>
-          </div>
-          
-          <div class="treatment-item">
-            <h4>Diffusion Panels</h4>
-            <p>Scatter sound reflections to create a more spacious, natural listening environment.</p>
-          </div>
-          
-          <div class="treatment-item">
-            <h4>Soundproofing</h4>
-            <p>Isolate your theater from the rest of the house with proper insulation and construction techniques.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="acoustic-benefits">
-      <h3>Benefits of Proper Acoustic Treatment</h3>
-      <div class="benefits-comparison">
-        <div class="before-after">
-          <div class="before">
-            <h4>Before Treatment</h4>
-            <ul>
-              <li>Muddy, boomy bass</li>
-              <li>Unclear dialogue</li>
-              <li>Echo and reverberation</li>
-              <li>Uneven sound distribution</li>
-              <li>Noise bleeding to other rooms</li>
-            </ul>
-          </div>
-          
-          <div class="after">
-            <h4>After Treatment</h4>
-            <ul>
-              <li>Tight, controlled bass</li>
-              <li>Crystal-clear dialogue</li>
-              <li>Immersive soundstage</li>
-              <li>Even sound throughout room</li>
-              <li>Isolated theater experience</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+{% set formTitle = "Schedule Your Free Home Theater Consultation" %}
+{% set formDescription = "Ready to experience the magic of the movies in your own home? Contact us today for a free consultation."
+%}
+{% set showContactInfo = true %}
+{% set showServiceField = true %}
 
-<section class="lighting-control">
-  <div class="container">
-    <h2>Integrated Lighting Control</h2>
-    <p class="section-intro">Perfect lighting enhances the theater experience and provides functionality for different activities.</p>
-    
-    <div class="lighting-grid">
-      <div class="lighting-zones">
-        <h3>Theater Lighting Zones</h3>
-        <div class="zones-diagram">
-          <img src="/assets/theater-lighting-zones.jpg" alt="Theater Lighting Zones">
-        </div>
-        <div class="zones-list">
-          <div class="zone-item">
-            <h4>Ambient Lighting</h4>
-            <p>Soft, indirect lighting for general room illumination during setup and intermissions.</p>
-          </div>
-          
-          <div class="zone-item">
-            <h4>Pathway Lighting</h4>
-            <p>Low-level floor or step lighting for safe movement during movies without screen glare.</p>
-          </div>
-          
-          <div class="zone-item">
-            <h4>Accent Lighting</h4>
-            <p>Decorative lighting to highlight architectural features, movie posters, or equipment displays.</p>
-          </div>
-          
-          <div class="zone-item">
-            <h4>Task Lighting</h4>
-            <p>Focused lighting for reading, cleaning, or equipment maintenance when needed.</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="lighting-scenes">
-        <h3>Automated Lighting Scenes</h3>
-        <div class="scenes-list">
-          <div class="scene-item">
-            <div class="scene-icon">
-              <img src="/assets/movie-scene-icon.png" alt="Movie Scene">
-            </div>
-            <h4>Movie Time</h4>
-            <p>Dims all lights to optimal levels, activates pathway lighting, and creates the perfect viewing atmosphere.</p>
-          </div>
-          
-          <div class="scene-item">
-            <div class="scene-icon">
-              <img src="/assets/intermission-scene-icon.png" alt="Intermission Scene">
-            </div>
-            <h4>Intermission</h4>
-            <p>Gradually raises ambient lighting for comfort breaks while maintaining theater ambiance.</p>
-          </div>
-          
-          <div class="scene-item">
-            <div class="scene-icon">
-              <img src="/assets/cleaning-scene-icon.png" alt="Cleaning Scene">
-            </div>
-            <h4>Cleaning Mode</h4>
-            <p>Full bright lighting for maintenance, cleaning, and equipment access.</p>
-          </div>
-          
-          <div class="scene-item">
-            <div class="scene-icon">
-              <img src="/assets/party-scene-icon.png" alt="Party Scene">
-            </div>
-            <h4>Party Mode</h4>
-            <p>Dynamic lighting for social gatherings, gaming, or sports viewing events.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+{% include "shared/components/ContactWebToLead.njk" %}
 
-<section class="seating-design">
-  <div class="container">
-    <h2>Theater Seating & Design</h2>
-    <p class="section-intro">Comfortable seating and thoughtful design elements complete the luxury theater experience.</p>
-    
-    <div class="seating-options">
-      <div class="seating-grid">
-        <div class="seating-card">
-          <div class="seating-image">
-            <img src="/assets/theater-recliners.jpg" alt="Theater Recliner Seating">
-          </div>
-          <h3>Premium Recliners</h3>
-          <p>Luxury leather recliners with power controls, USB charging, and cup holders for ultimate comfort.</p>
-          <ul>
-            <li>Power recline and headrest</li>
-            <li>Built-in USB charging</li>
-            <li>LED cup holder lighting</li>
-            <li>Memory foam cushioning</li>
-            <li>Premium leather upholstery</li>
-          </ul>
-        </div>
-        
-        <div class="seating-card">
-          <div class="seating-image">
-            <img src="/assets/theater-sectional.jpg" alt="Theater Sectional Seating">
-          </div>
-          <h3>Sectional Seating</h3>
-          <p>Modular sectional seating that can accommodate larger groups while maintaining comfort and style.</p>
-          <ul>
-            <li>Modular configuration options</li>
-            <li>Chaise lounge sections</li>
-            <li>Built-in storage</li>
-            <li>Removable cushions</li>
-            <li>Family-friendly design</li>
-          </ul>
-        </div>
-        
-        <div class="seating-card">
-          <div class="seating-image">
-            <img src="/assets/theater-loveseat.jpg" alt="Theater Loveseat">
-          </div>
-          <h3>Couple's Loveseats</h3>
-          <p>Intimate seating for two with shared amenities and romantic theater experiences.</p>
-          <ul>
-            <li>Shared center console</li>
-            <li>Dual reclining mechanisms</li>
-            <li>Romantic lighting options</li>
-            <li>Compact footprint</li>
-            <li>Premium materials</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    
-    <div class="design-elements">
-      <h3>Design & Finishing Touches</h3>
-      <div class="design-grid">
-        <div class="design-element">
-          <h4>Carpet & Flooring</h4>
-          <p>Commercial-grade carpet with sound absorption properties and easy maintenance for high-traffic areas.</p>
-        </div>
-        
-        <div class="design-element">
-          <h4>Wall Treatments</h4>
-          <p>Fabric wall coverings, wood paneling, or decorative acoustic panels that enhance both aesthetics and sound quality.</p>
-        </div>
-        
-        <div class="design-element">
-          <h4>Ceiling Design</h4>
-          <p>Coffered ceilings, star field lighting, or acoustic ceiling treatments that add visual interest and improve acoustics.</p>
-        </div>
-        
-        <div class="design-element">
-          <h4>Décor & Accessories</h4>
-          <p>Movie posters, concession stands, popcorn machines, and other themed accessories to complete the cinema experience.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="theater-packages">
-  <div class="container">
-    <h2>Home Theater Packages</h2>
-    <p class="section-intro">Choose from our popular packages or let us design a custom theater solution for your specific space and budget.</p>
-    
-    <div class="packages-grid">
-      <div class="package-card">
-        <h3>Essential Theater</h3>
-        <p class="package-price">Starting at $8,999</p>
-        <div class="package-features">
-          <h4>Perfect for getting started with home theater</h4>
-          <ul>
-            <li>65" 4K OLED display or projector</li>
-            <li>5.1 surround sound system</li>
-            <li>AV receiver with room correction</li>
-            <li>Universal remote control</li>
-            <li>Basic lighting control</li>
-            <li>Professional calibration</li>
-            <li>Installation and setup</li>
-          </ul>
-        </div>
-        <a href="tel:8339416888" class="btn btn-outline">Get Quote</a>
-      </div>
-      
-      <div class="package-card featured">
-        <h3>Ultimate Cinema</h3>
-        <p class="package-price">Starting at $24,999</p>
-        <div class="package-features">
-          <h4>Complete luxury theater experience</h4>
-          <ul>
-            <li>4K laser projector with 120" screen</li>
-            <li>7.1.4 Dolby Atmos system</li>
-            <li>Premium AV processing</li>
-            <li>Motorized screen and lighting</li>
-            <li>Acoustic room treatments</li>
-            <li>Theater seating for 6-8 people</li>
-            <li>Control4 automation integration</li>
-            <li>Professional design and installation</li>
-          </ul>
-        </div>
-        <a href="tel:8339416888" class="btn btn-primary">Get Quote</a>
-      </div>
-      
-      <div class="package-card">
-        <h3>Custom Theater</h3>
-        <p class="package-price">Starting at $50,000+</p>
-        <div class="package-features">
-          <h4>Fully customized theater experience</h4>
-          <ul>
-            <li>8K projection or premium display</li>
-            <li>9.1.6+ Atmos configuration</li>
-            <li>Complete acoustic design</li>
-            <li>Custom seating and décor</li>
-            <li>Concession area integration</li>
-            <li>Multi-zone audio/video</li>
-            <li>Smart home integration</li>
-            <li>White-glove design service</li>
-          </ul>
-        </div>
-        <a href="tel:8339416888" class="btn btn-outline">Get Quote</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="installation-process">
-  <div class="container">
-    <h2>Professional Installation Process</h2>
-    <div class="process-timeline">
-      <div class="process-step">
-        <div class="step-number">1</div>
-        <div class="step-content">
-          <h3>Design Consultation</h3>
-          <p>We assess your space, understand your preferences, and create a custom theater design that maximizes your room's potential.</p>
-        </div>
-      </div>
-      
-      <div class="process-step">
-        <div class="step-number">2</div>
-        <div class="step-content">
-          <h3>Acoustic Analysis</h3>
-          <p>Professional acoustic measurement and treatment planning ensure optimal sound quality in your specific room.</p>
-        </div>
-      </div>
-      
-      <div class="process-step">
-        <div class="step-number">3</div>
-        <div class="step-content">
-          <h3>Equipment Installation</h3>
-          <p>Certified technicians install all components with attention to detail, ensuring clean wiring and optimal placement.</p>
-        </div>
-      </div>
-      
-      <div class="process-step">
-        <div class="step-number">4</div>
-        <div class="step-content">
-          <h3>Calibration & Testing</h3>
-          <p>Professional calibration of all audio and video components ensures perfect picture and sound quality.</p>
-        </div>
-      </div>
-      
-      <div class="process-step">
-        <div class="step-number">5</div>
-        <div class="step-content">
-          <h3>User Training</h3>
-          <p>Comprehensive training on all system features ensures you can enjoy your theater to its fullest potential.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-section">
-  <div class="container">
-    <div class="cta-content">
-      <h2>Ready to Create Your Dream Theater?</h2>
-      <p>Transform your space into a luxury cinema experience that rivals the best commercial theaters. Professional design, installation, and support from Wisconsin's home theater experts.</p>
-      
-      <div class="cta-features">
-        <div class="feature-item">
-          <span class="feature-icon">✓</span>
-          <span>Free Design Consultation</span>
-        </div>
-        <div class="feature-item">
-          <span class="feature-icon">✓</span>
-          <span>Professional Installation</span>
-        </div>
-        <div class="feature-item">
-          <span class="feature-icon">✓</span>
-          <span>Custom Acoustic Design</span>
-        </div>
-        <div class="feature-item">
-          <span class="feature-icon">✓</span>
-          <span>Lifetime Support</span>
-        </div>
-      </div>
-      
-      <div class="cta-buttons">
-        <a href="tel:8339416888" class="btn btn-primary btn-large">Call (833) 941-6888</a>
-        <a href="/aih/#consultation" class="btn btn-secondary btn-large">Free Consultation</a>
-      </div>
-      
-      <p class="cta-note">Available 24/7 for your convenience</p>
-    </div>
-  </div>
-</section>
 

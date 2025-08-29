@@ -1,0 +1,116 @@
+---
+layout: shared/_includes/layout.njk
+title: "Custom Garage Storage & Organization | Closet Concepts"
+description: "Transform your garage with custom storage cabinets, slatwall systems, and overhead storage. Free design consultation and 3D rendering."
+brand: cc
+canonical: "https://closetconcepts.com/services/garage-storage/"
+ogImage: "/assets/images/og/cc-garage-storage-og-1200x630.jpg"
+breadcrumbs:
+  - title: "Home"
+    url: "/cc/"
+  - title: "Services"
+    url: "/cc/services/"
+  - title: "Garage Storage"
+---
+
+{% set heroImageWebP = "/assets/images/cc/garage1.webp" %}
+{% set heroImageJPG = "/assets/images/cc/garage1.jpg" %}
+{% set heroTitle = "Custom Garage Storage" %}
+{% set heroSubtitle = "Reclaim Your Garage" %}
+{% set heroDescription = "Your garage is more than just a place to park your car. It’s a workshop, a storage space, and an extension of your home. Our custom garage storage systems help you reclaim your garage and create a space that is organized, functional, and beautiful."
+%}
+{% set primaryCTA = {
+  text: "Get a Free Design Consultation",
+  url: "/cc/contact/?service=garage-storage",
+  icon: 
+    "<path d=\"M8 7V3M16 7V3M7 11H17M5 21H19C20.1046 21 21 20.1046 21 19V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"
+} %}
+{% set secondaryCTA = {
+  text: "Call for Information",
+  url: "tel:+18339416888",
+  phone: true,
+  icon: 
+    "<path d=\"M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08C5.16 2.08 5.56 4 6.28 5.76C6.44 6.12 6.32 6.56 6 6.84L4.84 8C6.84 11.88 10.12 15.16 14 17.16L15.16 16C15.44 15.68 15.88 15.56 16.24 15.72C18 16.44 19.92 16.84 21.92 16.84C22.52 16.84 23 17.32 23 17.92V20.92Z\" fill=\"currentColor\"/>"
+} %}
+
+{% include "shared/components/HeroImage.njk" %}
+
+<section class="section service-details-section">
+  <div class="container">
+    <div class="service-details-grid">
+      <div class="service-content">
+        <h2>The Ultimate Garage Makeover</h2>
+        <p>At Closet Concepts, we offer a complete range of garage storage solutions to help you get organized and stay organized. From custom cabinets and shelving to slatwall and overhead storage, we have everything you need to create the garage of your dreams.</p>
+        
+        <h3>Our Design Process</h3>
+        <p>Our expert designers work with you to create a garage storage system that is tailored to your unique needs and style. We take into account your storage needs, your space, and your budget to create a design that you’ll love.</p>
+        <ol>
+          <li><strong>Consultation:</strong> We start with a free in-home consultation to assess your storage needs and measure your space.</li>
+          <li><strong>3D Design:</strong> We create a 3D rendering of your new garage so you can see exactly what it will look like.</li>
+          <li><strong>Installation:</strong> Our professional installers will bring your design to life with precision and care.</li>
+        </ol>
+
+        <h3>Garage Storage Solutions</h3>
+        <ul>
+          <li>Custom garage cabinets</li>
+          <li>Slatwall and pegboard systems</li>
+          <li>Overhead storage racks</li>
+          <li>Workbenches and tool storage</li>
+          <li>Sports equipment storage</li>
+          <li>And much more!</li>
+        </ul>
+      </div>
+
+      <div class="service-sidebar">
+        <div class="sidebar-widget">
+          <h4>Service Highlights</h4>
+          <ul>
+            <li>Free In-Home Design Consultation</li>
+            <li>3D Garage Design Renderings</li>
+            <li>Professional Installation</li>
+            <li>Lifetime Warranty on Hardware</li>
+            <li>Durable, High-Quality Materials</li>
+            <li>Serving WI, IL, MN, & CO</li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Get a Free Design</h4>
+          <p>Contact us today for a free, no-obligation design consultation and 3D rendering of your new garage storage system.</p>
+          <a href="/cc/contact/?service=garage-storage" class="btn btn-primary btn-full">Request Free Design</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% set faqTitle = "Garage Storage FAQs" %}
+{% set faqs = [
+  {
+    question: "How much does a custom garage storage system cost?",
+    answer: "The cost of a custom garage storage system varies widely depending on the size of your space and the solutions you choose. Most projects range from $1,500 to $7,500 and up."
+  },
+  {
+    question: "How long does the process take?",
+    answer: "From design to installation, the entire process typically takes 2-4 weeks."
+  },
+  {
+    question: "What materials do you use?",
+    answer: "We use heavy-duty materials that are designed to withstand the rigors of the garage environment, including industrial-grade melamine, powder-coated steel, and extruded aluminum."
+  },
+  {
+    question: "Do you offer a warranty?",
+    answer: "Yes, we offer a lifetime warranty on all hardware and a 1-year warranty on installation."
+  }
+] %}
+
+{% include "shared/components/FAQ.njk" %}
+
+{% set formTitle = "Schedule Your Free Design Consultation" %}
+{% set formDescription = "Ready to reclaim your garage? Contact us today for a free design consultation and 3D rendering."
+%}
+{% set showContactInfo = true %}
+{% set showServiceField = true %}
+
+{% include "shared/components/ContactWebToLead.njk" %}
+
+

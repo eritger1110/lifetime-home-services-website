@@ -1,252 +1,113 @@
 ---
-layout: layout.njk
-title: "Professional Radon Testing Services | Lifetime Home Services"
-description: "Protect your family with professional radon testing from Lifetime Home Services. EPA-certified testing, accurate results, and expert recommendations for your home's safety."
-permalink: "/services/radon-testing/"
+layout: shared/_includes/layout.njk
+title: "Radon Testing & Mitigation Services | Lifetime Home Services"
+description: "Protect your family with professional radon testing and mitigation services. Certified, reliable, and effective solutions for your home."
+brand: lifetime
+canonical: "https://lifetimehomeservices.com/services/radon-testing/"
+ogImage: "/assets/images/og/lhs-radon-og-1200x630.jpg"
+breadcrumbs:
+  - title: "Home"
+    url: "/lifetime/"
+  - title: "Services"
+    url: "/lifetime/services/"
+  - title: "Radon Testing & Mitigation"
 ---
 
-<div class="page-header">
+{% set heroImageWebP = "/assets/images/lhs/radon-testing.webp" %}
+{% set heroImageJPG = "/assets/images/lhs/radon-testing.jpg" %}
+{% set heroTitle = "Radon Testing & Mitigation" %}
+{% set heroSubtitle = "Protecting Your Family from a Hidden Danger" %}
+{% set heroDescription = "Ensure the air in your home is safe with our professional radon testing and mitigation services. We provide accurate testing and certified mitigation systems to protect your family’s health."
+%}
+{% set primaryCTA = {
+  text: "Schedule a Radon Test",
+  url: "/lifetime/contact/?service=radon-testing",
+  icon: 
+    "<path d=\"M8 7V3M16 7V3M7 11H17M5 21H19C20.1046 21 21 20.1046 21 19V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"
+} %}
+{% set secondaryCTA = {
+  text: "Call for Information",
+  url: "tel:+18339416888",
+  phone: true,
+  icon: 
+    "<path d=\"M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08C5.16 2.08 5.56 4 6.28 5.76C6.44 6.12 6.32 6.56 6 6.84L4.84 8C6.84 11.88 10.12 15.16 14 17.16L15.16 16C15.44 15.68 15.88 15.56 16.24 15.72C18 16.44 19.92 16.84 21.92 16.84C22.52 16.84 23 17.32 23 17.92V20.92Z\" fill=\"currentColor\"/>"
+} %}
+
+{% include "shared/components/HeroImage.njk" %}
+
+<section class="section service-details-section">
   <div class="container">
-    <h1>Professional Radon Testing Services</h1>
-    <p>Protect your family's health with accurate, EPA-certified radon testing from certified professionals</p>
-  </div>
-</div>
-
-<div class="content-section">
-  <div class="container">
-    <div class="content-grid">
-      <div class="main-content">
+    <div class="service-details-grid">
+      <div class="service-content">
+        <h2>What is Radon?</h2>
+        <p>Radon is a naturally occurring radioactive gas that is invisible, odorless, and tasteless. It is released from the normal decay of uranium, thorium, and radium in rocks and soil. Radon can seep into your home through cracks and other holes in the foundation, and can accumulate to dangerous levels. The EPA estimates that radon is the second leading cause of lung cancer in the United States, responsible for over 21,000 deaths each year.</p>
         
-        <h2>What is Radon and Why Should You Care?</h2>
-        
-        <p>Radon is a colorless, odorless radioactive gas that occurs naturally when uranium in soil, rock, and water breaks down. It's the second leading cause of lung cancer in the United States, responsible for about 21,000 deaths each year according to the EPA and Surgeon General.</p>
-        
-        <p>The scary part? You can't see, smell, or taste radon. The only way to know if your home has dangerous radon levels is through professional testing. That's where Lifetime Home Services comes in.</p>
+        <h3>Why is Radon Testing Important?</h3>
+        <p>Because you can’t see or smell radon, testing is the only way to know if your home has elevated levels. The EPA and the Surgeon General recommend testing all homes below the third floor for radon. A simple and inexpensive test can determine if your home has a high level of radon and if you need to take action to protect your family.</p>
 
-        <div class="alert-box danger">
-          <h3>⚠️ Important Health Facts</h3>
-          <ul>
-            <li>Radon is the #1 cause of lung cancer among non-smokers</li>
-            <li>1 in 15 homes in the US has elevated radon levels</li>
-            <li>Radon exposure increases lung cancer risk by 16% per 100 Bq/m³ increase</li>
-            <li>Children are at higher risk due to faster breathing rates</li>
-          </ul>
-        </div>
+        <h3>Our Radon Testing Process</h3>
+        <p>We use state-of-the-art continuous radon monitors to provide accurate, reliable results. Our testing process is simple and non-invasive:</p>
+        <ol>
+          <li><strong>Consultation:</strong> We discuss your home’s layout and identify the best location for the test.</li>
+          <li><strong>Placement:</strong> A certified technician places a continuous radon monitor in the lowest livable level of your home.</li>
+          <li><strong>Testing Period:</strong> The monitor remains in your home for a minimum of 48 hours to collect data.</li>
+          <li><strong>Analysis & Report:</strong> We analyze the data and provide you with a detailed report of the radon levels in your home.</li>
+        </ol>
 
-        <h2>How Does Radon Enter Your Home?</h2>
-        
-        <p>Think of your home like a vacuum cleaner. As air moves through your house, it creates slight pressure differences that can pull radon gas up from the soil through:</p>
-        
-        <ul>
-          <li><strong>Foundation cracks</strong> - Even hairline cracks can let radon in</li>
-          <li><strong>Floor drains</strong> - Especially in basements and crawl spaces</li>
-          <li><strong>Sump pump pits</strong> - Open connections to soil</li>
-          <li><strong>Construction joints</strong> - Where walls meet floors</li>
-          <li><strong>Gaps around pipes</strong> - Utility penetrations through foundation</li>
-          <li><strong>Well water</strong> - Can release radon when used (less common)</li>
-        </ul>
-
-        <img src="/assets/images/services/radon/sub-slab-system-diagram.jpg" alt="How radon enters homes through foundation" class="content-image">
-
-        <h2>Our Professional Radon Testing Process</h2>
-        
-        <p>At Lifetime Home Services, we follow EPA protocols to ensure accurate, reliable results. Here's exactly what happens when you choose us for radon testing:</p>
-
-        <div class="process-steps">
-          <div class="process-step">
-            <div class="step-number">1</div>
-            <h3>Initial Consultation</h3>
-            <p>We discuss your home's characteristics, your concerns, and explain the testing process in plain English.</p>
-          </div>
-          <div class="process-step">
-            <div class="step-number">2</div>
-            <h3>Test Placement</h3>
-            <p>Our certified technicians place EPA-approved testing devices in the lowest livable level of your home.</p>
-          </div>
-          <div class="process-step">
-            <div class="step-number">3</div>
-            <h3>Monitoring Period</h3>
-            <p>Tests run for 48-96 hours (short-term) or 90+ days (long-term) depending on your needs and timeline.</p>
-          </div>
-          <div class="process-step">
-            <div class="step-number">4</div>
-            <h3>Lab Analysis</h3>
-            <p>Samples are analyzed by EPA-certified laboratories for precise radon concentration measurements.</p>
-          </div>
-          <div class="process-step">
-            <div class="step-number">5</div>
-            <h3>Results & Recommendations</h3>
-            <p>We explain your results in detail and provide clear next steps if mitigation is needed.</p>
-          </div>
-        </div>
-
-        <h2>Types of Radon Testing We Offer</h2>
-
-        <h3>Short-Term Testing (48-96 hours)</h3>
-        <p><strong>Best for:</strong> Quick results, real estate transactions, initial screening</p>
-        <ul>
-          <li>Fastest way to get radon levels</li>
-          <li>Uses activated charcoal or electret ion chambers</li>
-          <li>Perfect for home sales/purchases</li>
-          <li>Results available within 1-2 weeks</li>
-        </ul>
-
-        <h3>Long-Term Testing (90+ days)</h3>
-        <p><strong>Best for:</strong> Most accurate annual average, comprehensive assessment</p>
-        <ul>
-          <li>Accounts for seasonal variations</li>
-          <li>Uses alpha track detectors</li>
-          <li>Most accurate representation of yearly exposure</li>
-          <li>Recommended by EPA for final decisions</li>
-        </ul>
-
-        <h3>Continuous Monitoring</h3>
-        <p><strong>Best for:</strong> Real-time data, post-mitigation verification</p>
-        <ul>
-          <li>Hour-by-hour radon level tracking</li>
-          <li>Immediate results and trends</li>
-          <li>Detects tampering or unusual conditions</li>
-          <li>Perfect for mitigation system verification</li>
-        </ul>
-
-        <img src="/assets/images/services/radon/radon-testing.jpg" alt="Professional radon testing equipment" class="content-image">
-
-        <h2>Understanding Your Radon Test Results</h2>
-
-        <p>Radon is measured in picocuries per liter (pCi/L). Here's what your numbers mean:</p>
-
-        <div class="results-guide">
-          <div class="result-level safe">
-            <h4>Below 2 pCi/L</h4>
-            <p><strong>Low Risk:</strong> No action needed, but consider retesting every 2-5 years</p>
-          </div>
-          <div class="result-level caution">
-            <h4>2-4 pCi/L</h4>
-            <p><strong>Moderate Risk:</strong> EPA recommends considering mitigation, especially for long-term exposure</p>
-          </div>
-          <div class="result-level danger">
-            <h4>4+ pCi/L</h4>
-            <p><strong>Action Required:</strong> EPA strongly recommends mitigation. Risk equivalent to smoking 8+ cigarettes daily</p>
-          </div>
-          <div class="result-level critical">
-            <h4>20+ pCi/L</h4>
-            <p><strong>Urgent Action:</strong> Immediate mitigation needed. Risk equivalent to smoking 2+ packs daily</p>
-          </div>
-        </div>
-
-        <h2>Why Choose Lifetime Home Services for Radon Testing?</h2>
-
-        <div class="why-choose-grid">
-          <div class="why-choose-item">
-            <h3>🏆 EPA Certified</h3>
-            <p>All our technicians are EPA-certified and follow strict protocols for accurate testing</p>
-          </div>
-          <div class="why-choose-item">
-            <h3>⚡ Fast Results</h3>
-            <p>Quick turnaround times without compromising accuracy or reliability</p>
-          </div>
-          <div class="why-choose-item">
-            <h3>📊 Clear Reports</h3>
-            <p>Easy-to-understand results with clear explanations and recommendations</p>
-          </div>
-          <div class="why-choose-item">
-            <h3>🔧 Full Service</h3>
-            <p>If mitigation is needed, we can handle that too - no need for multiple contractors</p>
-          </div>
-          <div class="why-choose-item">
-            <h3>💰 Fair Pricing</h3>
-            <p>Transparent, competitive pricing with no hidden fees or surprises</p>
-          </div>
-          <div class="why-choose-item">
-            <h3>🏠 Local Experts</h3>
-            <p>We understand local geology and building practices that affect radon levels</p>
-          </div>
-        </div>
-
-        <h2>Frequently Asked Questions</h2>
-
-        <div class="faq-section">
-          <div class="faq-item">
-            <h3>How long does radon testing take?</h3>
-            <p>Short-term tests run 48-96 hours, long-term tests run 90+ days. We'll help you choose the right option based on your timeline and needs.</p>
-          </div>
-          
-          <div class="faq-item">
-            <h3>Do I need to do anything to prepare for testing?</h3>
-            <p>Yes! Keep windows and doors closed 12 hours before and during testing (except for normal entry/exit). Don't run fans or air conditioning systems that bring in outside air.</p>
-          </div>
-          
-          <div class="faq-item">
-            <h3>Where should radon testing be done?</h3>
-            <p>Testing should be done in the lowest livable level of your home - typically the basement or first floor if there's no basement. We test in rooms you actually use, not storage areas.</p>
-          </div>
-          
-          <div class="faq-item">
-            <h3>What if my radon levels are high?</h3>
-            <p>Don't panic! High radon levels can be reduced with proper mitigation systems. We'll explain your options and can install a mitigation system if needed.</p>
-          </div>
-          
-          <div class="faq-item">
-            <h3>How much does radon testing cost?</h3>
-            <p>Our testing services start at $150 for short-term testing. Contact us for a free quote based on your specific needs and home size.</p>
-          </div>
-          
-          <div class="faq-item">
-            <h3>Should I test if I'm buying/selling a home?</h3>
-            <p>Absolutely! Many real estate contracts include radon testing contingencies. We can work with your timeline to ensure smooth transactions.</p>
-          </div>
-        </div>
-
-        <h2>When Should You Test for Radon?</h2>
-
-        <p>The EPA recommends testing your home for radon, but certain situations make testing especially important:</p>
-
-        <ul>
-          <li><strong>Buying or selling a home</strong> - Protect your investment and family</li>
-          <li><strong>After major renovations</strong> - Construction can change radon pathways</li>
-          <li><strong>Every 2-5 years</strong> - Radon levels can change over time</li>
-          <li><strong>If neighbors have high levels</strong> - Geology affects entire neighborhoods</li>
-          <li><strong>Before finishing a basement</strong> - Know your levels before creating living space</li>
-          <li><strong>After installing HVAC systems</strong> - New systems can affect air pressure</li>
-        </ul>
-
-        <div class="call-to-action-box">
-          <h2>Ready to Test Your Home for Radon?</h2>
-          <p>Don't wait to protect your family's health. Professional radon testing is affordable, quick, and could save lives.</p>
-          <div class="cta-buttons">
-            <a href="/contact/" class="btn btn-primary">Get Free Quote</a>
-            <a href="tel:8339416888" class="btn btn-secondary">Call (833) 941-6888</a>
-          </div>
-          <p class="cta-note">Free estimates • EPA-certified technicians • Fast, accurate results</p>
-        </div>
-
+        <h3>Radon Mitigation Systems</h3>
+        <p>If your home has elevated radon levels, we can install a custom mitigation system to reduce radon to safe levels. Our certified technicians will design and install a system that is effective and aesthetically pleasing. Most radon reduction systems include a vent pipe and fan, which pull radon from beneath the house and vent it to the outside. Our systems are guaranteed to reduce radon levels to below the EPA action level of 4.0 pCi/L.</p>
       </div>
 
-      <div class="sidebar">
-        <h3>Quick Facts</h3>
-        <ul>
-          <li><strong>Testing Time:</strong> 48 hours - 90+ days</li>
-          <li><strong>Results:</strong> 1-2 weeks</li>
-          <li><strong>EPA Action Level:</strong> 4 pCi/L</li>
-          <li><strong>Certification:</strong> EPA-approved methods</li>
-        </ul>
-
-        <h3>Service Areas</h3>
-        <p>We provide radon testing throughout Wisconsin, Illinois, Minnesota, and Colorado.</p>
-        <a href="/service-areas/" class="btn btn-outline">View All Areas</a>
-
-        <h3>Related Services</h3>
-        <ul>
-          <li><a href="/services/radon-mitigation/">Radon Mitigation</a></li>
-          <li><a href="/services/duct-sealing/">Duct Sealing</a></li>
-          <li><a href="/services/air-quality/">Indoor Air Quality</a></li>
-        </ul>
-
-        <h3>Emergency Testing</h3>
-        <p>Need results fast for a real estate transaction? We offer expedited testing services.</p>
-        <a href="tel:8339416888" class="btn btn-primary">Call Now</a>
+      <div class="service-sidebar">
+        <div class="sidebar-widget">
+          <h4>Service Highlights</h4>
+          <ul>
+            <li>EPA-Certified Radon Measurement Professionals</li>
+            <li>State-of-the-Art Continuous Radon Monitors</li>
+            <li>Guaranteed Radon Reduction Below EPA Action Levels</li>
+            <li>Custom-Designed Mitigation Systems</li>
+            <li>Post-Mitigation Testing Included</li>
+            <li>Serving WI, IL, MN, & CO</li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Get a Free Estimate</h4>
+          <p>Contact us today for a free, no-obligation estimate on radon testing or mitigation services.</p>
+          <a href="/lifetime/contact/?service=radon-testing" class="btn btn-primary btn-full">Request Estimate</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
+
+{% set faqTitle = "Radon FAQs" %}
+{% set faqs = [
+  {
+    question: "What is a safe level of radon?",
+    answer: "The EPA recommends that you take action to reduce your home’s radon levels if your test result is 4.0 pCi/L or higher. However, there is no known safe level of radon, and the EPA also recommends considering mitigation for levels between 2.0 and 4.0 pCi/L."
+  },
+  {
+    question: "How often should I test my home for radon?",
+    answer: "The EPA recommends testing your home for radon every two years, and after any major renovations, such as finishing a basement or adding an extension."
+  },
+  {
+    question: "How long does a radon mitigation system installation take?",
+    answer: "Most radon mitigation systems can be installed in just one day. Our certified technicians will work efficiently to minimize disruption to your daily routine."
+  },
+  {
+    question: "Does a radon mitigation system require maintenance?",
+    answer: "Radon mitigation systems are designed to be low-maintenance. We recommend a system check every two years to ensure it is operating correctly."
+  }
+] %}
+
+{% include "shared/components/FAQ.njk" %}
+
+{% set formTitle = "Schedule Your Radon Service" %}
+{% set formDescription = "Protect your family from the dangers of radon. Contact us today to schedule your testing or mitigation service."
+%}
+{% set showContactInfo = true %}
+{% set showServiceField = true %}
+
+{% include "shared/components/ContactWebToLead.njk" %}
+
 

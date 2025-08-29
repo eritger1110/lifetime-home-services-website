@@ -1,0 +1,119 @@
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-content">
+      <!-- Logo -->
+      <div class="header-logo">
+        <a href="/{{ brand }}/" aria-label="Go to {{ site.title }} homepage">
+          <img src="/assets/images/logos/{{ brand }}-logo.svg" alt="{{ site.title }}" class="logo">
+        </a>
+      </div>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="main-navigation" aria-label="Toggle navigation menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      
+      <!-- Main Navigation -->
+      <nav class="main-navigation" id="main-navigation" role="navigation" aria-label="Main navigation">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="/{{ brand }}/" class="nav-link" aria-current="{% if page.url == '/' + brand + '/' %}page{% endif %}">Home</a>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <button class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="services-menu">
+              Services
+              <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="dropdown-menu" id="services-menu" role="menu">
+              {% if brand == 'lifetime' %}
+                <li role="none"><a href="/lifetime/services/radon-testing/" class="dropdown-link" role="menuitem">Radon Testing</a></li>
+                <li role="none"><a href="/lifetime/services/radon-mitigation/" class="dropdown-link" role="menuitem">Radon Mitigation</a></li>
+                <li role="none"><a href="/lifetime/services/duct-cleaning/" class="dropdown-link" role="menuitem">Duct Cleaning</a></li>
+                <li role="none"><a href="/lifetime/services/duct-sealing-aeroseal/" class="dropdown-link" role="menuitem">Duct Sealing (Aeroseal)</a></li>
+                <li role="none"><a href="/lifetime/services/floor-coatings/" class="dropdown-link" role="menuitem">Floor Coatings</a></li>
+              {% elif brand == 'cc' %}
+                <li role="none"><a href="/cc/reach-in-closets/" class="dropdown-link" role="menuitem">Reach-In Closets</a></li>
+                <li role="none"><a href="/cc/walk-in-closets/" class="dropdown-link" role="menuitem">Walk-In Closets</a></li>
+                <li role="none"><a href="/cc/garage-storage/" class="dropdown-link" role="menuitem">Garage Storage</a></li>
+                <li role="none"><a href="/cc/hobby-room/" class="dropdown-link" role="menuitem">Hobby Room</a></li>
+                <li role="none"><a href="/cc/home-office/" class="dropdown-link" role="menuitem">Home Office</a></li>
+                <li role="none"><a href="/cc/laundry-room/" class="dropdown-link" role="menuitem">Laundry Room</a></li>
+                <li role="none"><a href="/cc/mudroom/" class="dropdown-link" role="menuitem">Mudroom</a></li>
+                <li role="none"><a href="/cc/walk-in-pantry/" class="dropdown-link" role="menuitem">Walk-In Pantry</a></li>
+              {% elif brand == 'aih' %}
+                <li role="none"><a href="/aih/control4/" class="dropdown-link" role="menuitem">Control4 Systems</a></li>
+                <li role="none"><a href="/aih/home-theater/" class="dropdown-link" role="menuitem">Home Theater</a></li>
+                <li role="none"><a href="/aih/whole-home-wifi/" class="dropdown-link" role="menuitem">Whole Home Wi-Fi</a></li>
+                <li role="none"><a href="/aih/smart-home/" class="dropdown-link" role="menuitem">Smart Home</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          
+          <li class="nav-item">
+            <a href="/{{ brand }}/about/" class="nav-link">About</a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="/{{ brand }}/service-areas/" class="nav-link">Service Areas</a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="/{{ brand }}/contact/" class="nav-link">Contact</a>
+          </li>
+        </ul>
+        
+        <!-- CTA Button -->
+        <div class="header-cta">
+          <a href="tel:{{ site.phone }}" class="btn btn-primary" aria-label="Call {{ site.phone }}">
+            <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08C5.16 2.08 5.56 4 6.28 5.76C6.44 6.12 6.32 6.56 6 6.84L4.84 8C6.84 11.88 10.12 15.16 14 17.16L15.16 16C15.44 15.68 15.88 15.56 16.24 15.72C18 16.44 19.92 16.84 21.92 16.84C22.52 16.84 23 17.32 23 17.92V20.92Z" fill="currentColor"/>
+            </svg>
+            Call Now
+          </a>
+        </div>
+      </nav>
+      
+      <!-- Brand Switcher (Desktop Only) -->
+      <div class="brand-switcher" aria-label="Switch between brands">
+        <button class="brand-switcher-toggle" aria-expanded="false" aria-haspopup="true" aria-controls="brand-menu" aria-label="Switch brand">
+          <span class="current-brand">{{ site.title }}</span>
+          <svg class="dropdown-icon" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <ul class="brand-menu" id="brand-menu" role="menu">
+          {% if brand != 'lifetime' %}
+          <li role="none">
+            <a href="/lifetime/" class="brand-link" role="menuitem">
+              <img src="/assets/images/logos/lhs-logo.svg" alt="Lifetime Home Services" class="brand-logo">
+              <span>Lifetime Home Services</span>
+            </a>
+          </li>
+          {% endif %}
+          {% if brand != 'cc' %}
+          <li role="none">
+            <a href="/cc/" class="brand-link" role="menuitem">
+              <img src="/assets/images/logos/cc-logo.svg" alt="Closet Concepts" class="brand-logo">
+              <span>Closet Concepts</span>
+            </a>
+          </li>
+          {% endif %}
+          {% if brand != 'aih' %}
+          <li role="none">
+            <a href="/aih/" class="brand-link" role="menuitem">
+              <img src="/assets/images/logos/aih-logo.svg" alt="America In-Home" class="brand-logo">
+              <span>America In-Home</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+

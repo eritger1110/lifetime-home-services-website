@@ -1,0 +1,114 @@
+---
+layout: shared/_includes/layout.njk
+title: "Smart Lighting Control | America In-Home"
+description: "Automate your home’s lighting with smart switches, dimmers, and bulbs. Control your lights from anywhere and create custom lighting scenes."
+brand: aih
+canonical: "https://americainhome.com/services/smart-lighting/"
+ogImage: "/assets/images/og/aih-smart-lighting-og-1200x630.jpg"
+breadcrumbs:
+  - title: "Home"
+    url: "/aih/"
+  - title: "Services"
+    url: "/aih/services/"
+  - title: "Smart Lighting"
+---
+
+{% set heroImageWebP = "/assets/images/aih/smart-lighting.webp" %}
+{% set heroImageJPG = "/assets/images/aih/smart-lighting.jpg" %}
+{% set heroTitle = "Smart Lighting Control" %}
+{% set heroSubtitle = "Lighting That Adapts to Your Life" %}
+{% set heroDescription = "Transform your home with smart lighting control. Create the perfect ambiance for any occasion, enhance your home’s security, and save energy with automated lighting that you can control from anywhere."
+%}
+{% set primaryCTA = {
+  text: "Get a Free Lighting Consultation",
+  url: "/aih/contact/?service=smart-lighting",
+  icon: 
+    "<path d=\"M8 7V3M16 7V3M7 11H17M5 21H19C20.1046 21 21 20.1046 21 19V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"
+} %}
+{% set secondaryCTA = {
+  text: "Call for Information",
+  url: "tel:+18339416888",
+  phone: true,
+  icon: 
+    "<path d=\"M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08C5.16 2.08 5.56 4 6.28 5.76C6.44 6.12 6.32 6.56 6 6.84L4.84 8C6.84 11.88 10.12 15.16 14 17.16L15.16 16C15.44 15.68 15.88 15.56 16.24 15.72C18 16.44 19.92 16.84 21.92 16.84C22.52 16.84 23 17.32 23 17.92V20.92Z\" fill=\"currentColor\"/>"
+} %}
+
+{% include "shared/components/HeroImage.njk" %}
+
+<section class="section service-details-section">
+  <div class="container">
+    <div class="service-details-grid">
+      <div class="service-content">
+        <h2>The Future of Lighting is Here</h2>
+        <p>Smart lighting is more than just a convenience, it’s a lifestyle upgrade. At America In-Home, we design and install custom smart lighting systems that provide convenience, security, and energy savings.</p>
+        
+        <h3>Benefits of Smart Lighting</h3>
+        <ul>
+          <li><strong>Convenience:</strong> Control your lights from anywhere with your smartphone or voice.</li>
+          <li><strong>Security:</strong> Automate your lights to make it look like you’re home when you’re away.</li>
+          <li><strong>Energy Savings:</strong> Dim your lights and set schedules to save energy and money.</li>
+          <li><strong>Ambiance:</strong> Create the perfect lighting for any occasion with custom scenes and colors.</li>
+        </ul>
+
+        <h3>Our Smart Lighting Solutions</h3>
+        <p>We offer a range of smart lighting solutions to meet your specific needs and budget:</p>
+        <ul>
+          <li><strong>Smart Switches & Dimmers:</strong> Replace your existing switches and dimmers with smart ones to control your existing light fixtures.</li>
+          <li><strong>Smart Bulbs:</strong> Add color and control to any lamp or light fixture with smart bulbs.</li>
+          <li><strong>Whole-Home Systems:</strong> Integrate your lighting with a whole-home automation system like Control4 for the ultimate in convenience and control.</li>
+        </ul>
+      </div>
+
+      <div class="service-sidebar">
+        <div class="sidebar-widget">
+          <h4>Service Highlights</h4>
+          <ul>
+            <li>Free In-Home Consultation</li>
+            <li>Custom Lighting Design</li>
+            <li>Professional Installation & Programming</li>
+            <li>Certified Technicians</li>
+            <li>Premium Lighting Brands</li>
+            <li>Serving WI, IL, MN, & CO</li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Get a Free Consultation</h4>
+          <p>Contact us today for a free, no-obligation consultation to learn more about how we can transform your home with smart lighting.</p>
+          <a href="/aih/contact/?service=smart-lighting" class="btn btn-primary btn-full">Request Free Consultation</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% set faqTitle = "Smart Lighting FAQs" %}
+{% set faqs = [
+  {
+    question: "What is the difference between smart switches and smart bulbs?",
+    answer: "Smart switches replace your existing light switches and allow you to control your existing light fixtures. Smart bulbs replace your existing light bulbs and allow you to control the color and brightness of individual bulbs."
+  },
+  {
+    question: "Do I need a smart home hub for smart lighting?",
+    answer: "Some smart lighting products require a hub, while others can connect directly to your Wi-Fi network. We can help you choose the right solution for your needs."
+  },
+  {
+    question: "Can I control my smart lights with my voice?",
+    answer: "Yes, most smart lighting systems are compatible with voice assistants like Amazon Alexa, Google Assistant, and Apple Siri."
+  },
+  {
+    question: "Do you offer a warranty?",
+    answer: "Yes, we offer a 1-year warranty on all installation and programming, and all products come with a manufacturer’s warranty."
+  }
+] %}
+
+{% include "shared/components/FAQ.njk" %}
+
+{% set formTitle = "Schedule Your Free Smart Lighting Consultation" %}
+{% set formDescription = "Ready to transform your home with smart lighting? Contact us today for a free consultation."
+%}
+{% set showContactInfo = true %}
+{% set showServiceField = true %}
+
+{% include "shared/components/ContactWebToLead.njk" %}
+
+

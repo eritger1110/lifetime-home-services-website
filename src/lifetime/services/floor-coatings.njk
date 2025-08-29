@@ -1,411 +1,121 @@
 ---
-layout: layout.njk
-title: Professional Epoxy Floor Coatings - Lifetime Home Services
-description: Durable, beautiful epoxy floor coatings for garages, basements, and commercial spaces. Professional installation with Torginol products and lifetime warranty.
+layout: shared/_includes/layout.njk
+title: "Premium Floor Coatings | Lifetime Home Services"
+description: "Durable and beautiful epoxy and polyurea floor coatings for garages, basements, and commercial spaces. Lifetime warranty available."
+brand: lifetime
+canonical: "https://lifetimehomeservices.com/services/floor-coatings/"
+ogImage: "/assets/images/og/lhs-floor-coatings-og-1200x630.jpg"
+breadcrumbs:
+  - title: "Home"
+    url: "/lifetime/"
+  - title: "Services"
+    url: "/lifetime/services/"
+  - title: "Premium Floor Coatings"
 ---
 
-<div class="service-hero">
-  <div class="container">
-    <div class="hero-content">
-      <h1>Professional Floor Coatings</h1>
-      <p class="hero-subtitle">Transform Your Floors with Durable, Beautiful Epoxy Coatings</p>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-number">3-Layer</span>
-          <span class="stat-label">Professional system</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">20+ Years</span>
-          <span class="stat-label">Durability guarantee</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">1-2 Days</span>
-          <span class="stat-label">Installation time</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-image">
-      <img src="/assets/epoxysample2.jpg" alt="Professional Epoxy Floor Coating">
-    </div>
-  </div>
-</div>
+{% set heroImageWebP = "/assets/images/lhs/professional-floor-coating.webp" %}
+{% set heroImageJPG = "/assets/images/lhs/professional-floor-coating.jpg" %}
+{% set heroTitle = "Premium Floor Coatings" %}
+{% set heroSubtitle = "Durable, Beautiful, and Built to Last" %}
+{% set heroDescription = "Transform your garage, basement, or commercial space with our premium epoxy and polyurea floor coatings. Our professional installation ensures a durable, long-lasting finish that is both beautiful and functional."
+%}
+{% set primaryCTA = {
+  text: "Get a Free Floor Coating Quote",
+  url: "/lifetime/contact/?service=floor-coatings",
+  icon: 
+    "<path d=\"M8 7V3M16 7V3M7 11H17M5 21H19C20.1046 21 21 20.1046 21 19V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"
+} %}
+{% set secondaryCTA = {
+  text: "Call for Information",
+  url: "tel:+18339416888",
+  phone: true,
+  icon: 
+    "<path d=\"M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08C5.16 2.08 5.56 4 6.28 5.76C6.44 6.12 6.32 6.56 6 6.84L4.84 8C6.84 11.88 10.12 15.16 14 17.16L15.16 16C15.44 15.68 15.88 15.56 16.24 15.72C18 16.44 19.92 16.84 21.92 16.84C22.52 16.84 23 17.32 23 17.92V20.92Z\" fill=\"currentColor\"/>"
+} %}
 
-<section class="coating-overview">
+{% include "shared/components/HeroImage.njk" %}
+
+<section class="section service-details-section">
   <div class="container">
-    <div class="section-grid">
-      <div class="content-column">
-        <h2>Why Choose Professional Epoxy Floor Coatings?</h2>
-        <p class="lead">Our professional-grade epoxy floor coatings provide superior durability, chemical resistance, and stunning appearance that transforms any space.</p>
+    <div class="service-details-grid">
+      <div class="service-content">
+        <h2>Transform Your Floors</h2>
+        <p>Our premium floor coatings provide a durable, seamless, and attractive finish for a variety of spaces. Whether you’re looking to upgrade your garage, finish your basement, or protect a commercial floor, we have a solution that will meet your needs and exceed your expectations.</p>
         
-        <div class="coating-benefits">
-          <div class="benefit-item">
-            <h3>Superior Durability</h3>
-            <p>Our 3-layer system withstands heavy traffic, impacts, and chemical spills better than any DIY coating.</p>
-          </div>
-          
-          <div class="benefit-item">
-            <h3>Easy Maintenance</h3>
-            <p>Non-porous surface resists stains and cleans easily with simple soap and water.</p>
-          </div>
-          
-          <div class="benefit-item">
-            <h3>Enhanced Safety</h3>
-            <p>Slip-resistant texture options and improved lighting reflection for safer surfaces.</p>
-          </div>
-          
-          <div class="benefit-item">
-            <h3>Increased Property Value</h3>
-            <p>Professional floor coatings significantly increase your property's value and appeal.</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="visual-column">
-        <div class="before-after">
-          <h3>See the Transformation</h3>
-          <div class="comparison-images">
-            <div class="before-image">
-              <img src="/assets/Working.jpg" alt="Floor preparation process">
-              <span class="image-label">Professional Preparation</span>
-            </div>
-            <div class="after-image">
-              <img src="/assets/Garage1.jpg" alt="Finished epoxy floor">
-              <span class="image-label">Finished Result</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        <h3>Our Floor Coating Systems</h3>
+        <ul>
+          <li><strong>Epoxy Coatings:</strong> A durable and cost-effective solution for residential and commercial floors.</li>
+          <li><strong>Polyurea Coatings:</strong> A more flexible and UV-resistant option, ideal for spaces with direct sunlight exposure.</li>
+          <li><strong>Decorative Flake & Quartz Systems:</strong> Add color, texture, and slip resistance with our decorative flake and quartz systems.</li>
+        </ul>
 
-<section class="three-layer-system">
-  <div class="container">
-    <h2>Our Professional 3-Layer System</h2>
-    <p class="section-intro">Unlike single-coat DIY products, our professional system uses three distinct layers for maximum durability and performance.</p>
-    
-    <div class="layers-breakdown">
-      <div class="layer-card">
-        <div class="layer-number">1</div>
-        <div class="layer-content">
-          <h3>Base Coat - Primer Layer</h3>
-          <p>High-penetration epoxy primer that bonds directly to the concrete, creating an unbreakable foundation.</p>
+        <h3>Benefits of Our Floor Coatings</h3>
+        <ul>
+          <li><strong>Durability:</strong> Resistant to chemicals, stains, and abrasions.</li>
+          <li><strong>Longevity:</strong> Our coatings are built to last, with a lifetime warranty available.</li>
+          <li><strong>Easy Maintenance:</strong> Seamless and non-porous, our floors are easy to clean and maintain.</li>
+          <li><strong>Safety:</strong> We offer slip-resistant finishes to improve safety.</li>
+          <li><strong>Beauty:</strong> With a wide range of colors and finishes, we can create a floor that is as beautiful as it is durable.</li>
+        </ul>
+
+        <h3>Our Installation Process</h3>
+        <p>Our professional installation process ensures a flawless finish that will last for years to come:</p>
+        <ol>
+          <li><strong>Surface Preparation:</strong> We diamond grind the concrete to create the ideal profile for adhesion.</li>
+          <li><strong>Base Coat:</strong> We apply a moisture-mitigating primer and a 100% solids epoxy or polyurea base coat.</li>
+          <li><strong>Broadcast:</strong> We broadcast your choice of decorative flakes or quartz to create a custom look.</li>
+          <li><strong>Top Coat:</strong> We apply a clear, UV-stable polyaspartic top coat for ultimate protection and a beautiful finish.</li>
+        </ol>
+      </div>
+
+      <div class="service-sidebar">
+        <div class="sidebar-widget">
+          <h4>Service Highlights</h4>
           <ul>
-            <li>Penetrates deep into concrete pores</li>
-            <li>Creates chemical bond with substrate</li>
-            <li>Prevents moisture and vapor transmission</li>
-            <li>Provides superior adhesion</li>
+            <li>Epoxy & Polyurea Systems</li>
+            <li>Lifetime Warranty Available</li>
+            <li>Professional Diamond Grinding</li>
+            <li>Chemical & Stain Resistant</li>
+            <li>UV-Stable Top Coats</li>
+            <li>Serving WI, IL, MN, & CO</li>
           </ul>
         </div>
-      </div>
-      
-      <div class="layer-card">
-        <div class="layer-number">2</div>
-        <div class="layer-content">
-          <h3>Color Coat - Decorative Layer</h3>
-          <p>Pigmented epoxy layer that provides color, pattern, and initial protection.</p>
-          <ul>
-            <li>UV-stable color pigments</li>
-            <li>Decorative flake integration</li>
-            <li>Chemical resistance properties</li>
-            <li>Seamless, non-porous surface</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="layer-card">
-        <div class="layer-number">3</div>
-        <div class="layer-content">
-          <h3>Top Coat - Protection Layer</h3>
-          <p>Clear polyurethane or polyaspartic topcoat that provides ultimate protection and longevity.</p>
-          <ul>
-            <li>Superior abrasion resistance</li>
-            <li>UV protection for color stability</li>
-            <li>Chemical and stain resistance</li>
-            <li>Optional slip-resistant additives</li>
-          </ul>
+        <div class="sidebar-widget">
+          <h4>Get a Free Estimate</h4>
+          <p>Contact us today for a free, no-obligation estimate on our premium floor coating services.</p>
+          <a href="/lifetime/contact/?service=floor-coatings" class="btn btn-primary btn-full">Request Estimate</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="torginol-colors">
-  <div class="container">
-    <h2>Torginol Color Options</h2>
-    <p class="section-intro">Choose from our premium Torginol color flake system for a custom look that matches your style.</p>
-    
-    <div class="color-showcase">
-      <div class="color-grid">
-        <div class="color-card">
-          <div class="color-sample domino"></div>
-          <h3>Domino</h3>
-          <p>Classic black and white blend for timeless appeal</p>
-        </div>
-        
-        <div class="color-card">
-          <div class="color-sample wombat"></div>
-          <h3>Wombat</h3>
-          <p>Rich brown and tan tones for warm, natural look</p>
-        </div>
-        
-        <div class="color-card">
-          <div class="color-sample nightfall"></div>
-          <h3>Nightfall</h3>
-          <p>Deep charcoal and black for sophisticated elegance</p>
-        </div>
-        
-        <div class="color-card">
-          <div class="color-sample gravel"></div>
-          <h3>Gravel</h3>
-          <p>Gray and white blend mimics natural stone</p>
-        </div>
-        
-        <div class="color-card">
-          <div class="color-sample orbit"></div>
-          <h3>Orbit</h3>
-          <p>Blue and white combination for modern appeal</p>
-        </div>
-        
-        <div class="color-card">
-          <div class="color-sample tidal-wave"></div>
-          <h3>Tidal Wave</h3>
-          <p>Soft blue and gray tones for coastal feel</p>
-        </div>
-        
-        <div class="color-card">
-          <div class="color-sample creekbed"></div>
-          <h3>Creekbed</h3>
-          <p>Earth tones with brown and tan highlights</p>
-        </div>
-        
-        <div class="color-card">
-          <div class="color-sample cabin-fever"></div>
-          <h3>Cabin Fever</h3>
-          <p>Rustic blend of brown, tan, and gray</p>
-        </div>
-        
-        <div class="color-card">
-          <div class="color-sample shoreline"></div>
-          <h3>Shoreline</h3>
-          <p>Neutral beige and tan for versatile style</p>
-        </div>
-        
-        <div class="color-card">
-          <div class="color-sample outback"></div>
-          <h3>Outback</h3>
-          <p>Bold brown and black for dramatic impact</p>
-        </div>
-      </div>
-      
-      <div class="color-chart-image">
-        <img src="/assets/flake-color-chart.jpg" alt="Complete Torginol Color Chart">
-        <p class="chart-caption">Complete Torginol Signature Blends Color Chart</p>
-      </div>
-    </div>
-  </div>
-</section>
+{% set faqTitle = "Floor Coating FAQs" %}
+{% set faqs = [
+  {
+    question: "How long does the installation process take?",
+    answer: "Most residential projects can be completed in just 1-2 days."
+  },
+  {
+    question: "How long until I can use my new floor?",
+    answer: "You can walk on your new floor in 24 hours and drive on it in 72 hours."
+  },
+  {
+    question: "Are your floor coatings slippery?",
+    answer: "We offer a variety of slip-resistant finishes to meet your needs. Our standard flake floors have a texture similar to an orange peel, providing excellent slip resistance."
+  },
+  {
+    question: "How do I clean my new floor?",
+    answer: "Our floors are non-porous and easy to clean. Simply use a mild cleaner and a mop or squeegee."
+  }
+] %}
 
-<section class="installation-process">
-  <div class="container">
-    <h2>Professional Installation Process</h2>
-    <p class="section-intro">Our meticulous installation process ensures a flawless finish that lasts for decades.</p>
-    
-    <div class="process-steps">
-      <div class="step-card">
-        <div class="step-number">1</div>
-        <h3>Surface Preparation</h3>
-        <p>Diamond grinding removes all contaminants, opens concrete pores, and creates the perfect profile for adhesion.</p>
-        <div class="step-image">
-          <img src="/assets/Working.jpg" alt="Professional floor preparation">
-        </div>
-      </div>
-      
-      <div class="step-card">
-        <div class="step-number">2</div>
-        <h3>Crack Repair</h3>
-        <p>All cracks and imperfections are filled with structural repair compounds for a smooth, uniform surface.</p>
-      </div>
-      
-      <div class="step-card">
-        <div class="step-number">3</div>
-        <h3>Primer Application</h3>
-        <p>High-penetration epoxy primer is applied to create an unbreakable bond with the concrete substrate.</p>
-      </div>
-      
-      <div class="step-card">
-        <div class="step-number">4</div>
-        <h3>Color Coat & Flakes</h3>
-        <p>Pigmented epoxy color coat is applied, followed by broadcast of decorative color flakes for texture and beauty.</p>
-      </div>
-      
-      <div class="step-card">
-        <div class="step-number">5</div>
-        <h3>Flake Removal</h3>
-        <p>Excess flakes are removed and the surface is lightly sanded to ensure proper adhesion of the topcoat.</p>
-      </div>
-      
-      <div class="step-card">
-        <div class="step-number">6</div>
-        <h3>Protective Topcoat</h3>
-        <p>Clear polyurethane or polyaspartic topcoat provides ultimate protection and enhances the floor's appearance.</p>
-      </div>
-    </div>
-  </div>
-</section>
+{% include "shared/components/FAQ.njk" %}
 
-<section class="applications">
-  <div class="container">
-    <h2>Perfect for Any Space</h2>
-    <div class="applications-grid">
-      <div class="application-card">
-        <div class="application-image">
-          <img src="/assets/Garage1.jpg" alt="Garage floor coating">
-        </div>
-        <h3>Garage Floors</h3>
-        <p>Transform your garage into a showroom with durable, stain-resistant epoxy coatings that handle oil, chemicals, and heavy traffic.</p>
-        <ul>
-          <li>Oil and chemical resistance</li>
-          <li>Easy cleanup of spills</li>
-          <li>Improved lighting reflection</li>
-          <li>Increased property value</li>
-        </ul>
-      </div>
-      
-      <div class="application-card">
-        <h3>Basement Floors</h3>
-        <p>Create a beautiful, moisture-resistant basement floor that's perfect for recreation rooms, workshops, or storage areas.</p>
-        <ul>
-          <li>Moisture vapor barrier</li>
-          <li>Mold and mildew resistance</li>
-          <li>Comfortable walking surface</li>
-          <li>Brightens dark spaces</li>
-        </ul>
-      </div>
-      
-      <div class="application-card">
-        <h3>Commercial Spaces</h3>
-        <p>Ideal for retail, industrial, and commercial applications where durability and appearance are critical.</p>
-        <ul>
-          <li>Heavy traffic durability</li>
-          <li>Professional appearance</li>
-          <li>Low maintenance costs</li>
-          <li>Slip-resistant options</li>
-        </ul>
-      </div>
-      
-      <div class="application-card">
-        <h3>Workshops & Hobby Rooms</h3>
-        <p>Create the perfect workspace with floors that resist stains, are easy to clean, and provide excellent durability.</p>
-        <ul>
-          <li>Chemical and stain resistance</li>
-          <li>Easy tool and equipment movement</li>
-          <li>Improved safety and visibility</li>
-          <li>Professional workshop appearance</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+{% set formTitle = "Get Your Free Floor Coating Estimate" %}
+{% set formDescription = "Transform your space with a durable, beautiful floor coating. Contact us today for a free estimate."
+%}
+{% set showContactInfo = true %}
+{% set showServiceField = true %}
 
-<section class="maintenance-care">
-  <div class="container">
-    <h2>Easy Maintenance & Care</h2>
-    <div class="maintenance-grid">
-      <div class="maintenance-column">
-        <h3>Daily Care</h3>
-        <ul>
-          <li>Sweep or vacuum regularly</li>
-          <li>Clean spills immediately</li>
-          <li>Use soft-bristled broom</li>
-          <li>Avoid abrasive cleaners</li>
-        </ul>
-      </div>
-      
-      <div class="maintenance-column">
-        <h3>Weekly Cleaning</h3>
-        <ul>
-          <li>Mop with mild detergent</li>
-          <li>Use microfiber mop head</li>
-          <li>Rinse with clean water</li>
-          <li>Allow to air dry</li>
-        </ul>
-      </div>
-      
-      <div class="maintenance-column">
-        <h3>Periodic Deep Clean</h3>
-        <ul>
-          <li>Use degreasing cleaner if needed</li>
-          <li>Scrub with soft brush</li>
-          <li>Rinse thoroughly</li>
-          <li>Apply floor polish if desired</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="warranty-guarantee">
-  <div class="container">
-    <div class="warranty-content">
-      <h2>Our Guarantee</h2>
-      <div class="warranty-grid">
-        <div class="warranty-item">
-          <h3>20-Year Durability</h3>
-          <p>We guarantee our professional floor coatings will maintain their integrity and appearance for 20 years with proper care.</p>
-        </div>
-        
-        <div class="warranty-item">
-          <h3>Adhesion Guarantee</h3>
-          <p>Our coatings will not peel, chip, or delaminate when properly installed on suitable substrates.</p>
-        </div>
-        
-        <div class="warranty-item">
-          <h3>Color Stability</h3>
-          <p>UV-stable pigments ensure your floor's color won't fade or yellow over time.</p>
-        </div>
-        
-        <div class="warranty-item">
-          <h3>Professional Service</h3>
-          <p>All work is performed by trained, certified technicians using professional-grade materials and equipment.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-section">
-  <div class="container">
-    <div class="cta-content">
-      <h2>Ready to Transform Your Floors?</h2>
-      <p>Get a beautiful, durable floor coating that will last for decades. Professional installation with premium materials and guaranteed results.</p>
-      
-      <div class="cta-features">
-        <div class="feature-item">
-          <span class="feature-icon">✓</span>
-          <span>3-Layer Professional System</span>
-        </div>
-        <div class="feature-item">
-          <span class="feature-icon">✓</span>
-          <span>Premium Torginol Colors</span>
-        </div>
-        <div class="feature-item">
-          <span class="feature-icon">✓</span>
-          <span>20-Year Warranty</span>
-        </div>
-        <div class="feature-item">
-          <span class="feature-icon">✓</span>
-          <span>Professional Installation</span>
-        </div>
-      </div>
-      
-      <div class="cta-buttons">
-        <a href="tel:8339416888" class="btn btn-primary btn-large">Call (833) 941-6888</a>
-        <a href="#contact" class="btn btn-secondary btn-large">Get Free Estimate</a>
-      </div>
-      
-      <p class="cta-note">Available 24/7 for your convenience</p>
-    </div>
-  </div>
-</section>
-
+{% include "shared/components/ContactWebToLead.njk" %}

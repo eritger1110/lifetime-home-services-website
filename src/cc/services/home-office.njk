@@ -1,0 +1,115 @@
+---
+layout: shared/_includes/layout.njk
+title: "Custom Home Office Organization | Closet Concepts"
+description: "Create a productive and organized workspace with custom home office cabinets, shelving, and desks. Free design consultation and 3D rendering."
+brand: cc
+canonical: "https://closetconcepts.com/services/home-office/"
+ogImage: "/assets/images/og/cc-home-office-og-1200x630.jpg"
+breadcrumbs:
+  - title: "Home"
+    url: "/cc/"
+  - title: "Services"
+    url: "/cc/services/"
+  - title: "Home Office"
+---
+
+{% set heroImageWebP = "/assets/images/cc/homeoffice1.webp" %}
+{% set heroImageJPG = "/assets/images/cc/homeoffice1.jpg" %}
+{% set heroTitle = "Custom Home Office" %}
+{% set heroSubtitle = "Work Smarter, Not Harder" %}
+{% set heroDescription = "Create a home office that is as beautiful as it is functional. Our custom-designed home office solutions help you stay organized and productive, so you can focus on what matters most."
+%}
+{% set primaryCTA = {
+  text: "Get a Free Design Consultation",
+  url: "/cc/contact/?service=home-office",
+  icon: 
+    "<path d=\"M8 7V3M16 7V3M7 11H17M5 21H19C20.1046 21 21 20.1046 21 19V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>"
+} %}
+{% set secondaryCTA = {
+  text: "Call for Information",
+  url: "tel:+18339416888",
+  phone: true,
+  icon: 
+    "<path d=\"M22 16.92V19.92C22 20.52 21.52 21 20.92 21C9.4 21 0 11.6 0 0.08C0 -0.52 0.48 -1 1.08 -1H4.08C4.68 -1 5.16 -0.52 5.16 0.08C5.16 2.08 5.56 4 6.28 5.76C6.44 6.12 6.32 6.56 6 6.84L4.84 8C6.84 11.88 10.12 15.16 14 17.16L15.16 16C15.44 15.68 15.88 15.56 16.24 15.72C18 16.44 19.92 16.84 21.92 16.84C22.52 16.84 23 17.32 23 17.92V20.92Z\" fill=\"currentColor\"/>"
+} %}
+
+{% include "shared/components/HeroImage.njk" %}
+
+<section class="section service-details-section">
+  <div class="container">
+    <div class="service-details-grid">
+      <div class="service-content">
+        <h2>Your Perfect Home Office, Custom-Designed for You</h2>
+        <p>Whether you work from home full-time or just need a dedicated space for managing household tasks, a well-organized home office can make all the difference. At Closet Concepts, we design and install custom home office solutions that are tailored to your specific needs and workflow.</p>
+        
+        <h3>Our Design Process</h3>
+        <p>Our expert designers work with you to create a home office that is both beautiful and functional. We take into account your work habits, storage needs, and personal style to create a design that you’ll love.</p>
+        <ol>
+          <li><strong>Consultation:</strong> We start with a free in-home consultation to discuss your needs and measure your space.</li>
+          <li><strong>3D Design:</strong> We create a 3D rendering of your new home office so you can see exactly what it will look like.</li>
+          <li><strong>Installation:</strong> Our professional installers will bring your design to life with precision and care.</li>
+        </ol>
+
+        <h3>Home Office Solutions</h3>
+        <ul>
+          <li>Custom desks and workstations</li>
+          <li>File cabinets and storage</li>
+          <li>Bookshelves and display shelving</li>
+          <li>Cable management solutions</li>
+          <li>And much more!</li>
+        </ul>
+      </div>
+
+      <div class="service-sidebar">
+        <div class="sidebar-widget">
+          <h4>Service Highlights</h4>
+          <ul>
+            <li>Free In-Home Design Consultation</li>
+            <li>3D Home Office Design Renderings</li>
+            <li>Professional Installation</li>
+            <li>Lifetime Warranty on Hardware</li>
+            <li>Premium Materials & Finishes</li>
+            <li>Serving WI, IL, MN, & CO</li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Get a Free Design</h4>
+          <p>Contact us today for a free, no-obligation design consultation and 3D rendering of your new home office.</p>
+          <a href="/cc/contact/?service=home-office" class="btn btn-primary btn-full">Request Free Design</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% set faqTitle = "Home Office FAQs" %}
+{% set faqs = [
+  {
+    question: "How much does a custom home office cost?",
+    answer: "The cost of a custom home office varies widely depending on the size of your space, the materials you choose, and the features you include. Most projects range from $1,500 to $10,000 and up."
+  },
+  {
+    question: "How long does the process take?",
+    answer: "From design to installation, the entire process typically takes 4-6 weeks."
+  },
+  {
+    question: "What materials do you use?",
+    answer: "We offer a wide range of high-quality materials, including melamine, wood, and metal, in a variety of colors and finishes."
+  },
+  {
+    question: "Do you offer a warranty?",
+    answer: "Yes, we offer a lifetime warranty on all hardware and a 1-year warranty on installation."
+  }
+] %}
+
+{% include "shared/components/FAQ.njk" %}
+
+{% set formTitle = "Schedule Your Free Design Consultation" %}
+{% set formDescription = "Ready to create your dream home office? Contact us today for a free design consultation and 3D rendering."
+%}
+{% set showContactInfo = true %}
+{% set showServiceField = true %}
+
+{% include "shared/components/ContactWebToLead.njk" %}
+
+
