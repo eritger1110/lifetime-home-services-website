@@ -1,14 +1,57 @@
-module.exports = function (eleventy) {
-  eleventy.addLayoutAlias("base", "layout.njk");
-
-  eleventy.addNunjucksFilter("date", (value, format = "yyyy") => {
+module.exports = function (eleventyConfig) {
+  // Copy assets
+  eleventyConfig.addPassthroughCopy({
+    "public/assets": "assets",
+    "public/_headers": "_headers",
+    "public/_redirects": "_redirects"
+  });
+  
+  // Add HTML base plugin
+  const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+  eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
+    baseHref: "/lifetime/"
+  });
+  
+  // Global data
+  eleventyConfig.addGlobalData("build", () => {
+    return {
+      sha: process.env.COMMIT_REF || require("crypto").randomBytes(20).toString("hex"),
+      ts: new Date().toISOString(),
+      timestamp: Date.now()
+    };
+  });
+  
+  // Filters
+  eleventyConfig.addNunjucksFilter("date", (value, format = "yyyy") => {
     const d = value ? new Date(value) : new Date();
     if (format === "yyyy") return String(d.getFullYear());
     return d.toISOString();
   });
-
-  eleventy.addPassthroughCopy({
-    "public/assets": "assets"
+  
+  eleventyConfig.addFilter("slug", function(str) {
+    return str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  });
+  
+  eleventyConfig.addFilter("limit", function(array, limit) {
+    return array.slice(0, limit);
+  });
+  
+  // Shortcodes
+  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+  
+  eleventyConfig.addShortcode("picture", function(src, alt, className = "") {
+    const webpSrc = src.replace(/\.(jpg|jpeg|png)$/i, ".webp");
+    return `<picture class="${className}">
+      <source srcset="${webpSrc}" type="image/webp">
+      <img src="${src}" alt="${alt}" loading="lazy">
+    </picture>`;
+  });
+  
+  eleventyConfig.addShortcode("video", function(src, poster = "", className = "") {
+    return `<video class="${className}" autoplay muted loop playsinline poster="${poster}">
+      <source src="${src}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>`;
   });
 
   return {
@@ -19,8 +62,8 @@ module.exports = function (eleventy) {
       layouts: "../_includes",
       data: "_data"
     },
-    templateFormats: ["njk", "md", "html"]
+    templateFormats: ["njk", "md", "html"],
+    pathPrefix: "/lifetime/"
   };
 };
-
 

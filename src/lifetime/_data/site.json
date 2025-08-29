@@ -1,0 +1,37 @@
+{
+  "name": "Lifetime Home Services",
+  "brand": "lhs",
+  "url": "https://lifetimehomeservices.com",
+  "description": "Professional radon testing, duct sealing, and floor coating services for Wisconsin homes.",
+  "phone": "262-955-5701",
+  "ctaText": "Get Free Quote",
+  "ctaUrl": "/contact/",
+  "address": {
+    "street": "123 Main Street",
+    "city": "Madison",
+    "state": "WI",
+    "zip": "53703"
+  },
+  "navigation": [
+    { "title": "Home", "url": "/" },
+    { "title": "Radon Testing", "url": "/services/radon-testing/" },
+    { "title": "Duct Sealing", "url": "/services/duct-sealing/" },
+    { "title": "Floor Coatings", "url": "/services/floor-coatings/" },
+    { "title": "Service Areas", "url": "/service-areas/" },
+    { "title": "Contact", "url": "/contact/" }
+  ],
+  "services": [
+    { "title": "Radon Testing & Mitigation", "url": "/services/radon-testing/" },
+    { "title": "Duct Sealing (Aeroseal)", "url": "/services/duct-sealing/" },
+    { "title": "Premium Floor Coatings", "url": "/services/floor-coatings/" },
+    { "title": "Duct Cleaning", "url": "/services/duct-cleaning/" }
+  ],
+  "hero": {
+    "type": "image",
+    "image": "/assets/images/lhs/lifetime-hero-house.jpg",
+    "title": "Professional Home Services",
+    "subtitle": "Radon testing, duct sealing, and floor coatings for Wisconsin homes",
+    "cta": "Get Free Quote"
+  }
+}
+

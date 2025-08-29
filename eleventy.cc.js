@@ -1,25 +1,18 @@
-const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
-
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addLayoutAlias("base", "layout.njk");
-
   // Copy assets
   eleventyConfig.addPassthroughCopy({
-    "src/assets": "assets",
     "public/assets": "assets",
     "public/_headers": "_headers",
+    "public/_redirects": "_redirects"
   });
   
   // Add HTML base plugin
-  eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+  const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+  eleventyConfig.addPlugin(EleventyHtmlBasePlugin, {
+    baseHref: "/cc/"
+  });
   
   // Global data
-  eleventyConfig.addGlobalData("brand", "cc");
-  eleventyConfig.addGlobalData("brandName", "Closet Concepts");
-  eleventyConfig.addGlobalData("phone", "(833) 941-6888");
-  eleventyConfig.addGlobalData("baseUrl", "/cc/");
-  
-  // Build data
   eleventyConfig.addGlobalData("build", () => {
     return {
       sha: process.env.COMMIT_REF || require("crypto").randomBytes(20).toString("hex"),
@@ -69,8 +62,8 @@ module.exports = function (eleventyConfig) {
       layouts: "../_includes",
       data: "_data"
     },
+    templateFormats: ["njk", "md", "html"],
     pathPrefix: "/cc/"
   };
 };
-
 

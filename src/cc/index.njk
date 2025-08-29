@@ -1,0 +1,131 @@
+---
+layout: layout.njk
+title: Custom Storage Solutions
+description: Custom storage solutions for closets, garages, home offices, and more throughout Wisconsin.
+---
+
+<!-- Hero Section -->
+<section class="hero hero-video">
+    <div class="hero-background">
+        {% video site.hero.video, site.hero.poster, "hero-video" %}
+        <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+        <div class="container">
+            <h1 class="hero-title">{{ site.hero.title }}</h1>
+            <p class="hero-subtitle">{{ site.hero.subtitle }}</p>
+            <a href="{{ site.ctaUrl }}" class="btn btn-primary btn-large">{{ site.hero.cta }}</a>
+        </div>
+    </div>
+</section>
+
+<!-- Services Grid -->
+<section class="services-grid">
+    <div class="container">
+        <h2>Custom Storage Solutions</h2>
+        <div class="grid grid-4">
+            <div class="service-card">
+                {% picture "/assets/images/cc/walk-in-closets.jpg", "Walk-In Closets", "service-image" %}
+                <h3>Walk-In Closets</h3>
+                <p>Custom walk-in closet systems designed to maximize space and organization.</p>
+                <a href="/services/walk-in-closets/" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="service-card">
+                {% picture "/assets/images/cc/reach-in-closets.jpg", "Reach-In Closets", "service-image" %}
+                <h3>Reach-In Closets</h3>
+                <p>Efficient reach-in closet solutions that double your storage capacity.</p>
+                <a href="/services/reach-in-closets/" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="service-card">
+                {% picture "/assets/images/cc/garage-storage.jpg", "Garage Storage", "service-image" %}
+                <h3>Garage Storage</h3>
+                <p>Transform your garage with professional storage systems and organization.</p>
+                <a href="/services/garage-storage/" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="service-card">
+                {% picture "/assets/images/cc/home-office.jpg", "Home Office", "service-image" %}
+                <h3>Home Office</h3>
+                <p>Custom home office solutions for productivity and organization.</p>
+                <a href="/services/home-office/" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="service-card">
+                {% picture "/assets/images/cc/laundry-room.jpg", "Laundry Room", "service-image" %}
+                <h3>Laundry Room</h3>
+                <p>Efficient laundry room storage and organization systems.</p>
+                <a href="/services/laundry-room/" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="service-card">
+                {% picture "/assets/images/cc/mudroom.jpg", "Mudroom", "service-image" %}
+                <h3>Mudroom</h3>
+                <p>Keep your entryway organized with custom mudroom solutions.</p>
+                <a href="/services/mudroom/" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="service-card">
+                {% picture "/assets/images/cc/walk-in-pantry.jpg", "Walk-In Pantry", "service-image" %}
+                <h3>Walk-In Pantry</h3>
+                <p>Custom pantry systems for maximum food storage and organization.</p>
+                <a href="/services/walk-in-pantry/" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="service-card">
+                {% picture "/assets/images/cc/hobby-room.jpg", "Hobby Room", "service-image" %}
+                <h3>Hobby Room</h3>
+                <p>Specialized storage solutions for crafts, hobbies, and collections.</p>
+                <a href="/services/hobby-room/" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process -->
+<section class="our-process">
+    <div class="container">
+        <h2>Our Design Process</h2>
+        <div class="grid grid-4">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Free Consultation</h3>
+                <p>We visit your home to assess your space and discuss your storage needs.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Custom Design</h3>
+                <p>Our designers create a custom storage solution tailored to your space.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Professional Installation</h3>
+                <p>Our certified installers bring your custom storage system to life.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h3>Lifetime Warranty</h3>
+                <p>Enjoy your organized space with confidence in our lifetime warranty.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="contact-cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to Transform Your Space?</h2>
+            <p>Contact us today for a free design consultation and see how we can maximize your storage.</p>
+            <div class="cta-buttons">
+                <a href="tel:{{ site.phone }}" class="btn btn-primary">{{ site.phone }}</a>
+                <a href="/contact/" class="btn btn-outline">Free Design Consultation</a>
+            </div>
+        </div>
+    </div>
+</section>
+
