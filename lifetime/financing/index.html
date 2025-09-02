@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financing Options | Lifetime Home Services | Wisconsin</title>
+    <meta name="description" content="Flexible financing options for your home improvement projects. 0% interest available. Quick approval through Synchrony Financial. Call (262) 955-5701.">
+    <meta name="keywords" content="home improvement financing, 0% interest, Synchrony Financial, Wisconsin, Lifetime Home Services">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Financing Options | Lifetime Home Services">
+    <meta property="og:description" content="Flexible financing options for your home improvement projects. 0% interest available.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lifetimehomeservices.com/lifetime/financing/">
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --accent-orange: #f97316;
+            --light-gray: #f8fafc;
+            --dark-gray: #1f2937;
+            --success-green: #10b981;
+            --synchrony-blue: #0066cc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+        }
+        
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-blue) !important;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark-gray) !important;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-blue) !important;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3);
+        }
+        
+        .btn-synchrony {
+            background: linear-gradient(135deg, var(--synchrony-blue), #0052a3);
+            border: none;
+            padding: 15px 40px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-synchrony:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.3);
+            color: white;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--success-green), #059669);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('../../assets/images/happy-family-home.jpg') center/cover;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .breadcrumb {
+            background: var(--light-gray);
+            padding: 1rem 0;
+        }
+        
+        .breadcrumb-item a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin-bottom: 3rem;
+        }
+        
+        .financing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 3px solid transparent;
+        }
+        
+        .financing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .financing-card.featured {
+            border-color: var(--success-green);
+            position: relative;
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success-green);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .financing-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--success-green), #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .financing-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .price-highlight {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--success-green);
+            line-height: 1;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+        
+        .synchrony-section {
+            background: linear-gradient(135deg, var(--synchrony-blue), #0052a3);
+            color: white;
+        }
+        
+        .calculator-section {
+            background: var(--light-gray);
+        }
+        
+        .calculator-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .range-slider {
+            width: 100%;
+            margin: 1rem 0;
+        }
+        
+        .faq-section {
+            background: var(--light-gray);
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: var(--light-gray);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: #6b7280;
+            line-height: 1.6;
+            display: none;
+        }
+        
+        .faq-answer.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .footer {
+            background: var(--dark-gray);
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+        
+        .footer h5 {
+            color: var(--secondary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .footer a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+            
+            .price-highlight {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../../index.html">
+                <img src="../../assets/logos/LifetimeHomeServicesLogo.png" alt="Lifetime Home Services" height="40" class="me-2">
+                Lifetime Home Services
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../services/radon-testing.html">Radon Testing</a></li>
+                            <li><a class="dropdown-item" href="../services/radon-mitigation.html">Radon Mitigation</a></li>
+                            <li><a class="dropdown-item" href="../services/duct-services.html">Duct Services</a></li>
+                            <li><a class="dropdown-item" href="../services/floor-coatings.html">Floor Coatings</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Financing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tel:+12629555701">(262) 955-5701</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" style="margin-top: 76px;">
+        <div class="container">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item active">Financing</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="hero-content">
+                        <h1 class="display-4 fw-bold mb-4">Flexible Financing Options</h1>
+                        <p class="lead mb-4">Don't let budget concerns delay your home improvement projects. We offer flexible financing solutions with competitive rates and quick approval through Synchrony Financial.</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#apply" class="btn btn-warning btn-lg">
+                                <i class="fas fa-credit-card me-2"></i>Apply Now
+                            </a>
+                            <a href="tel:+12629555701" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-phone me-2"></i>(262) 955-5701
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="text-center">
+                        <i class="fas fa-hand-holding-usd" style="font-size: 8rem; opacity: 0.3;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financing Options -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">Choose Your Financing Plan</h2>
+                    <p class="section-subtitle">We partner with Synchrony Financial to offer flexible payment options that fit your budget.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="financing-card featured">
+                        <div class="featured-badge">Most Popular</div>
+                        <div class="financing-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <h3 class="text-center mb-3">0% Interest</h3>
+                        <div class="text-center mb-4">
+                            <div class="price-highlight">0%</div>
+                            <div class="price-period">for 12-18 months</div>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>No interest if paid in full</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Projects $1,000 - $25,000</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Quick online approval</li>
+                            <li><i class="fas fa-check text-success me-2"></i>No prepayment penalties</li>
+                        </ul>
+                        <div class="text-center mt-4">
+                            <a href="#apply" class="btn btn-primary w-100">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="financing-card">
+                        <div class="financing-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="text-center mb-3">Extended Terms</h3>
+                        <div class="text-center mb-4">
+                            <div class="price-highlight">7.99%</div>
+                            <div class="price-period">APR for 24-84 months</div>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Lower monthly payments</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Projects up to $55,000</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Fixed interest rates</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Flexible payment dates</li>
+                        </ul>
+                        <div class="text-center mt-4">
+                            <a href="#apply" class="btn btn-outline-primary w-100">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="financing-card">
+                        <div class="financing-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="text-center mb-3">Same Day Approval</h3>
+                        <div class="text-center mb-4">
+                            <div class="price-highlight">9.99%</div>
+                            <div class="price-period">APR for 12-60 months</div>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Instant decisions</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Start work immediately</li>
+                            <li><i class="fas fa-check text-success me-2"></i>No down payment required</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Online account management</li>
+                        </ul>
+                        <div class="text-center mt-4">
+                            <a href="#apply" class="btn btn-outline-primary w-100">Apply Today</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Synchrony Partnership -->
+    <section class="synchrony-section section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="display-5 fw-bold mb-4">Powered by Synchrony Financial</h2>
+                    <p class="lead mb-4">We've partnered with Synchrony Financial, a leading consumer financial services company, to provide you with flexible financing options for your home improvement projects.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-star text-warning me-2"></i>Over 80 years of financing experience</li>
+                        <li class="mb-2"><i class="fas fa-shield-alt text-warning me-2"></i>Secure, encrypted application process</li>
+                        <li class="mb-2"><i class="fas fa-clock text-warning me-2"></i>Quick approval decisions</li>
+                        <li class="mb-2"><i class="fas fa-mobile-alt text-warning me-2"></i>Easy online account management</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="bg-white rounded-3 p-4 d-inline-block">
+                        <img src="https://www.synchrony.com/content/dam/synchrony/images/logos/synchrony-logo-blue.svg" alt="Synchrony Financial" style="max-width: 200px; height: auto;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Calculator -->
+    <section class="calculator-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">Payment Calculator</h2>
+                    <p class="section-subtitle">Estimate your monthly payments based on project cost and financing terms.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="calculator-card">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label for="projectCost" class="form-label">Project Cost</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="projectCost" value="5000" min="1000" max="55000" step="100">
+                                </div>
+                                <input type="range" class="range-slider" id="costSlider" min="1000" max="55000" value="5000" step="100">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="loanTerm" class="form-label">Loan Term (Months)</label>
+                                <select class="form-control" id="loanTerm">
+                                    <option value="12">12 months (0% APR)</option>
+                                    <option value="18">18 months (0% APR)</option>
+                                    <option value="24" selected>24 months (7.99% APR)</option>
+                                    <option value="36">36 months (7.99% APR)</option>
+                                    <option value="48">48 months (7.99% APR)</option>
+                                    <option value="60">60 months (9.99% APR)</option>
+                                    <option value="84">84 months (9.99% APR)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4 p-4 bg-light rounded">
+                            <h4>Estimated Monthly Payment</h4>
+                            <div class="price-highlight" id="monthlyPayment">$208</div>
+                            <p class="text-muted mt-2">*Estimate based on approved credit. Actual terms may vary.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Process -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">Simple Application Process</h2>
+                    <p class="section-subtitle">Get approved in minutes with our streamlined online application.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="financing-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h4>1. Apply Online</h4>
+                        <p>Complete our secure online application in just 2-3 minutes. Basic information required.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="financing-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>2. Quick Decision</h4>
+                        <p>Receive an instant decision in most cases. Some applications may require additional review.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="financing-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>3. Schedule Work</h4>
+                        <p>Once approved, we'll schedule your project and begin work according to your timeline.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="financing-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4>4. Enjoy Results</h4>
+                        <p>Enjoy your improved home while making convenient monthly payments that fit your budget.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section id="apply" class="section-padding bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="calculator-card">
+                        <h3 class="text-center mb-4">Apply for Financing</h3>
+                        <p class="text-center text-muted mb-4">Complete this form to start your financing application with Synchrony Financial.</p>
+                        
+                        <div class="text-center mb-4">
+                            <a href="https://www.synchrony.com/financing/home-improvement/" target="_blank" class="btn-synchrony">
+                                <i class="fas fa-external-link-alt me-2"></i>Apply with Synchrony Financial
+                            </a>
+                        </div>
+                        
+                        <div class="text-center">
+                            <p class="text-muted">Or call us at <strong>(262) 955-5701</strong> and we'll help you apply over the phone.</p>
+                        </div>
+                        
+                        <!-- Pre-qualification Form -->
+                        <hr class="my-4">
+                        <h4 class="text-center mb-3">Get Pre-Qualified</h4>
+                        
+                        <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" id="prequalForm">
+                            <input type="hidden" name="oid" value="00D8c0000000000">
+                            <input type="hidden" name="retURL" value="https://lifetimehomeservices.com/thank-you.html">
+                            <input type="hidden" name="lead_source" value="Website - Financing">
+                            
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="first_name" class="form-label">First Name *</label>
+                                    <input type="text" class="form-control" id="first_name" name="first_name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="last_name" class="form-label">Last Name *</label>
+                                    <input type="text" class="form-control" id="last_name" name="last_name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Phone *</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="00N8c00000000002" class="form-label">Estimated Project Cost</label>
+                                    <select class="form-control" id="00N8c00000000002" name="00N8c00000000002">
+                                        <option value="$1,000 - $2,500">$1,000 - $2,500</option>
+                                        <option value="$2,500 - $5,000">$2,500 - $5,000</option>
+                                        <option value="$5,000 - $10,000" selected>$5,000 - $10,000</option>
+                                        <option value="$10,000 - $25,000">$10,000 - $25,000</option>
+                                        <option value="$25,000+">$25,000+</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="00N8c00000000003" class="form-label">Preferred Timeline</label>
+                                    <select class="form-control" id="00N8c00000000003" name="00N8c00000000003">
+                                        <option value="ASAP">As soon as possible</option>
+                                        <option value="1-2 weeks">1-2 weeks</option>
+                                        <option value="1 month" selected>Within 1 month</option>
+                                        <option value="2-3 months">2-3 months</option>
+                                        <option value="Planning">Just planning ahead</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="00N8c00000000004" class="form-label">Services Interested In</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="Radon Testing" id="service1" name="00N8c00000000004">
+                                                <label class="form-check-label" for="service1">Radon Testing</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="Radon Mitigation" id="service2" name="00N8c00000000004">
+                                                <label class="form-check-label" for="service2">Radon Mitigation</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="Duct Services" id="service3" name="00N8c00000000004">
+                                                <label class="form-check-label" for="service3">Duct Services</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="Floor Coatings" id="service4" name="00N8c00000000004" checked>
+                                                <label class="form-check-label" for="service4">Floor Coatings</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="description" class="form-label">Project Description</label>
+                                    <textarea class="form-control" id="description" name="description" rows="3" placeholder="Tell us about your project..."></textarea>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i>Get Pre-Qualified
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">Financing FAQ</h2>
+                    <p class="section-subtitle">Common questions about our financing options and application process.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            What credit score do I need to qualify?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Synchrony Financial considers applications from borrowers with various credit profiles. While a higher credit score improves your chances of approval and better terms, they evaluate multiple factors including income, debt-to-income ratio, and employment history. Apply to see what options are available to you.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            How quickly can I get approved?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Most applications receive an instant decision. In some cases, additional verification may be required, which can take 1-2 business days. Once approved, you can schedule your project immediately.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            Are there any fees or prepayment penalties?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>There are no application fees, origination fees, or prepayment penalties. You can pay off your loan early without any additional charges. The only fees are late payment fees if payments are not made on time.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            What information do I need to apply?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>You'll need your Social Security number, annual income, employment information, and basic personal details. The application takes just 2-3 minutes to complete online.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            Can I make payments online?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes! Synchrony provides a convenient online account management system where you can make payments, view statements, set up autopay, and manage your account 24/7.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            What happens if I'm not approved?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>If you're not approved for financing, we can discuss alternative payment options including cash discounts, payment plans, or waiting to improve your credit score before reapplying.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5>Lifetime Home Services</h5>
+                    <p>Professional home improvement services throughout Wisconsin. Trusted solutions, lifetime results.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-decoration-none"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-decoration-none"><i class="fab fa-google"></i></a>
+                        <a href="#" class="text-decoration-none"><i class="fab fa-yelp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Services</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../services/radon-testing.html">Radon Testing</a></li>
+                        <li><a href="../services/radon-mitigation.html">Radon Mitigation</a></li>
+                        <li><a href="../services/duct-services.html">Duct Services</a></li>
+                        <li><a href="../services/floor-coatings.html">Floor Coatings</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i>(262) 955-5701</li>
+                        <li><i class="fas fa-envelope me-2"></i>info@lifetimehomeservices.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i>Serving Wisconsin</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Business Hours</h5>
+                    <ul class="list-unstyled">
+                        <li>Monday - Friday: 8 AM - 6 PM</li>
+                        <li>Saturday: 9 AM - 4 PM</li>
+                        <li>Sunday: Emergency Only</li>
+                        <li>24/7 Emergency Service</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2024 Lifetime Home Services. All rights reserved. | Licensed & Insured | EPA Certified</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // FAQ Toggle Functionality
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('show');
+                    item.previousElementSibling.querySelector('i').classList.remove('fa-chevron-up');
+                    item.previousElementSibling.querySelector('i').classList.add('fa-chevron-down');
+                }
+            });
+            
+            // Toggle current FAQ
+            answer.classList.toggle('show');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+        
+        // Payment Calculator
+        function calculatePayment() {
+            const cost = parseFloat(document.getElementById('projectCost').value);
+            const term = parseInt(document.getElementById('loanTerm').value);
+            let apr = 0;
+            
+            // Determine APR based on term
+            if (term <= 18) {
+                apr = 0; // 0% promotional rate
+            } else if (term <= 48) {
+                apr = 0.0799; // 7.99% APR
+            } else {
+                apr = 0.0999; // 9.99% APR
+            }
+            
+            let monthlyPayment;
+            
+            if (apr === 0) {
+                // 0% interest - simple division
+                monthlyPayment = cost / term;
+            } else {
+                // Calculate with interest
+                const monthlyRate = apr / 12;
+                monthlyPayment = cost * (monthlyRate * Math.pow(1 + monthlyRate, term)) / (Math.pow(1 + monthlyRate, term) - 1);
+            }
+            
+            document.getElementById('monthlyPayment').textContent = '$' + Math.round(monthlyPayment);
+        }
+        
+        // Update calculator when inputs change
+        document.getElementById('projectCost').addEventListener('input', function() {
+            document.getElementById('costSlider').value = this.value;
+            calculatePayment();
+        });
+        
+        document.getElementById('costSlider').addEventListener('input', function() {
+            document.getElementById('projectCost').value = this.value;
+            calculatePayment();
+        });
+        
+        document.getElementById('loanTerm').addEventListener('change', calculatePayment);
+        
+        // Initialize calculator
+        calculatePayment();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Form submission handling
+        document.getElementById('prequalForm').addEventListener('submit', function(e) {
+            // Add loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+            submitBtn.disabled = true;
+            
+            // Form will submit to Salesforce
+            // On success, user will be redirected to thank-you page
+        });
+        
+        // Phone number click tracking
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener('click', function() {
+                // Track phone clicks for analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'phone_click', {
+                        'event_category': 'contact',
+                        'event_label': 'financing_page'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "Home Improvement Financing",
+        "description": "Flexible financing options for home improvement projects through Synchrony Financial partnership.",
+        "provider": {
+            "@type": "LocalBusiness",
+            "name": "Lifetime Home Services",
+            "telephone": "+1-262-955-5701",
+            "email": "info@lifetimehomeservices.com",
+            "address": {
+                "@type": "PostalAddress",
+                "addressRegion": "WI",
+                "addressCountry": "US"
+            },
+            "areaServed": {
+                "@type": "State",
+                "name": "Wisconsin"
+            }
+        },
+        "serviceType": "Home Improvement Financing",
+        "category": "Financial Services",
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "0% Interest Financing",
+                "description": "0% interest for 12-18 months on approved credit",
+                "priceSpecification": {
+                    "@type": "PriceSpecification",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@type": "Offer",
+                "name": "Extended Term Financing",
+                "description": "7.99% APR for 24-84 months on approved credit",
+                "priceSpecification": {
+                    "@type": "PriceSpecification",
+                    "price": "7.99",
+                    "priceCurrency": "USD"
+                }
+            }
+        ]
+    }
+    </script>
+</body>
+</html>
+

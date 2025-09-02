@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifetime Home Services - Trusted Solutions. Lifetime Results.</title>
+    <meta name="description" content="Professional home services for Wisconsin families. Over 20 years of experience in radon testing, duct sealing, floor coatings, and duct cleaning.">
+    <link rel="canonical" href="https://lhsv2.netlify.app/">
+    
+    <!-- Preload hero image -->
+    <link rel="preload" as="image" href="assets/images/lhs/lifetime-hero-house.jpg">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #0ea5e9;
+            --accent-color: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-brand img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: var(--text-dark);
+            margin: 0 10px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .phone-link {
+            background: var(--accent-color);
+            color: white !important;
+            font-weight: 600;
+            padding: 12px 25px !important;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .phone-link:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('assets/images/lhs/lifetime-hero-house.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .btn-hero {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-hero:hover {
+            background: #059669;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+        }
+        
+        .btn-hero.secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-hero.secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+        
+        .services h2 {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .services .lead {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .btn-service {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-service:hover {
+            background: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 64, 175, 0.3);
+        }
+        
+        /* Service Detail Sections */
+        .service-detail {
+            padding: 80px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .service-detail:nth-child(even) {
+            background: var(--bg-light);
+        }
+        
+        .service-detail h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-hero-text {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .benefits-list li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .benefits-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .process-steps {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step-number {
+            background: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin: 3rem 0;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            background: none;
+            border: none;
+            width: 100%;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:hover {
+            background: var(--bg-light);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-light);
+            display: none;
+        }
+        
+        .faq-answer.show {
+            display: block;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .about h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+        
+        .stats {
+            background: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .stat-item {
+            margin-bottom: 2rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .contact h2 {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .form-control {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+            border: none;
+            outline: none;
+        }
+        
+        .btn-contact {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-contact:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer h5 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .services h2, .about h2, .contact h2 {
+                font-size: 2rem;
+            }
+            
+            .service-detail h2 {
+                font-size: 2rem;
+            }
+            
+            .navbar-nav {
+                text-align: center;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Loading animation */
+        .loading {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <img src="assets/logos/LifetimeHomeServicesLogo.png" alt="Lifetime Home Services">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#financing">Financing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                
+                <a href="tel:+12629555701" class="phone-link" onclick="showCallHours()">
+                    <i class="fas fa-phone me-2"></i>(262) 955-5701
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content loading">
+                <h1>Trusted Solutions. Lifetime Results.</h1>
+                <p>Professional home services for Wisconsin families. Over 20 years of experience in radon testing, duct sealing, floor coatings, and duct cleaning.</p>
+                <a href="#contact" class="btn-hero">
+                    <i class="fas fa-paper-plane me-2"></i>Get Free Estimate
+                </a>
+                <a href="#services" class="btn-hero secondary">
+                    <i class="fas fa-arrow-down me-2"></i>Our Services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Professional Services</h2>
+            <p class="lead">Comprehensive home solutions designed to protect your family and improve your home's performance</p>
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-radiation"></i>
+                        </div>
+                        <h3>Radon Testing & Mitigation</h3>
+                        <p>Professional radon testing and mitigation services to protect your family from this invisible threat. EPA-certified technicians and guaranteed results.</p>
+                        <a href="lifetime/services/radon-testing.html" class="btn-service">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <h3>Duct Sealing (Aeroseal)</h3>
+                        <p>Revolutionary Aeroseal technology seals ductwork from the inside, improving energy efficiency and indoor air quality by up to 40%.</p>
+                        <a href="lifetime/services/duct-services.html" class="btn-service">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3>Premium Floor Coatings</h3>
+                        <p>Transform your garage, basement, or commercial space with durable epoxy floor coatings. Beautiful, long-lasting, and easy to maintain.</p>
+                        <a href="lifetime/services/floor-coatings.html" class="btn-service">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-broom"></i>
+                        </div>
+                        <h3>Duct Cleaning</h3>
+                        <p>Professional duct cleaning services to improve indoor air quality and HVAC efficiency. Remove dust, allergens, and contaminants.</p>
+                        <a href="lifetime/services/duct-services.html" class="btn-service">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Radon Testing Section -->
+    <section id="radon-testing" class="service-detail">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2>Radon Testing for Wisconsin Homes</h2>
+                    <p class="service-hero-text">Radon is invisible and odorless—testing is the only way to know your levels. We make it easy with accurate monitors, quick turnaround, and straightforward next steps.</p>
+                    
+                    <h4>Key Benefits</h4>
+                    <ul class="benefits-list">
+                        <li>Professional setup and retrieval</li>
+                        <li>Clear, easy-to-read results report</li>
+                        <li>Placement and duration follow best practices</li>
+                        <li>Honest guidance if mitigation is recommended</li>
+                    </ul>
+                    
+                    <div class="process-steps">
+                        <h4>How Testing Works</h4>
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div>We place a calibrated monitor or approved test kit in the correct location for accurate results.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div>We confirm closed-house conditions so the reading is valid.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div>After the test period, we retrieve the device and generate your report.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div>We walk you through the results and answer any questions.</div>
+                        </div>
+                    </div>
+                    
+                    <h4>What You Receive</h4>
+                    <ul class="benefits-list">
+                        <li>Start-to-finish handling of your test</li>
+                        <li>A pass-or-actionable results report</li>
+                        <li>A clear plan if mitigation is recommended</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <img src="assets/images/lhs/radon-testing.jpg" alt="Professional radon testing equipment" class="img-fluid rounded shadow" loading="lazy">
+                </div>
+            </div>
+            
+            <div class="faq-section">
+                <h4>Frequently Asked Questions</h4>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        How long does testing take?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Most tests run 48 hours for active monitors or 2–7 days for certain kits, plus report time.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Do I need to do anything during the test?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        Keep windows closed as advised and do not move the device.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        How accurate are results?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        We use professional methods and follow placement best practices.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        What happens if my level is elevated?
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        We'll design a mitigation plan and explain expected outcomes.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Radon Mitigation Section -->
+    <section id="radon-mitigation" class="service-detail">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <img src="assets/images/lhs/sub-slab-system-diagram.jpg" alt="Radon mitigation system diagram" class="img-fluid rounded shadow" loading="lazy">
+                </div>
+                <div class="col-lg-8">
+                    <h2>Radon Mitigation Systems That Work</h2>
+                    <p class="service-hero-text">Every home is different. We design and install mitigation systems that reduce radon levels while protecting curb appeal and interior finishes.</p>
+                    
+                    <h4>Key Benefits</h4>
+                    <ul class="benefits-list">
+                        <li>Custom system design for your foundation and layout</li>
+                        <li>Neat, code‑compliant installation with quality materials</li>
+                        <li>Post‑install verification test and clear documentation</li>
+                        <li>Warranty options and ongoing support</li>
+                    </ul>
+                    
+                    <div class="process-steps">
+                        <h4>Our Approach</h4>
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div>In‑home assessment to identify entry points and best suction locations.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div>Clean routing plan to minimize visual impact.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div>Professional core drilling, sealed piping, and quiet, efficient fan.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div>System labeling and post‑install verification test.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Duct Sealing Section -->
+    <section id="duct-sealing-aeroseal" class="service-detail">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2>Aeroseal Duct Sealing</h2>
+                    <p class="service-hero-text">Leaky ducts waste conditioned air. Aeroseal finds and seals leaks from the inside—even in hard‑to‑reach areas.</p>
+                    
+                    <h4>Key Benefits</h4>
+                    <ul class="benefits-list">
+                        <li>Targets leaks you can't reach from the outside</li>
+                        <li>Often evens out hot and cold rooms</li>
+                        <li>Measured before‑and‑after leakage results</li>
+                    </ul>
+                    
+                    <div class="process-steps">
+                        <h4>How It Works</h4>
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div>We temporarily pressurize your duct system.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div>A safe mist collects at leaks and seals them from the inside.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div>You receive a printed report showing the improvement.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <img src="assets/images/lhs/aeroseal-logo.webp" alt="Aeroseal certified contractor" class="img-fluid rounded shadow" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Duct Cleaning Section -->
+    <section id="duct-cleaning" class="service-detail">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <img src="assets/images/lhs/Fan_and_accessories.jpg" alt="Professional duct cleaning equipment" class="img-fluid rounded shadow" loading="lazy">
+                </div>
+                <div class="col-lg-8">
+                    <h2>Professional Air Duct Cleaning</h2>
+                    <p class="service-hero-text">Dust and debris build up over time. Our process removes contaminants and helps your system move air more effectively.</p>
+                    
+                    <h4>Key Benefits</h4>
+                    <ul class="benefits-list">
+                        <li>Trained technicians with professional‑grade equipment</li>
+                        <li>Floor and wall protection; careful register handling</li>
+                        <li>Optional sanitizing and filtration upgrades</li>
+                        <li>Before‑and‑after photos available on request</li>
+                    </ul>
+                    
+                    <div class="process-steps">
+                        <h4>Our Process</h4>
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div>System inspection and protection setup.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div>Negative pressure established with high‑powered equipment.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div>Brushing and agitation to dislodge debris.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div>Supply and return runs cleaned thoroughly; blower cabinet as needed.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floor Coatings Section -->
+    <section id="floor-coatings" class="service-detail">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2>Durable Epoxy Floor Coatings</h2>
+                    <p class="service-hero-text">Tough, attractive, and easy to clean. Our epoxy systems stand up to daily life and look great doing it.</p>
+                    
+                    <h4>Popular Applications</h4>
+                    <p>Garages, basements, utility rooms, workshops.</p>
+                    
+                    <h4>Finishes and Options</h4>
+                    <ul class="benefits-list">
+                        <li>Decorative flake systems</li>
+                        <li>Solid color systems</li>
+                        <li>Metallic effects for feature areas</li>
+                        <li>UV‑ and chemical‑resistant topcoats</li>
+                    </ul>
+                    
+                    <div class="process-steps">
+                        <h4>Installation Steps</h4>
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div>Surface prep and repairs.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div>Base coat and broadcast as specified.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div>Topcoat(s) for protection and sheen.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <img src="assets/images/epoxy/Garage1.jpg" alt="Epoxy garage floor coating" class="img-fluid rounded shadow" loading="lazy">
+                        </div>
+                        <div class="col-12">
+                            <img src="assets/images/epoxy/after1.jpg" alt="Beautiful epoxy floor finish" class="img-fluid rounded shadow" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financing Section -->
+    <section id="financing" class="service-detail">
+        <div class="container">
+            <h2>Financing Options</h2>
+            <p class="service-hero-text">We partner with Synchrony to offer flexible financing so you can start your project sooner. Applying is quick, and decisions are typically fast.</p>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="process-steps">
+                        <h4>How It Works</h4>
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div>Review available financing programs and FAQs below.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div>When ready, use our secure Synchrony application portal.</div>
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div>Receive your decision and schedule your project.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center my-4">
+                        <a href="https://www.synchrony.com/mmc/S6229146200?sitecode=acaqri0c1" target="_blank" rel="noopener noreferrer" class="btn-hero">
+                            <i class="fas fa-credit-card me-2"></i>Apply with Synchrony
+                        </a>
+                    </div>
+                    
+                    <div class="faq-section">
+                        <h4>Financing FAQs</h4>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                Will applying affect my credit score?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Synchrony will provide guidance on how applications may affect your credit score during the application process.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                Can I combine promotions with financing?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Available promotions and terms are provided directly by Synchrony during the application process.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                How long is approval valid?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Approval validity periods are determined by Synchrony and will be communicated during the application process.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <p><small>Subject to credit approval. Terms, APR, and promotions are provided directly by Synchrony. We do not collect or store your application data—your information is handled by Synchrony. Questions? Call us and we'll walk you through options.</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Why Choose Lifetime Home Services?</h2>
+                    <p>For over two decades, we've been Wisconsin's trusted partner for essential home services. Our commitment to quality, safety, and customer satisfaction has made us the preferred choice for thousands of homeowners.</p>
+                    
+                    <p>We use only the latest technology and proven methods to deliver results that last. From EPA-certified radon mitigation to revolutionary Aeroseal duct sealing, we bring professional-grade solutions to your home.</p>
+                    
+                    <p>Every project is backed by our satisfaction guarantee and performed by certified, experienced technicians who treat your home with the respect it deserves.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="assets/images/lhs/lifetime-hero-house.jpg" alt="Professional home services" class="img-fluid rounded shadow" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="stat-item">
+                        <span class="stat-number">20+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-item">
+                        <span class="stat-number">5000+</span>
+                        <span class="stat-label">Happy Customers</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Satisfaction Guarantee</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get Your Free Estimate Today</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form class="contact-form" id="contactForm" method="POST" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" data-netlify="true" name="contact">
+                        <!-- Netlify form handling as backup -->
+                        <input type="hidden" name="form-name" value="contact">
+                        
+                        <!-- Salesforce Web-to-Lead fields -->
+                        <input type="hidden" name="oid" value="00D8c000003QJQR">
+                        <input type="hidden" name="retURL" value="thank-you.html">
+                        <input type="hidden" name="lead_source" value="internet">
+                        <input type="hidden" name="company" value="Residential Customer">
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
+                            </div>
+                        </div>
+                        
+                        <input type="text" class="form-control" name="street" placeholder="Address" required>
+                        
+                        <select class="form-control" name="00N8c00000QJqQR" required>
+                            <option value="">Select Service of Interest</option>
+                            <option value="Radon Testing">Radon Testing</option>
+                            <option value="Radon Mitigation">Radon Mitigation</option>
+                            <option value="Aeroseal">Aeroseal</option>
+                            <option value="Duct Cleaning">Duct Cleaning</option>
+                            <option value="Floor Coatings (EPOXY)">Floor Coatings (EPOXY)</option>
+                            <option value="Multiple (Concierge Services)">Multiple (Concierge Services)</option>
+                        </select>
+                        
+                        <textarea class="form-control" name="description" rows="4" placeholder="Tell us about your project (optional)"></textarea>
+                        
+                        <button type="submit" class="btn-contact">
+                            <i class="fas fa-paper-plane me-2"></i>Get Free Estimate
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Information</h5>
+                    <p><i class="fas fa-phone me-2"></i> (262) 955-5701</p>
+                    <p><i class="fas fa-clock me-2"></i> 7 days a week, 8:00 AM - 8:00 PM CT</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Serving Wisconsin</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Our Services</h5>
+                    <p><a href="#radon-testing">Radon Testing & Mitigation</a></p>
+                    <p><a href="#duct-sealing-aeroseal">Duct Sealing (Aeroseal)</a></p>
+                    <p><a href="#floor-coatings">Premium Floor Coatings</a></p>
+                    <p><a href="#duct-cleaning">Duct Cleaning</a></p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Service Areas</h5>
+                    <p>Madison, Milwaukee, Green Bay, Appleton, Kenosha, Racine, and surrounding Wisconsin communities</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Certifications</h5>
+                    <p>EPA Certified Radon Professionals</p>
+                    <p>Aeroseal Certified Contractors</p>
+                    <p>Licensed & Insured</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Lifetime Home Services. All rights reserved. | Professional home services for Wisconsin families.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // FAQ Toggle Function
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (answer.classList.contains('show')) {
+                answer.classList.remove('show');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+                button.setAttribute('aria-expanded', 'false');
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer.show').forEach(openAnswer => {
+                    openAnswer.classList.remove('show');
+                    const openButton = openAnswer.previousElementSibling;
+                    const openIcon = openButton.querySelector('i');
+                    openIcon.classList.remove('fa-chevron-up');
+                    openIcon.classList.add('fa-chevron-down');
+                    openButton.setAttribute('aria-expanded', 'false');
+                });
+                
+                answer.classList.add('show');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+                button.setAttribute('aria-expanded', 'true');
+            }
+        }
+        
+        // Phone Hours Popup
+        function showCallHours() {
+            alert('Call Hours: 7 days a week, 8:00 AM to 8:00 PM CT');
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            // Allow form to submit to Salesforce
+            // Show success message after a brief delay
+            setTimeout(function() {
+                if (window.location.href.indexOf('thank-you.html') === -1) {
+                    alert('Thank you for your interest! We will contact you within 24 hours to schedule your free estimate.');
+                }
+            }, 100);
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+        
+        // Loading animation
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.loading').forEach(element => {
+                element.style.opacity = '1';
+            });
+        });
+        
+        // Lazy loading for images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        img.classList.remove('lazy');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Lifetime Home Services",
+        "description": "Professional home services for Wisconsin families. Over 20 years of experience in radon testing, duct sealing, floor coatings, and duct cleaning.",
+        "url": "https://lhsv2.netlify.app",
+        "telephone": "+1-262-955-5701",
+        "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "WI",
+            "addressCountry": "US"
+        },
+        "areaServed": [
+            {
+                "@type": "State",
+                "name": "Wisconsin"
+            }
+        ],
+        "openingHours": "Mo-Su 08:00-20:00",
+        "priceRange": "$$",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Home Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Radon Testing",
+                        "description": "Professional radon testing with fast results and clear guidance"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Radon Mitigation",
+                        "description": "Custom mitigation designed for your home"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Duct Sealing",
+                        "description": "Aeroseal technology seals ductwork from the inside"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Duct Cleaning",
+                        "description": "Professional air duct cleaning services"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Floor Coatings",
+                        "description": "Durable epoxy floor coatings"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+</body>
+</html>
+
