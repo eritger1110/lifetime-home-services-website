@@ -15,4 +15,41 @@ body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; 
 .btn-brand  { background: var(--brand-primary) !important; border-color: var(--brand-primary) !important; }
 .btn-brand:hover { filter: brightness(0.92); }
 
-/* Put your real overrides below as you refine the design */
+/* ===== Brand system & typography ===== */
+:root{
+  --brand-primary:#ff6a00;
+  --brand-dark:#111111;
+  --brand-accent:#0d6efd; /* keep Bootstrap primary available if needed */
+  --text:#222; --muted:#666;
+  --radius:14px; --soft-shadow:0 8px 24px rgba(0,0,0,.08);
+}
+
+body { color:var(--text); }
+h1,h2,h3,h4 { letter-spacing:.2px; }
+.lead { color:var(--muted); }
+
+/* Buttons */
+.btn-brand{
+  background:var(--brand-primary)!important;
+  border-color:var(--brand-primary)!important;
+  color:#fff!important; border-radius:var(--radius);
+  box-shadow:var(--soft-shadow);
+}
+.btn-brand:hover{ filter:brightness(.92); }
+
+/* Cards / sections */
+.card { border:0; border-radius:var(--radius); box-shadow:var(--soft-shadow); }
+.section { padding: clamp(48px, 7vw, 96px) 0; }
+
+/* Nav hover */
+.nav-link:hover, .nav-link:focus { color:var(--brand-primary)!important; }
+
+/* Utilities */
+.text-brand{ color:var(--brand-primary)!important; }
+.bg-brand{ background:var(--brand-primary)!important; color:#fff; }
+.rounded-2xl{ border-radius:var(--radius)!important; }
+.shadow-soft{ box-shadow:var(--soft-shadow)!important; }
+
+/* Skip link for a11y (add anchor in HTML – see Phase 4) */
+.skip-link{ position:absolute; left:-9999px; top:auto; width:1px;height:1px; overflow:hidden; }
+.skip-link:focus{ position:static; width:auto;height:auto; padding:.5rem 1rem; background:#000;color:#fff; z-index:1000; }
