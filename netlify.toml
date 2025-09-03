@@ -1,0 +1,20 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/lifetime/styles.css"
+  to = "/assets/css/site.css"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/styles.css"
+  to = "/assets/css/site.css"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*/styles.css"
+  to = "/assets/css/site.css"
+  status = 301
+  force = true

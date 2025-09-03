@@ -1,0 +1,18 @@
+/* Lifetime Home Services — Canonical overrides
+   Keep this AFTER Bootstrap CDN. Only global tweaks/brand rules go here. */
+
+html, body { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+:root{
+  --brand-primary:#ff6a00;   /* tweak as needed */
+  --brand-dark:#111111;
+}
+
+/* Example brand helpers (optional) */
+.text-brand { color: var(--brand-primary) !important; }
+.bg-brand   { background: var(--brand-primary) !important; }
+.btn-brand  { background: var(--brand-primary) !important; border-color: var(--brand-primary) !important; }
+.btn-brand:hover { filter: brightness(0.92); }
+
+/* Put your real overrides below as you refine the design */
