@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Service Areas & Locations | Lifetime Home Services</title>
+<meta name="description" content="Find Lifetime Home Services in your area. We serve Wisconsin, Illinois, Minnesota, and Colorado with radon, duct, and floor coating services.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/site.css?v={{buildHash}}" rel="stylesheet">
+<style>
+.hero-md{min-height:48vh;position:relative;display:flex;align-items:center}
+.hero-md .bg{position:absolute;inset:0;background:center/cover no-repeat}
+.hero-md::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.25))}
+.hero-md .content{position:relative;z-index:1;color:#fff}
+.card-elev{border:0;box-shadow:0 10px 24px rgba(0,0,0,.06);border-radius:16px}
+.state-card{transition:transform 0.2s ease;cursor:pointer}
+.state-card:hover{transform:translateY(-4px)}
+.zip-search{background:#f8f9fa;border-radius:16px;padding:2rem}
+</style>
+</head>
+<body class="lifetime">
+
+<!-- Sticky Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="/lifetime/">
+      <img src="/assets/images/logos/LifetimeHomeServicesLogo.png" alt="Lifetime Home Services" height="40">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="/lifetime/">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/lifetime/services/radon-testing/">Radon Testing</a></li>
+            <li><a class="dropdown-item" href="/lifetime/services/radon-mitigation/">Radon Mitigation</a></li>
+            <li><a class="dropdown-item" href="/lifetime/services/duct-cleaning-aeroseal/">Duct Cleaning & Aeroseal</a></li>
+            <li><a class="dropdown-item" href="/lifetime/services/floor-coatings/">Floor Coatings</a></li>
+            <li><a class="dropdown-item" href="/lifetime/services/struxure/">StruXure Pergolas</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/lifetime/financing/">Financing</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/lifetime/locations/">Locations</a></li>
+      </ul>
+      <a href="tel:+18339416888" class="btn btn-primary">(833) 941-6888</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero-md">
+  <div class="bg" style="background-image:url('/assets/images/locations/service-areas-hero.jpg')"></div>
+  <div class="container content py-5">
+    <h1 class="display-6 fw-bold">Our Service Areas</h1>
+    <p class="lead">Professional home services across Wisconsin, Illinois, Minnesota & Colorado.</p>
+    <a href="#search" class="btn btn-primary btn-lg">Find Your Area</a>
+  </div>
+</header>
+
+<main class="py-5">
+  <section id="search" class="container">
+    <div class="zip-search mb-5">
+      <h2 class="h1 text-center mb-4">Check Your ZIP Code</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="input-group input-group-lg">
+            <input type="text" class="form-control" id="zipInput" placeholder="Enter your ZIP code" maxlength="5">
+            <button class="btn btn-primary" type="button" onclick="checkZip()">Check Coverage</button>
+          </div>
+          <div id="zipResult" class="mt-3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2 class="h1 text-center mb-5">States We Serve</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="card card-elev state-card p-4 h-100 text-center" onclick="window.location.href='wisconsin/'">
+          <div class="mb-3">
+            <!-- Wisconsin state silhouette SVG would go here -->
+            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+              <strong>WI</strong>
+            </div>
+          </div>
+          <h3 class="h5">Wisconsin</h3>
+          <p class="text-muted">Milwaukee, Madison, Green Bay, Appleton, and surrounding areas</p>
+          <p class="small"><strong>8 Area Codes</strong> • <strong>877 ZIP Codes</strong></p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card card-elev state-card p-4 h-100 text-center" onclick="window.location.href='illinois/'">
+          <div class="mb-3">
+            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+              <strong>IL</strong>
+            </div>
+          </div>
+          <h3 class="h5">Illinois</h3>
+          <p class="text-muted">Northern Chicago suburbs, Rockford, and surrounding areas</p>
+          <p class="small"><strong>6 Area Codes</strong> • <strong>200+ ZIP Codes</strong></p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card card-elev state-card p-4 h-100 text-center" onclick="window.location.href='minnesota/'">
+          <div class="mb-3">
+            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+              <strong>MN</strong>
+            </div>
+          </div>
+          <h3 class="h5">Minnesota</h3>
+          <p class="text-muted">Twin Cities metro, Rochester, and surrounding areas</p>
+          <p class="small"><strong>5 Area Codes</strong> • <strong>150+ ZIP Codes</strong></p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card card-elev state-card p-4 h-100 text-center" onclick="window.location.href='colorado/'">
+          <div class="mb-3">
+            <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+              <strong>CO</strong>
+            </div>
+          </div>
+          <h3 class="h5">Colorado</h3>
+          <p class="text-muted">Denver, Boulder, Fort Collins, Colorado Springs</p>
+          <p class="small"><strong>6 Area Codes</strong> • <strong>300+ ZIP Codes</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-5">
+    <h2 class="h1 text-center mb-5">Our Services</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-elev p-4 h-100 text-center">
+          <h4 class="h5">Radon Services</h4>
+          <p>Professional testing and custom mitigation systems</p>
+          <a href="/lifetime/services/radon-testing/" class="btn btn-outline-primary btn-sm">Learn More</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-elev p-4 h-100 text-center">
+          <h4 class="h5">Duct Services</h4>
+          <p>Cleaning and Aeroseal sealing for better air quality</p>
+          <a href="/lifetime/services/duct-cleaning-aeroseal/" class="btn btn-outline-primary btn-sm">Learn More</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-elev p-4 h-100 text-center">
+          <h4 class="h5">Floor Coatings</h4>
+          <p>Torginol epoxy systems for garages and basements</p>
+          <a href="/lifetime/services/floor-coatings/" class="btn btn-outline-primary btn-sm">Learn More</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-elev p-4 h-100 text-center">
+          <h4 class="h5">StruXure Pergolas</h4>
+          <p>Motorized outdoor living spaces</p>
+          <a href="/lifetime/services/struxure/" class="btn btn-outline-primary btn-sm">Learn More</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-elev p-4 h-100 text-center">
+          <h4 class="h5">Financing Available</h4>
+          <p>Flexible payment options through Synchrony</p>
+          <a href="/lifetime/financing/" class="btn btn-outline-primary btn-sm">Learn More</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-elev p-4 h-100 text-center">
+          <h4 class="h5">Free Estimates</h4>
+          <p>Professional consultation and project quotes</p>
+          <a href="/lifetime/#contact" class="btn btn-outline-primary btn-sm">Get Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-5">
+    <div class="card card-elev p-4 p-lg-5 text-center">
+      <h2 class="h1">Ready to Get Started?</h2>
+      <p class="lead">Contact us today for your free consultation and estimate.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="/lifetime/#contact" class="btn btn-primary btn-lg">Get Free Estimate</a>
+        <a href="tel:+18339416888" class="btn btn-outline-secondary btn-lg">(833) 941-6888</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-light py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h5>Lifetime Home Services</h5>
+        <p>Trusted Solutions. Lifetime Results.</p>
+        <p><strong>Phone:</strong> <a href="tel:+18339416888" class="text-light">(833) 941-6888</a></p>
+      </div>
+      <div class="col-md-6">
+        <h6>Service Areas</h6>
+        <ul class="list-unstyled">
+          <li><a href="/lifetime/locations/wisconsin/" class="text-light">Wisconsin</a></li>
+          <li><a href="/lifetime/locations/illinois/" class="text-light">Illinois</a></li>
+          <li><a href="/lifetime/locations/minnesota/" class="text-light">Minnesota</a></li>
+          <li><a href="/lifetime/locations/colorado/" class="text-light">Colorado</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="my-4">
+    <div class="text-center">
+      <p>&copy; 2024 Lifetime Home Services. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Lifetime Home Services","telephone":"+1-833-941-6888","areaServed":[{"@type":"State","name":"Wisconsin"},{"@type":"State","name":"Illinois"},{"@type":"State","name":"Minnesota"},{"@type":"State","name":"Colorado"}],"description":"Professional home services including radon testing/mitigation, duct cleaning, floor coatings, and outdoor living solutions.","url":"https://lhsv2.netlify.app/lifetime/locations/"}
+</script>
+
+<script>
+let coverageData = null;
+
+// Load coverage data
+fetch('/assets/data/coverage.json')
+  .then(response => response.json())
+  .then(data => {
+    coverageData = data;
+  })
+  .catch(error => {
+    console.error('Error loading coverage data:', error);
+  });
+
+function checkZip() {
+  const zipInput = document.getElementById('zipInput');
+  const zipResult = document.getElementById('zipResult');
+  const zip = zipInput.value.trim();
+  
+  if (!zip || zip.length !== 5 || !/^\d{5}$/.test(zip)) {
+    zipResult.innerHTML = '<div class="alert alert-warning">Please enter a valid 5-digit ZIP code.</div>';
+    return;
+  }
+  
+  if (!coverageData) {
+    zipResult.innerHTML = '<div class="alert alert-info">Loading coverage data...</div>';
+    return;
+  }
+  
+  // Check if ZIP is in our coverage area
+  let found = false;
+  let stateInfo = null;
+  
+  for (const state of coverageData.states) {
+    for (const county of state.counties) {
+      if (county.zipCodes.includes(zip)) {
+        found = true;
+        stateInfo = state;
+        break;
+      }
+    }
+    if (found) break;
+  }
+  
+  if (found) {
+    zipResult.innerHTML = `
+      <div class="alert alert-success">
+        <h5 class="alert-heading">✅ We serve your area!</h5>
+        <p>ZIP code ${zip} is in our ${stateInfo.name} service area.</p>
+        <hr>
+        <div class="d-flex gap-2">
+          <a href="/lifetime/#contact" class="btn btn-success btn-sm">Get Free Estimate</a>
+          <a href="tel:+18339416888" class="btn btn-outline-success btn-sm">(833) 941-6888</a>
+        </div>
+      </div>
+    `;
+  } else {
+    zipResult.innerHTML = `
+      <div class="alert alert-warning">
+        <h5 class="alert-heading">Service Area Check</h5>
+        <p>ZIP code ${zip} is not currently in our standard service area, but we may still be able to help.</p>
+        <hr>
+        <div class="d-flex gap-2">
+          <a href="/lifetime/#contact" class="btn btn-warning btn-sm">Contact Us</a>
+          <a href="tel:+18339416888" class="btn btn-outline-warning btn-sm">(833) 941-6888</a>
+        </div>
+      </div>
+    `;
+  }
+}
+
+// Allow Enter key to trigger search
+document.getElementById('zipInput').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    checkZip();
+  }
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>
+

@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radon Testing for Wisconsin Homes | Lifetime Home Services</title>
+    <meta name="description" content="Professional radon testing with fast, accurate results and clear next steps. EPA-certified technicians, proper placement, and honest guidance for Wisconsin homeowners.">
+    <link rel="canonical" href="https://lhsv2.netlify.app/lifetime/services/radon-testing.html">
+    
+    <!-- Preload hero image -->
+    <link rel="preload" as="image" href="/assets/images/lhs/radon-testing.jpg">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: #0ea5e9;
+            --accent-color: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar-brand img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: var(--text-dark);
+            margin: 0 10px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .phone-link {
+            background: var(--accent-color);
+            color: white !important;
+            font-weight: 600;
+            padding: 12px 25px !important;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .phone-link:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumb {
+            background: none;
+            padding: 1rem 0;
+        }
+        
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: ">";
+            color: var(--text-light);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/images/lhs/radon-testing.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .btn-hero {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-hero:hover {
+            background: #059669;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+        }
+        
+        .btn-hero.secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-hero.secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        /* Table of Contents */
+        .toc {
+            position: sticky;
+            top: 100px;
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .toc h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .toc a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 0.5rem 0;
+            border-left: 3px solid transparent;
+            padding-left: 1rem;
+        }
+        
+        .toc a:hover,
+        .toc a.active {
+            color: var(--primary-color);
+            border-left-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        /* Content Sections */
+        .content-section {
+            padding: 3rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .content-section:last-child {
+            border-bottom: none;
+        }
+        
+        .content-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .content-section h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        /* Process Steps */
+        .process-steps {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .process-step:hover {
+            background: var(--bg-light);
+            transform: translateX(5px);
+        }
+        
+        .step-number {
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+        
+        .step-content h5 {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-content p {
+            color: var(--text-light);
+            margin: 0;
+        }
+        
+        /* Benefits List */
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .benefits-list li {
+            padding: 15px 0;
+            position: relative;
+            padding-left: 40px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .benefits-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .benefits-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 15px;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.3rem;
+            width: 30px;
+            height: 30px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Gallery */
+        .gallery {
+            margin: 2rem 0;
+        }
+        
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        /* Myths vs Facts */
+        .myths-facts {
+            background: var(--bg-light);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .myth-fact-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            height: 100%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .myth-card {
+            border-left: 4px solid #ef4444;
+        }
+        
+        .fact-card {
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .myth-fact-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+        
+        .myth-card h4 {
+            color: #ef4444;
+        }
+        
+        .fact-card h4 {
+            color: var(--accent-color);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin: 3rem 0;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: none;
+            border: none;
+            width: 100%;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: var(--bg-light);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-light);
+            display: none;
+            line-height: 1.6;
+        }
+        
+        .faq-answer.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Contact Form */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 0;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+        
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .form-control {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+            border: none;
+            outline: none;
+        }
+        
+        .btn-contact {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-contact:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+        
+        /* Cross-sells */
+        .cross-sell-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .cross-sell-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .cross-sell-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .content-section h2 {
+                font-size: 2rem;
+            }
+            
+            .toc {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">
+                <img src="/assets/logos/LifetimeHomeServicesLogo.png" alt="Lifetime Home Services">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/lifetime/financing/index.html">Financing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html#contact">Contact</a>
+                    </li>
+                </ul>
+                
+                <a href="tel:+12629555701" class="phone-link" onclick="showCallHours()">
+                    <i class="fas fa-phone me-2"></i>(262) 955-5701
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumbs -->
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="/index.html#services">Services</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Radon Testing</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Radon Testing for Wisconsin Homes</h1>
+                <p>Fast, reliable results with clear next steps—explained in plain language by EPA-certified professionals.</p>
+                <a href="#contact" class="btn-hero">
+                    <i class="fas fa-paper-plane me-2"></i>Get Free Estimate
+                </a>
+                <a href="/lifetime/financing/index.html" class="btn-hero secondary">
+                    <i class="fas fa-credit-card me-2"></i>Financing Options
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Table of Contents -->
+            <div class="col-lg-3">
+                <div class="toc">
+                    <h3>On This Page</h3>
+                    <ul>
+                        <li><a href="#what-it-is">What It Is (ELI5)</a></li>
+                        <li><a href="#how-it-works">How Testing Works</a></li>
+                        <li><a href="#benefits">Benefits & Outcomes</a></li>
+                        <li><a href="#gallery">Photos</a></li>
+                        <li><a href="#myths-facts">Myths vs Facts</a></li>
+                        <li><a href="#diy-vs-pro">DIY vs Professional</a></li>
+                        <li><a href="#standards">Standards & Best Practices</a></li>
+                        <li><a href="#what-to-expect">Prep & What to Expect</a></li>
+                        <li><a href="#faqs">FAQs</a></li>
+                        <li><a href="#related-services">Related Services</a></li>
+                        <li><a href="#contact">Contact & Estimate</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- What It Is -->
+                <section id="what-it-is" class="content-section">
+                    <h2>What It Is (Explain Like I'm 10)</h2>
+                    <p><strong>Radon</strong> is a gas that can seep into homes from the ground. You can't see it, smell it, or taste it—so the only way to know your levels is to test. We use professional methods to measure your home's air and give you a clear, easy-to-understand report.</p>
+                    
+                    <p>Think of it like checking your home's "invisible air quality." Just like you might test your water or check your smoke detector, radon testing tells you if there's something you should know about the air your family breathes every day.</p>
+                    
+                    <div class="alert alert-info mt-3">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        <strong>The Bottom Line:</strong> Testing is quick, simple, and gives you peace of mind. We place a device, wait the right amount of time, then give you clear results and honest guidance.
+                    </div>
+                </section>
+
+                <!-- How It Works -->
+                <section id="how-it-works" class="content-section">
+                    <h2>How Radon Testing Works</h2>
+                    
+                    <div class="process-steps">
+                        <h4>Our 4-Step Process</h4>
+                        
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h5>Professional Placement</h5>
+                                <p>We place a calibrated monitor or approved test kit in the correct location and height for accurate results.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h5>Closed-House Conditions</h5>
+                                <p>We confirm proper testing conditions (windows closed, normal entry/exit) so the reading is valid.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h5>Testing Period</h5>
+                                <p>The device runs for the required time window (typically 48 hours for active monitors).</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h5>Results & Guidance</h5>
+                                <p>We retrieve the device, generate your report, and walk you through the results with clear next steps.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline SVG -->
+                    <div class="text-center my-4">
+                        <svg viewBox="0 0 720 160" style="width: 100%; max-width: 600px; height: auto;" role="img" aria-labelledby="timeline-title">
+                            <title id="timeline-title">Radon Testing Timeline - Typical 48-hour process</title>
+                            <rect x="0" y="0" width="720" height="160" fill="#f8fafc" rx="12"/>
+                            <g transform="translate(60,50)" font-size="14" fill="#1f2937">
+                                <!-- Timeline bar -->
+                                <rect x="0" y="40" width="600" height="8" fill="#e5e7eb" rx="4"/>
+                                <rect x="0" y="40" width="600" height="8" fill="#10b981" rx="4"/>
+                                
+                                <!-- Start point -->
+                                <circle cx="0" cy="44" r="12" fill="#1e40af"/>
+                                <text x="0" y="25" text-anchor="middle" font-weight="600">Start</text>
+                                <text x="0" y="75" text-anchor="middle" font-size="12" fill="#6b7280">Device Placed</text>
+                                
+                                <!-- 24 hour mark -->
+                                <circle cx="300" cy="44" r="8" fill="#0ea5e9"/>
+                                <text x="300" y="25" text-anchor="middle" font-weight="600">24h</text>
+                                <text x="300" y="75" text-anchor="middle" font-size="12" fill="#6b7280">Halfway Point</text>
+                                
+                                <!-- End point -->
+                                <circle cx="600" cy="44" r="12" fill="#10b981"/>
+                                <text x="600" y="25" text-anchor="middle" font-weight="600">48h</text>
+                                <text x="600" y="75" text-anchor="middle" font-size="12" fill="#6b7280">Results Ready</text>
+                            </g>
+                        </svg>
+                        <p class="text-muted mt-2"><small>Typical active test runs about 48 hours. Some methods may vary—we'll advise the right approach for your situation.</small></p>
+                    </div>
+                </section>
+
+                <!-- Benefits -->
+                <section id="benefits" class="content-section">
+                    <h2>Benefits & Outcomes</h2>
+                    
+                    <h4>What You Receive</h4>
+                    <ul class="benefits-list">
+                        <li><strong>Professional setup and retrieval</strong> — No guesswork on placement or timing</li>
+                        <li><strong>Clear, easy-to-read results report</strong> — Numbers explained in plain language</li>
+                        <li><strong>Honest guidance on next steps</strong> — We'll tell you exactly what your results mean</li>
+                        <li><strong>EPA-certified methods</strong> — Testing follows best practices and industry standards</li>
+                        <li><strong>Fast turnaround</strong> — Results typically available within 24-48 hours after retrieval</li>
+                        <li><strong>No pressure sales</strong> — If mitigation is recommended, we explain why and how</li>
+                    </ul>
+
+                    <h4>When to Test</h4>
+                    <ul class="benefits-list">
+                        <li><strong>Before buying a home</strong> — Know what you're getting into</li>
+                        <li><strong>After major renovations</strong> — Changes to your home can affect radon levels</li>
+                        <li><strong>Every 2-5 years</strong> — Levels can change over time</li>
+                        <li><strong>If you've never tested</strong> — The only way to know is to test</li>
+                        <li><strong>After mitigation system installation</strong> — Verify the system is working properly</li>
+                    </ul>
+                </section>
+
+                <!-- Gallery -->
+                <section id="gallery" class="content-section">
+                    <h2>Photos</h2>
+                    <div class="row gallery">
+                        <div class="col-md-4 mb-3">
+                            <img src="/assets/images/lhs/radon-testing.jpg" alt="Professional radon testing monitor placed in living area" loading="lazy">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <img src="/assets/images/lhs/SecurityBack.jpg" alt="Radon testing device showing proper placement" loading="lazy">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <img src="/assets/images/lhs/Securityfront.jpg" alt="Professional radon testing equipment" loading="lazy">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Myths vs Facts -->
+                <section id="myths-facts" class="content-section">
+                    <h2>Myths vs Facts</h2>
+                    <div class="myths-facts">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="myth-fact-card myth-card">
+                                    <h4>Myths</h4>
+                                    <ul>
+                                        <li>"You can smell high radon levels"</li>
+                                        <li>"Testing once is enough forever"</li>
+                                        <li>"All test methods are the same"</li>
+                                        <li>"Only old homes have radon problems"</li>
+                                        <li>"Radon only affects basements"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="myth-fact-card fact-card">
+                                    <h4>Facts</h4>
+                                    <ul>
+                                        <li>Radon is completely odorless and invisible</li>
+                                        <li>Levels can change over time due to various factors</li>
+                                        <li>Professional methods provide more accurate results</li>
+                                        <li>New and old homes can both have radon issues</li>
+                                        <li>Radon can affect any level of your home</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- DIY vs Professional -->
+                <section id="diy-vs-pro" class="content-section">
+                    <h2>DIY vs Professional Testing</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Factor</th>
+                                    <th>DIY Test Kits</th>
+                                    <th>Professional Testing</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Accuracy</strong></td>
+                                    <td>Good for screening</td>
+                                    <td>Higher precision, calibrated equipment</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Placement</strong></td>
+                                    <td>Follow instructions yourself</td>
+                                    <td>Expert placement for optimal results</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Conditions</strong></td>
+                                    <td>Self-monitored</td>
+                                    <td>Professional verification of test conditions</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Results</strong></td>
+                                    <td>Numbers only</td>
+                                    <td>Detailed explanation and guidance</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cost</strong></td>
+                                    <td>$15-50</td>
+                                    <td>Higher upfront, but includes expertise</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Next Steps</strong></td>
+                                    <td>Figure it out yourself</td>
+                                    <td>Clear guidance and options explained</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Standards & Best Practices -->
+                <section id="standards" class="content-section">
+                    <h2>Standards & Best Practices</h2>
+                    <p>We follow EPA guidelines and industry best practices to ensure accurate, reliable results:</p>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Testing Standards</h4>
+                            <ul class="benefits-list">
+                                <li>EPA-approved testing devices and methods</li>
+                                <li>Proper placement away from drafts and air currents</li>
+                                <li>Correct height and location for accurate readings</li>
+                                <li>Appropriate testing duration for reliable results</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Quality Assurance</h4>
+                            <ul class="benefits-list">
+                                <li>Calibrated equipment with regular maintenance</li>
+                                <li>Trained, certified technicians</li>
+                                <li>Documentation of test conditions</li>
+                                <li>Clear reporting with actionable recommendations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- What to Expect -->
+                <section id="what-to-expect" class="content-section">
+                    <h2>Prep & What to Expect</h2>
+                    
+                    <h4>Before We Arrive</h4>
+                    <ul class="benefits-list">
+                        <li>Keep windows and doors closed for 12 hours before testing</li>
+                        <li>Turn off fans and air purifiers in the testing area</li>
+                        <li>Choose the lowest livable level of your home for placement</li>
+                        <li>Clear a small area away from walls, windows, and doors</li>
+                    </ul>
+
+                    <h4>Day of Testing</h4>
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h5>Arrival & Setup (15 minutes)</h5>
+                                <p>Our technician arrives, explains the process, and places the testing device in the optimal location.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h5>Testing Period (48 hours)</h5>
+                                <p>The device runs automatically. Continue normal activities but keep windows closed and don't move the device.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h5>Retrieval & Results (30 minutes)</h5>
+                                <p>We return to collect the device and provide your results with clear explanation of what they mean.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>During the Test</h4>
+                    <ul class="benefits-list">
+                        <li>Keep windows and exterior doors closed</li>
+                        <li>Normal entry and exit is fine</li>
+                        <li>Don't move or disturb the testing device</li>
+                        <li>Continue normal HVAC operation</li>
+                        <li>Avoid using fans or air purifiers near the device</li>
+                    </ul>
+                </section>
+
+                <!-- FAQs -->
+                <section id="faqs" class="content-section">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-section">
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                How long does radon testing take?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Most tests run 48 hours for active monitors or 2-7 days for certain kits, plus time for report generation. We'll let you know the exact timeline when we schedule your test.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                Do I need to do anything during the test?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Keep windows closed as advised and do not move the testing device. Otherwise, continue your normal routine—the test won't interfere with daily activities.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                How accurate are the results?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                We use professional-grade equipment and follow EPA placement guidelines for maximum accuracy. Our methods are more precise than DIY test kits and provide reliable results you can trust.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                What happens if my radon level is elevated?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                We'll explain what your specific level means and design a mitigation plan if needed. We'll walk you through expected outcomes, timeline, and costs with no pressure—just honest guidance.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                When is the best time to test for radon?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Fall and winter typically show higher radon levels due to closed windows and heating systems. However, testing can be done year-round. The most important thing is to test—timing is secondary.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                How much does radon testing cost?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Contact us for current pricing. We offer competitive rates for professional testing that includes expert placement, accurate results, and detailed explanation of findings.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                Can I be home during the test?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Yes, you can be home during testing. Normal activities like cooking, cleaning, and sleeping won't affect results. Just avoid opening windows or moving the testing device.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                What radon level requires action?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                The EPA recommends action if radon levels are 4 pCi/L or higher. However, any level above 2 pCi/L poses some risk. We'll explain your specific results and help you understand your options.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                How often should I test for radon?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                The EPA recommends testing every 2-5 years, or after any major home renovations. If you have a mitigation system, test annually to ensure it's working properly.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                Do all homes in Wisconsin have radon problems?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Not all homes have elevated radon, but Wisconsin has areas with higher potential due to geology. The only way to know your home's levels is to test—neighboring homes can have very different results.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Related Services -->
+                <section id="related-services" class="content-section">
+                    <h2>Related Services</h2>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="cross-sell-card">
+                                <div class="cross-sell-icon">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <h4>Radon Mitigation</h4>
+                                <p>If testing shows elevated levels, we design and install custom mitigation systems to reduce radon in your home.</p>
+                                <a href="/lifetime/services/radon-mitigation.html" class="btn btn-outline-primary">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="cross-sell-card">
+                                <div class="cross-sell-icon">
+                                    <i class="fas fa-wind"></i>
+                                </div>
+                                <h4>Duct Services</h4>
+                                <p>Improve your home's air quality and efficiency with professional duct cleaning and Aeroseal sealing services.</p>
+                                <a href="/lifetime/services/duct-services.html" class="btn btn-outline-primary">Learn More</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="cross-sell-card">
+                                <div class="cross-sell-icon">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <h4>Financing Options</h4>
+                                <p>Flexible financing available through Synchrony to help you get the services you need when you need them.</p>
+                                <a href="/lifetime/financing/index.html" class="btn btn-outline-primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="contact-section">
+                    <div class="container">
+                        <div class="text-center mb-4">
+                            <h2>Get Your Radon Test Scheduled Today</h2>
+                            <p class="lead">Professional testing with fast results and clear guidance. No pressure, just honest expertise.</p>
+                        </div>
+                        
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <form class="contact-form" method="POST" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" data-netlify="true" name="radon-testing-contact">
+                                    <!-- Netlify form handling as backup -->
+                                    <input type="hidden" name="form-name" value="radon-testing-contact">
+                                    
+                                    <!-- Salesforce Web-to-Lead fields -->
+                                    <input type="hidden" name="oid" value="00D8c000003QJQR">
+                                    <input type="hidden" name="retURL" value="/thank-you.html">
+                                    <input type="hidden" name="lead_source" value="Website - Radon Testing Page">
+                                    <input type="hidden" name="company" value="Residential Customer">
+                                    <input type="hidden" name="00N8c00000QJqQR" value="Radon Testing">
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <input type="text" class="form-control" name="street" placeholder="Address" required>
+                                    
+                                    <textarea class="form-control" name="description" rows="4" placeholder="Tell us about your radon testing needs (optional)"></textarea>
+                                    
+                                    <button type="submit" class="btn-contact">
+                                        <i class="fas fa-paper-plane me-2"></i>Schedule My Radon Test
+                                    </button>
+                                    
+                                    <p class="text-center mt-3 small">
+                                        By submitting this form, you agree to be contacted about your radon testing needs. We respect your privacy and will never share your information.
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // FAQ Toggle Function
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (answer.classList.contains('show')) {
+                answer.classList.remove('show');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+                button.classList.remove('active');
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer.show').forEach(openAnswer => {
+                    openAnswer.classList.remove('show');
+                    const openButton = openAnswer.previousElementSibling;
+                    const openIcon = openButton.querySelector('i');
+                    openIcon.classList.remove('fa-chevron-up');
+                    openIcon.classList.add('fa-chevron-down');
+                    openButton.classList.remove('active');
+                });
+                
+                answer.classList.add('show');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+                button.classList.add('active');
+            }
+        }
+        
+        // Phone Hours Popup
+        function showCallHours() {
+            alert('Call Hours: 7 days a week, 8:00 AM to 8:00 PM CT');
+        }
+        
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('.toc a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Active TOC highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.content-section');
+            const tocLinks = document.querySelectorAll('.toc a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            // Allow form to submit to Salesforce
+            setTimeout(function() {
+                if (window.location.href.indexOf('thank-you.html') === -1) {
+                    alert('Thank you for your interest in radon testing! We will contact you within 24 hours to schedule your test.');
+                }
+            }, 100);
+        });
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://lhsv2.netlify.app/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Services",
+                "item": "https://lhsv2.netlify.app/#services"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Radon Testing",
+                "item": "https://lhsv2.netlify.app/lifetime/services/radon-testing.html"
+            }
+        ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Radon Testing",
+        "serviceType": "Home Services",
+        "areaServed": ["Wisconsin", "Illinois", "Minnesota", "Colorado"],
+        "provider": {
+            "@type": "Organization",
+            "name": "Lifetime Home Services"
+        },
+        "url": "https://lhsv2.netlify.app/lifetime/services/radon-testing.html",
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+                "@type": "PriceSpecification",
+                "priceCurrency": "USD"
+            },
+            "description": "Contact for quote."
+        }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How long does radon testing take?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most tests run 48 hours for active monitors or 2-7 days for certain kits, plus time for report generation."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need to do anything during the test?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Keep windows closed as advised and do not move the testing device. Otherwise, continue your normal routine."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How accurate are the results?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We use professional-grade equipment and follow EPA placement guidelines for maximum accuracy."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happens if my radon level is elevated?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We'll explain what your specific level means and design a mitigation plan if needed with no pressure."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "When is the best time to test for radon?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Fall and winter typically show higher radon levels, but testing can be done year-round."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much does radon testing cost?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Contact us for current pricing. We offer competitive rates for professional testing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I be home during the test?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, you can be home during testing. Normal activities won't affect results."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What radon level requires action?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The EPA recommends action if radon levels are 4 pCi/L or higher."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How often should I test for radon?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The EPA recommends testing every 2-5 years, or after any major home renovations."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do all homes in Wisconsin have radon problems?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Not all homes have elevated radon, but Wisconsin has areas with higher potential due to geology."
+                }
+            }
+        ]
+    }
+    </script>
+</body>
+</html>
+
