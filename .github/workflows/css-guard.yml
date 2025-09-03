@@ -1,0 +1,31 @@
+name: CSS Canonical Guard
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ensure canonical stylesheet exists
+        run: |
+          if [ ! -f assets/css/site.css ]; then
+            echo "assets/css/site.css is missing"; exit 1
+          fi
+
+      - name: Fail if HTML references legacy styles.css
+        run: |
+          BAD=$(grep -RIn --include='*.html' -E 'href=["'\''"][^"'\''']*styles\.css' . || true)
+          if [ -n "$BAD" ]; then
+            echo "Found legacy styles.css references:"; echo "$BAD"; exit 1
+          fi
+
+      - name: Ensure pages link to /assets/css/site.css
+        run: |
+          MISS=$(grep -RIL --include='*.html' '/assets/css/site\.css' . || true)
+          if [ -n "$MISS" ]; then
+            echo "These HTML files do not include /assets/css/site.css:"; echo "$MISS"; exit 1
+          fi
