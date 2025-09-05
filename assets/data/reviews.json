@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Sarah M.",
+    "location": "Madison, WI",
+    "review": "Lifetime Home Services did an amazing job on our epoxy garage floor. The crew was professional, fast, and the results are stunning! Highly recommend.",
+    "rating": 5
+  },
+  {
+    "name": "James R.",
+    "location": "Appleton, WI",
+    "review": "We had radon mitigation and duct cleaning done. Both teams were knowledgeable and left our home spotless. Great experience!",
+    "rating": 5
+  },
+  {
+    "name": "Linda T.",
+    "location": "Milwaukee, WI",
+    "review": "The StruXure pergola is a game changer for our backyard. The process was smooth from quote to install.",
+    "rating": 5
+  },
+  {
+    "name": "Mike D.",
+    "location": "Green Bay, WI",
+    "review": "Very happy with the Aeroseal duct sealing. Noticeable difference in comfort and dust. Would use again!",
+    "rating": 5
+  }
+]
