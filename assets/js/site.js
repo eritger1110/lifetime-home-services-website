@@ -59,3 +59,15 @@
     });
   });
 })();
+
+(function(){
+  // Before/After Slider
+  const slider = document.querySelector('.before-after-range');
+  const afterImg = document.querySelector('.before-after-after');
+  if(slider && afterImg){
+    slider.addEventListener('input',function(){
+      const val = this.value;
+      afterImg.style.clipPath = `inset(0 ${100-val}% 0 0)`;
+    });
+  }
+})();
