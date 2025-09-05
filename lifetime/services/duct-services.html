@@ -1169,17 +1169,12 @@
                         
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
-                                <form class="contact-form" method="POST" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" data-netlify="true" name="duct-services-contact">
-                                    <!-- Netlify form handling as backup -->
-                                    <input type="hidden" name="form-name" value="duct-services-contact">
-                                    
-                                    <!-- Salesforce Web-to-Lead fields -->
+                                <form class="contact-form" method="POST" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" data-netlify="true" name="contact">
+                                    <input type="hidden" name="form-name" value="contact">
                                     <input type="hidden" name="oid" value="00D8c000003QJQR">
-                                    <input type="hidden" name="retURL" value="/thank-you.html">
-                                    <input type="hidden" name="lead_source" value="Website - Duct Services Page">
+                                    <input type="hidden" name="retURL" value="thank-you.html">
+                                    <input type="hidden" name="lead_source" value="internet">
                                     <input type="hidden" name="company" value="Residential Customer">
-                                    <input type="hidden" name="00N8c00000QJqQR" value="Duct Services">
-                                    
                                     <div class="row">
                                         <div class="col-md-6">
                                             <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
@@ -1188,7 +1183,6 @@
                                             <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
                                         </div>
                                     </div>
-                                    
                                     <div class="row">
                                         <div class="col-md-6">
                                             <input type="email" class="form-control" name="email" placeholder="Email Address" required>
@@ -1197,37 +1191,20 @@
                                             <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
                                         </div>
                                     </div>
-                                    
                                     <input type="text" class="form-control" name="street" placeholder="Address" required>
-                                    
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <select class="form-control" name="00N8c00000QJqQW" required>
-                                                <option value="">Service Needed</option>
-                                                <option value="Duct Cleaning Only">Duct Cleaning Only</option>
-                                                <option value="Aeroseal Sealing Only">Aeroseal Sealing Only</option>
-                                                <option value="Complete Package">Complete Package (Cleaning + Sealing)</option>
-                                                <option value="Not Sure">Not Sure - Need Assessment</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <select class="form-control" name="00N8c00000QJqQX">
-                                                <option value="">Home Age</option>
-                                                <option value="Less than 5 years">Less than 5 years</option>
-                                                <option value="5-15 years">5-15 years</option>
-                                                <option value="15-30 years">15-30 years</option>
-                                                <option value="Over 30 years">Over 30 years</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    
-                                    <textarea class="form-control" name="description" rows="4" placeholder="Tell us about your duct service needs (optional)"></textarea>
-                                    
+                                    <select class="form-control" name="00N8c00000QJqQR" required>
+                                        <option value="">Select Service of Interest</option>
+                                        <option value="Radon Testing">Radon Testing</option>
+                                        <option value="Radon Mitigation">Radon Mitigation</option>
+                                        <option value="Aeroseal">Aeroseal</option>
+                                        <option value="Duct Cleaning">Duct Cleaning</option>
+                                        <option value="Floor Coatings (EPOXY)">Floor Coatings (EPOXY)</option>
+                                        <option value="Multiple (Concierge Services)">Multiple (Concierge Services)</option>
+                                    </select>
+                                    <textarea class="form-control" name="description" rows="4" placeholder="Tell us about your project (optional)"></textarea>
                                     <button type="submit" class="btn-contact">
-                                        <i class="fas fa-paper-plane me-2"></i>Get My Duct Services Quote
+                                        <i class="fas fa-paper-plane me-2"></i>Get Free Estimate
                                     </button>
-                                    
-                                    <p class="text-center mt-3 small">
                                         By submitting this form, you agree to be contacted about your duct service needs. We respect your privacy and will never share your information.
                                     </p>
                                 </form>

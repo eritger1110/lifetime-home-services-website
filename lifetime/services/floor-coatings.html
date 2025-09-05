@@ -862,66 +862,42 @@
                         <h3 class="text-center mb-4 text-dark">Get Your Free Floor Coating Estimate</h3>
                         
                         <!-- Salesforce Web-to-Lead Form -->
-                        <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" id="floorCoatingForm">
-                            <input type="hidden" name="oid" value="00D8c0000000000">
-                            <input type="hidden" name="retURL" value="https://lifetimehomeservices.com/thank-you.html">
-                            <input type="hidden" name="lead_source" value="Website - Floor Coatings">
-                            
-                            <div class="row g-3">
+                        <form class="contact-form" method="POST" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" data-netlify="true" name="contact">
+                            <input type="hidden" name="form-name" value="contact">
+                            <input type="hidden" name="oid" value="00D8c000003QJQR">
+                            <input type="hidden" name="retURL" value="thank-you.html">
+                            <input type="hidden" name="lead_source" value="internet">
+                            <input type="hidden" name="company" value="Residential Customer">
+                            <div class="row">
                                 <div class="col-md-6">
-                                    <label for="first_name" class="form-label">First Name *</label>
-                                    <input type="text" class="form-control" id="first_name" name="first_name" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="last_name" class="form-label">Last Name *</label>
-                                    <input type="text" class="form-control" id="last_name" name="last_name" required>
+                                    <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="email" class="form-label">Email *</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="phone" class="form-label">Phone *</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone" required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="street" class="form-label">Address</label>
-                                    <input type="text" class="form-control" id="street" name="street" placeholder="Street Address">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="city" class="form-label">City</label>
-                                    <input type="text" class="form-control" id="city" name="city">
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="state" class="form-label">State</label>
-                                    <select class="form-control" id="state" name="state">
-                                        <option value="WI" selected>Wisconsin</option>
-                                        <option value="IL">Illinois</option>
-                                        <option value="MN">Minnesota</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="zip" class="form-label">ZIP Code</label>
-                                    <input type="text" class="form-control" id="zip" name="zip">
-                                </div>
-                                <div class="col-12">
-                                    <label for="00N8c00000000000" class="form-label">Project Details</label>
-                                    <textarea class="form-control" id="00N8c00000000000" name="00N8c00000000000" rows="4" placeholder="Tell us about your floor coating project: square footage, current condition, timeline, etc."></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <label for="00N8c00000000001" class="form-label">Preferred Contact Method</label>
-                                    <select class="form-control" id="00N8c00000000001" name="00N8c00000000001">
-                                        <option value="Phone">Phone</option>
-                                        <option value="Email">Email</option>
-                                        <option value="Text">Text Message</option>
-                                    </select>
-                                </div>
-                                <div class="col-12 text-center">
-                                    <button type="submit" class="btn btn-lg btn-brand">
-                                        <i class="fas fa-paper-plane me-2"></i>Get Free Estimate
-                                    </button>
+                                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" name="street" placeholder="Address" required>
+                            <select class="form-control" name="00N8c00000QJqQR" required>
+                                <option value="">Select Service of Interest</option>
+                                <option value="Radon Testing">Radon Testing</option>
+                                <option value="Radon Mitigation">Radon Mitigation</option>
+                                <option value="Aeroseal">Aeroseal</option>
+                                <option value="Duct Cleaning">Duct Cleaning</option>
+                                <option value="Floor Coatings (EPOXY)">Floor Coatings (EPOXY)</option>
+                                <option value="Multiple (Concierge Services)">Multiple (Concierge Services)</option>
+                            </select>
+                            <textarea class="form-control" name="description" rows="4" placeholder="Tell us about your project (optional)"></textarea>
+                            <button type="submit" class="btn-contact">
+                                <i class="fas fa-paper-plane me-2"></i>Get Free Estimate
+                            </button>
                         </form>
                     </div>
                 </div>
