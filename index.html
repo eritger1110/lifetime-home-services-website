@@ -1012,26 +1012,87 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Get Your Free Estimate Today</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <form class="contact-form" id="contactForm" method="POST" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" data-netlify="true" name="contact">
-                        <!-- Netlify form handling as backup -->
-                        <input type="hidden" name="form-name" value="contact">
-                        
-                        <!-- Salesforce Web-to-Lead fields -->
-                        <input type="hidden" name="oid" value="00D8c000003QJQR">
-                        <input type="hidden" name="retURL" value="thank-you.html">
-                        <input type="hidden" name="lead_source" value="internet">
-                        <input type="hidden" name="company" value="Residential Customer">
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
-                            </div>
+        <!-- About Section -->
+        <section class="about" id="about">
+                <div class="container">
+                        <h2>About Lifetime Home Services</h2>
+                        <div class="row align-items-center">
+                                <div class="col-lg-6 mb-4 mb-lg-0">
+                                        <img src="assets/images/lhs/lifetime-hero-house.jpg" alt="Lifetime Home Services House" class="img-fluid rounded-2xl shadow-soft">
+                                </div>
+                                <div class="col-lg-6">
+                                        <p class="lead">With over 20 years of experience, Lifetime Home Services is your trusted partner for radon mitigation, duct cleaning, Aeroseal duct sealing, and premium floor coatings. Our certified professionals deliver lasting results and peace of mind for Wisconsin families.</p>
+                                        <ul class="benefits-list">
+                                                <li>Certified & insured professionals</li>
+                                                <li>Top-rated customer service</li>
+                                                <li>Lifetime warranty on select services</li>
+                                                <li>Free estimates & transparent pricing</li>
+                                        </ul>
+                                </div>
+                        </div>
+                </div>
+        </section>
+
+        <!-- Reviews Carousel Section -->
+        <section class="reviews-carousel py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-4">What Our Customers Say</h2>
+                <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" id="reviewsCarouselInner">
+                        <!-- Reviews will be injected by JS -->
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#reviewsCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Epoxy Gallery Section -->
+        <section class="epoxy-gallery py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Epoxy Floor Gallery</h2>
+                <div class="row g-3" id="epoxyGallery">
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <img src="assets/images/epoxy/after1.jpg" class="img-fluid rounded-2xl gallery-img" alt="Epoxy Floor After 1">
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <img src="assets/images/epoxy/after2.jpg" class="img-fluid rounded-2xl gallery-img" alt="Epoxy Floor After 2">
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <img src="assets/images/epoxy/after3.jpg" class="img-fluid rounded-2xl gallery-img" alt="Epoxy Floor After 3">
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <img src="assets/images/epoxy/after4.jpg" class="img-fluid rounded-2xl gallery-img" alt="Epoxy Floor After 4">
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <img src="assets/images/epoxy/Before1.jpg" class="img-fluid rounded-2xl gallery-img" alt="Epoxy Floor Before 1">
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <img src="assets/images/epoxy/Before2.jpg" class="img-fluid rounded-2xl gallery-img" alt="Epoxy Floor Before 2">
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <img src="assets/images/epoxy/Before3.jpg" class="img-fluid rounded-2xl gallery-img" alt="Epoxy Floor Before 3">
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <img src="assets/images/epoxy/Before4.jpg" class="img-fluid rounded-2xl gallery-img" alt="Epoxy Floor Before 4">
+                    </div>
+                </div>
+            </div>
+            <!-- Lightbox Modal -->
+            <div class="modal fade" id="galleryLightbox" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content bg-transparent border-0">
+                        <img id="lightboxImg" src="" class="img-fluid rounded-2xl" alt="Gallery Preview">
+                    </div>
+                </div>
+            </div>
+        </section>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
                             </div>
