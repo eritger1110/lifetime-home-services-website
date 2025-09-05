@@ -18,3 +18,44 @@
     }
   });
 })();
+
+(function(){
+  // Reviews Carousel Loader
+  fetch('/assets/data/reviews.json')
+    .then(r=>r.json())
+    .then(reviews=>{
+      const inner = document.getElementById('reviewsCarouselInner');
+      if(!inner) return;
+      inner.innerHTML = reviews.map((r,i)=>`
+        <div class="carousel-item${i===0?' active':''}">
+          <div class="card card-elev p-4 text-center mx-auto" style="max-width:600px;">
+            <div class="mb-2">
+              ${'<i class="fas fa-star text-warning"></i>'.repeat(r.rating)}
+            </div>
+            <blockquote class="mb-3">${r.review}</blockquote>
+            <div class="fw-bold">${r.name}</div>
+            <div class="text-muted small">${r.location}</div>
+          </div>
+        </div>
+      `).join('');
+    });
+
+  // Epoxy Gallery Lightbox
+  document.querySelectorAll('.gallery-img').forEach(img=>{
+    img.addEventListener('click',function(){
+      const modal = document.getElementById('galleryLightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      if(modal && lightboxImg){
+        lightboxImg.src = this.src;
+        modal.classList.add('show');
+        modal.style.display = 'block';
+        modal.setAttribute('aria-modal','true');
+        modal.removeAttribute('aria-hidden');
+        modal.addEventListener('click',()=>{
+          modal.classList.remove('show');
+          modal.style.display = 'none';
+        },{once:true});
+      }
+    });
+  });
+})();
